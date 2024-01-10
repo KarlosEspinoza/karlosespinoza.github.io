@@ -1,9 +1,10 @@
-title: Minimalistic
+title: Karlod 
 logo: /assets/img/logo.jpg
-email: person@address.com
-description: Minimalistic is a theme powered by Jekyll.
+# email: person@address.com
+description: Tutoriales y Cursos.
 favicon: true
-color-scheme: auto
+#color-scheme: auto
+color-scheme: dark
 
 plugins:
   - jekyll-sitemap
@@ -11,12 +12,12 @@ plugins:
   - jemoji
 
 platforms:
-  - name: GitHub
-    icon: <i class="fa-brands fa-github"></i>
-    link: https://github.com/vaibhavvikas
+  - name: Youtube
+    icon: <i class="fa-youtube fa-youtube"></i>
+    link: https://www.youtube.com/channel/UC5eMAkopgQ3y5BMTWSpvyXQ
   - name: LinkedIn
     icon: <i class="fa-brands fa-linkedin"></i>
-    link: https://www.linkedin.com/in/vaibhavvikas
+    link: www.linkedin.com/in/karlos-espinoza-b550b2206
 
 navigation:
   - name: Readme
