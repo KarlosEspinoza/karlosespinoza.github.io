@@ -1,7 +1,7 @@
 title: Karlos 
 #logo: /assets/img/logo.jpg
 # email: person@address.com
-description: Tutoriales y Cursos.
+description: Investigación, cursos y tutoriales.
 favicon: true
 #color-scheme: auto
 color-scheme: dark
@@ -11,6 +11,32 @@ plugins:
   - jekyll-seo-tag
   - jemoji
 
+navigation:
+  - name: Indice
+    link: ./index.html
+
+  - name: Cursos
+    link: ./index.html
+    sublist:
+      - name: Bioinformática
+        link: ./index.html#small-image
+
+  - name: Tutoriales
+    link: ./index.html
+    sublist:
+      - name: Arch Linux
+        link: ./index.html#small-image
+
+  - name: Investigación
+    link: ./index.html
+    sublist:
+      - name: Visión artificial
+        link: ./index.html#small-image
+
+
+  - name: Sobre mi
+    link: ./another-page.html
+
 platforms:
   - name: Youtube
     icon: <i class="fa-brands fa-youtube"></i>
@@ -19,18 +45,4 @@ platforms:
     icon: <i class="fa-brands fa-linkedin"></i>
     link: www.linkedin.com/in/karlos-espinoza-b550b2206
 
-navigation:
-  - name: Indice
-    link: ./index.html
-  - name: Cursos
-    link: ./index.html
-    sublist:
-      - name: Bioinformática
-        link: ./index.html#small-image
-  - name: Tutoriales
-    link: ./index.html
-    sublist:
-      - name: Arch Linux
-        link: ./index.html#small-image
-  - name: Another Page
-    link: ./another-page.html
+
