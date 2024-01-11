@@ -18,7 +18,7 @@ navigation:
   - name: Cursos
     link: ./index.html
     sublist:
-      - name: Bioinformática
+      - name: Inteligencia Artificial
         link: ./index.html#small-image
 
   - name: Tutoriales
