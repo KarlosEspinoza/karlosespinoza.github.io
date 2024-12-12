@@ -6,6 +6,15 @@ favicon: true
 #color-scheme: auto
 color-scheme: dark
 
+markdown: kramdown
+kramdown:
+  input: GFM
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
