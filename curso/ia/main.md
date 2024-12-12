@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Curso de Inteligencia Artificial
 ---
 
@@ -8,7 +9,6 @@ title: Curso de Inteligencia Artificial
 
 Este curso te introducirá a los fundamentos de la IA, desde conceptos básicos hasta aplicaciones prácticas.
 
-## Hello World
+# índice
 
-Comencemos con nuestro primer ejemplo: "¡Hola, mundo!".
-
+1. [Programa del curso](/curso/ia/programa)

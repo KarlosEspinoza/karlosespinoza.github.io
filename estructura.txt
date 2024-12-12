@@ -1,0 +1,144 @@
+.
+├── another-page.md
+├── assets
+│   ├── css
+│   │   ├── colors-auto.scss
+│   │   ├── colors-dark.scss
+│   │   ├── colors-light.scss
+│   │   └── style.scss
+│   ├── fonts
+│   │   ├── Noto-Sans-700
+│   │   │   ├── Noto-Sans-700.eot
+│   │   │   ├── Noto-Sans-700.svg
+│   │   │   ├── Noto-Sans-700.ttf
+│   │   │   ├── Noto-Sans-700.woff
+│   │   │   └── Noto-Sans-700.woff2
+│   │   ├── Noto-Sans-700italic
+│   │   │   ├── Noto-Sans-700italic.eot
+│   │   │   ├── Noto-Sans-700italic.svg
+│   │   │   ├── Noto-Sans-700italic.ttf
+│   │   │   ├── Noto-Sans-700italic.woff
+│   │   │   └── Noto-Sans-700italic.woff2
+│   │   ├── Noto-Sans-italic
+│   │   │   ├── Noto-Sans-italic.eot
+│   │   │   ├── Noto-Sans-italic.svg
+│   │   │   ├── Noto-Sans-italic.ttf
+│   │   │   ├── Noto-Sans-italic.woff
+│   │   │   └── Noto-Sans-italic.woff2
+│   │   └── Noto-Sans-regular
+│   │       ├── Noto-Sans-regular.eot
+│   │       ├── Noto-Sans-regular.svg
+│   │       ├── Noto-Sans-regular.ttf
+│   │       ├── Noto-Sans-regular.woff
+│   │       └── Noto-Sans-regular.woff2
+│   ├── img
+│   │   └── logo.jpg
+│   └── js
+│       └── scale.fix.js
+├── backups
+│   └── index.md
+├── _config.yml
+├── curso
+│   ├── ia
+│   │   ├── infor.csv
+│   │   ├── main.md
+│   │   └── programa.md
+│   ├── main.md
+│   └── python
+│       └── main.md
+├── estructura.txt
+├── Gemfile
+├── Gemfile.lock
+├── _includes
+│   ├── footer.html
+│   ├── head-custom-google-analytics.html
+│   ├── head-custom.html
+│   ├── header.html
+│   ├── header-title.html
+│   ├── mobile.html
+│   └── sidebar.html
+├── index.md
+├── jekyll-theme-minimalistic.gemspec
+├── _layouts
+│   ├── default.html
+│   ├── plain.html
+│   └── post.html
+├── LICENSE
+├── README.md
+├── _sass
+│   ├── colors.scss
+│   ├── fonts.scss
+│   ├── jekyll-theme-minimalistic.scss
+│   ├── minimalistic.scss
+│   └── rouge-github.scss
+├── script
+│   ├── bootstrap
+│   ├── cibuild
+│   ├── release
+│   └── validate-html
+├── _site
+│   ├── another-page.html
+│   ├── assets
+│   │   ├── css
+│   │   │   ├── colors-auto.css
+│   │   │   ├── colors-auto.css.map
+│   │   │   ├── colors-dark.css
+│   │   │   ├── colors-dark.css.map
+│   │   │   ├── colors-light.css
+│   │   │   ├── colors-light.css.map
+│   │   │   ├── style.css
+│   │   │   └── style.css.map
+│   │   ├── fonts
+│   │   │   ├── Noto-Sans-700
+│   │   │   │   ├── Noto-Sans-700.eot
+│   │   │   │   ├── Noto-Sans-700.svg
+│   │   │   │   ├── Noto-Sans-700.ttf
+│   │   │   │   ├── Noto-Sans-700.woff
+│   │   │   │   └── Noto-Sans-700.woff2
+│   │   │   ├── Noto-Sans-700italic
+│   │   │   │   ├── Noto-Sans-700italic.eot
+│   │   │   │   ├── Noto-Sans-700italic.svg
+│   │   │   │   ├── Noto-Sans-700italic.ttf
+│   │   │   │   ├── Noto-Sans-700italic.woff
+│   │   │   │   └── Noto-Sans-700italic.woff2
+│   │   │   ├── Noto-Sans-italic
+│   │   │   │   ├── Noto-Sans-italic.eot
+│   │   │   │   ├── Noto-Sans-italic.svg
+│   │   │   │   ├── Noto-Sans-italic.ttf
+│   │   │   │   ├── Noto-Sans-italic.woff
+│   │   │   │   └── Noto-Sans-italic.woff2
+│   │   │   └── Noto-Sans-regular
+│   │   │       ├── Noto-Sans-regular.eot
+│   │   │       ├── Noto-Sans-regular.svg
+│   │   │       ├── Noto-Sans-regular.ttf
+│   │   │       ├── Noto-Sans-regular.woff
+│   │   │       └── Noto-Sans-regular.woff2
+│   │   ├── img
+│   │   │   └── logo.jpg
+│   │   └── js
+│   │       └── scale.fix.js
+│   ├── backups
+│   │   └── index.html
+│   ├── curso
+│   │   ├── ia
+│   │   │   ├── infor.csv
+│   │   │   ├── main.html
+│   │   │   └── programa.html
+│   │   ├── main.html
+│   │   └── python
+│   │       └── main.html
+│   ├── index.html
+│   ├── jekyll-theme-minimalistic.gemspec
+│   ├── LICENSE
+│   ├── README.md
+│   ├── robots.txt
+│   ├── script
+│   │   ├── bootstrap
+│   │   ├── cibuild
+│   │   ├── release
+│   │   └── validate-html
+│   ├── sitemap.xml
+│   └── thumbnail.png
+└── thumbnail.png
+
+33 directories, 109 files
