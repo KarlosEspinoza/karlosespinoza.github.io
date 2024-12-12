@@ -1,7 +1,7 @@
 title: Karlos 
 #logo: /assets/img/logo.jpg
 # email: person@address.com
-description: Investigación, cursos y tutoriales.
+description: Cursos, tutoriales e investigación.
 favicon: true
 #color-scheme: auto
 color-scheme: dark
@@ -13,31 +13,34 @@ plugins:
 
 navigation:
   - name: Indice
-    link: ./index.html
+    link: /index.html
 
   - name: Cursos
-    link: ./index.html
+    link: /curso/main
     sublist:
       - name: Python
-        link: ./index.html#small-image
+        link: /curso/python/main
       - name: Inteligencia Artificial
-        link: ./index.html#small-image
+        link: /curso/ia/main
+        subsublist:
+          - name: Programa
+            link: /curso/ia/programa
 
-  - name: Tutoriales
-    link: ./index.html
-    sublist:
-      - name: Arch Linux
-        link: ./index.html#small-image
-
-  - name: Investigación
-    link: ./index.html
-    sublist:
-      - name: Visión artificial
-        link: ./index.html#small-image
-
-
-  - name: Sobre mi
-    link: ./another-page.html
+#  - name: Tutoriales
+#    link: ./index.html
+#    sublist:
+#      - name: Arch Linux
+#        link: ./index.html#small-image
+#
+#  - name: Investigación
+#    link: ./index.html
+#    sublist:
+#      - name: Visión artificial
+#        link: ./index.html#small-image
+#
+#
+#  - name: Sobre mi
+#    link: ./another-page.html
 
 platforms:
   - name: Youtube

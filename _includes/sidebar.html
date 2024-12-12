@@ -11,15 +11,26 @@
   <h3 class="sidebar-h3">Contenido:</h3>
   <ul class="content">
   {%- for item in site.navigation %}
-    <li><a href="{{ item.link }}">{{ item.name }}</a>
-        {% if item.sublist %}
-        <ul class="sublist">
-            {%- for subitem in item.sublist %}
-            <li><a href="{{ subitem.link }}">{{ subitem.name }}</a></li>
-            {%- endfor %}
-        </ul>
-        {% endif %}
-    </li>
+  <li><a href="{{ item.link }}">{{ item.name }}</a>
+      {% if item.sublist %}
+      <ul class="sublist">
+          {%- for subitem in item.sublist %}
+          <li><a href="{{ subitem.link }}">{{ subitem.name }}</a>
+
+              {% if subitem.subsublist %}
+              <ul class="sublist">
+                  {%- for subsubitem in subitem.subsublist %}
+                  <li><a href="{{ subsubitem.link }}">{{ subsubitem.name }}</a>
+                  </li>
+                  {%- endfor %}
+              </ul>
+              {% endif %}
+
+          </li>
+          {%- endfor %}
+      </ul>
+      {% endif %}
+  </li>
   {%- endfor %}
   </ul>
   {% endif %}
