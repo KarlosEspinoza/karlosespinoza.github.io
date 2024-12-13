@@ -29,12 +29,12 @@ navigation:
     sublist:
       - name: Python
         link: /curso/python/main
-      - name: Inteligencia Artificial
-        link: /curso/ia/main
-        subsublist:
-          - name: Programa
-            link: /curso/ia/programa
-
+      - name: Aprendizaje de Máquina
+        link: /curso/am/main
+#        subsublist:
+#          - name: Programa
+#            link: /curso/ia/programa
+#
 #  - name: Tutoriales
 #    link: ./index.html
 #    sublist:
