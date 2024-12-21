@@ -27,6 +27,8 @@ navigation:
   - name: Cursos
     link: /curso/main
     sublist:
+      - name: Linux
+        link: /curso/linux/main
       - name: Python
         link: /curso/python/main
       - name: Aprendizaje de Máquina
