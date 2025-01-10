@@ -14,11 +14,14 @@ sass:
   sass_dir: _sass
   style: compressed
 
+gems: [jekyll-mermaid]
 
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jemoji
+  #- jekyll-mermaid
+
 
 navigation:
   - name: Indice
