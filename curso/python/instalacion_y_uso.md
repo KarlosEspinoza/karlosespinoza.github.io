@@ -4,13 +4,17 @@ title: Instalación y uso
 ---
 
 # Instalacion y uso en Visual Studio Code
-***
+
+---
+
 - [Instalar Python](#instalar-python)
 - [Instalar Visual Studio Code](#instalar-visual-studio-code)
 - [Istalar extensión de Python para Visual Studio Code](#instalar-extensión-de-python-para-visual-studio-code)
 - [Primer programa](#primer-programa)
+- [Programar en un Raspberry Pi](#programar-en-un-raspberry-pi)
 
-***
+
+---
 
 ## Instalar Python
 Descargamos python de [la paguina oficial](https://www.python.org/downloads/). 
@@ -56,7 +60,8 @@ PS: C:\Users\Karlos\Desktop\python>
 ```
 Si tienes problemas con el procedimiento te recomiendo consultar este [videotutorial](https://youtu.be/7PJQ3UiuIgs).
 
----
-
-Te recomiendo consultar este Playlist de Youtube que te guia paso a paso [videotutorial](https://youtube.com/playlist?list=PLjcGc3avJwfSeXjXp2Y4Sw5gcf3CRhS5r&si=A7tX5VLv7YfiSSBz).
+## Programar en un Raspberry Pi
+Si tu intención es realizar un proyecto para un Raspberry Pi, te recomiendo diriguirte antes al curso [Linux](/curso/linux/main).
+Raspberry Pi es un distribución del sistema operativo Linux, por lo que te ayudaría bastante tener estos conocimiento.
+Si solo estas pensando en desarrollar un proyecto para usarlo en tu computadora continua con este curso.
 
