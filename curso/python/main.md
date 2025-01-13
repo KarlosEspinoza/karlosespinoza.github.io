@@ -13,3 +13,9 @@ title: Python
 1. [Librerías](/curso/python/librerias)
 1. [Entradas y Salidas en archivos](/curso/python/entradas_y_salidas_en_archivos)
 1. [Expresiones regulares](/curso/python/expresiones_regulares)
+
+---
+
+Te recomiendo consultar este Playlist de Youtube que te guiará paso a paso 
+[videotutorial](https://youtube.com/playlist?list=PLjcGc3avJwfSeXjXp2Y4Sw5gcf3CRhS5r&si=A7tX5VLv7YfiSSBz).
+
