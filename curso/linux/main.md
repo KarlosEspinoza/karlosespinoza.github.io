@@ -5,6 +5,7 @@ title: Linux
 
 # Linux
 
+- [Configurar Raspberry](/curso/linux/configurar_raspberry)
 - [Anatomía del SHELL](/curso/linux/anatomia_shell)
 - [Comandos básicos](/curso/linux/comandos_basicos)
 - [Opciones](/curso/linux/opciones)
