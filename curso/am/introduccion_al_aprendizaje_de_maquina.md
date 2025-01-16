@@ -7,10 +7,11 @@ title: Introducción al aprendizaje de máquina
 
 ## ¿Qué es el aprendizaje de máquina?
 
-El aprendizaje de máquina (Machine Learning) es una rama de la inteligencia artificial que permite a los sistemas aprender y mejorar automáticamente a partir de la experiencia sin ser programados explícitamente. Esto se logra mediante el uso de algoritmos que analizan datos, reconocen patrones y hacen predicciones o decisiones basadas en ellos.
+El aprendizaje de máquina (Machine Learning) es una rama de la inteligencia artificial que permite a los sistemas aprender y mejorar automáticamente a partir de la experiencia sin ser programados explícitamente.
+Esto se logra mediante el uso de algoritmos que analizan datos, reconocen patrones y hacen predicciones o decisiones basadas en ellos.
 
-### Ejemplo introductorio: Reconocimiento de letras escritas a mano
-Imagina que deseas crear un sistema que pueda identificar letras escritas a mano. En lugar de programar explícitamente las reglas para cada letra (lo cual sería complicado debido a la variabilidad en la escritura), el aprendizaje de máquina permite entrenar un modelo proporcionándole ejemplos de letras y sus correspondientes etiquetas.
+Imagina que deseas crear un sistema que pueda **identificar letras escritas a mano**. 
+En lugar de programar explícitamente las reglas para cada letra (lo cual sería complicado debido a la variabilidad en la escritura), el aprendizaje de máquina permite entrenar un modelo proporcionándole ejemplos de letras y sus correspondientes etiquetas.
 ![Mnist dataset [(Baldominos 2019)](https://www.mdpi.com/2076-3417/9/15/3169).](https://www.mdpi.com/applsci/applsci-09-03169/article_deploy/html/images/applsci-09-03169-g002.png)
 
 
@@ -47,22 +48,59 @@ graph LR
 
 El aprendizaje de máquina se basa en tres conceptos clave:
 
-1. **Datos**: El material crudo con el que el modelo aprenderá. En el caso del reconocimiento de letras, son las imágenes de las letras.
-2. **Modelos**: Las representaciones matemáticas utilizadas para encontrar patrones en los datos.
-3. **Algoritmos**: Los procedimientos que el modelo sigue para optimizar su desempeño.
+- **Datos**: El material crudo con el que el modelo aprenderá. En el caso del reconocimiento de letras, son las imágenes de las letras.
+- **Modelos**: Las representaciones matemáticas utilizadas para encontrar patrones en los datos.
+- **Algoritmos**: Los procedimientos que el modelo sigue para optimizar su desempeño.
 
-#### Tipos de aprendizaje de máquina
-- **Supervisado**: Se entrena con datos etiquetados (por ejemplo, imágenes con la letra identificada).
-- **No supervisado**: Encuentra patrones en datos no etiquetados (por ejemplo, agrupar imágenes similares sin saber qué letra representan).
-- **Por refuerzo**: Aprende a tomar decisiones a través de ensayo y error (como enseñar a un robot a caminar).
+#### Datos
 
-| Tipo              | Datos etiquetados | Ejemplo                       |
-|-------------------|-------------------|-------------------------------|
-| Supervisado       | Sí                | Clasificar correos como spam  |
-| No supervisado    | No                | Segmentar clientes            |
-| Por refuerzo      | No                | Aprender a jugar ajedrez      |
+Los datos pueden venir de diferentes medios.
+Por ejemplo, en una máquina un sensor de temperatura proporciona la temperatura en el tiempo.
 
----
+| Tiempo              | Temperatura |
+| 2025-enero-05 10:33:20 | 20.1        |
+| 2025-enero-05 10:33:21 | 20.5        |
+| 2025-enero-05 10:33:22 | 40.9        |
+| 2025-enero-05 10:33:23 | 21.3        |
+| ...                    | ...         |
+| 2025-enero-05 22:45:11 | 25.7        |
+
+No obstante los datos puede que el sensor los otorge en formatos que debas de acondicionar o mejorar la representación de estos datos.
+
+| Tiempo              | Temperatura |
+| 2025-<code style="color : red">enero</code>-05 10:33:20 | 20.1        |
+| 2025-enero-05 10:33:21 | 20.5        |
+| 2025-enero-05 10:33:22 | <code style="color : red">40.9</code>        |
+| 2025-enero-05 10:33:23 | 21.3        |
+| ...                 | ...         |
+| 2025-enero-05 22:45:11 | 25.7        |
+
+Por ejemplo, en nuestro sensor de temperatura quizá el tiempo contiene letras o palabras con las que no puedas realizar operaciones (<code style="color : red">enero</code> en nuestro ejemplo).
+En estos casos probablemente necesites **codificar** esos datos.
+En este ejmplo, podría asignarle a enero el numero 1, ya que enero es el primer mes del año.
+
+Los datos también pueden contener **errores** o **anomalias**.
+Los errores corresponden a un mal funcionamiento del sensor u **origen de los datos**.
+Mientras que la anomalia se refiere a algo muy atipico y dependiendiendo de tu aplicación tendras que considerar que hacer con esos datos.
+En nuestro ejemplo <code style="color : red">40.9</code> no corresponde a un ambiente en el que se observa una tendencide la temperatura a subir paulatinamente.
+
+También puede ser que nuestra aplicación este orientada a detectar un comportamiento de un sistema. 
+Por ejemplo, si buscamos identificar si la temperatura esta subiendo, puede ser que sea irrelevante el día, o incluso la hora.
+Puede que sea más relevante el lapso que ha pasado entre cada dato y no la hora en si, es decir el **delta** del tiempo.
+
+#### Modelos
+
+Es bien sabido que un **modelo** es cualquier cosa que represente a algo real.
+En aprendizaje de máquina, los modelos son representaciones matemáticas que se aproximan al **sistema real** que pretendemos identificar. 
+Por ejemplo, una persona en una habitación es capaz de identificar si la temperatura esta subiendo.
+En este caso, nuestro sistema esta compuesto por diversos **elementos** que tienen **interacción** entre si.
+En este sistema podrias listar diferentes elementos: el grosor de las paredes, la temperatura exterior, la temperatura interior, el color de las paredes, la presencia de una ventana, la posición de la persona, la ropa de la persona, su piel, su sistema nervioso, su cerebro, ojos, etc.
+Algunos tienen interaciones entre si, y otros no tienen interaciones entre si.
+Estas interaciones pueden ser relevantes o incluso no tener ninguna relevancia.
+Por ejemplo, la temperatura exterior interaciona con las paredes de la habitación.
+De igual forma, puede ser que el color de als paredes tenga muy poca influencia en la temparatura de la habitación, pero quiza podría influir en la percepción de la persona.
+![System](https://www.researchgate.net/publication/368382603/figure/fig1/AS:11431281118970163@1675950076727/Network-graph-showing-commenting-and-replying-interactions-between-participants-in-the.jpg)
+
 
 ### Diferencias entre IA, aprendizaje de máquina y aprendizaje profundo
 
