@@ -28,14 +28,16 @@ navigation:
 #    link: /index.html
 
   - name: Cursos
-    link: /curso/main
+    link: /curso/
     sublist:
       - name: Linux
-        link: /curso/linux/main
+        link: /curso/linux/
       - name: Python
-        link: /curso/python/main
+        link: /curso/python/
       - name: Aprendizaje de Máquina
-        link: /curso/am/main
+        link: /curso/am/
+      - name: Aplicación Web
+        link: /curso/webapp/
 #        subsublist:
 #          - name: Programa
 #            link: /curso/ia/programa
