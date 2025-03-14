@@ -56,7 +56,7 @@ systemctl status apache
 vim /srv/http/index.php
 ------------
 <?php
-phpinfoi();
+echo "Hola PHP\n";
 ?>
 ```
 
