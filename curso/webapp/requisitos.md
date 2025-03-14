@@ -1,3 +1,8 @@
+---
+layout: default
+title: Webapp
+---
+
 # Montar servidor
 
 ## Instalar los paquetes necesarios
@@ -55,5 +60,5 @@ phpinfoi();
 ?>
 ```
 
-## Consultar WebApp
+## Consulta la WebApp
 [localhost/index.php](localhost/index.php)
