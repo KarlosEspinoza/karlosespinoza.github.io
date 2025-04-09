@@ -46,9 +46,9 @@ MariaDB> GRANT ALL PRIVILEGES ON mydb.* TO 'monty'@'localhost';
 ## Iniciar servicios
 ```bash
 systemctl start mariadb
-systemctl start apache
+systemctl start httpd
 systemctl status mariadb
-systemctl status apache
+systemctl status httpd
 ```
 
 ## Redactar WebApp
