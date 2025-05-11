@@ -3,15 +3,11 @@ layout: default
 title: Teoria
 ---
 
-# Regresión Logística: Explicación Completa
-
-## ¿Qué es la Regresión Logística?
+# Regresión Logística
 
 La **Regresión Logística** es un algoritmo de **aprendizaje supervisado** utilizado para resolver problemas de **clasificación binaria** o **multiclase**. A pesar de su nombre, **no se utiliza para regresión**, sino para **clasificar datos en categorías discretas**.
 
----
-
-## ¿Cómo Funciona?
+## Funcionamiento
 
 ### 1. Combinación Lineal
 
@@ -28,7 +24,7 @@ donde:
 
 ### 2. Función Sigmoide
 
-La salida de la combinación lineal se pasa a través de la función **sigmoide**, que convierte cualquier número real en un valor entre 0 y 1 (una probabilidad):
+La salida de la combinación lineal **z** se pasa a través de la función **sigmoide**, que convierte cualquier número real en un valor entre 0 y 1 (una probabilidad):
 
 \[
 \sigma(z) = \frac{1}{1 + e^{-z}}
@@ -43,13 +39,13 @@ Se define un **umbral** (por defecto, 0.5). Si:
 - \( \sigma(z) \geq 0.5 \): se clasifica como clase 1
 - \( \sigma(z) < 0.5 \): se clasifica como clase 0
 
----
+
 
 ## Visualización de la Función Sigmoide
 
 Su forma en S permite transformar cualquier entrada en una **probabilidad interpretable**.
 
----
+
 
 ## Regresión Logística Multiclase
 
@@ -96,22 +92,4 @@ Siempre es buena práctica **verificar si el modelo ha convergido** (Scikit-lear
 ## Casos de Uso Típicos
 
 - Clasificación binaria: correo spam vs. no spam, defecto vs. no defecto.
-- Problemas multiclase con softmax: diagnóstico médico, tipo de objeto en sensores, etc.
-
----
-
-## Código de Ejemplo (Scikit-learn)
-
-```python
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-
-# Dividir datos
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
-# Entrenar modelo
-modelo = LogisticRegression(max_iter=200)
-modelo.fit(X_train, y_train)
-
-# Predecir y evaluar
-predicciones = modelo.predict(X_test)
+- Problemas multiclase con softmax: diagnóstico médico, tipo de objeto en sensores, 
