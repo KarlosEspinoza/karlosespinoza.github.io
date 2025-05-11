@@ -13,9 +13,9 @@ La **Regresión Logística** es un algoritmo de **aprendizaje supervisado** util
 
 Primero, se calcula una combinación lineal de las variables de entrada:
 
-$$
+```math
 z = w_0 + w_1 x_1 + w_2 x_2 + \cdots + w_n x_n
-$$
+```
 
 donde:
 
