@@ -13,22 +13,22 @@ La **Regresión Logística** es un algoritmo de **aprendizaje supervisado** util
 
 Primero, se calcula una combinación lineal de las variables de entrada:
 
-\[
+$$
 z = w_0 + w_1 x_1 + w_2 x_2 + \cdots + w_n x_n
-\]
+$$
 
 donde:
 
-- \( x_i \): características de entrada
-- \( w_i \): pesos del modelo (parámetros a aprender)
+- $x_i$: características de entrada
+- $w_i$: pesos del modelo (parámetros a aprender)
 
 ### 2. Función Sigmoide
 
 La salida de la combinación lineal **z** se pasa a través de la función **sigmoide**, que convierte cualquier número real en un valor entre 0 y 1 (una probabilidad):
 
-\[
+$$
 \sigma(z) = \frac{1}{1 + e^{-z}}
-\]
+$$
 
 Este valor representa la **probabilidad de que la muestra pertenezca a la clase positiva (1)**.
 
@@ -36,8 +36,8 @@ Este valor representa la **probabilidad de que la muestra pertenezca a la clase 
 
 Se define un **umbral** (por defecto, 0.5). Si:
 
-- \( \sigma(z) \geq 0.5 \): se clasifica como clase 1
-- \( \sigma(z) < 0.5 \): se clasifica como clase 0
+- $\sigma(z) \geq 0.5$: se clasifica como clase 1
+- $\sigma(z) < 0.5$: se clasifica como clase 0
 
 
 
@@ -51,17 +51,17 @@ Su forma en S permite transformar cualquier entrada en una **probabilidad interp
 
 Cuando hay más de dos clases, se utiliza una extensión llamada **Softmax**, que genera una probabilidad para cada clase:
 
-\[
+$$
 P(y = k \mid x) = \frac{e^{z_k}}{\sum_{j=1}^{K} e^{z_j}}
-\]
+$$
 
-Donde \( z_k \) es la salida de la clase \( k \).
+Donde $z_k$ es la salida de la clase $k$.
 
 ---
 
 ## Entrenamiento del Modelo
 
-La regresión logística aprende los pesos \( w_i \) **maximizando la verosimilitud** (log-likelihood) de los datos observados. Esto se hace mediante un **algoritmo iterativo** como el **Gradiente Descendente**.
+La regresión logística aprende los pesos $w_i$ **maximizando la verosimilitud** (log-likelihood) de los datos observados. Esto se hace mediante un **algoritmo iterativo** como el **Gradiente Descendente**.
 
 ---
 
