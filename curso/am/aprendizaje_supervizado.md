@@ -8,5 +8,5 @@ title: Ejercicio Ingenieria de datos
 
 *desarrollo.py*
 ```python
-{% include 5_aprendizaje_supervizado/aprendizaje_supervizado.py %}
+{% include 5_aprendizaje_supervizado/desarrollo.py %}
 ```
