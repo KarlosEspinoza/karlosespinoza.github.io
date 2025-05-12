@@ -3,15 +3,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
-from sklearn.linear_model import LogisticRegression, Perceptron
+# Importamos los modelos de clasificación
+from sklearn.linear_model import LogisticRegression, Perceptron, SGDClassifier
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neural_network import MLPClassifier
 
-# Importar
+# Importar datos
 df = pd.read_csv("sensor_readings_2.csv")
 df = df.dropna()
 if df['class'].dtype == 'object':
@@ -27,13 +28,18 @@ X_train, X_test, y_train, y_test = train_test_split(
     X_scaled, y, test_size=0.25, random_state=42, stratify=y
 )
 
-# 8. Definir modelos a comparar
+# Definir modelos a comparar
 modelos = {
     "Logistic Regression": LogisticRegression(max_iter=1000),
     "Perceptron": Perceptron(),
     "SVM": SVC(),
     "KNN (k=5)": KNeighborsClassifier(n_neighbors=5),
-    "Decision Tree": DecisionTreeClassifier()
+    "Decision Tree": DecisionTreeClassifier(),
+    "Random Forest": RandomForestClassifier(),
+    "Gradient Boosting": GradientBoostingClassifier(),
+    "Stochastic GD": SGDClassifier(max_iter=1000, tol=1e-3),
+    "Naive Bayes": GaussianNB(),
+    "MLP (Neural Net)": MLPClassifier(max_iter=1000)
 }
 
 # Entrenamiento y evaluación
