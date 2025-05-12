@@ -2,6 +2,11 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
 
 # Importamos los modelos de clasificación
 from sklearn.linear_model import LogisticRegression, Perceptron, SGDClassifier
@@ -24,6 +29,7 @@ else:
 X = df.drop('class', axis=1)
 y = df['class']
 scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
 X_train, X_test, y_train, y_test = train_test_split(
     X_scaled, y, test_size=0.25, random_state=42, stratify=y
 )
