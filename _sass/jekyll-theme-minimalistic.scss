@@ -8,7 +8,8 @@ html {
 
 body {
   background-color: var(--clr-bg);
-  padding: 50px;
+  padding: 10px;
+  margin: 10;
   font: 15px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--clr-text);
   font-weight: 400;
@@ -292,7 +293,7 @@ section {
 section {
   margin-left: 250px;
   flex: 1;
-  padding-bottom: 30px;
+  padding-bottom: 3px;
 }
 
 
@@ -334,7 +335,8 @@ hr {
   }
 
   section {
-    width: 375px;
+    //width: 375px;
+    width: 100%;
   }
 
   .sidebar-footer {
@@ -343,115 +345,163 @@ hr {
   }
 }
 
-@media print, screen and (max-width: 720px) {
-  body {
-    word-wrap: break-word;
-  }
+//@media print, screen and (max-width: 720px) {
+//  body {
+//    word-wrap: break-word;
+//  }
+//
+//  header {
+//    padding: 0;
+//    overflow-x: hidden;
+//  }
+//
+//  header ul, header p.view {
+//    position: static;
+//  }
+//  
+//  .link-wrapper {
+//    display: none !important;
+//  }
+//
+//  .link-wrapper-mobile {
+//    display:block !important;
+//  }
+//
+//  .sidebar {
+//    float: none;
+//    position: static;
+//    width: auto;
+//    padding: initial;
+//    display: initial;
+//    height: initial;
+//    overflow: initial;    
+//  }
+//
+//  .sidebar-footer {
+//    display: none;
+//  }
+//
+//  footer {
+//    display: initial;
+//    margin: 20px 0 0;
+//  }
+//
+//  div.wrapper {
+//    width: auto;
+//    margin: 0;
+//  }
+//
+//  header, section, .wrapper {
+//    float: none;
+//    position: static;
+//    width: auto;
+//    overflow-x: hidden;
+//  }
+//
+//  section {
+//    border: 1px solid var(--clr-splitter-blockquote-and-section);
+//    border-width: 1px 0;
+//    padding: 20px 0 0;
+//    margin: 0 0 20px;
+//  }
+//
+//   .header-title-mobile section {
+//    padding: 20px 0;
+//  }
+//
+//  .header-title {
+//    display: none;
+//  }
+//
+//  .header-title-mobile {
+//    display: block;
+//  }
+//
+//  .header-title-mobile h1 {
+//    margin: 15px 0 15px;
+//    line-height: 1.1;
+//  }
+//  
+//  header a small {
+//    display: inline;
+//  }
+//
+//  header ul {
+//    right: 50px;
+//    top: 52px;
+//  }
+//
+//  .logo {
+//    float: right;
+//    width: 110px;
+//    box-sizing: border-box;
+//    margin-bottom: 0px;
+//  }
+//
+//  pre, code {
+//    word-wrap: normal;
+//  }
+//}
 
-  header {
-    padding: 0;
-    overflow-x: hidden;
-  }
 
-  header ul, header p.view {
-    position: static;
-  }
-  
-  .link-wrapper {
-    display: none !important;
-  }
+//@media print, screen and (max-width: 480px) {
+//  body {
+//    padding: 15px;
+//  }
+//}
+//
+//@media print {
+//  body {
+//    padding: 0.4in;
+//    font-size: 12pt;
+//    color: #444;
+//  }
+//}
 
-  .link-wrapper-mobile {
-    display:block !important;
-  }
+// pruebas
 
-  .sidebar {
-    float: none;
-    position: static;
-    width: auto;
-    padding: initial;
-    display: initial;
-    height: initial;
-    overflow: initial;    
-  }
-
-  .sidebar-footer {
-    display: none;
-  }
-
-  footer {
-    display: initial;
-    margin: 20px 0 0;
-  }
-
-  div.wrapper {
-    width: auto;
-    margin: 0;
-  }
-
-  header, section, .wrapper {
-    float: none;
-    position: static;
-    width: auto;
-    overflow-x: hidden;
-  }
-
-  section {
-    border: 1px solid var(--clr-splitter-blockquote-and-section);
-    border-width: 1px 0;
-    padding: 20px 0 0;
-    margin: 0 0 20px;
-  }
-
-   .header-title-mobile section {
-    padding: 20px 0;
-  }
-
-  .header-title {
-    display: none;
-  }
-
-  .header-title-mobile {
+@media screen and (orientation: portrait) {
+  body::before {
+    content: "Por favor gira tu teléfono para ver el contenido completo.";
+    width: 100%;
     display: block;
-  }
-
-  .header-title-mobile h1 {
-    margin: 15px 0 15px;
-    line-height: 1.1;
-  }
-  
-  header a small {
-    display: inline;
-  }
-
-  header ul {
-    right: 50px;
-    top: 52px;
-  }
-
-  .logo {
-    float: right;
-    width: 110px;
-    box-sizing: border-box;
-    margin-bottom: 0px;
-  }
-
-  pre, code {
-    word-wrap: normal;
+    background: #ffefc2;
+    color: #000;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
   }
 }
 
 
-@media print, screen and (max-width: 480px) {
-  body {
-    padding: 15px;
-  }
-}
+///* Mobile: cambia de columna a fila */
+//@media screen and (max-width: 720px) {
+//  body {
+//    flex-direction: column; /* Apila sidebar y sección */
+//  }
+//
+//  .sidebar {
+//    width: 100%;
+//    height: auto;
+//    order: 2; /* Aparece después del contenido */
+//  }
+//
+//  section {
+//    order: 1; /* Aparece primero */
+//    width: 100%;
+//  }
+//}
 
-@media print {
-  body {
-    padding: 0.4in;
-    font-size: 12pt;
-    color: #444;
-  }
-}
+
+///* Opcional: paisaje en móvil (horizontal) */
+//@media screen and (orientation: landscape) and (max-width: 932px) {
+//  section {
+//    width: 100%;
+//    //padding: 10px;
+//  }
+//
+//  //body {
+//  //  padding: 0;
+//  //}
+//}
+//
