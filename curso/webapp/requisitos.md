@@ -50,9 +50,13 @@ MariaDB> GRANT ALL PRIVILEGES ON mydb.* TO 'monty'@'localhost';
 ```
 
 ## Iniciar servicios
+Inicia los servicios **mariadb** y **httpd**.
 ```bash
 systemctl start mariadb
 systemctl start httpd
+```
+Revisa que el estado de **mariadb** y **httpd** diga **active (running)**.
+```bash
 systemctl status mariadb
 systemctl status httpd
 ```
