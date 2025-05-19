@@ -43,10 +43,25 @@ Include conf/extra/phpmyadmin.conf
 ```
 
 ## Configurar MariaDB
+Creamos un usuario con todos los privilegios.
 ```bash
 sudo mariadb -u root -p
-MariaDB> CREATE USER 'monty'@'localhost' IDENTIFIED BY 'some_pass';
-MariaDB> GRANT ALL PRIVILEGES ON mydb.* TO 'monty'@'localhost';
+MariaDB> CREATE USER 'karlos'@'localhost' IDENTIFIED BY 'algun_pass';
+MariaDB> GRANT ALL PRIVILEGES ON mydb.* TO 'karlos'@'localhost';
+```
+### Pasword o usuario olvidado
+Si olvidaste el usuario o el password puedes primero listar a los usuarios con los siguientes comandos.
+```bash
+sudo mariadb
+> SELECT User FROM mysql.global_priv;
+```
+Ya que veas el nombre del usuario puedes cambiar su contraseña con el siguiente comando.
+```bash
+> ALTER USER 'karlos'@'localhost' IDENTIFIED BY 'otro_pass';
+```
+De igual forma puedes borrar al usuario.
+```bash
+DROP USER 'karlos'@'localhost';
 ```
 
 ## Iniciar servicios

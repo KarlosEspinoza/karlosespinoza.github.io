@@ -460,48 +460,15 @@ hr {
 
 // pruebas
 
-@media screen and (orientation: portrait) {
-  body::before {
-    content: "Por favor gira tu teléfono para ver el contenido completo.";
-    width: 100%;
-    display: block;
-    background: #ffefc2;
-    color: #000;
-    padding: 1px;
-    text-align: center;
-    font-weight: bold;
-  }
-}
-
-
-///* Mobile: cambia de columna a fila */
-//@media screen and (max-width: 720px) {
-//  body {
-//    flex-direction: column; /* Apila sidebar y sección */
-//  }
-//
-//  .sidebar {
+//@media screen and (orientation: portrait) {
+//  body::before {
+//    content: "Por favor gira tu teléfono para ver el contenido completo.";
 //    width: 100%;
-//    height: auto;
-//    order: 2; /* Aparece después del contenido */
-//  }
-//
-//  section {
-//    order: 1; /* Aparece primero */
-//    width: 100%;
+//    display: block;
+//    background: #ffefc2;
+//    color: #000;
+//    padding: 1px;
+//    text-align: center;
+//    font-weight: bold;
 //  }
 //}
-
-
-///* Opcional: paisaje en móvil (horizontal) */
-//@media screen and (orientation: landscape) and (max-width: 932px) {
-//  section {
-//    width: 100%;
-//    //padding: 10px;
-//  }
-//
-//  //body {
-//  //  padding: 0;
-//  //}
-//}
-//
