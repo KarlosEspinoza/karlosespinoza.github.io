@@ -13,3 +13,4 @@ title: Aprendizaje de Máquina
 1. Aprendizaje supervisado
    1. [Teoria](teoria_aprendizaje_supervizado)
    1. [Ejercicio: Aprendizaje supervisado](aprendizaje_supervizado)
+   1. [Proyecto: Aprendizaje supervisado](practica_aprendizaje_supervizado)
