@@ -27,8 +27,28 @@ extension=pdo_mysql
 ## Configurar Apache
 Edita **/etc/httpd/conf/http.conf**.
 ```bash
-vim /etc/httpd/conf/http.conf
+vim /etc/httpd/conf/httpd.conf
 ```
+
+Configura a MariaDB.
+```bash
+mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+```
+
+
+## Iniciar servicios
+Inicia los servicios **mariadb** y **httpd**.
+```bash
+systemctl start mariadb
+systemctl start httpd
+```
+Revisa que el estado de **mariadb** y **httpd** diga **active (running)**.
+```bash
+systemctl status mariadb
+systemctl status httpd
+```
+
+
 Activa los siguientes comandos.
 ```bash
 #LoadModule mpm_event_module modules/mod_mpm_event.so
@@ -64,21 +84,10 @@ De igual forma puedes borrar al usuario.
 DROP USER 'karlos'@'localhost';
 ```
 
-## Iniciar servicios
-Inicia los servicios **mariadb** y **httpd**.
-```bash
-systemctl start mariadb
-systemctl start httpd
-```
-Revisa que el estado de **mariadb** y **httpd** diga **active (running)**.
-```bash
-systemctl status mariadb
-systemctl status httpd
-```
-
 ## Redactar WebApp
 Crea **/srv/http/index.php**.
 ```bash
+vim /srv/http/index.php
 ```
 Escribe el siguiente codigo PHP.
 ```bash
