@@ -47,14 +47,32 @@ Revisa que el estado de **mariadb** y **httpd** diga **active (running)**.
 systemctl status mariadb
 systemctl status httpd
 ```
+Creamos a **phpmyadmin.conf**
+```bash
+vim /etc/httpd/conf/extra/phpmyadmin.conf
+----
+Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
+<Directory "/usr/share/webapps/phpMyAdmin">
+    DirectoryIndex index.php
+    AllowOverride All
+    Options FollowSymlinks
+    Require all granted
+</Directory>
+```
+
 
 
 Activa los siguientes comandos.
 ```bash
+# Comentamos la siguiente linea
 #LoadModule mpm_event_module modules/mod_mpm_event.so
+
+# Descomentamos la siguiente linea
 LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+
 # Esto es para PHP y va al final de todos los LoadModule
 LoadModule php_module modules/libphp.so
+
 # Esto es para PHP y va al final de todos los Include
 Include conf/extra/php_module.conf
 
