@@ -7,7 +7,7 @@ title: Webapp
 
 ## Instalar los paquetes necesarios
 ```bash
-pacman -S apache php mariadb pymyadmin php-iconv
+pacman -S apache php mariadb phpmyadmin
 ```
 
 ## Configura a PHP
@@ -64,6 +64,8 @@ Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
 
 Activa los siguientes comandos.
 ```bash
+vim /etc/httpd/conf/httpd.conf
+----
 # Comentamos la siguiente linea
 #LoadModule mpm_event_module modules/mod_mpm_event.so
 
