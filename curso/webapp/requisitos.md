@@ -7,7 +7,7 @@ title: Webapp
 
 ## Instalar los paquetes necesarios
 ```bash
-pacman -S apache php mariadb phpmyadmin
+pacman -S apache php mariadb phpmyadmin php-apache
 ```
 
 ## Configura a PHP
@@ -15,7 +15,7 @@ Edita **/etc/php/php.ini**.
 ```bash
 vim /etc/php/php.ini
 ```
-Corrigue las siguientes variables.
+Corrigue las siguientes variables para poder ver los errores mientras desarrollamos.
 ```bash
 display_errors = On
 display_startup_errors = On
