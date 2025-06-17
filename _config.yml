@@ -66,4 +66,9 @@ platforms:
     icon: <i class="fa-brands fa-linkedin"></i>
     link: www.linkedin.com/in/karlos-espinoza-b550b2206
 
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  math_engine: mathjax
 

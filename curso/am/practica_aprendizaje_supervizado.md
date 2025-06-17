@@ -12,16 +12,16 @@ Cada Raspberry Pi mide la humedad, presencia de luz, gas LP, presencia de movimi
 [datos.csv](/datos/am/supervisado/practica/1/datos.csv)
 
 ## Desarrollo de la máquina de aprendizja supervizado
-Aqui tienes el pseudocodigo y algunas muestras de codigo que si debes de incluir en tu proyecto.
+Aqui tienes el pseudocódigo y algunas muestras de código que si debes de incluir en tu proyecto.
 **desarrollo.py**
 ```python
 # Importa las librerias que necesites
 # [HACER]
 
-# Etapa. Importar los datos
+# Importar los datos
 # [HACER]
 
-# Etapa. Procesa los datos.
+# Procesa los datos.
 # [HACER]
 if df['device'].dtype == 'object':
     le = LabelEncoder()
@@ -29,7 +29,7 @@ if df['device'].dtype == 'object':
     device = le.classes_
 # [HACER]
 
-# Etapa. Define los modelos a utilizar.
+# Define los modelos a utilizar.
 modelos = {
     "Logistic Regression": LogisticRegression(max_iter=1000),
     "Perceptron": Perceptron(),
@@ -43,19 +43,20 @@ modelos = {
     "MLP (Neural Net)": MLPClassifier(max_iter=1000)
 }
 
-# Etapa. Entrena y evalua los modelos
+# Entrena y evalua los modelos
 for nombre, modelo in modelos.items():
     # [HACER]
-    # Etapa. Guarda el mejor modelo
+    # Guarda el mejor modelo
     # [HACER]
 
 ```
 
 ## Produccion de la máquina de aprendizaje supervisado
 Una vez tengas identificado y guardado el mejor modelo llevalo a producción en tu Raspberry Pi.
+Cuando ingreses la nueva muestra la temperatura y la humedad la leeras de DHT11, lo demas lecturas (presencia de luz, gas LP, presencia de movimiento, humo) si pueden ser invetadas.
 **produccion.py**
 ```python
-# Ingresa una nueva muestra (la temperatura y la humedad la leeras de DHT11, lo demas si puede ser invetado)
+# Ingresa una nueva muestra
 # [HACER]
 
 # Carga el modelo
