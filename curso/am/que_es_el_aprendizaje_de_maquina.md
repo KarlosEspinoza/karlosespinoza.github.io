@@ -75,7 +75,7 @@ El **error de hipótesis** se mide con una función de costo (por ejemplo, error
 
 ---
 
-### Ejemplo
+### Práctica
 
 En estos [datos](/datos/area_dataset.csv) cada fila representa un ejemplo del conjunto de entrenamiento para el modelo de área, con las siguientes columnas:
 
