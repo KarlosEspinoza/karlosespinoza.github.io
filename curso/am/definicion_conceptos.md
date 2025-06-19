@@ -115,3 +115,9 @@ Podemos utilizar el módulo CSV.
 {% include 0_introduccion/leer_area_csv.py %}
 ```
 
+
+
+
+
+
+
