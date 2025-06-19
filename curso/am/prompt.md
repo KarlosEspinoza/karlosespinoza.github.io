@@ -1,5 +1,7 @@
-TEMA = 1.1.2 Diferencias entre IA, aprendizaje de máquina y aprendizaje profundo
-DURACION = 0.5
+Necesito que me ayudes a desarrollar lo siguiente para mi pagina web. Se extenso.
+
+TEMA = 1.2.1 Supervisado, no supervisado, semi-supervisado y por refuerzo
+DURACION = 2
 
 # Explicación teórica
 Considera las siguientes especificaciones para la explicación teórica:
@@ -10,32 +12,7 @@ Considera las siguientes especificaciones para la explicación teórica:
 - Si consideras conveniente incluye: diagramas, imagenes, tablas
 - Una práctica.
 
-## MarkDown
-Necesito que me des el código MarkDown de la explicación para copiarlo, tengo mi paguina github.io con jekyll.
-Considera en el Markdown las siguientes especificaciones:
-- Si incluyes imagenes incluyelas con el link a la imagen ![Nombre de la imagen](link-de-la-imagen).
-- Si vas a hacer algun diagrama hazlo utilizando diagramas mermaid.
-- Si incluyes ecuaciones mateáticas considera usar $ECUACION$ para ecuaciones en linea y para las que no son en linea utiliza:
-$$
-ECUACION
-$$
-- Incluye al inicio del archivo lo siguiente:
-
----
-layout: default
-title: {TEMA}
----
-
-# {TEMA}
-
-EXPLICAION TEORICA
-
 # Práctica
-
-EXPLICACION DE LA PRACTICA
-
-
-
 Quiero que incluyas en la Práctica:
 - El objetivo de la práctica
 - La explicación del problema de la práctica
