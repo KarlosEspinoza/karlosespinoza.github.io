@@ -1,8 +1,8 @@
 {% case site.color-scheme %}
-  {% when "", nil, false, 0, empty %}
-    {% assign ColorScheme = "auto" %}
-  {% else %}
-    {% assign ColorScheme = site.color-scheme %}
+{% when "", nil, false, 0, empty %}
+{% assign ColorScheme = "auto" %}
+{% else %}
+{% assign ColorScheme = site.color-scheme %}
 {% endcase %}
 
 <!DOCTYPE html>
@@ -16,25 +16,56 @@
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <link rel="preload" href="{{site.logo | relative_url}}" as="image">
     <!--- Graficos -->
-    <!-- Mermaid.js -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-    <script>
-      mermaid.initialize({ startOnLoad: true });
-    </script>
+    <!-- Mermaid.js 
+      <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+      <script>
+        mermaid.initialize({ startOnLoad: true });
+      linkStyle default stroke: white
+      </script>
+      -->
+      <script>
+        // Al cargar el DOM, convertimos <pre><code class="language-mermaid"> en <div class="mermaid">
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('pre > code.language-mermaid').forEach((block) => {
+    const pre = block.parentNode;
+    const div = document.createElement('div');
+    div.className = 'mermaid';
+    div.textContent = block.textContent;
+    pre.parentNode.replaceChild(div, pre);
+  });
+  // --- Aquí van tus ajustes de tema ---
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'dark',           // <— activa el tema oscuro
+    themeVariables: {        // <— personaliza colores
+      lineColor: '#ffffff',
+      primaryColor: '#222222',
+      edgeLabelBackground: '#111111',
+      textColorPrimary: '#ffffff',
+      arrowMarkerAbsolute: true
+    }
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 
-    <!--- Math --> 
-    <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$']],
-        }
-      };
-    </script>
-    <script type="text/javascript" async
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
 
-    {% include head-custom.html %}
+
+
+
+<!--- Math --> 
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$']],
+    }
+  };
+</script>
+<script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+{% include head-custom.html %}
   </head>
   <body>
     <div class="wrapper">
@@ -48,7 +79,7 @@
         </div>
       </div>
       <section>
-      {{ content }}
+        {{ content }}
       </section>
       <footer>
         {%- include footer.html -%}

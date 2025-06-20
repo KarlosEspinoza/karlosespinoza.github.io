@@ -1,7 +1,8 @@
-Necesito que me ayudes a desarrollar lo siguiente para mi pagina web. Se extenso.
+Necesito que me ayudes a desarrollar lo siguiente para mi pagina web. Se muy extenso.
+Eres profesor de Ingeniería Mectrónica de septimo semestre.
 
-TEMA = 1.2.1 Supervisado, no supervisado, semi-supervisado y por refuerzo
-DURACION = 2
+TEMA = 1.3 Ciclo de vida de un proyecto de aprendizaje de máquina
+DURACION = 1
 
 # Explicación teórica
 Considera las siguientes especificaciones para la explicación teórica:
@@ -20,4 +21,4 @@ Quiero que incluyas en la Práctica:
 - Un script python que genere los datos CSV para la práctica
 - Un script de python que importe los datos del CSV generado para la práctica, que incluya también codigo relacionado a los conceptos y ecuaciones de la explicación teórica, y que en los comentarios del script aborde los conceptos y ecuaciones explicados en la etapa de la explicación teorica.
 
-Eres profesor de Ingeniería Mectrónica de septimo semestre.
+

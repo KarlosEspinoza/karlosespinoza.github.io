@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js"></script>
+    <script>
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </head>
+  <body>
+    <div class="mermaid">
+      graph TD;
+        A-->B;
+        B-->C;
+        C-->A;
+    </div>
+    <div class="mermaid">
+      graph TD
+    A[1. Definir problema] --> B[2. Recolección de datos]
+    B --> C[3. Preparación de datos]
+    C --> D[4. Selección de modelo]
+    D --> E[5. Entrenamiento]
+    E --> F[6. Evaluación]
+    F --> G[7. Producción]
+    G --> H[8. Monitoreo y mantenimiento]
+    F --> E
+    F --> D
+    F --> C
+    F --> B
+    </div>
+  </body>
+</html>
