@@ -7,8 +7,11 @@ favicon: true
 color-scheme: dark
 
 markdown: kramdown
+
 kramdown:
   input: GFM
+  hard_wrap: false
+  math_engine: mathjax
 
 sass:
   sass_dir: _sass
@@ -66,9 +69,9 @@ platforms:
     icon: <i class="fa-brands fa-linkedin"></i>
     link: www.linkedin.com/in/karlos-espinoza-b550b2206
 
-markdown: kramdown
-kramdown:
-  input: GFM
-  hard_wrap: false
-  math_engine: mathjax
+#markdown: kramdown
+#kramdown:
+#  input: GFM
+#  hard_wrap: false
+#  math_engine: mathjax
 

@@ -1,0 +1,5 @@
+Configuration file: /home/karlos/gh/karlosespinoza.github.io/_config.yml
+            Source: /home/karlos/gh/karlosespinoza.github.io
+       Destination: /home/karlos/gh/karlosespinoza.github.io/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
