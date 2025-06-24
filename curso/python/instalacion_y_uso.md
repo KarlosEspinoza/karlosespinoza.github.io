@@ -61,7 +61,7 @@ PS: C:\Users\Karlos\Desktop\python>
 Si tienes problemas con el procedimiento te recomiendo consultar este [videotutorial](https://youtu.be/7PJQ3UiuIgs).
 
 ## Programar en un Raspberry Pi
-Si tu intención es realizar un proyecto para un Raspberry Pi, te recomiendo diriguirte antes al curso [Linux](/curso/linux/main).
+Si tu intención es realizar un proyecto para un Raspberry Pi, te recomiendo diriguirte antes al curso [Linux](/curso/linux/).
 Raspberry Pi es un distribución del sistema operativo Linux, por lo que te ayudaría bastante tener estos conocimiento.
 Si solo estas pensando en desarrollar un proyecto para usarlo en tu computadora continua con este curso.
 
