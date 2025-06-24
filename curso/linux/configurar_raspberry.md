@@ -25,6 +25,7 @@ Revisa en particular la velocidad de escritura y lectura para que puedas compara
 
 Siendo un memoria micro SD vendra con un adaptador de memoria SD, donde insertarás la micro SD.
 Asegurate de insertarla correctamente y poner el seguro del adaptador en abierto.
+
 ![Adaptador de memoria SD](https://cdn.shopify.com/s/files/1/0229/7903/files/SD_Adapter_Lock_large.JPG?v=1494366116)
 
 Esta adaptador lo podrás insertar en tu lector de memoria SD interno de tu computadora.
@@ -58,8 +59,10 @@ Por ejemplo **raspberrypi-karlos**.
 
 Ahora selecionamos **Set user name and password** y colocamos un nombre de usuario y password.
 Procura que el nombre de usuario solo contenga letras sin caracteres especiales ni espacios, y escribe un password que recuerdes.
-Selecciona el código del pais.
-Por ejemplo, para México, ME.
+
+Activa la casilla **Configurar wireless LAN**.
+En el **SSID** escribe el nombre de tu red wifi y en el **Password** la contraseña de tu wifi.
+Selecciona el código del pais (ej. para México, ME).
 
 Selecciona **Set local settings** y escoge tu zona horaria.
 Por ejemplo, **Mexico/General**.
@@ -77,6 +80,7 @@ Una vez terminado damos clic en <kbd>CONTINUE</kbd> y podemos retirar la memoria
 
 Si tienes problemas con el procedimiento te recomiendo consultar este 
 [videotutorial](https://youtu.be/6B4I4itqD6U).
+De igual forma [aquí](https://www.raspberrypi.com/documentation/computers/getting-started.html) puede encontrar documentación adicional.
 
 ## Encender Raspberry Pi
 
@@ -117,6 +121,27 @@ exit
 ```
 Si tienes problemas con el procedimiento te recomiendo consultar este 
 [videotutorial](https://youtu.be/7geKihnn4RI).
+
+## Configurar redes wifi adicional que no estan en ese momento al alcance
+
+Vamos a suponer que estas configurarndo el Raspberry en tu escuela pero te gustaria que cuando lleves el Raspberry a tu casa, éste se conecte también  ala red de tu casa. 
+Entonces lo que haremo será crear un perfil que lo llamaremos *MiCasa* en el que la red wifi se llama *TELMEX23G8* y tu contraseña es *X324eHFKHGA*. 
+
+Accede nuevamente a Raspberry Pi mediante **SSH**.
+```console
+ssh karlos@raspberrypi-karlos.local
+```
+Configuramos la red.
+```bash
+sudo su
+nmcli connection add type wifi ifname wlan0 con-name MiCasa autoconnect yes ssid "TELMEX23G8"
+nmcli connection modify MiCasa wifi-sec.key-mgmt wpa-psk
+nmcli connection modify MiCasa wifi-sec.psk "X324eHFKHGA"
+nmcli connection modify MiCasa connection.autoconnect yes
+exit
+```
+De esta forma puede configurar las dredes wifi que necesites solo necesitas tener a la mano el nombre de la red y la contraseña.
+
 
 ## Trabajar en el Raspberry Pi usando Visual Studio Code
 
