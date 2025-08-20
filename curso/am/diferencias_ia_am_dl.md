@@ -61,13 +61,13 @@ Donde:
 
 ### Objetivo
 
-Que el estudiante entienda de forma aplicada las diferencias entre un modelo tradicional (IA), uno basado en aprendizaje de máquina (ML) y uno basado en redes neuronales (DL) mediante la predicción de "riesgo de sobrecalentamiento" en motores.
+Que el estudiante entienda de forma aplicada las diferencias entre un modelo tradicional basado en reglas fijas (RF), uno basado en aprendizaje de máquina (ML) y uno basado en redes neuronales (DL) mediante la predicción de "riesgo de sobrecalentamiento" en motores.
 
 ### Problema
 
 Simular tres enfoques para predecir si un motor está en riesgo de sobrecalentamiento:
 
-1. **IA**: reglas fijas basadas en umbrales.
+1. **RF**: reglas fijas basadas en umbrales.
 2. **ML**: modelo entrenado con regresión logística.
 3. **DL**: red neuronal simple.
 
@@ -75,7 +75,7 @@ Simular tres enfoques para predecir si un motor está en riesgo de sobrecalentam
 
 1. Ejecutar el script generador de datos.
 2. Analizar los datos generados.
-3. Entrenar y comparar los modelos IA (reglas), ML (LogisticRegression), y DL (MLPClassifier).
+3. Entrenar y comparar los modelos RF (reglas), ML (LogisticRegression), y DL (MLPClassifier).
 
 Script generador de datos **generador_datos.py**.
 
@@ -111,7 +111,7 @@ df = pd.read_csv("datos_motor.csv")
 X = df[["Temperatura", "Velocidad", "Vibracion"]]
 y = df["Riesgo"]
 
-# --- Modelo IA (reglas fijas) ---
+# --- Modelo RF (reglas fijas) ---
 def reglas_ia(row):
     return int(row["Temperatura"] > 85 or row["Vibracion"] > 0.65)
 

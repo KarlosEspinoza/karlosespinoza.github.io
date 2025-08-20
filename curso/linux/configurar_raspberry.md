@@ -122,25 +122,96 @@ exit
 Si tienes problemas con el procedimiento te recomiendo consultar este 
 [videotutorial](https://youtu.be/7geKihnn4RI).
 
-## Configurar redes wifi adicional que no estan en ese momento al alcance
+## Desabilitar a NetworkManager
 
-Vamos a suponer que estas configurarndo el Raspberry en tu escuela pero te gustaria que cuando lleves el Raspberry a tu casa, éste se conecte también  ala red de tu casa. 
-Entonces lo que haremo será crear un perfil que lo llamaremos *MiCasa* en el que la red wifi se llama *TELMEX23G8* y tu contraseña es *X324eHFKHGA*. 
-
-Accede nuevamente a Raspberry Pi mediante **SSH**.
-```console
-ssh karlos@raspberrypi-karlos.local
-```
-Configuramos la red.
+Para esta seccióin te pido sigas los pasos como los voy mencionando, mas adelante entenderas cada parte de lo que se hace aqui. Ahora solo sigue esto para mejorar la experiencia de conexxión con el Raspberry Pi.
+En mi experiencia, me ha resultado mejor desabilitar a **NetworkManager**, el gestor por defecto que trae **Raspberry pi OS**.
+En su lugar iprefiero utilizar a **systemd-netword** y a **wpa_supplicant** directamente. 
+El primero gestiona la IP y el segundo la autentificación WiFi.
 ```bash
-sudo su
-nmcli connection add type wifi ifname wlan0 con-name MiCasa autoconnect yes ssid "TELMEX23G8"
-nmcli connection modify MiCasa wifi-sec.key-mgmt wpa-psk
-nmcli connection modify MiCasa wifi-sec.psk "X324eHFKHGA"
-nmcli connection modify MiCasa connection.autoconnect yes
-exit
+sudo systemctl disable --now NetworkManager.service
+sudo systemctl disable --now dhcpcd.service
+
 ```
-De esta forma puede configurar las dredes wifi que necesites solo necesitas tener a la mano el nombre de la red y la contraseña.
+Ahora habilitaremos que puedas conectarte por ethernet por **DHCP**, ya sea que tengas un adaptador USB-ethernet o tu placa Raspberry ya venga con la interfaz ethernet.
+Crearemos el siguiente archivo.
+```bash
+sudo nano /mnt/etc/systemd/network/eth0.network
+```
+Dentro colocaremos lo siguiente
+```ini
+[Match]
+Name=eth0
+
+[Network]
+DHCP=yes
+```
+Editaremos el archivo **/etc/wpa_supplicant/wpa_supplicant-wlan0.conf**.
+```bash
+sudo nano /etc/systemd/system/wpa_supplicant@wlan0.service.d/
+```
+Dentro escribimos lo siguiente.
+Aqui configurarás todas las redes en las que planeas que el Raspberry Pi se conecte y les dar'as la prioridad que consideres con la propiedad **priority**.
+```conf
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=MX
+
+network={
+    ssid="MiRedCasa"
+    psk="contraseña123"
+    key_mgmt=WPA-PSK
+    priority=5
+}
+
+network={
+    ssid="RedCelular"
+    psk="otraClave"
+    key_mgmt=WPA-PSK
+    priority=1
+}
+```
+Para evitar que el servicio **/etc/wpa_supplicant/wpa_supplicant-wlan0.conf** arranque antes que la interfaz **wlan0**, creamos y editamos el archivo **/etc/systemd/network/wlan0.network**.
+```bash
+sudo nano /etc/systemd/network/wlan0.network
+```
+Dentro pondremos el siguiente contenido.
+```ini
+[Match]
+Name=wlan0
+
+[Network]
+DHCP=yes
+
+```
+Creamos el directorio **/etc/systemd/system/wpa_supplicant@wlan0.service.d/**.
+```bash
+sudo mkdir /etc/systemd/system/wpa_supplicant@wlan0.service.d/
+```
+Dentro se esa carpeta crearemos el el archivo **/etc/systemd/system/wpa_supplicant@wlan0.service.d/wait-for-device.conf**.
+```bash
+sudo nano /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+```
+Escribimos el siguiente contenido.
+```ini
+[Unit]
+After=sys-subsystem-net-devices-wlan0.device
+Requires=sys-subsystem-net-devices-wlan0.device
+
+[Service]
+Restart=on-failure
+RestartSec=3
+```
+Finalmente habilitamos a **systemd-netword**, **system-resolved** y a **wpa_supplicant**.
+Reiniciaremos para ver si todo funciona bien.
+Ten en cuenta que si algo no escribiste correctamente fallar'a el proceso y tendras que iniciar nuevamente.
+```bash
+sudo systemctl enable systemd-networkd
+sudo systemctl enable systemd-resolved
+sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+sudo systemctl enable wpa_supplicant@wlan0.service
+sudo reboot
+```
 
 
 ## Trabajar en el Raspberry Pi usando Visual Studio Code
