@@ -24,7 +24,10 @@ A continuación, se describen detalladamente estos enfoques.
 
 En este tipo de aprendizaje, el modelo se entrena con un conjunto de datos etiquetado, es decir, cada entrada tiene una salida conocida. 
 El objetivo es que el modelo aprenda una función que relacione entradas con salidas.
-Por ejemplo, la clasificación de correos como "spam" o "no spam".
+
+**Ejemplo:**
+El ejemplo de la **clasificación de correos como “spam” o “no spam”** es un caso de **aprendizaje supervisado** porque el algoritmo se entrena con un conjunto de datos previamente etiquetados por humanos. Es decir, cada correo ya tiene una etiqueta asignada (“spam” o “no spam”), lo cual sirve como **respuesta correcta** durante el entrenamiento. El modelo aprende a reconocer patrones en las características del correo (palabras usadas, remitente, frecuencia de enlaces, etc.) y a relacionarlos con la etiqueta correspondiente. Una vez entrenado, el sistema puede recibir un **nuevo correo sin etiqueta** y predecir si pertenece a la clase “spam” o “no spam”. En mecatrónica, esta lógica es similar a cuando entrenamos un sistema con datos de sensores previamente clasificados para que luego pueda reconocer estados o fallas automáticamente. ✅
+
 
 **Ecuación básica:**
 
@@ -43,7 +46,10 @@ El objetivo es encontrar \$\hat{f}\$ tal que \$\hat{f}(\mathbf{x}) \approx y\$ p
 
 Aquí, el modelo trabaja con datos sin etiquetar. 
 El objetivo es identificar patrones o estructuras ocultas en los datos.
-Por ejemplo, agrupamiento de clientes según sus hábitos de consumo.
+
+**Ejemplo:**
+El **agrupamiento de clientes según sus hábitos de consumo** es un caso de **aprendizaje no supervisado** porque los datos no tienen etiquetas previas que indiquen a qué grupo pertenece cada cliente. El algoritmo analiza las características disponibles (por ejemplo, frecuencia de compra, monto gastado, tipo de productos adquiridos) y detecta **patrones ocultos** que permiten formar grupos o clústeres con comportamientos similares. Nadie le dice al sistema cuántos grupos habrá o cómo deben llamarse; el modelo los descubre automáticamente. En mecatrónica esto se relaciona con procesos como el análisis de señales de sensores, donde el sistema puede encontrar similitudes o anomalías sin que un humano le indique de antemano cuál es el “estado correcto”, ayudando a identificar patrones de operación o posibles fallas.
+
 
 **Algoritmos comunes:** K-means, PCA, DBSCAN.
 
@@ -51,13 +57,17 @@ Por ejemplo, agrupamiento de clientes según sus hábitos de consumo.
 
 Este enfoque combina una pequeña cantidad de datos etiquetados con una gran cantidad de datos no etiquetados para entrenar el modelo.
 Suele ser útil cuando etiquetar los datos es costoso o difícil.
-Por ejemplo, la clasificación de imágenes donde solo algunas están etiquetadas.
+
+**Ejemplo:**
+La **clasificación de imágenes donde solo algunas están etiquetadas** es un caso de **aprendizaje semi-supervisado** porque combina elementos de los enfoques supervisado y no supervisado. En este escenario, se cuenta con un pequeño conjunto de imágenes ya clasificadas (etiquetadas) y una gran cantidad de imágenes sin etiqueta. El algoritmo usa las primeras para aprender patrones iniciales y luego aprovecha las no etiquetadas para mejorar su capacidad de generalización, encontrando similitudes y estructuras en los datos. Esto es útil cuando etiquetar todos los datos sería costoso o lento. En mecatrónica ocurre algo similar al entrenar un sistema de visión artificial con pocas piezas industriales clasificadas (defectuosas o correctas) y muchas sin clasificar, logrando un modelo eficiente con menos esfuerzo de etiquetado.
 
 ### Aprendizaje por Refuerzo
 
 El agente aprende a tomar decisiones mediante prueba y error. 
 Se recibe una recompensa por cada acción tomada y el objetivo es maximizar la recompensa acumulada a lo largo del tiempo.
-Por ejemplo, un robot que aprende a caminar.
+
+**Ejemplo:**
+El ejemplo de **un robot que aprende a caminar** corresponde al **aprendizaje por refuerzo** porque el sistema no recibe ejemplos correctos de cómo debe mover sus articulaciones, sino que aprende mediante **prueba y error**. El robot ejecuta acciones (mover una pierna, inclinarse, dar un paso) y el entorno le da una **retroalimentación** en forma de recompensas o penalizaciones: avanza sin caerse (recompensa positiva) o pierde el equilibrio (penalización). Con el tiempo, el robot ajusta su estrategia para maximizar la recompensa acumulada, desarrollando un comportamiento óptimo. En mecatrónica, este enfoque es muy útil en robótica autónoma, ya que permite a los sistemas aprender tareas complejas sin requerir un modelo matemático exacto del entorno, sino adaptándose dinámicamente a él.
 
 **Ecuación del valor esperado de recompensa:**
 
