@@ -6,7 +6,7 @@ Considera las siguientes especificaciones para la explicación teórica:
 - Desrrollar el tema {TEMA}.
 - Ajusta la explicación del tema para que me tome {DURACION} horas explicarlo a mis alumnos.
 - Conceptos
-- Ecuaciones matemáticas
+- Ecuaciones matemáticas que son usadas en ese tema
 - Si consideras conveniente incluye: diagramas, imagenes, tablas
 - Una práctica.
 

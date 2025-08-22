@@ -10,7 +10,7 @@ title: Aprendizaje de Máquina
    1. [¿Qué es el aprendizaje de máquina?](definicion_conceptos)
       1. [Definición y conceptos](definicion_conceptos)
       1. [Diferencias entre IA, AM, DL](diferencias_ia_am_dl)
-   1. [Tipos de aprendizaje de máquina](supervisado_no-supervisado_semi-supervizado_refuerzo)
+   1. [Tipos de aprendizaje de máquina](supervisado_no-supervisado_semi-supervizado_reforzado)
       1. [Supervisado, no supervisado, semi-supervisado y reforzado](supervisado_no-supervisado_semi-supervizado_reforzado)
    1. [Ciclo de vida de un proyecto de aprendizaje de máquina](ciclo_proyecto_am)
    1. [Ejercicio: Importar, Entrenar y Evaluar](importar_entrenar_evaluar)
