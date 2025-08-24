@@ -4,16 +4,18 @@ title: Inteligencia Artificial
 ---
 [Indice](index)
 
-## Actividad: Diferencias entre Inteligencia Artificial, Aprendizaje Automático y Aprendizaje Profundo
+# Actividad: Diferencias entre Inteligencia Artificial, Aprendizaje Automático y Aprendizaje Profundo
 
-**Duración total:** 1.5 horas
-**Objetivo de la actividad:**
+## Objetivo de la actividad
+
 Que los estudiantes comprendan las diferencias entre Inteligencia Artificial (IA), Aprendizaje Automático (AA o *Machine Learning*) y Aprendizaje Profundo (*Deep Learning*), identifiquen los principales tipos de *Machine Learning* (supervisado, no supervisado y por refuerzo), y apliquen este conocimiento en un ejercicio práctico de clasificación de ejemplos.
 
-**Método de trabajo:**
+## Método de enseñanza
 La actividad se desarrollará de manera activa y colaborativa. Combina la lectura dirigida, el análisis de un video, la discusión en equipos y la resolución de un ejercicio práctico.
 
 ---
+
+## Fases de la Actividad
 
 ### Fase 1. Activación y encuadre (10 minutos)
 
@@ -83,8 +85,3 @@ Estas tarjetas serán recolectadas para retroalimentación y también servirán 
 
 * **Atributo de Egreso 2 (Nivel Avanzado):** Al comprender las diferencias entre IA, AA y DL, los estudiantes fortalecen la base conceptual necesaria para diseñar e implementar sistemas en el área de automatización y control que incorporen estas tecnologías.
 * **Atributo de Egreso 7 (Nivel Avanzado):** Se promueve el trabajo colaborativo mediante la resolución en equipos del ejercicio práctico y la elaboración conjunta del resumen comparativo.
-
----
-
-¿Quieres que ahora te prepare también la **lista de cotejo** con criterios claros y niveles de logro (logrado, en proceso, no logrado) para que la uses directamente en Classroom?
-

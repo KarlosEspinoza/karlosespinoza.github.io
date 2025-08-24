@@ -11,7 +11,7 @@ title: Inteligencia Artificial
 1. Introducción
     1. [Conceptos básicos de IA, Aprendizaje Automático y Aprendizaje Profundo](conceptos_basicos)
     1. [Tipos de aprendizaje: supervisado, no supervisado, por refuerzo](tipos_aprendizaje)
-    1. Flujo general de un proyecto de Machine Learning
+    1. [Flujo general de un proyecto de Machine Learning](flujo_proyecto_ml)
     1. Introducción al preprocesamiento e ingeniería de datos
 1. Aprendizaje Supervisado
     1. Concepto y aplicaciones
