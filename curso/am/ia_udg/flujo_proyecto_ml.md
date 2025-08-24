@@ -2,7 +2,7 @@
 layout: default
 title: Flujo general de un proyecto de Machine Learning
 ---
-[Indice](index)
+[Curso: Inteligencia Artificial](index)
 
 # Actividad: Flujo general de un proyecto de Machine Learning
 

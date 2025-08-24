@@ -2,7 +2,7 @@
 layout: default
 title: Inteligencia Artificial
 ---
-[Indice](index)
+[Curso: Inteligencia Artificial](index)
 
 # Actividad: Aprendizaje supervisado, no supervisado, semi-supervisado y por refuerzo
 

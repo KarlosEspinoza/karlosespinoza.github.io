@@ -2,7 +2,7 @@
 layout: default
 title: Inteligencia Artificial
 ---
-[Indice](index)
+[Curso: Inteligencia Artificial](index)
 
 
 
