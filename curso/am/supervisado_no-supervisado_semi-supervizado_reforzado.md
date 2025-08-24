@@ -163,32 +163,24 @@ print("Etiquetas (no supervisado):", np.unique(y_pred_unsup))
 # Solo se etiquetan las primeras 50 muestras
 y_partial = np.copy(y)
 y_partial[50:] = -1
-
 base_clf = LogisticRegression()
 clf_semi = SelfTrainingClassifier(base_clf)
 clf_semi.fit(X, y_partial)
 y_pred_semi = clf_semi.predict(X)
 print("Exactitud (semi-supervisado):", accuracy_score(y, y_pred_semi))
 
-#print(len(y_pred_sup))
 # Visualización de resultados
 plt.figure(figsize=(12, 4))
-
 plt.subplot(1, 3, 1)
 plt.title("Supervisado")
 plt.scatter(X_test[:, 0], X_test[:, 1], c=y_pred_sup, cmap='coolwarm')
-
 plt.subplot(1, 3, 2)
 plt.title("No Supervisado")
 plt.scatter(X[:, 0], X[:, 1], c=y_pred_unsup, cmap='coolwarm')
-
 plt.subplot(1, 3, 3)
 plt.title("Semi-supervisado")
 plt.scatter(X[:, 0], X[:, 1], c=y_pred_semi, cmap='coolwarm')
-
 plt.tight_layout()
 plt.show()
------------------------
-
 ```
 
