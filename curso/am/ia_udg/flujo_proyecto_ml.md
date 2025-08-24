@@ -26,7 +26,7 @@ Se utilizará el **Aprendizaje Basado en Proyectos (ABP)** y el **Aprendizaje Co
 ### Fase 1. Comprensión Teórica en Parejas (30 minutos)
 
 * **Dinámica:**
-Los estudiantes se organizan en parejas. Cada pareja debe leer (20 minutos) la primera parte del material del [ciclo de un proyecto de AM](https://karlosespinoza.github.io/curso/am/ciclo_proyecto_am).  
+Los estudiantes se organizan en parejas. Cada pareja debe leer (20 minutos) la primera parte del material del [ciclo de un proyecto de AM](/curso/am/ciclo_proyecto_am).  
 Posteriormente (10 minutos), elaboran un esquema o mapa conceptual que resuma las etapas del ciclo del proyecto: **definición del problema, recolección de datos, entrenamiento, validación, despliegue y retroalimentación**.
 
 * **Entregable:**  
@@ -37,7 +37,7 @@ Posteriormente (10 minutos), elaboran un esquema o mapa conceptual que resuma la
 ### Fase 2. Ejercicio Práctico Guiado (60 minutos)
 
 * **Dinámica:**
-Cada pareja desarrolla la **práctica propuesta al final del material**. Esta consiste en simular el desarrollo de un proyecto sencillo de aprendizaje automático, siguiendo las etapas vistas en la teoría (ejemplo: recolección de datos de un sensor, entrenamiento de un modelo básico, prueba y retroalimentación).
+Cada pareja desarrolla la [práctica propuesta al final del material](/curso/am/ciclo_proyecto_am#practica). Esta consiste en simular el desarrollo de un proyecto sencillo de aprendizaje automático, siguiendo las etapas vistas en la teoría (ejemplo: recolección de datos de un sensor, entrenamiento de un modelo básico, prueba y retroalimentación).
 
 * **Entregable:**  
   Un **informe breve (máx. 1 página)** que incluya:
