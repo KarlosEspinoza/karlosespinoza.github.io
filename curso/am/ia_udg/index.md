@@ -4,7 +4,13 @@ title: Inteligencia Artificial
 ---
 # Inteligencia Artifical
 
-**Requisitos**. Consulta como proceder a la [Instalacion y uso en Visual Studio Code](/curso/python/instalacion_y_uso).
+## Requisitos
+
+- Consulta como proceder a la [Instalacion y uso en Visual Studio Code](/curso/python/instalacion_y_uso).
+
+## Programa
+
+- [Programa del curso](programa)
 
 ## Actividades de clase
 
