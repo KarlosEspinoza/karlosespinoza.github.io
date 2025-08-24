@@ -2,6 +2,7 @@
 layout: default
 title: Ciclo de vida de un proyecto de aprendizaje de máquina
 ---
+[Indice](index)
 
 # Ciclo de vida de un proyecto de aprendizaje de máquina  
 
@@ -116,7 +117,7 @@ F --> B
 
 ---
 
-## Práctica
+## Práctica {#practica}
 
 ### Objetivo de la práctica
 
