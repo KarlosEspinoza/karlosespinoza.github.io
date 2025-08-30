@@ -14,6 +14,7 @@
     {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/colors-ColorScheme.css?v=" | replace: "ColorScheme", ColorScheme | append: site.github.build_revision | relative_url }}">
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <link rel="icon" href="{{ '/assets/img/favicon.png' | relative_url }}" type="image/png">
     <link rel="preload" href="{{site.logo | relative_url}}" as="image">
     <!--- Graficos -->
     <!-- Mermaid.js 
@@ -69,7 +70,20 @@ document.addEventListener('DOMContentLoaded', () => {
   </head>
   <body>
     <div class="wrapper">
-      <div class="sidebar">
+
+    <!-- 🔘 Botón SIEMPRE visible -->
+    <button id="menu-toggle"
+            class="menu-toggle"
+            aria-label="Abrir/cerrar menú"
+            aria-expanded="true"
+            aria-controls="site-sidebar">
+      ☰
+    </button>
+
+
+
+
+      <div class="sidebar" id="site-sidebar">
         <header>
           {%- include header.html -%}
         </header>
@@ -86,5 +100,39 @@ document.addEventListener('DOMContentLoaded', () => {
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    <script>
+(function () {
+  const btn = document.getElementById('menu-toggle');
+  const sidebar = document.getElementById('site-sidebar');
+
+  if (!btn || !sidebar) return;
+
+  const isMobile = () => window.matchMedia('(max-width: 992px)').matches;
+
+  function setState(open) {
+    if (isMobile()) {
+      sidebar.classList.toggle('is-open', open);
+      sidebar.classList.toggle('is-collapsed', !open);
+    } else {
+      sidebar.classList.toggle('is-collapsed', !open);
+    }
+    btn.setAttribute('aria-expanded', String(open));
+  }
+
+  // Estado inicial: abierto en desktop, cerrado en móvil
+  setState(!isMobile() ? true : false);
+
+  btn.addEventListener('click', () => {
+    const openNow = btn.getAttribute('aria-expanded') !== 'true';
+    setState(openNow);
+  });
+
+  // Recalcular al redimensionar
+  window.addEventListener('resize', () => {
+    setState(!isMobile());
+  });
+})();
+</script>
+
   </body>
 </html>
