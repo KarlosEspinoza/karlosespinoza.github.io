@@ -3,6 +3,49 @@
 
 @import "jekyll-theme-minimalistic";
 
+.sidebar {
+  padding-top: 40px;  /* ajusta este valor hasta que tu nombre quede visible */
+}
+
+/* Botón hamburguesa fijo y siempre por encima del sidebar */
+.menu-toggle {
+  position: fixed;
+  top: 12px;
+  left: 12px;          /* ajústalo a tu gusto */
+  z-index: 9999;       /* mayor que el z-index del sidebar */
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px;
+  background: rgba(0,0,0,.35);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* Transición de entrada/salida del sidebar */
+.sidebar {
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
+
+/* Estado colapsado: lo sacamos de la vista hacia la izquierda */
+.sidebar.is-collapsed { transform: translateX(-100%); }
+
+/* En móvil: cerrado por defecto; abrimos con .is-open */
+@media (max-width: 992px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.is-open { transform: translateX(0); }
+}
+
+
+
+
+
+
 .overlay {
   position: fixed;
   top: 0;
