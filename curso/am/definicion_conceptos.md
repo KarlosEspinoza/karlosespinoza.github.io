@@ -2,6 +2,8 @@
 layout: default
 title: Ejercicio Ingenieria de datos
 ---
+[Curso: Aprendizaje de Máquina](index)
+
 # ¿Qué es el aprendizaje de máquina?
 
 ## 1.1.1 Definición y conceptos básicos

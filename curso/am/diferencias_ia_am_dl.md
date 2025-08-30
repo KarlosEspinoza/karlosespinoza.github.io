@@ -2,6 +2,7 @@
 layout: default
 title: Diferencias entre AI, MA y DL
 ---
+[Curso: Aprendizaje de Máquina](index)
 
 # Diferencias entre inteligencia artificial (AI), aprendizaje de máquina (ML) y aprendizaje profundo (DL)
 

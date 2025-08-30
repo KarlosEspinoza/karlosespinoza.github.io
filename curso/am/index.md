@@ -14,12 +14,14 @@ title: Aprendizaje de Máquina
       1. [Supervisado, no supervisado, semi-supervisado y reforzado](supervisado_no-supervisado_semi-supervizado_reforzado)
    1. [Ciclo de vida de un proyecto de aprendizaje de máquina](ciclo_proyecto_am)
    1. [Introducción al preprocesamiento e ingeniería de datos](introduccion_ingenieria_datos)
-   1. [Ejercicio: Importar, Entrenar y Evaluar](importar_entrenar_evaluar)
-   1. [Ejercicio: Produccion](produccion)
-   1. [Ejercicio: Reforzar](reforzar)
-1. Ingeniería de Datos
-   1. [Ejercicio: Ingeniería de datos](ingenieria_datos)
-1. Aprendizaje supervisado
-   1. [Teoria](teoria_aprendizaje_supervizado)
-   1. [Ejercicio: Aprendizaje supervisado](aprendizaje_supervizado)
-   1. [Proyecto: Aprendizaje supervisado](practica_aprendizaje_supervizado)
+
+
+[comment]: # (   1. [Ejercicio: Importar, Entrenar y Evaluar](importar_entrenar_evaluar)
+[comment]: # (   1. [Ejercicio: Produccion](produccion)
+[comment]: # (   1. [Ejercicio: Reforzar](reforzar)
+[comment]: # (1. Ingeniería de Datos
+[comment]: # (   1. [Ejercicio: Ingeniería de datos](ingenieria_datos)
+[comment]: # (1. Aprendizaje supervisado
+[comment]: # (   1. [Teoria](teoria_aprendizaje_supervizado)
+[comment]: # (   1. [Ejercicio: Aprendizaje supervisado](aprendizaje_supervizado)
+[comment]: # (   1. [Proyecto: Aprendizaje supervisado](practica_aprendizaje_supervizado)
