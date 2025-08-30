@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Aprendizaje de Máquina
+title: Inteligencia Artificial
 ---
-[Curso: Aprendizaje de Máquina](index)
+[Curso: Inteligencia Artificial](index)
 
 # Introducción al preprocesamiento e ingeniería de datos
 

@@ -2,7 +2,7 @@
 layout: default
 title: Ciclo de vida de un proyecto de aprendizaje de máquina
 ---
-[Indice](index)
+[Curso: Aprendizaje de Máquina](index)
 
 # Ciclo de vida de un proyecto de aprendizaje de máquina  
 

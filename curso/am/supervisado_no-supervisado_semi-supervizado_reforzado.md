@@ -3,6 +3,7 @@
 layout: default
 title: Supervisado, no supervisado, semi-supervisado y reforzado
 ---
+[Curso: Aprendizaje de Máquina](index)
 
 # 1.2.1 Supervisado, no supervisado, semi-supervisado y reforzado
 
