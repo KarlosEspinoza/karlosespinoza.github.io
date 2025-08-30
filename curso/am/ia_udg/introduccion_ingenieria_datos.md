@@ -1,156 +1,66 @@
 ---
 layout: default
-title: Inteligencia Artificial
+title: Ingeniería de Datos
 ---
-[Curso: Inteligencia Artificial](index)
 
-# Introducción al preprocesamiento e ingeniería de datos
+# Actividad: Introducción a la Ingeniería de Datos
 
-## 1. Teoría 
+## Objetivo de la actividad
 
-### a) ¿Qué es el preprocesamiento?
+Que los estudiantes comprendan la importancia de la ingeniería de datos dentro del flujo de proyectos de aprendizaje automático, diferenciando la etapa teórica de la práctica, y que apliquen los conceptos en un ejercicio guiado.  
 
-Es la fase en la que tomamos datos “crudos” (directos de sensores) y los **preparamos** para poder analizarlos o entrenar un modelo.
-Sin este paso, los algoritmos se confunden por **escalas distintas, ruido, o variables redundantes**.
+## Atributos de egreso trabajados
 
-**Ejemplo**: con un Arduino Nano y un sensor de luz LDR, las lecturas crudas varían de 0 a 1023 según la intensidad luminosa. 
-Estos valores no son comparables directamente con los de otro sensor, como temperatura o sonido. 
-Con preprocesamiento podemos normalizar los datos de la LDR a un rango 0–1 y eliminar picos de ruido, facilitando que un modelo aprenda patrones reales sin confundirse.
+* **Atributo de Egreso 2, Nivel Avanzado:** Diseñar e implementar sistemas en el área de automatización, control, robótica y sistemas embebidos, a través de proyectos integradores.  
+* **Atributo de Egreso 7, Nivel Avanzado:** Favorecer el trabajo colaborativo y el liderazgo, conforma e integra equipos multidisciplinarios que establecen metas, planean tareas, cumplen fechas límite y analizan riesgos e incertidumbre.  
 
-### b) Ejemplo del robot seguidor de paredes
+## Método de enseñanza
 
-* Dataset: [Wall-following Robot](https://www.kaggle.com/datasets/uciml/wall-following-robot?resource=download)
+Se empleará el **Aprendizaje Colaborativo** y el **Aprendizaje Experiencial**. La primera fase será una **plenaria reflexiva con trabajo en parejas**, mientras que la segunda será un **ejercicio práctico guiado**.
 
-En el experimento, un robot móvil recorre una habitación siguiendo la pared mientras registra lecturas de 24 sensores ultrasónicos distribuidos en su cuerpo. 
-Estos sensores miden distancias al entorno y generan gran cantidad de datos crudos. 
-Para facilitar el análisis, los investigadores redujeron esas 24 lecturas a solo 4 direcciones clave (frente, izquierda, derecha y atrás) y, en una versión más compacta, a solo 2 (frente e izquierda). 
-Este proceso de simplificación es un ejemplo claro de preprocesamiento, donde se transforman datos complejos en variables más útiles y manejables para el control o el aprendizaje automático.
+---
 
-* Tres versiones:
+## Fases de la Actividad
 
-  * sensor_readings_24.csv: 24 sensores ultrasónicos.
-  * sensor_readings_4.csv: 4 distancias simplificadas (frente, izquierda, derecha, atrás).
-  * sensor_readings_2.csv: solo frente e izquierda.
+### Fase 1. Comprensión Teórica y Reflexión en Parejas (25 minutos)
 
-### c) Ecuaciones relevantes en el preprocesamiento
+* **Dinámica:**  
+Los estudiantes se organizan en parejas. Cada pareja revisa la primera parte del material del [link](https://karlosespinoza.github.io/curso/am/introduccion_ingenieria_datos) (conceptos de ingeniería de datos).  
+Posteriormente, en plenaria, discuten sus reflexiones principales y cada estudiante graba un **audio de máximo 1 minuto** en el grupo de WhatsApp de la clase, explicando con sus palabras que aprendieron con la lectura.  
 
-**(1) Normalización Min–Max**
+* **Entregable:**  
+  El **transcript automático de WhatsApp** (no el audio), como evidencia escrita de la reflexión.
 
-**Objetivo:** que todos los sensores tengan la **misma escala** para compararlos.
+---
 
-$$
-x_i' = \frac{x_i - x_{\min}}{x_{\max} - x_{\min}}
-$$
+### Fase 2. Ejercicio Práctico Guiado (35 minutos)
 
-* $x_i$: valor crudo de un sensor.
-* $x_{\min}, x_{\max}$: valores mínimo y máximo en ese sensor.
-* $x_i'$: valor escalado entre 0 y 1.
+* **Dinámica:**  
+Cada pareja realiza la práctica propuesta al final del material del [link](https://karlosespinoza.github.io/curso/am/introduccion_ingenieria_datos).  
+Esta práctica consiste en manipular un dataset sencillo (ejemplo: lecturas de sensores) para aplicar pasos básicos de ingeniería de datos: **limpieza, transformación y reducción de variables**.  
+El énfasis será comprender cómo pasar de datos crudos a datos listos para un modelo de aprendizaje automático.  
 
-**(2) Reducción a “distancias simplificadas”**
+* **Entregable:**  
+  Un **informe breve (máx. 1 página)** que incluya:  
+  1. Breve descripción del dataset trabajado.  
+  2. Ejemplo de transformación aplicada (con captura de código o tabla).  
+  3. Reflexión sobre por qué la ingeniería de datos impacta la calidad de los modelos.  
 
-**Objetivo:** quedarnos con lo más representativo → la **distancia mínima** en cada dirección.
+---
 
-$$
-d_{\text{frente}} = \min_{s\in \mathcal{F}} x_s
-$$
+## Evidencias y evaluación
 
-Donde $\mathcal{F}$ es el grupo de sensores que apuntan hacia el frente. Lo mismo para izquierda, derecha y atrás.
+La evaluación se realizará con una **lista de cotejo**.
 
+**Criterios para Fase 1 (transcript de audio):**
+* ¿Explica con sus palabras algun concepto aprendido de la lectura?  
+* ¿La reflexión es clara y concisa (máx. 1 min)?  
 
-**(3) Codificación de etiquetas**
+**Criterios para Fase 2 (informe breve):**
+* ¿Describe correctamente el dataset trabajado?  
+* ¿Incluye un ejemplo concreto de transformación de datos?  
+* ¿Reflexiona sobre el impacto de la ingeniería de datos en los modelos de IA?  
+* ¿El trabajo refleja colaboración en parejas?  
 
-**Objetivo:** traducir palabras a números que entienda un algoritmo.
-
-| Clase textual     | Código |
-| ----------------- | ------ |
-| Move-Forward      | 0      |
-| Slight-Right-Turn | 1      |
-| Sharp-Right-Turn  | 2      |
-| Slight-Left-Turn  | 3      |
-
-
-## 2. Práctica 
-
-### Objetivo de la práctica
-
-Pasar de un dataset con 24 sensores (`sensor_readings_24.csv`) a uno con **2 distancias simplificadas** (frente e izquierda) y con **etiquetas numéricas**, aplicando además **normalización Min–Max**.
-
-
-### Explicación del problema
-
-El robot SCITOS G5 tiene 24 sensores ultrasónicos alrededor de su cintura. Esos datos son útiles, pero complicados para un modelo simple. Para una primera versión de control, basta con **dos entradas**:
-
-* Distancia frente (mínimo de los sensores frontales).
-* Distancia izquierda (mínimo de los sensores laterales izquierdos).
-
-Con esas dos variables y la etiqueta numérica, podemos alimentar un clasificador sencillo o simular decisiones.
-
-### Instrucciones
-
-1. Cargar `sensor_readings_24.csv`.
-2. Seleccionar subconjuntos de sensores:
-
-   * Frente (sensores 0–5).
-   * Izquierda (sensores 6–11).
-3. Calcular la distancia mínima en cada grupo.
-4. Normalizar esos valores con **Min–Max**.
-5. Traducir la columna de clase a valores numéricos (0–3).
-6. Guardar un nuevo archivo `robot_2sensores.csv`.
-
-
-### Script
-
-**./main.py**
-
-```python
-# -*- coding: utf-8 -*-
-# Práctica: reducción de 24 sensores a 2 y preprocesamiento básico
-# Dataset: sensor_readings_24.csv
-
-import pandas as pd
-import numpy as np
-
-# 1. Cargar el CSV (ajusta la ruta si es necesario)
-df = pd.read_csv("datos/sensor_readings_24.csv", header=None)
-
-# Separar características (X) y etiquetas (y)
-X = df.iloc[:, :-1]   # todas las columnas excepto la última
-y = df.iloc[:, -1]    # última columna = clase textual
-
-# 2. Seleccionar subconjuntos de sensores
-# Asumimos que sensores 0-5 son frente, 6-11 izquierda
-front_sensors = X.iloc[:, 0:6]
-left_sensors  = X.iloc[:, 6:12]
-
-# 3. Calcular distancias mínimas
-d_front = front_sensors.min(axis=1)
-d_left  = left_sensors.min(axis=1)
-
-# 4. Normalización Min–Max
-# Ecuación: x' = (x - min) / (max - min)
-d_front_norm = (d_front - d_front.min()) / (d_front.max() - d_front.min())
-d_left_norm  = (d_left - d_left.min()) / (d_left.max() - d_left.min())
-
-# 5. Codificación de etiquetas
-label_map = {
-    "Move-Forward": 0,
-    "Slight-Right-Turn": 1,
-    "Sharp-Right-Turn": 2,
-    "Slight-Left-Turn": 3
-}
-y_num = y.map(label_map)
-
-# 6. Crear nuevo DataFrame con 2 sensores + etiqueta numérica
-df_2 = pd.DataFrame({
-    "D_front_norm": d_front_norm,
-    "D_left_norm": d_left_norm,
-    "Class": y_num
-})
-
-# 7. Guardar a CSV
-df_2.to_csv("datos/robot_2sensores.csv", index=False)
-
-print("Archivo guardado: datos/robot_2sensores.csv")
-print(df_2.head())
-```
+---
 
