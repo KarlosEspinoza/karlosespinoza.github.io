@@ -4,7 +4,7 @@ title: Aprendizaje de máquina
 ---
 [Curso: Aprendizaje de Máquina](index)
 
-# Guion sugerido para 1 hora
+# Guion
 
 **Teoría (20 min)**
 
