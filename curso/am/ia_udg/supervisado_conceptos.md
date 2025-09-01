@@ -6,6 +6,52 @@ title: Aprendizaje de máquina
 
 # Aprendizaje supervisado: concepto y aplicaciones
 
+---
+
+## Actividad
+
+### Objetivo de la actividad
+
+Que los estudiantes comprendan el funcionamiento del aprendizaje supervisado a través del modelo de **Regresión Logística Multiclase**, aplicándolo a un caso de un robot seguidor de pared con sensores ultrasónicos, y reflexionen sobre el impacto de la regularización y la evaluación del desempeño del modelo.
+
+### Atributos de egreso trabajados
+
+* **Atributo de Egreso 2, Nivel Avanzado:** Diseñar e implementar sistemas en el área de automatización, control, robótica y sistemas embebidos, a través de proyectos integradores.  
+* **Atributo de Egreso 7, Nivel Avanzado:** Favorecer el trabajo colaborativo y el liderazgo, integrándose en equipos multidisciplinarios para establecer metas, planear tareas, cumplir fechas límite y analizar riesgos e incertidumbre.
+
+### Método de enseñanza
+
+Se utilizará el **Aprendizaje Experiencial** y el **Aprendizaje Colaborativo**:contentReference[oaicite:3]{index=3}.  
+Durante la explicación teórica, los estudiantes completarán una actividad guiada que refuerce los conceptos, y posteriormente desarrollarán una práctica aplicada en equipos.
+
+### Fases de la Actividad
+
+#### Fase 1. Comprensión Teórica Guiada (30 minutos)
+
+##### Dinámica
+
+Mientras el profesor explica la teoría los estudiantes irán describiendo en un documento con su palabras 5 conceptos que considere importantes.
+
+##### Entregable (en pareja)
+
+5 conceptos con explicación en sus propias palabras
+
+#### Fase 2. Práctica
+
+##### Dinámica
+
+En equipos, los estudiantes usarán el archivo `sensor_readings_4.csv` del dataset *Wall-Following Robot*. 
+Implementarán un modelo de **Regresión Logística Multiclase** con Python (script provisto por el profesor), entrenarán el modelo y analizarán la **matriz de confusión**.  
+
+##### Entregable (en pareja)
+
+Un **informe breve (máx. 1 página)** que incluya:
+1. Accuracy obtenido en el conjunto de prueba.  
+1. Matriz de confusión interpretada (qué errores son más graves para el robot).  
+1. Una reflexión sobre el papel de la regularización.
+
+---
+
 ## Teoría
 
 ### ¿Qué es el aprendizaje supervisado?
@@ -44,7 +90,7 @@ Si predices “**girar izquierda/derecha**” para un robot con **24 ultrasonido
 
 ### Pérdidas típicas
 
-* **Regresión (MSE):**
+#### Regresión MSE
 
 **Objetivo:** minimizar el error cuadrático medio entre valor real y predicho.
 
@@ -52,7 +98,7 @@ $$
 \mathcal{L}_{\text{MSE}} = \frac{1}{n}\sum_{i=1}^n \big(y_i - \hat{y}_i\big)^2
 $$
 
-* **Clasificación (entropía cruzada):**
+#### Clasificación (entropía cruzada)
 
 **Objetivo:** maximizar la probabilidad de la clase correcta. [Más información](entropia_cruzada).
 
@@ -78,7 +124,6 @@ $$
 **Ejemplo:**
 Un modelo muy complejo aprende “ruido” de tus sensores (picos de **ruido eléctrico** al encender una **bomba** vía relevador). Con **L2** reduces pesos extremos y logras decisiones más estables del **motor**. Así, el robot no gira por una **lectura espuria** de un ultrasonido, sino por **patrones** consistentes.
 
----
 
 ### Algoritmos clásicos en supervisado
 
@@ -112,7 +157,7 @@ Particionan el espacio por reglas. Capturar interacciones no lineales y ser inte
 **Ejemplo:**
 Con **k-NN**, tu robot compara la lectura actual de los **24 ultrasónicos** contra su **historial** y elige la clase mayoritaria de los k “más parecidos”. Con **SVM**, aprendes una **frontera** que separa “seguir recto” vs “girar”. Con **Random Forest**, combinas muchos **árboles** que votan la acción del **servo**.
 
-### 1.9 Diagrama del flujo supervisado (para tus diapositivas)
+### Diagrama del flujo supervisado 
 
 ```mermaid
   graph TD
@@ -124,6 +169,8 @@ E --> F["Prueba (métricas)"]
 F --> G["Despliegue en Arduino/embebido"]
 ```
 
+---
+
 ## 2) Práctica
 
 ## Objetivo
@@ -132,9 +179,6 @@ Entrenar un **modelo de regresión logística** para clasificar las acciones de 
 
 * Dataset: [Wall-following Robot](https://www.kaggle.com/datasets/uciml/wall-following-robot?resource=download)
 
-![Wall-following Robot](/image/wall-following-robot)
-
----
 
 ## Problema
 
@@ -143,7 +187,6 @@ A partir de estas lecturas debe decidir si **avanza recto**, **gira a la izquier
 
 Con un modelo de **regresión logística multiclase (softmax)** entrenaremos un clasificador para tomar esta decisión.
 
----
 
 ## Instrucciones
 
@@ -154,7 +197,6 @@ Con un modelo de **regresión logística multiclase (softmax)** entrenaremos un 
 5. Evalúa con **accuracy** y **matriz de confusión**.
 6. Reflexiona: ¿qué tipo de errores serían más graves para el robot?
 
----
 
 ## Script
 
