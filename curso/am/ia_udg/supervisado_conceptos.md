@@ -26,7 +26,7 @@ Durante la explicación teórica, los estudiantes completarán una actividad gui
 
 ### Fases de la Actividad
 
-#### Fase 1. Comprensión Teórica Guiada (30 minutos)
+#### Fase 1. Comprensión Teórica Guiada (40 minutos)
 
 ##### Dinámica
 
@@ -36,7 +36,7 @@ Mientras el profesor explica la teoría los estudiantes irán describiendo en un
 
 5 conceptos con explicación en sus propias palabras
 
-#### Fase 2. Práctica
+#### Fase 2. Práctica (40 minutos)
 
 ##### Dinámica
 
