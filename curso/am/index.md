@@ -7,13 +7,13 @@ title: Aprendizaje de Máquina
 **Requisitos**. Consulta como proceder a la [Instalacion y uso en Visual Studio Code](/curso/python/instalacion_y_uso).
 
 1. Introducción
-   1. [¿Qué es el aprendizaje de máquina?](definicion_conceptos)
-      1. [Definición y conceptos](definicion_conceptos)
-      1. [Diferencias entre IA, AM, DL](diferencias_ia_am_dl)
-   1. [Tipos de aprendizaje de máquina](supervisado_no-supervisado_semi-supervizado_reforzado)
-      1. [Supervisado, no supervisado, semi-supervisado y reforzado](supervisado_no-supervisado_semi-supervizado_reforzado)
+   1. [Aprendizaje de máquina: Definición y conceptos](definicion_conceptos)
+   1. [Diferencias entre IA, AM, DL](diferencias_ia_am_dl)
+   1. [Tipos de aprendizaje de máquina: Supervisado, no supervisado, semi-supervisado y reforzado](supervisado_no-supervisado_semi-supervizado_reforzado)
    1. [Ciclo de vida de un proyecto de aprendizaje de máquina](ciclo_proyecto_am)
    1. [Introducción al preprocesamiento e ingeniería de datos](introduccion_ingenieria_datos)
+1. Aprendizaje Supervisado
+    1. [Concepto y aplicaciones](supervisado_conceptos)
 
 
 [comment]: # (   1. [Ejercicio: Importar, Entrenar y Evaluar](importar_entrenar_evaluar)

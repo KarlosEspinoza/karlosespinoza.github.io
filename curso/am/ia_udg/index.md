@@ -20,7 +20,7 @@ title: Inteligencia Artificial
     1. [Flujo general de un proyecto de Machine Learning](flujo_proyecto_ml)
     1. [Introducción al preprocesamiento e ingeniería de datos](introduccion_ingenieria_datos)
 1. Aprendizaje Supervisado
-    1. Concepto y aplicaciones
+    1. [Concepto y aplicaciones](supervisado_conceptos)
     1. Preparación y limpieza de datos
     1. Ingeniería de características
     1. Modelos supervisados: regresión, clasificación
