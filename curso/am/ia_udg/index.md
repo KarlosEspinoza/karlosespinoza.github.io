@@ -21,7 +21,7 @@ title: Inteligencia Artificial
     1. [Introducción al preprocesamiento e ingeniería de datos](introduccion_ingenieria_datos)
 1. Aprendizaje Supervisado
     1. [Concepto y aplicaciones](supervisado_conceptos)
-    1. Preparación y limpieza de datos
+    1. [Preparación y limpieza de datos](preparacion_limpieza_datos)
     1. Ingeniería de características
     1. Modelos supervisados: regresión, clasificación
     1. Introducción a redes neuronales para tareas supervisadas
