@@ -68,6 +68,17 @@ La normalización escala los datos a un rango común (ej. \[0,1]) para evitar qu
 
 Normalizamos la lectura de un **LDR** en Arduino.
 
+```mermaid
+graph LR
+  VCC["5V (Arduino Nano)"] --- LDR["LDR"]
+  LDR --- Nodo["Nodo de salida"]
+  Res["Resistencia 10kΩ"] --- Nodo
+  Nodo --- A0["A0 (Arduino Nano)"]
+  Res --- GND["GND (Arduino Nano)"]
+
+```
+
+
 ```cpp
 int sensorPin = A0;  // LDR
 int val;
