@@ -1,9 +1,12 @@
-Para esta actividad solo abordaste algunos conceptos. Ahora desarrolla otros conceptos relevantes  que no profundice o no de plano no aborde como una actividad opcional para que hagan en su casa. Pienso premiar a los que hagan estas actividad con 0.1/100 puntos.
-Sigue el mismo formato:
+ACTIVIDAD_VISTA = modelos_supervisados.md
+ACTIVIDAD_EXTRA_REFERENCIA = ingenieria_caracteristicas.md
+
+Para {ACTIVIDAD_VISTA} actividad solo abordaste algunos conceptos.
+Necesito que me ayudes a desarrollar otra actividad para que los alumnos hagan en casa pero que no les lleve más de 40 minutos realizarla.
+En esta actividad desarrolla otros conceptos relevantes que no se hayan abordado en {ACTIVIDAD_VISTA}.
+Pienso premiar a los que hagan estas actividad con 0.1 puntos sobre la calificación final.
 - Explicación
 - Ejemplo
 - Ejercicio. Con Arduino y Python
 
-Considera lo visto en "ingenieria_caracteristicas.md"
-
-Y puedes tomar la última actividad extra que deje como referencia "preparacion_limpieza_datos_extra.md" para que sigas la estructura.
+Puedes tomar la última actividad extra que deje como referencia "{ACTIVIDAD_EXTRA_REFERENCIA}" para que sigas la estructura.

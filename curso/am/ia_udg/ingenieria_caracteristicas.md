@@ -4,7 +4,7 @@ title: Inteligencia Artificial
 ---
 [Curso: Inteligencia Artificial](index)
 
-# Actividad: Aprendizaje Supervisado – Ingeniería de Características
+# Actividad: Ingeniería de Características
 
 ## Objetivo
 
