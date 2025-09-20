@@ -23,7 +23,7 @@ title: Inteligencia Artificial
     1. [Concepto y aplicaciones](supervisado_conceptos)
     1. [Preparación y limpieza de datos](preparacion_limpieza_datos)
     1. [Ingeniería de características](ingenieria_caracteristicas)
-    1. Modelos supervisados: regresión, clasificación
+    1. [Modelos supervisados: regresión, clasificación](modelos_supervisados)
     1. Introducción a redes neuronales para tareas supervisadas
 1. Aprendizaje No Supervisado
     1. Concepto y aplicaciones

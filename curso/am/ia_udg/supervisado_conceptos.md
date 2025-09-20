@@ -4,46 +4,42 @@ title: Aprendizaje de máquina
 ---
 [Curso: Aprendizaje de Máquina](index)
 
-# Aprendizaje supervisado: concepto y aplicaciones
+# Actividad: Concepto y aplicaciones
 
----
-
-## Actividad
-
-### Objetivo de la actividad
+## Objetivo de la actividad
 
 Que los estudiantes comprendan el funcionamiento del aprendizaje supervisado a través del modelo de **Regresión Logística Multiclase**, aplicándolo a un caso de un robot seguidor de pared con sensores ultrasónicos, y reflexionen sobre el impacto de la regularización y la evaluación del desempeño del modelo.
 
-### Atributos de egreso trabajados
+## Atributos de egreso trabajados
 
 * **Atributo de Egreso 2, Nivel Avanzado:** Diseñar e implementar sistemas en el área de automatización, control, robótica y sistemas embebidos, a través de proyectos integradores.  
 * **Atributo de Egreso 7, Nivel Avanzado:** Favorecer el trabajo colaborativo y el liderazgo, integrándose en equipos multidisciplinarios para establecer metas, planear tareas, cumplir fechas límite y analizar riesgos e incertidumbre.
 
-### Método de enseñanza
+## Método de enseñanza
 
 Se utilizará el **Aprendizaje Experiencial** y el **Aprendizaje Colaborativo**:contentReference[oaicite:3]{index=3}.  
 Durante la explicación teórica, los estudiantes completarán una actividad guiada que refuerce los conceptos, y posteriormente desarrollarán una práctica aplicada en equipos.
 
-### Fases de la Actividad
+## Fases de la Actividad
 
-#### Fase 1. Comprensión Teórica Guiada (40 minutos)
+### Fase 1. Comprensión Teórica Guiada (40 minutos)
 
-##### Dinámica
+#### Dinámica
 
 Mientras el profesor explica la teoría los estudiantes irán describiendo en un documento con su palabras 5 conceptos que considere importantes.
 
-##### Entregable (en pareja)
+#### Entregable (en pareja)
 
 5 conceptos con explicación en sus propias palabras
 
-#### Fase 2. Práctica (40 minutos)
+### Fase 2. Práctica (40 minutos)
 
-##### Dinámica
+#### Dinámica
 
 En equipos, los estudiantes usarán el archivo `sensor_readings_4.csv` del dataset *Wall-Following Robot*. 
 Implementarán un modelo de **Regresión Logística Multiclase** con Python (script provisto por el profesor), entrenarán el modelo y analizarán la **matriz de confusión**.  
 
-##### Entregable (en pareja)
+#### Entregable (en pareja)
 
 Un **informe breve (máx. 1 página)** que incluya:
 1. Accuracy obtenido en el conjunto de prueba.  
