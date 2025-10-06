@@ -274,4 +274,76 @@ En el menú selecionamos la opción **Close Remote Conection**.
 Si tienes problemas con el procedimiento te recomiendo consultar este 
 [videotutorial](https://youtu.be/fQRQIupAqgI).
 
+## Arduino
+
+Esta es la forma más sencilla y confiable:
+
+```bash
+cd ~
+mkdir -p bin/arduino
+cd bin/arduino
+curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+```
+
+Esto:
+
+* Detecta automáticamente tu arquitectura (ARM o ARM64)
+* Descarga la versión más reciente
+* Instala el binario en el directorio actual
+
+Después, mueve el ejecutable a un directorio del PATH:
+
+```bash
+sudo mv bin/arduino-cli /usr/local/bin/
+```
+
+Verifica que funcione:
+
+```bash
+arduino-cli version
+```
+
+---
+
+### 🧰 Configuración inicial
+
+Una vez instalado, crea el archivo de configuración:
+
+```bash
+arduino-cli config init
+```
+
+Esto crea `~/.arduino15/arduino-cli.yaml`
+
+Puedes editarlo con `nano ~/.arduino15/arduino-cli.yaml` si deseas cambiar rutas o añadir proxies.
+
+---
+
+### 📦 Instalar cores y librerías
+
+Ejemplo para instalar el core de Arduino AVR (Uno, Nano, etc.):
+
+```bash
+arduino-cli core update-index
+arduino-cli core install arduino:avr
+```
+
+Listar placas disponibles:
+
+```bash
+arduino-cli board listall
+```
+
+Compilar un sketch:
+
+```bash
+arduino-cli compile --fqbn arduino:avr:uno /ruta/a/tu/sketch
+```
+
+Subirlo (asegúrate de que el usuario tenga permisos sobre `/dev/ttyUSB0`):
+
+```bash
+arduino-cli upload -p /dev/ttyUSB0 --fqbn arduino:avr:uno /ruta/a/tu/sketch
+```
+
 
