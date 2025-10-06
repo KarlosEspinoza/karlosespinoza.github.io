@@ -276,6 +276,14 @@ Si tienes problemas con el procedimiento te recomiendo consultar este
 
 ## Arduino
 
+## Hardware necesario
+
+- Raspberry
+- Arduino
+- adaptador micro-USB OTG ([ejemplo](https://www.mercadolibre.com.mx/adaptador-ugreen-micro-usb-macho-a-usb-hembra-ugreen-15-cm-negro/p/MLM21855156?has_official_store=false&highlight=false&headerTopBrand=true#polycard_client=search-nordic&search_layout=grid&position=4&type=product&tracking_id=efaa23d5-5c4b-4318-87a3-666e19869e29&wid=MLM3121704172&sid=search))
+
+### Instalación
+
 Esta es la forma más sencilla y confiable:
 
 ```bash
@@ -305,7 +313,7 @@ arduino-cli version
 
 ---
 
-### 🧰 Configuración inicial
+### Configuración inicial
 
 Una vez instalado, crea el archivo de configuración:
 
@@ -319,7 +327,7 @@ Puedes editarlo con `nano ~/.arduino15/arduino-cli.yaml` si deseas cambiar rutas
 
 ---
 
-### 📦 Instalar cores y librerías
+### Instalar cores y librerías
 
 Ejemplo para instalar el core de Arduino AVR (Uno, Nano, etc.):
 
@@ -328,22 +336,93 @@ arduino-cli core update-index
 arduino-cli core install arduino:avr
 ```
 
+### Detección de Arduino
+
+Conecta el Arduino al puerto USB OTG de la Pi.
+
+   * Usa un adaptador OTG
+   * No lo conectes al puerto de energía (“PWR IN”), usa el otro micro-USB (“USB”).
+
+Verifica que lo detecta:
+
+```bash
+ls /dev/tty*
+```
+
+Antes y después de conectar el Arduino.
+Deberías ver aparecer algo como:
+
+```
+/dev/ttyACM0
+```
+
+o
+
+```
+/dev/ttyUSB0
+```
+
+Dale permisos al usuario ‘pi’:
+
+```bash
+sudo usermod -a -G dialout $USER
+```
+
+Luego reinicia:
+
+```bash
+sudo reboot
+```
+
 Listar placas disponibles:
 
 ```bash
 arduino-cli board listall
 ```
 
-Compilar un sketch:
+### Compilar/Subir/Monitor
+
+Crea un sketch
 
 ```bash
-arduino-cli compile --fqbn arduino:avr:uno /ruta/a/tu/sketch
+cd ~
+mkdir -p proyectos_arduino/hola_mundo/main
+cd proyectos_arduino/hola_mundo/main
+code main.ino
 ```
 
-Subirlo (asegúrate de que el usuario tenga permisos sobre `/dev/ttyUSB0`):
+Hacemos un script de Arduino.
+
+```vim
+# ./main.ino
+int sensorPin = A0;
+int val;
+void setup() {
+  Serial.begin(9600);
+}
+void loop() {
+  val = analogRead(sensorPin);
+  Serial.println(val); 
+  delay(500);
+}
+```
+
+Compilamos 
 
 ```bash
-arduino-cli upload -p /dev/ttyUSB0 --fqbn arduino:avr:uno /ruta/a/tu/sketch
+arduino-cli compile --fqbn arduino:avr:uno main.ino
 ```
 
+Subimos al Arduino
 
+> Ten cuidado de poner la placa correcta en arduino:avr:**uno**. Sustituye por la placa que este utilizando **uno/nano**. También ajusta el puerto /dev/tty**USB0**. Sustituye segun sea tu caso **USB0/ACM0**.
+
+```bash
+arduino-cli upload -p /dev/ttyUSB0 --fqbn arduino:avr:uno main.ino
+```
+
+Monitor
+
+```bash
+arduino-cli monitor -p /dev/ttyUSB0
+```
