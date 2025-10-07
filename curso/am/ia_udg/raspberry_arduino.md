@@ -23,8 +23,12 @@ title: Inteligencia Artificial
 - LM35
 - Arduino
 - Cable USB del Arduino
+- Jupers macho-macho
+- Jumper hembra-hembra
 
 <img src="/image/ia/lm35_led_arduino_raspberry.png" width="800"/>
+
+> Revisa [Pinout de Raspberry Pi](https://pinout.xyz/)
 
 ## Programa de Arduino
 
@@ -80,12 +84,8 @@ void loop() {
    * Ve a **Interfacing Options → Serial Port**
    * “¿Deseas usar el login shell por serial?” → **No**
    * “¿Deseas habilitar el hardware serial?” → **Sí**
-
-   Reinicia:
-
-   ```bash
-   sudo reboot
-   ```
+   * [TAB] **Finish**
+   * [TAB] **Reboot**
 
 2. **Verifica el dispositivo serial:**
 
