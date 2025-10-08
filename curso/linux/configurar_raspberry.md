@@ -179,6 +179,7 @@ Name=wlan0
 
 [Network]
 DHCP=yes
+DNS=8.8.8.8
 
 ```
 Creamos el directorio **/etc/systemd/system/wpa_supplicant@wlan0.service.d/**.
@@ -204,11 +205,9 @@ Reiniciaremos para ver si todo funciona bien.
 Ten en cuenta que si algo no escribiste correctamente fallar'a el proceso y tendras que iniciar nuevamente.
 ```bash
 sudo systemctl enable systemd-networkd
-sudo systemctl enable systemd-resolved
 sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 sudo systemctl enable wpa_supplicant@wlan0.service
 sudo systemctl disable NetworkManager.service
-sudo systemctl disable dhcpcd.service
 sudo reboot
 ```
 
