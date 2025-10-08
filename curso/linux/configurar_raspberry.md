@@ -133,7 +133,7 @@ El primero gestiona la IP y el segundo la autentificación WiFi.
 Ahora habilitaremos que puedas conectarte por ethernet por **DHCP**, ya sea que tengas un adaptador USB-ethernet o tu placa Raspberry ya venga con la interfaz ethernet.
 Crearemos el siguiente archivo.
 ```bash
-sudo nano /mnt/etc/systemd/network/eth0.network
+sudo nano /etc/systemd/network/eth0.network
 ```
 Dentro colocaremos lo siguiente
 ```ini
@@ -145,7 +145,7 @@ DHCP=yes
 ```
 Editaremos el archivo **/etc/wpa_supplicant/wpa_supplicant-wlan0.conf**.
 ```bash
-sudo nano /etc/systemd/system/wpa_supplicant@wlan0.service.d/
+sudo nano /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
 ```
 Dentro escribimos lo siguiente.
 Aqui configurarás todas las redes en las que planeas que el Raspberry Pi se conecte y les dar'as la prioridad que consideres con la propiedad **priority**.
@@ -185,10 +185,12 @@ Creamos el directorio **/etc/systemd/system/wpa_supplicant@wlan0.service.d/**.
 ```bash
 sudo mkdir /etc/systemd/system/wpa_supplicant@wlan0.service.d/
 ```
-Dentro se esa carpeta crearemos el el archivo **/etc/systemd/system/wpa_supplicant@wlan0.service.d/wait-for-device.conf**.
+Dentro se esa carpeta crearemos el archivo vacio **/etc/systemd/system/wpa_supplicant@wlan0.service.d/wait-for-device.conf**.
 ```bash
-sudo nano /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+sudo nano /etc/systemd/system/wpa_supplicant@wlan0.service.d/wait-for-device.conf
 ```
+
+
 Escribimos el siguiente contenido.
 ```ini
 [Unit]
