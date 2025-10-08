@@ -185,12 +185,10 @@ Creamos el directorio **/etc/systemd/system/wpa_supplicant@wlan0.service.d/**.
 ```bash
 sudo mkdir /etc/systemd/system/wpa_supplicant@wlan0.service.d/
 ```
-Dentro se esa carpeta crearemos el archivo vacio **/etc/systemd/system/wpa_supplicant@wlan0.service.d/wait-for-device.conf**.
+Dentro de esta carpeta crearemos el archivo **/etc/systemd/system/wpa_supplicant@wlan0.service.d/wait-for-device.conf**.
 ```bash
 sudo nano /etc/systemd/system/wpa_supplicant@wlan0.service.d/wait-for-device.conf
 ```
-
-
 Escribimos el siguiente contenido.
 ```ini
 [Unit]
@@ -209,8 +207,8 @@ sudo systemctl enable systemd-networkd
 sudo systemctl enable systemd-resolved
 sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 sudo systemctl enable wpa_supplicant@wlan0.service
-sudo systemctl disable --now NetworkManager.service
-sudo systemctl disable --now dhcpcd.service
+sudo systemctl disable NetworkManager.service
+sudo systemctl disable dhcpcd.service
 sudo reboot
 ```
 
