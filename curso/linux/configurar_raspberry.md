@@ -124,15 +124,12 @@ Si tienes problemas con el procedimiento te recomiendo consultar este
 
 ## Desabilitar a NetworkManager
 
-Para esta seccióin te pido sigas los pasos como los voy mencionando, mas adelante entenderas cada parte de lo que se hace aqui. Ahora solo sigue esto para mejorar la experiencia de conexxión con el Raspberry Pi.
+Para esta sección te pido sigas los pasos como los voy mencionando, mas adelante entenderas cada parte de lo que se hace aqui. 
+Ahora solo sigue esto para mejorar la experiencia de conexión con el Raspberry Pi.
 En mi experiencia, me ha resultado mejor desabilitar a **NetworkManager**, el gestor por defecto que trae **Raspberry pi OS**.
-En su lugar iprefiero utilizar a **systemd-netword** y a **wpa_supplicant** directamente. 
+En su lugar prefiero utilizar a **systemd-netword** y a **wpa_supplicant** directamente. 
 El primero gestiona la IP y el segundo la autentificación WiFi.
-```bash
-sudo systemctl disable --now NetworkManager.service
-sudo systemctl disable --now dhcpcd.service
 
-```
 Ahora habilitaremos que puedas conectarte por ethernet por **DHCP**, ya sea que tengas un adaptador USB-ethernet o tu placa Raspberry ya venga con la interfaz ethernet.
 Crearemos el siguiente archivo.
 ```bash
@@ -210,6 +207,8 @@ sudo systemctl enable systemd-networkd
 sudo systemctl enable systemd-resolved
 sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 sudo systemctl enable wpa_supplicant@wlan0.service
+sudo systemctl disable --now NetworkManager.service
+sudo systemctl disable --now dhcpcd.service
 sudo reboot
 ```
 
