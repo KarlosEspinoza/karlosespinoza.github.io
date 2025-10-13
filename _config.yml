@@ -37,8 +37,6 @@ navigation:
         link: /curso/linux/
       - name: Python
         link: /curso/python/
-      - name: Aprendizaje de Máquina
-        link: /curso/am/
       - name: Inteligencia Artificial
         link: /curso/am/ia_udg/
       - name: Aplicación Web
