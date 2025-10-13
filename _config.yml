@@ -70,6 +70,9 @@ platforms:
   - name: LinkedIn
     icon: <i class="fa-brands fa-linkedin"></i>
     link: www.linkedin.com/in/karlos-espinoza-b550b2206
+  - name: Calendario
+    icon: <i class="fa-solid fa-calendar-days"></i>
+    link: https://calendar.app.google/tpjjZMEUoCymj3Ex7
 
 #markdown: kramdown
 #kramdown:
