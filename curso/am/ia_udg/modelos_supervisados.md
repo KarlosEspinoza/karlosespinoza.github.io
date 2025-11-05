@@ -4,7 +4,7 @@ title: Inteligencia Artificial
 ---
 [Curso: Inteligencia Artificial](index)
 
-# Actividad: Modelos Supervisados: Regresión y Clasificación
+# Modelos Supervisados: Regresión y Clasificación
 
 ## Objetivo
 
@@ -16,13 +16,9 @@ Que el estudiante **comprenda y aplique** los conceptos de **regresión y clasif
 
 Esta actividad contribuye al **diseño e implementación de sistemas de automatización y control (AE2A)**, al requerir que los estudiantes construyan un modelo supervisado con datos obtenidos de sensores reales. También fortalece el **trabajo colaborativo y liderazgo (AE7A)**, ya que los alumnos trabajarán en parejas para integrar hardware y software, organizar el flujo de datos y discutir la validez de sus resultados en condiciones reales e inciertas.
 
----
-
 ## Método de enseñanza
 
 Se utilizará **Aprendizaje Experiencial y Aprendizaje Basado en la Indagación**. Los estudiantes manipularán sensores y actuadores, generarán datos etiquetados y aplicarán modelos supervisados en Python para resolver problemas reales de mecatrónica, respondiendo preguntas clave como: ¿los datos siguen una relación lineal o deben clasificarse en categorías?
-
----
 
 ## Criterios de evaluación
 
@@ -33,13 +29,9 @@ La evidencia se revisará mediante lista de cotejo:
 * ¿Se entregaron capturas o fotos como evidencia de funcionamiento?
 * ¿El trabajo refleja colaboración en parejas (aportaciones de ambos integrantes)?
 
----
-
 ## Desarrollo del Tema
 
-### 1. Regresión
-
-#### Explicación
+### Regresión
 
 La **regresión** busca modelar la relación entre una variable dependiente $y$ y una o más variables independientes $x$.
 El modelo más simple es la **regresión lineal**:

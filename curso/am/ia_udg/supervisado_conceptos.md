@@ -4,7 +4,7 @@ title: Aprendizaje de máquina
 ---
 [Curso: Aprendizaje de Máquina](index)
 
-# Actividad: Concepto y aplicaciones
+# Concepto y aplicaciones
 
 ## Objetivo de la actividad
 

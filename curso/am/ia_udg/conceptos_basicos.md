@@ -4,7 +4,7 @@ title: Inteligencia Artificial
 ---
 [Curso: Inteligencia Artificial](index)
 
-# Actividad: Diferencias entre Inteligencia Artificial, Aprendizaje Automático y Aprendizaje Profundo
+# Diferencias entre Inteligencia Artificial, Aprendizaje Automático y Aprendizaje Profundo
 
 ## Objetivo de la actividad
 
