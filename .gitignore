@@ -58,6 +58,6 @@ build-iPhoneSimulator/
 ## cache files
 _site
 .sass-cache
-Gemfile.lock
+#Gemfile.lock
 *.gem
 .jekyll-cache
