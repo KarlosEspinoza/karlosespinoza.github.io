@@ -6,6 +6,9 @@ gemspec
 # commenting below to remove dependency with "github-pages" 
 # gem "github-pages", group: :jekyll_plugins
 
+gem "jekyll", "~> 4.3"
+gem "jekyll-sass-converter", "~> 2.2"
+
 gem "jekyll-seo-tag"
 gem "jekyll-sitemap"
 
