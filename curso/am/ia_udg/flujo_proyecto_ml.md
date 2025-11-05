@@ -4,7 +4,7 @@ title: Flujo general de un proyecto de Machine Learning
 ---
 [Curso: Inteligencia Artificial](index)
 
-# Actividad: Flujo general de un proyecto de Machine Learning
+# Flujo general de un proyecto de Machine Learning
 
 ## Objetivo de la actividad
 

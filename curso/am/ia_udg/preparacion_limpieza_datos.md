@@ -5,7 +5,7 @@ title: Inteligencia Artificial
 [Curso: Inteligencia Artificial](index)
 
 
-# Actividad: Preparación y Limpieza de Datos en Aprendizaje Supervisado
+# Preparación y Limpieza de Datos en Aprendizaje Supervisado
 
 ## Objetivo
 

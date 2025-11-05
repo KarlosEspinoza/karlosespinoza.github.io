@@ -205,7 +205,26 @@ Reiniciaremos para ver si todo funciona bien.
 Ten en cuenta que si algo no escribiste correctamente fallar'a el proceso y tendras que iniciar nuevamente.
 ```bash
 sudo systemctl enable systemd-networkd
-sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+#sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+sudo rm -f /etc/resolv.conf
+sudo nano /etc/resolv.conf
+```
+
+Editamos el archivo
+```ini
+nameserver 8.8.8.8
+nameserver 1.1.1.1
+```
+
+Bloquemos para que no se vuelva a cambiar
+
+```bash
+sudo chattr +i /etc/resolv.conf
+```
+
+Habilitamos algunos servicios.
+
+```bash
 sudo systemctl enable wpa_supplicant@wlan0.service
 sudo systemctl disable NetworkManager.service
 sudo reboot

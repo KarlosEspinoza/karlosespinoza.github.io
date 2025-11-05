@@ -3,7 +3,7 @@ layout: default
 title: Ingeniería de Datos
 ---
 
-# Actividad: Introducción a la Ingeniería de Datos
+# Introducción a la Ingeniería de Datos
 
 ## Objetivo de la actividad
 

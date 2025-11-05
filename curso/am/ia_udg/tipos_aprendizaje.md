@@ -4,7 +4,7 @@ title: Inteligencia Artificial
 ---
 [Curso: Inteligencia Artificial](index)
 
-# Actividad: Aprendizaje supervisado, no supervisado, semi-supervisado y por refuerzo
+# Aprendizaje supervisado, no supervisado, semi-supervisado y por refuerzo
 
 ## Objetivo de la actividad
 

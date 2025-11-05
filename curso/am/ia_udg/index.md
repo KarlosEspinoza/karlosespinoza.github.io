@@ -24,7 +24,7 @@ title: Inteligencia Artificial
     1. [Preparación y limpieza de datos](preparacion_limpieza_datos)
     1. [Ingeniería de características](ingenieria_caracteristicas)
     1. [Modelos supervisados: regresión, clasificación](modelos_supervisados)
-    1. [Redes neuronales](as_redes_neuronales)
+    1. [Redes neuronales](redes_neuronales)
 1. Aprendizaje No Supervisado
     1. Concepto y aplicaciones
     1. Preparación de datos para clustering y reducción de dimensionalidad
