@@ -7,7 +7,7 @@ title: Indice
 - [Cursos](/curso/)
     - [Linux](/curso/linux/)
     - [Python](/curso/python/)
-    - [Aprendizaje de Máquina](/curso/am/)
+    - [Inteligencia Artificial](/curso/am/ia_udg/)
     - [WebApp](/curso/webapp/)
 
 

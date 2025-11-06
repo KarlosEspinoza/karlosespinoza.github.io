@@ -58,9 +58,11 @@ donde:
 * $C_k$: conjunto de puntos del cluster (k),
 * $\mu_k$: centroide del cluster (k).
 
+<img src="/image/ia/clusters.png" width="600"/>
+
 El objetivo es **minimizar $J$** (error de agrupamiento).
 
-<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/K-means_convergence.gif/500px-K-means_convergence.gif">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/K-means_convergence.gif/500px-K-means_convergence.gif" width="600">
 
 [Imagen: Wikipedia](https://en.wikipedia.org/wiki/K-means_clustering)
 
@@ -69,9 +71,9 @@ El objetivo es **minimizar $J$** (error de agrupamiento).
 Un **Arduino Nano** mide **temperatura (LM35)** y **distancia (HC-SR04)**.
 El sistema agrupa los datos automáticamente en tres clústeres:
 
-* 🟩 “Frío y cercano”
-* 🟦 “Medio”
-* 🟥 “Caliente y lejano”
+* “Frío y cercano”
+* “Medio”
+* “Caliente y lejano”
 
 Esto permite, por ejemplo, que un **LED RGB** cambie de color según el grupo detectado, sin reglas programadas explícitamente.
 
@@ -201,7 +203,7 @@ print("Cluster actual:", cluster)
 # TODO: enviar el número del cluster al Arduino por Serial
 ```
 
-🔧 **Objetivo:** el actuador debe comportarse distinto en cada cluster detectado (ej. tono o ángulo).
+**Objetivo:** el actuador debe comportarse distinto en cada cluster detectado (ej. tono o ángulo).
 
 ---
 
@@ -221,5 +223,3 @@ print("Cluster actual:", cluster)
 * Cada equipo recibe 15 puntos aleatorios (x, y) en un [CSV](ans_conceptos_gamificacion_data.csv).
 * Deben **dibujar a mano los 3 posibles clusters** y estimar los centroides.
 * Gana el equipo cuyos centroides estén **más cerca** de los del modelo real proyectado en pantalla.
-
-💡 *Propósito:* Reforzar intuitivamente cómo el algoritmo agrupa por cercanía y ajusta los centroides.
