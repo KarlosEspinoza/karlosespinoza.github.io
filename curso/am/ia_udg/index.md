@@ -20,13 +20,13 @@ title: Inteligencia Artificial
     1. [Flujo general de un proyecto de Machine Learning](flujo_proyecto_ml)
     1. [Introducción al preprocesamiento e ingeniería de datos](introduccion_ingenieria_datos)
 1. Aprendizaje Supervisado
-    1. [Concepto y aplicaciones](supervisado_conceptos)
-    1. [Preparación y limpieza de datos](preparacion_limpieza_datos)
-    1. [Ingeniería de características](ingenieria_caracteristicas)
-    1. [Modelos supervisados: regresión, clasificación](modelos_supervisados)
-    1. [Redes neuronales](redes_neuronales)
+    1. [Concepto y aplicaciones](as_conceptos)
+    1. [Preparación y limpieza de datos](as_preparacion_limpieza_datos)
+    1. [Ingeniería de características](as_ingenieria_caracteristicas)
+    1. [Modelos supervisados: regresión, clasificación](as_modelos_supervisados)
+    1. [Redes neuronales](as_redes_neuronales)
 1. Aprendizaje No Supervisado
-    1. Concepto y aplicaciones
+    1. [Concepto y aplicaciones](ans_conceptos)
     1. Preparación de datos para clustering y reducción de dimensionalidad
     1. Técnicas principales: K-Means, DBSCAN, PCA
     1. Redes neuronales autoencoder para reducción de dimensionalidad
