@@ -10,7 +10,7 @@ title: Inteligencia Artificial
 
 ## Requisitos
 
-- Consulta como proceder a la [Instalacion y uso en Visual Studio Code](/curso/python/instalacion_y_uso).
+- [Instalacion y uso en Visual Studio Code](/curso/python/instalacion_y_uso).
 
 ## Actividades de clase
 
@@ -39,7 +39,8 @@ title: Inteligencia Artificial
     1. Integración de redes neuronales
     1. Despliegue básico de modelos
 
-## Temas de apoyo para el proyecto final
+## Proyecto final
 
 1. [Configurar el Raspberry Pi](/curso/linux/configurar_raspberry)
 1. [Raspberry Pi y Arduino](raspberry_arduino)
+1. Proyecto final
