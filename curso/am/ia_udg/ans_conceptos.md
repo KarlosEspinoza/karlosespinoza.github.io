@@ -60,7 +60,9 @@ donde:
 
 El objetivo es **minimizar $J$** (error de agrupamiento).
 
----
+<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/K-means_convergence.gif/500px-K-means_convergence.gif">
+
+[Imagen: Wikipedia](https://en.wikipedia.org/wiki/K-means_clustering)
 
 #### Ejemplo
 
