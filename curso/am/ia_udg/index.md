@@ -28,7 +28,7 @@ title: Inteligencia Artificial
 1. Aprendizaje No Supervisado
     1. [Concepto y aplicaciones](ans_conceptos)
     1. [Preparación de datos para clustering y reducción de dimensionalidad](ans_preparacion_reduccion)
-    1. Técnicas principales: K-Means, DBSCAN, PCA
+    1. [Técnicas principales: K-Means, DBSCAN, PCA](ans_tecnicas_principales)
     1. Redes neuronales autoencoder para reducción de dimensionalidad
     1. Detección de patrones y anomalías
 1. Evaluación de Modelos
