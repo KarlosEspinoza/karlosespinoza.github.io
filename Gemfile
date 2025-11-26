@@ -2,10 +2,16 @@
 
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.2.2"             # 4.2.x es compatible con converter 2.x
-gem "jekyll-sass-converter", "~> 2.2" # usa sassc (evita sass-embedded)
-gem "webrick", "~> 1.8"               # útil para servir local, no afecta Actions
+# gem "jekyll", "~> 4.2.2"             # 4.2.x es compatible con converter 2.x
+# gem "csv", "~> 3.3"
+# gem "jekyll-sass-converter", "~> 2.2" # usa sassc (evita sass-embedded)
+# gem "webrick", "~> 1.8"               # útil para servir local, no afecta Actions
 
+gem "jekyll", "~> 4.4"                # subir jekyll a 4.4.x
+gem "jekyll-sass-converter", "~> 3.0" # usa sass-embedded en lugar de sassc
+gem "sass-embedded", "~> 1.93"        # motor Sass moderno
+gem "csv", "~> 3.3"                   # para el warning de Ruby 3.4
+gem "webrick", "~> 1.9"               # necesario en Ruby 3.x
 
 gemspec
 # commenting below to remove dependency with "github-pages" 
