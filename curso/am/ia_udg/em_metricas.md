@@ -209,7 +209,7 @@ Luego evaluarán un modelo de clasificación y otro de regresión con las métri
 
 ---
 
-### Código Arduino (incompleto, pseudocódigo donde corresponde)
+### Código Arduino
 
 ```cpp
 /*
@@ -243,7 +243,7 @@ void loop() {
 
 ---
 
-### Código Python (incompleto)
+### Código Python
 
 ```python
 """
