@@ -43,4 +43,4 @@ title: Inteligencia Artificial
 
 1. [Configurar el Raspberry Pi](/curso/linux/configurar_raspberry)
 1. [Raspberry Pi y Arduino](raspberry_arduino)
-1. Proyecto final
+1. [Proyecto final](proyecto_final)
