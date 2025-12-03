@@ -152,5 +152,21 @@ codigo,calificacion
 217688871,0
 ```
 
+# Rúbrica de Evaluación del Proyecto Final (50%)
+
+| Criterio | Descripción | Evidencia esperada | Puntaje |
+|---------|-------------|--------------------|---------|
+| **1. Definición del Problema** | Describe correctamente X y y; justifica el tipo de modelo | Claridad en variables, justificación consistente | 0 / 5 |
+| **2. Sistema Mecánico** | Diseño físico coherente, estable y documentado | Fotos, diagramas, CAD, descripciones | 0 / 5 |
+| **3. Sistema Eléctrico** | Conexiones correctas, diagrama completo y legible | Esquema eléctrico, montaje | 0 / 5 |
+| **4. Adquisición de Datos** | Explicación del proceso y tabla de condiciones de operación | Datos suficientes, tabla de condiciones, scripts funcionales | 0 / 10 |
+| **5. Scripts Arduino (Adquisición y Producción)** | Código funcional, comentado y claro | .ino incluidos, funcionamiento verificado | 0 / 10 |
+| **6. Scripts Python (Adquisición, Entrenamiento, Producción)** | Código reproducible y bien estructurado | scripts .py, manejo de datos, carga del modelo | 0 / 10 |
+| **7. Entrenamiento del Modelo** | División de datos, métricas, análisis crítico | Gráficas, tablas, justificación del modelo final | 0 / 10 |
+| **8. Producción del Sistema** | Inferencia en tiempo real funciona; integración correcta | Video, explicación del flujo final | 0 / 10 |
+| **9. Calidad del Reporte** | Organización, ortografía, claridad, rigor técnico | Reporte PDF completo | 0 / 5 |
+| **10. Entrega Completa de Archivos** | Scripts, CSVs, video y reporte entregados | Revisión de anexos | 0 / 5 |
+
+### **Total: 0 / 75 puntos (equivalente al 50% de la calificación final)**
 
 
