@@ -138,9 +138,10 @@ Cada integrante del equipo debe de entrega lo siguiente. No entregar se consider
 2. CSV con los datos de entrenamiento. Archivo limpio y procesado para reproducir el entrenamiento.
 3. Script Arduino – Etapa de Adquisición
 4. Script Python – Etapa de Adquisición
-5. Script Arduino – Etapa de Producción
-6. Script Python – Etapa de Producción
-7. CSV de Autoevaluación (50% de la calificación). El CSV lo debes de nombrar como integrantes.csv y dentro vendrá el código de cada uno de los integrantes del equipo y su calificación.
+5. Script Python – Etapa de Entrenamiento
+6. Script Arduino – Etapa de Producción
+7. Script Python – Etapa de Producción
+8. CSV de Autoevaluación (50% de la calificación). El CSV lo debes de nombrar como integrantes.csv y dentro vendrá el código de cada uno de los integrantes del equipo y su calificación.
 
 **Ejemplo:** integrantes.csv
 
