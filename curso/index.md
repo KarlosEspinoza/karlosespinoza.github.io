@@ -7,5 +7,6 @@ title: Cursos
 
 - [Linux](/curso/linux/)
 - [Python](/curso/python/)
-- [Inteligencia Artificial](/curso/am/ia_udg/)
+- [Inteligencia Artificial](/curso/ia/)
+- [Matematicas para Ingeniería de Materiales](/curso/mim/)
 - [Aplicación Web](/curso/webapp/)
