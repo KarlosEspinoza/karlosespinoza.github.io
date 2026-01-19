@@ -3,7 +3,7 @@ layout: default
 title: Instalación y uso
 ---
 
-# Instalacion y uso en Visual Studio Code
+# Instalacion y uso de Python con Visual Studio Code
 
 ---
 

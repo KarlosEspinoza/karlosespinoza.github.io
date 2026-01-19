@@ -38,7 +38,9 @@ navigation:
       - name: Python
         link: /curso/python/
       - name: Inteligencia Artificial
-        link: /curso/am/ia_udg/
+        link: /curso/ia/
+      - name: Matemáticas para Ingeniería de Materiales
+        link: /curso/mim/
       - name: Aplicación Web
         link: /curso/webapp/
 #        subsublist:
