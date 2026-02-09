@@ -20,36 +20,6 @@ Que los estudiantes comprendan el funcionamiento del aprendizaje supervisado a t
 Se utilizará el **Aprendizaje Experiencial** y el **Aprendizaje Colaborativo**:contentReference[oaicite:3]{index=3}.  
 Durante la explicación teórica, los estudiantes completarán una actividad guiada que refuerce los conceptos, y posteriormente desarrollarán una práctica aplicada en equipos.
 
-## Fases de la Actividad
-
-### Fase 1. Comprensión Teórica Guiada (40 minutos)
-
-#### Dinámica
-
-Mientras el profesor explica la teoría los estudiantes irán describiendo en un documento con su palabras 5 conceptos que considere importantes.
-
-#### Entregable (en pareja)
-
-5 conceptos con explicación en sus propias palabras
-
-### Fase 2. Práctica (40 minutos)
-
-#### Dinámica
-
-En equipos, los estudiantes usarán el archivo `sensor_readings_4.csv` del dataset *Wall-Following Robot*. 
-Implementarán un modelo de **Regresión Logística Multiclase** con Python (script provisto por el profesor), entrenarán el modelo y analizarán la **matriz de confusión**.  
-
-#### Entregable (en pareja)
-
-Un **informe breve (máx. 1 página)** que incluya:
-1. Accuracy obtenido en el conjunto de prueba.  
-1. Matriz de confusión interpretada (qué errores son más graves para el robot).  
-1. Una reflexión sobre el papel de la regularización.
-
----
-
-## Teoría
-
 ### ¿Qué es el aprendizaje supervisado?
 
 El aprendizaje supervisado es un enfoque de IA donde un **modelo** aprende una función $f: \mathbb{R}^d \to \mathcal{Y}$ a partir de **pares** $(\mathbf{x}_i, y_i)$ etiquetados. El objetivo es **predecir** la etiqueta $y$ para una nueva entrada $\mathbf{x}$ minimizando el error de predicción.
