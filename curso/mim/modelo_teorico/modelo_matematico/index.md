@@ -2,9 +2,9 @@
 layout: default
 title: Matemáticas para Ingeniería de Materiales
 ---
-[Inicio](../index)
+[Inicio](../../index)
 
-# Modelo matemático en ingeniería
+# Modelo matemático
 
 # Objetivo
 
