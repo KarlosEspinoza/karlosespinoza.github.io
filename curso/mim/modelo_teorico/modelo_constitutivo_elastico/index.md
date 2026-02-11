@@ -30,7 +30,7 @@ Al finalizar la sesión, el estudiante **modelará el comportamiento elástico l
 
 ## Caso ejemplo
 
-Una empresa fabrica **soportes (brackets) de aluminio 6061-T6** a partir de lámina para un ensamble mecánico. Antes de liberar el diseño, el equipo debe asegurar que, bajo una carga estática, el soporte **no exceda el rango elástico** para evitar deformación permanente y que la **deflexión** sea aceptable. Se cuenta con datos de un **ensayo de tensión** (esfuerzo vs. deformación axial) y mediciones de **deformación transversal** (para estimar (\nu)). Tu tarea es: estimar (E) y (\nu), definir el modelo constitutivo elástico adecuado y predecir la respuesta ante un estado de esfuerzos simple representativo del bracket.
+Una empresa fabrica **soportes (brackets) de aluminio 6061-T6** a partir de lámina para un ensamble mecánico. Antes de liberar el diseño, el equipo debe asegurar que, bajo una carga estática, el soporte **no exceda el rango elástico** para evitar deformación permanente y que la **deflexión** sea aceptable. Se cuenta con datos de un **ensayo de tensión** (esfuerzo vs. deformación axial) y mediciones de **deformación transversal** (para estimar $\nu)$. Tu tarea es: estimar $E$ y $\nu$, definir el modelo constitutivo elástico adecuado y predecir la respuesta ante un estado de esfuerzos simple representativo del bracket.
 
 ## Conceptos/Modelos
 
@@ -49,7 +49,7 @@ $$
 \sigma = E,\varepsilon
 $$
 
-* (E) = módulo de Young (pendiente en el tramo lineal)
+* $E$ = módulo de Young (pendiente en el tramo lineal)
 
 Estimas $E$ con la pendiente de $\sigma$ vs $\varepsilon$ en el tramo elástico del 6061-T6. Con ese $E$ puedes predecir deflexiones y verificar “no fluencia” (por lo menos como primer filtro).
 
@@ -281,7 +281,7 @@ fprintf('gamma_xy = %.6e\n', gam_xy);
 Se diseña un **tirante de aluminio 6061-T6** para un sub-ensamble ligero. El tirante trabaja principalmente a tensión, pero en una zona de unión (placa delgada) se aproxima **esfuerzo plano**.
 
 1. Con el archivo `ensayo_6061.csv`, estima $E$ y $\nu$ usando un criterio razonable de rango elástico (explica tu criterio).
-2. **Parte A (1D):** para ($=1800\ \text{N}$, $A=25\ \text{mm}^2$, $L_0=80\ \text{mm}$, calcula $\sigma,\varepsilon,\Delta L$.
+2. **Parte A (1D):** para $F=1800\ \text{N}$, $A=25\ \text{mm}^2$, $L_0=80\ \text{mm}$, calcula $\sigma,\varepsilon,\Delta L$.
 3. **Parte B (2D, esfuerzo plano):** en la placa, asume $\sigma_x=90\ \text{MPa}$, $\sigma_y=35\ \text{MPa}$, $\tau_{xy}=10\ \text{MPa}$. Calcula $\varepsilon_x,\varepsilon_y,\gamma_{xy}$.
 4. Concluye en 5–7 líneas: validez del modelo y limitaciones (linealidad, isotropía, concentración de esfuerzos, etc.).
 
