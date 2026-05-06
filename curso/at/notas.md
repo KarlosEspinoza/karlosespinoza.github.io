@@ -10,3 +10,9 @@ Experimental & modeling debe ser: epistemológico (cómo lo conocemos / medimos)
 Causalidad
 
 Entendimiento Multicapa o multiescala de un fenomeno
+
+
+
+Regla práctica para la decisión: una tabla se justifica cuando sus filas y columnas juntas generan 
+  información que las celdas individuales no tienen. Si es solo una lista categorizada, va mejor como
+   prosa. 

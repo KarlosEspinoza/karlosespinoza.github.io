@@ -31,7 +31,7 @@ title: Inteligencia Artificial
     1. Detección de patrones y anomalías
 1. Evaluación de Modelos
     1. [Métricas de evaluación para clasificación y regresión](evaluacion_modelo/metricas)
-    1. Validación cruzada
+    1. [Validación cruzada](evaluacion_modelo/validacion_cruzada)
     1. Selección y ajuste de hiperparámetros
     1. Sobreajuste y subajuste
     1. Integración de redes neuronales
