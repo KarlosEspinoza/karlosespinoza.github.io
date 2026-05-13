@@ -19,7 +19,7 @@ title: Matemáticas para Ingeniería de Materiales
 1. Modelos teóricos
    1. [Modelo matemático](modelo_teorico/modelo_matematico)
    1. [Modelos constitutivos elásticos](modelo_teorico/modelo_constitutivo_elastico)
-   1. Introducción a modelos no lineales elementales
+   1. [Modelos no lineales elementales](modelo_teorico/modelos_no_lineales)
    1. Modelos de mezclas y materiales compuestos
    1. Modelos fenomenológicos en desgaste y adsorción
 

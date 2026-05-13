@@ -243,54 +243,80 @@ void loop() {
 
 ---
 
-### Código Python
+### Script Python: Clasificación
+
+Este script evalúa un modelo que determina si el sensor detecta una "Condición Crítica" (encendedor cerca/caliente) o "Normal" (frío), basándose en 600 muestras recolectadas (300 por estado).
 
 ```python
-"""
-Evaluación de modelos: clasificación y regresión
-"""
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+# 1. Cargar datos (CSV con 600 muestras: 300 normal, 300 crítico)
+df = pd.read_csv("datos_clasificacion.csv")
+
+# 2. Definir variables (X: lecturas, y: etiqueta de estado)
+X = df[['temp_raw', 'luz_raw']]
+y = df['label'] # 0: Normal, 1: Crítico
+
+# 3. Dividir dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 4. Entrenar modelo
+modelo = LogisticRegression()
+modelo.fit(X_train, y_train)
+
+# 5. Predicción y Evaluación
+y_pred = modelo.predict(X_test)
+
+print("--- Métricas de Clasificación ---")
+print(f"Accuracy:  {accuracy_score(y_test, y_pred):.2f}")
+print(f"Precision: {precision_score(y_test, y_pred):.2f}")
+print(f"Recall:    {recall_score(y_test, y_pred):.2f}")
+print(f"F1-score:  {f1_score(y_test, y_pred):.2f}")
+```
+
+---
+
+### Script Python: Regresión
+
+Este script evalúa un modelo que predice la temperatura futura basándose en la tendencia de calentamiento y enfriamiento observada en las 600 muestras del experimento con el encendedor.
+
+```python
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.linear_model import LogisticRegression, LinearRegression
 
-# 1. Leer CSV generado por Arduino
-# df = pd.read_csv("lecturas_clase.csv")
+# 1. Cargar datos (600 muestras de la serie temporal)
+df = pd.read_csv("datos_regresion.csv")
 
-# 2. Etiquetas para clasificación (pseudocódigo)
-# df["label"] = df["temp"].apply(lambda x: 1 si es crítico else 0)
+# 2. Crear variable objetivo (Predecir el valor siguiente)
+# Desplazamos la temperatura una posición para tener el "valor futuro"
+df['temp_futura'] = df['temp'].shift(-1)
+df.dropna(inplace=True) # Eliminar la última fila que queda sin valor futuro
 
-# 3. Entrenar modelos
-# X = df[["temp", "luz"]]
-# y_class = df["label"]
-# y_reg = df["temp_futuro"]  # pseudocódigo
+# 3. Definir variables (X: actual, y: futura)
+X = df[['temp']]
+y = df['temp_futura']
 
-# X_train, X_test, y_train, y_test = train_test_split(...)
+# 4. Dividir dataset (Manteniendo orden cronológico si se desea)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
 
-# modelo_clf = LogisticRegression()
-# modelo_clf.fit(X_train, y_train)
-# pred_clf = modelo_clf.predict(X_test)
+# 5. Entrenar modelo
+modelo_reg = LinearRegression()
+modelo_reg.fit(X_train, y_train)
 
-# 4. Métricas de clasificación
-# acc = accuracy_score(...)
-# prec = precision_score(...)
-# rec = recall_score(...)
-# f1 = f1_score(...)
+# 6. Predicción y Evaluación
+y_pred = modelo_reg.predict(X_test)
 
-# 5. Modelo de regresión
-# modelo_reg = LinearRegression()
-# modelo_reg.fit(X_train, y_reg_train)
-# pred_reg = modelo_reg.predict(X_test)
-
-# 6. Métricas de regresión
-# mae = mean_absolute_error(...)
-# mse = mean_squared_error(...)
-# rmse = mse**0.5
-# r2 = r2_score(...)
-
-print("Completa el script con tus datos y cálculos.")
+print("--- Métricas de Regresión ---")
+print(f"MAE:  {mean_absolute_error(y_test, y_pred):.2f} °C")
+print(f"MSE:  {mean_squared_error(y_test, y_pred):.2f}")
+print(f"RMSE: {np.sqrt(mean_squared_error(y_test, y_pred)):.2f} °C")
+print(f"R2:   {r2_score(y_test, y_pred):.2f}")
 ```
 
 ---
