@@ -37,8 +37,13 @@ title: Inteligencia Artificial
     1. Integración de redes neuronales
     1. Despliegue básico de modelos
 
-## Proyecto final
+## Evaluación
+
+- [Evaluación individual](evaluacion/individual)
+- [Proyecto integrador](evaluacion/proyecto_integrador)
+
+### Recursos para el proyecto integrador
 
 1. [Configurar el Raspberry Pi](/curso/linux/configurar_raspberry)
 1. [Raspberry Pi y Arduino](raspberry_arduino)
-1. [Proyecto final](proyecto_final)
+

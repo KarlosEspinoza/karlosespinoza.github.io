@@ -80,3 +80,10 @@ platforms:
 #  hard_wrap: false
 #  math_engine: mathjax
 
+
+exclude:
+  - CLAUDE.md
+  - "**/CLAUDE.md"
+  - "**/prompt_*.md"
+  - "**/todo.md"
+  - "**/template.md"
