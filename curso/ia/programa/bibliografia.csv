@@ -1,0 +1,9 @@
+titulo,autor,editorial,año,tipo
+"Inteligencia artificial: un enfoque moderno (4a ed.)","Russell, Stuart J.; Norvig, Peter",Pearson,2022,basica
+"Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow (3a ed.)","Géron, Aurélien",O'Reilly,2022,basica
+"Machine Learning with PyTorch and Scikit-Learn","Raschka, Sebastian; Liu, Yuxi; Mirjalili, Vahid",Packt,2022,basica
+"Python Data Science Handbook (2a ed.)","VanderPlas, Jake",O'Reilly,2022,basica
+"Deep Learning with Python (2a ed.)","Chollet, François",Manning,2021,complementaria
+"Inteligencia Artificial Aplicada a Robotica y Automatizacion","Sossa Azuela, Juan Humberto; Reyes Cortés, Fernando",Marcombo,2021,complementaria
+"CS50's Introduction to Programming with Python","Malan, David J.",Harvard University,2022,complementaria
+"CS50's Introduction to Artificial Intelligence with Python","Yu, Brian; Malan, David J.",Harvard University,2024,complementaria

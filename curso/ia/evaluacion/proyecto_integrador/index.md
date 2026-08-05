@@ -6,218 +6,216 @@ title: Inteligencia Artificial
 
 # Proyecto Integrador
 
-**Ingeniería Mecatrónica – Séptimo Semestre**  
-**Valor:** 50% de la calificación final
+**Ingeniería Mecatrónica -- Séptimo Semestre**  
+**Valor:** 35% de la calificación final
 
 ---
 
 ## Descripción general
 
-El proyecto integrador consiste en diseñar, implementar y demostrar un **sistema físico inteligente en equipo**. El sistema debe adquirir datos de sensores reales, entrenar un modelo de Aprendizaje de Máquina y ejecutar inferencia en tiempo real para controlar actuadores.
+El proyecto integrador es un **Sistema Clasificador Multi-Dominio** desarrollado en equipo. Cada integrante aporta su propio clasificador (de su proyecto individual) como un módulo del sistema. Un **Controlador Central** en Python los integra, toma la decisión de ruteo combinada y la ejecuta sobre la maqueta del laboratorio a través del PLC S7-1214C.
 
-El equipo elige libremente la situación que simula su sistema y la documenta en un reporte técnico en Google Docs.
-
-Este proyecto integra los atributos de egreso **AE2A** y **AE7A**.
+El resultado es un sistema de control inteligente real: múltiples modelos de ML corriendo en Python, comunicándose con hardware industrial vía python-snap7, con detección de anomalías integrada y actuadores físicos que responden a la decisión del modelo. Es el mismo tipo de arquitectura que opera en líneas de manufactura y clasificación industrial.
 
 ---
 
 ## Formación de equipos
 
 - Equipos de **2 o 3 integrantes** (no se permiten equipos de 1 ni de 4 o más).
-- **Cada integrante debe aportar sensores y actuadores distintos** a los de sus compañeros de equipo. No se puede repetir el mismo tipo de sensor ni el mismo tipo de actuador dentro del equipo.
+- **Cada integrante debe tener un dominio diferente** al de sus compañeros, ya que cada uno aporta su módulo clasificador.
+- Registra tu equipo y dominios con el asesor durante la primera semana del curso.
 
-**Ejemplo para un equipo de 2:**
+**Ejemplo para un equipo de 3:**
 
-| Integrante | Sensores | Actuadores |
+| Integrante | Dominio (módulo) | Proyecto individual |
 |---|---|---|
-| Integrante A | LM35, LDR, HC-SR04 | Servo, LED RGB, Buzzer |
-| Integrante B | A3144, HW-870, GP2Y0A21YK0F | Motor CD, Relé, Válvula |
+| Alumno A | Clasificación por material (madera/metal/plástico) | Clasificador con sensor inductivo + LDR |
+| Alumno B | Clasificación por tamaño (chico/mediano/grande) | Clasificador con sensor ultrasónico HC-SR04 |
+| Alumno C | Detección de anomalías (pieza dañada/desconocida) | Autoencoder sobre señales de vibrador + A3144 |
 
-> Ningún componente se repite entre los dos integrantes. El sistema completo integra todos los sensores y actuadores en un único pipeline de aprendizaje de máquina.
-
----
-
-## Tipo de modelo
-
-El equipo implementa **uno** de los siguientes:
-
-- **Clasificación** (aprendizaje supervisado)
-- **Regresión** (aprendizaje supervisado)
-- **Clustering / Agrupamiento** (aprendizaje no supervisado)
+> El Controlador Central y el despliegue en PLC no pertenecen a ninguno en particular: son responsabilidad compartida del equipo.
 
 ---
 
-## Pipeline de desarrollo
+## Lo que construyen, capa por capa
 
-El proyecto sigue el mismo pipeline del curso. Los archivos deben entregarse con los nombres exactos indicados:
+Al igual que el proyecto individual, el integrador crece con cada unidad del curso. Cada tema visto en clase se aplica al sistema del equipo:
+
+| Unidad | Lo que agrega el equipo al sistema |
+|---|---|
+| **U1** Introducción | Cada integrante aporta su configuración de sensor. El equipo visualiza las señales de todos los sensores en una sola gráfica en Python. Definen juntos la arquitectura de sensores sobre la banda transportadora. |
+| **U2** Aprendizaje Supervisado | Cada integrante aporta su clasificador entrenado. El equipo integra los modelos en un pipeline unificado: las features de todos los sensores entran, el pipeline decide el tipo de pieza y el Arduino actúa sobre los actuadores. |
+| **U3** Aprendizaje No Supervisado | El equipo entrena un autoencoder compartido sobre las señales combinadas de todos los dominios. Las anomalías detectadas por cualquier módulo activan una respuesta de control coordinada (paro de banda o desvío de pieza). |
+| **U4** Evaluación y Despliegue | El pipeline validado se despliega sobre la maqueta del laboratorio vía PLC S7-1214C. El equipo demuestra el bucle completo: sensores de la maqueta -> Python -> modelos -> PLC -> banda y pistón. |
+
+---
+
+## Arquitectura del sistema
 
 ```
-proyecto/
-  manual/
-    manual.ino        ← Etapa 1: Arduino para adquisición manual
-  automatico/
-    automatico.ino    ← Etapa 3: Arduino para producción
-  guardar.py          ← Etapa 1: Guarda los datos del serial en CSV
-  datos.csv           ← Datos adquiridos (generado por guardar.py)
-  entrenar.py         ← Etapa 2: Entrena el modelo
-  modelo.pkl          ← Modelo entrenado (generado por entrenar.py)
-  produccion.py       ← Etapa 3: Inferencia en tiempo real
-  integrantes.csv     ← Autoevaluación del equipo
+           Pipeline de Control Central (Python)
+     (integra todos los clasificadores + anomalias)
+              |            |           |
+        Modulo A       Modulo B    Modulo C
+       (material)      (tamano)   (anomalia)
+              \            |           /
+               \           |          /
+            PLC S7-1214C (python-snap7)
+                  |               |
+           Banda transportadora  Piston desviador
 ```
 
-### Etapa 1 — Adquisición de datos
+El **Pipeline Central** recorre la secuencia de decisión en cada ciclo:
 
-`manual/manual.ino` lee todos los sensores del equipo y envía las lecturas por el puerto serial.  
-`guardar.py` recibe los datos y los guarda en `datos.csv`.
-
-> En esta etapa el equipo controla manualmente las condiciones del sistema para generar las diferentes clases, rangos o situaciones de la variable objetivo.
-
-### Etapa 2 — Entrenamiento
-
-`entrenar.py` carga `datos.csv`, entrena el modelo y lo guarda en `modelo.pkl` usando `joblib`.
-
-### Etapa 3 — Producción
-
-`automatico/automatico.ino` lee todos los sensores en tiempo real y envía las lecturas a Python.  
-`produccion.py` carga `modelo.pkl`, recibe las lecturas, realiza la inferencia y envía el comando de vuelta al Arduino para accionar los actuadores.
+```
+1. Leer señales de sensores (Arduino en prototipo, PLC en producción)
+2. Extraer features por dominio (cada módulo aporta sus propias features)
+3. Clasificar con cada modelo (decisión por dominio)
+4. Fusionar decisiones (votación o jerarquía definida por el equipo)
+5. Detectar anomalías (autoencoder compartido)
+6. Enviar comando al PLC -> banda o pistón reacciona
+```
 
 ---
 
-## Puntos extra *(opcionales)*
+## Estructura del repositorio
 
-### Extra 1 — Evaluación del modelo
+```
+proyecto-integrador/
+  README.md                   <- Integrantes, dominios y descripción del sistema
+  BITACORA.md                 <- Conceptos de ML aplicados por el equipo
+  pipeline/
+    controlador.py            <- Script central: lee, decide y actúa
+    plc_client.py             <- Comunicación con PLC vía python-snap7
+    fusion.py                 <- Lógica de fusión de decisiones entre módulos
+    anomalias.py              <- Autoencoder compartido del equipo
 
-Agrega en `entrenar.py` una etapa de evaluación con las métricas correspondientes a tu tipo de modelo (accuracy, F1, MAE, RMSE, R², etc.).
+  dominio_a/                  <- Proyecto individual del integrante A (adaptado)
+    modelo_a.joblib           <- Clasificador entrenado del dominio A
+    features_a.py             <- Extracción de features del dominio A
+    datos/
+      dataset_a.csv
 
-- `entrenar.py` debe guardar en `modelo.pkl` **únicamente el mejor modelo** (el que obtenga la mejor métrica en el conjunto de prueba).
-- Justifica en el reporte por qué ese modelo es el mejor.
+  dominio_b/                  <- Proyecto individual del integrante B (adaptado)
+    modelo_b.joblib
+    features_b.py
+    datos/
+      dataset_b.csv
 
-### Extra 2 — Raspberry Pi
+  dominio_c/                  <- Proyecto individual del integrante C (si aplica)
+    modelo_c.joblib
+    features_c.py
+    datos/
+      dataset_c.csv
+```
 
-Despliega el sistema de producción en una **Raspberry Pi** en lugar de una laptop.
-
-- `produccion.py` debe correr en la Raspberry Pi.
-- La Raspberry Pi se comunica con el Arduino Nano por serial (UART).
-- Incluye en el reporte la configuración realizada y una foto del sistema corriendo en la Raspberry Pi.
-
-> Los extras se evalúan de forma independiente. Pueden hacer uno, los dos, o ninguno.
+> Cada integrante adapta su script de adquisición y su modelo para que el Controlador Central pueda invocarlos como módulo del pipeline.
 
 ---
 
-## Entregables
+## Revisiones de avances
 
-### 1. Reporte técnico en Google Docs
+El proyecto se revisa en las **mismas 3 semanas** que el proyecto individual. El equipo debe hacer **push a GitHub de sus avances antes del día de la revisión** (a más tardar en la sesión previa de esa semana), para que el asesor revise el código y la BITACORA.md con anticipación. El día de la revisión la sesión se dedica únicamente a las **preguntas (orales o escritas, en papel o en archivo de texto)**. Si el equipo no hizo el push a tiempo, no hay nada que revisar y la revisión cuenta como no entregada. Además, cada integrante actualiza y hace push de su autoevaluación privada antes de cada revisión (ver la sección "Autoevaluación del equipo"). En cada revisión cuentan:
 
-El reporte describe el desarrollo completo del proyecto. Debe incluir:
-
-**1.1 Descripción del sistema**
-- ¿Qué situación simula el sistema? Descríbela con claridad.
-- ¿Qué miden los sensores (X)? ¿Qué predice, clasifica o agrupa el modelo (y)?
-- Justificación del tipo de modelo elegido (clasificación, regresión o clustering).
-
-**1.2 Contribución de cada integrante**
-
-Tabla que muestre qué sensores y actuadores aporta cada integrante:
-
-| Integrante | Código | Sensores | Actuadores |
-|---|---|---|---|
-| Nombre A | 21XXXXXXX | Sensor 1, Sensor 2, Sensor 3 | Actuador 1, Actuador 2, Actuador 3 |
-| Nombre B | 21XXXXXXX | Sensor 4, Sensor 5, Sensor 6 | Actuador 4, Actuador 5, Actuador 6 |
-
-**1.3 Sistema eléctrico**
-- Diagrama de conexiones completo (todos los sensores y actuadores del equipo).
-- Foto del montaje en protoboard.
-
-**1.4 Adquisición de datos**
-- Tabla de condiciones de operación del sistema.
-
-Ejemplo:
-
-| Sensor 1 | Sensor 2 | Sensor 3 | … | Clase / Valor (y) | Descripción |
-|---|---|---|---|---|---|
-| valor | valor | valor | … | clase | Situación que representa |
-
-- Frecuencia de muestreo y cantidad de datos recopilados.
-- Código de `manual/manual.ino` comentado.
-- Código de `guardar.py` comentado.
-
-**1.5 Entrenamiento**
-- Descripción del modelo elegido y por qué.
-- Código de `entrenar.py` comentado.
-- *(Si hicieron el Extra 1)* Métricas obtenidas y justificación del modelo final.
-
-**1.6 Producción**
-- Descripción del flujo completo: sensor → Arduino → Python → modelo → actuador.
-- Código de `automatico/automatico.ino` comentado.
-- Código de `produccion.py` comentado.
-- Enlace a video demostrativo en **YouTube (No listado)** o **Google Drive (acceso libre)**.
-
-El video debe mostrar: el sistema físico, lecturas en tiempo real, inferencia del modelo y actuadores respondiendo.
+| Instrumento | Peso dentro de la revisión |
+|---|---|
+| Evidencias: código, commits y funcionamiento del sistema completo entregados en GitHub antes de la revisión | 45% |
+| BITACORA.md del equipo: explicación de los conceptos de ML aplicados | 25% |
+| 2 preguntas (orales o escritas), una por integrante seleccionada al azar | 20% |
+| Autoevaluación entre pares: contribución de cada integrante al equipo | 10% |
 
 ---
 
-### 2. Archivo ZIP
+### Revisión 1 -- Semana 9
 
-El ZIP se nombra con los **códigos de todos los integrantes separados por guiones**  
-(ejemplo: `219894185-218010062-214393994.zip`) y contiene exactamente:
+**Introducción y Aprendizaje Supervisado**
 
-```
-proyecto/
-  manual/
-    manual.ino
-  automatico/
-    automatico.ino
-  guardar.py
-  datos.csv
-  entrenar.py
-  modelo.pkl
-  produccion.py
-  integrantes.csv
-```
+**El sistema debe:**
+- Leer señales de **todos los sensores del equipo** en Python desde Arduino (pyserial)
+- El pipeline integra los **clasificadores entrenados** de cada dominio
+- La decisión combinada acciona actuadores físicos conectados al Arduino (LED, servo o motor como prototipo)
+- El repositorio contiene los datasets de cada dominio y los modelos exportados con joblib
 
-**`integrantes.csv`** — cada integrante asigna la calificación que considera que merece cada miembro del equipo por su participación real en el proyecto. La suma de calificaciones determina el 50% del puntaje de proyecto.
+**La BITACORA.md del equipo debe explicar:**
+- Cómo se integraron los módulos de cada integrante en el pipeline
+- Qué estrategia de fusión de decisiones usa el equipo y por qué
+- Cómo funciona el bucle de control en prototipo (diagrama del flujo completo)
+
+---
+
+### Revisión 2 -- Semana 14
+
+**Aprendizaje No Supervisado y detección de anomalías**
+
+**El sistema debe:**
+- El pipeline incluye un **autoencoder compartido** entrenado con datos de todos los dominios
+- El umbral de error de reconstrucción está definido y documentado en la BITACORA.md
+- Una anomalía detectada dispara una **acción de control diferenciada** (paro o desvío de pieza)
+- La lógica de anomalía está integrada al script `controlador.py` del pipeline
+
+**La BITACORA.md debe explicar:**
+- Cómo se diseñó el autoencoder: arquitectura, datos de entrenamiento, umbral
+- Cómo se integra la detección de anomalías al bucle de control
+- Qué pasa en el sistema cuando se detecta una anomalía (diagrama de flujo actualizado)
+
+---
+
+### Revisión Final -- Semana 17
+
+**Despliegue en PLC y demo del sistema completo**
+
+**El sistema debe:**
+- El pipeline completo corre sobre la **maqueta del laboratorio** vía PLC S7-1214C (python-snap7)
+- Los sensores de la maqueta alimentan el pipeline; los actuadores de la maqueta (banda y pistón) responden a la decisión del modelo
+- El sistema maneja al menos **2 tipos de pieza correctamente clasificados** y detecta al menos **1 tipo de anomalía**
+- Demo en vivo durante la sesión de revisión
+
+**La BITACORA.md debe incluir:**
+- Una sección por cada unidad del curso explicando cómo aparece ese concepto en el sistema integrador
+- Tabla de contribución de cada integrante al código del integrador
+- Resultados de evaluación del modelo en producción (matriz de confusión, precisión, recall)
+
+---
+
+## Autoevaluación del equipo
+
+Cada integrante evalúa de forma **anónima** la contribución real de sus compañeros al proyecto integrador. La evaluación es privada: tus compañeros nunca ven la calificación que les pusiste; solo la ve el asesor. La autoevaluación vale el **10% de cada revisión de avances**.
+
+Para que sea anónima, la autoevaluación **no se entrega en el repositorio del equipo** (ahí todos se verían). Se entrega por un canal privado y separado:
+
+**Cómo se entrega:**
+1. Cada integrante crea un **repositorio privado** de GitHub solo para su autoevaluación (por ejemplo `autoeval-ia`) y **agrega al asesor como colaborador**. Al ser privado y sin tus compañeros, nadie más puede verlo.
+2. Dentro del repositorio coloca un archivo CSV cuyo nombre sea **tu propio código de alumno**, por ejemplo `2162628.csv`.
+3. El archivo tiene dos columnas, `codigo` y `calificacion`: una fila por cada compañero al que calificas (no te incluyas a ti mismo). La calificación va de 0 a 100.
+4. Entrega la URL de tu repositorio privado en Google Classroom **una sola vez**. Después, **antes de cada una de las 3 revisiones**, actualiza tu archivo `<tu_codigo>.csv` con tu evaluación de esa etapa y haz push.
+
+**Ejemplo:** el alumno `2162628`, en un equipo con `2152525` y `2178899`, sube el archivo `2162628.csv`:
 
 ```csv
 codigo,calificacion
-219894185,100
-218010062,80
-214393994,100
+2152525,90
+2178899,100
 ```
 
----
-
-> ⚠️ **Cada integrante del equipo debe entregar por separado el Google Docs y el ZIP en Google Classroom.**
->
-> La entrega es individual aunque el proyecto sea en equipo. No es suficiente que un compañero entregue por ti.
->
-> **El integrante que no entregue en la fecha límite recibe calificación 0 en el proyecto integrador**, independientemente de su participación en el desarrollo.
+**Reglas:**
+- La calificación que recibe cada integrante es el **promedio de las calificaciones que le asignaron sus compañeros**, ponderado con la evaluación del asesor.
+- **Si no haces push de tu autoevaluación antes de una revisión, pierdes el 10% de la autoevaluación en esa revisión** (cuenta como no entregada). Esto **no afecta a tus compañeros**: el promedio que ellos reciben se calcula solo con las autoevaluaciones que sí se entregaron.
 
 ---
 
-## Rúbrica de evaluación (50%)
+## Calificación
 
-| # | Criterio | Descripción | Puntaje |
-|---|---|---|---|
-| 1 | **Definición del problema** | Describe X, y y tipo de modelo con claridad y justificación | 0 / 5 |
-| 2 | **Contribución individual** | Cada integrante aporta sensores y actuadores distintos, documentado en tabla | 0 / 5 |
-| 3 | **Sistema eléctrico** | Diagrama completo, conexiones correctas, foto del montaje | 0 / 5 |
-| 4 | **Adquisición de datos** | Tabla de condiciones, datos suficientes, scripts funcionales y comentados | 0 / 15 |
-| 5 | **Scripts Arduino** | `manual.ino` y `automatico.ino` funcionales, comentados y claros | 0 / 10 |
-| 6 | **Scripts Python** | `guardar.py`, `entrenar.py` y `produccion.py` reproducibles y bien estructurados | 0 / 15 |
-| 7 | **Producción en tiempo real** | El sistema completo funciona: sensores → modelo → actuadores | 0 / 10 |
-| 8 | **Calidad del reporte** | Organización, ortografía, claridad, rigor técnico | 0 / 5 |
-| 9 | **Entrega completa** | ZIP con estructura exacta, video, `integrantes.csv` | 0 / 5 |
-| | **Subtotal** | | **0 / 75** |
-| E1 | **Extra: Evaluación del modelo** | Métricas en `entrenar.py`, solo se guarda el mejor modelo, justificación | + 0 / 10 |
-| E2 | **Extra: Raspberry Pi** | Producción corriendo en Raspberry Pi, foto y configuración en reporte | + 0 / 10 |
-| | **Total con extras** | | **0 / 95** |
+| Revisión | Semana | Peso |
+|---|---|---|
+| Revisión 1 | Semana 9 | 33% |
+| Revisión 2 | Semana 14 | 34% |
+| Revisión final | Semana 17 | 33% |
 
-> Los 75 puntos base equivalen al **50% de la calificación final**.  
-> Los puntos extra se suman directamente sobre ese 50%.
+> El proyecto integrador equivale al **35% de la calificación final del curso**.
 
 ---
 
 ## Atributos de Egreso
 
-- **AE2A:** Diseñar e implementar sistemas en automatización, control, robótica y sistemas embebidos mediante proyectos integradores.
-- **AE7A:** Favorecer el trabajo colaborativo y el liderazgo en equipos multidisciplinarios.
+- **AE2A Nivel Avanzado:** Diseñar e implementar un sistema de control inteligente end-to-end (sensores -> modelo -> PLC -> actuadores) desplegado sobre hardware industrial real.
+- **AE7A Nivel Avanzado:** Favorecer el trabajo colaborativo y el liderazgo en la integración de módulos de distintos dominios, cumplir fechas de revisión y analizar riesgos del sistema en producción.

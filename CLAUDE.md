@@ -63,3 +63,7 @@ curso/
 ```
 
 > Las instrucciones específicas de cada curso viven en su propio `CLAUDE.md` dentro del subdirectorio.
+
+## Reglas de escritura para materiales del curso
+
+- En los archivos de contenido que ven los alumnos (`index.md`, `practica.md`, `*_gam.md`, `*_extra.md`) **no usar caracteres especiales** que no se puedan escribir con un teclado normal. Caracteres prohibidos: `—` (em dash), `←`, `→`, `⬛`, y similares. Sustituir por: coma, parentesis, dos guiones `--`, `->`, o reformular la frase. Si se necesita una flecha, usar `->` o `<-`. Los archivos internos como `CLAUDE.md` no tienen esta restriccion.
