@@ -129,72 +129,105 @@ sensores → Python → modelo → PLC → actuadores.
 
 ---
 
-## Contenido temático y estado de archivos
+## Organización del curso: por semana, no por tema
+
+El curso está organizado **por semana**, igual que `curso/so/`. La semana es la unidad de
+navegación, de seguimiento y de entrega. No hay directorios por tema.
+
+Esto sustituye a la organización anterior por tema. **El material viejo (`conceptos_flujo_ml/`,
+`aprendizaje_supervisado/`, `aprendizaje_no_supervisado/`, `evaluacion_modelo/`) ya no se usa
+y no se enlaza desde el índice.** Se conserva en el repositorio solo como referencia: al
+desarrollar una semana se puede rescatar de ahí lo que sirva (ecuaciones, ejemplos, código,
+gamificaciones), reescribiéndolo para el caso del semestre y el proyecto progresivo.
 
 ```
 curso/ia/
-  index.md                               <- Índice del curso
-  programa/index.md                      <- Programa institucional completo
-  template.md                            <- Plantilla base para nuevas páginas
-  todo.md                                <- Notas de desarrollo del curso
-  proyecto/index.md                      <- Proyecto final (rúbrica completa)
+  index.md                        <- Índice del curso: lista de 17 semanas
+  programa/index.md               <- Programa institucional completo
+  programa/bibliografia.csv       <- Bibliografía en CSV
+  requisitos/index.md             <- Configuración del entorno
+  CLAUDE.md                       <- Este archivo
+  evaluacion/
+    individual/index.md           <- Prácticas (proyecto individual) ⚠️ pendiente rediseñar al esquema nuevo
+    proyecto_integrador/index.md  <- Proyecto integrador (clasificador multi-dominio)
 
-  U1 - Introducción (semanas 1-2):
-  conceptos_flujo_ml/index.md            <- U1.1: Flujo del ML ⚠️ revisar (agregar bucle de control y caso)
-  bucle_control_inteligente/             <- U1.2: Sensor -> modelo -> actuador ❌ pendiente
-  interfaces_io/                         <- U1.3-1.4: Arduino y PLC como interfaces ❌ pendiente
+  semana-01/index.md ... semana-17/index.md
 
-  U2 - Aprendizaje Supervisado (semanas 3-8):
-  aprendizaje_supervisado/
-    conceptos/index.md                   <- U2.1: Concepto y aplicaciones ✅
-    adquisicion_datos/                   <- U2.2: Adquisición y limpieza de datos de sensores ❌ pendiente
-    preparacion_limpieza_datos/          <- (base anterior de U2.2) ⚠️ reemplazar con contexto de sensores
-    ingenieria_caracteristicas/          <- U2.3a: Features dominio del tiempo ⚠️ revisar (agregar FFT)
-    features_frecuencia/                 <- U2.3b: FFT y densidad espectral de potencia ❌ pendiente
-    modelos_supervisados/                <- U2.4: Clasificador + primer bucle de control con Arduino ⚠️ revisar
-    redes_neuronales/                    <- U2.5: Redes neuronales para señales ✅
-
-  U3 - Aprendizaje No Supervisado (semanas 10-13):
-  aprendizaje_no_supervisado/
-    conceptos/index.md                   <- U3.1: Concepto y aplicaciones ✅
-    preparacion_reduccion/index.md       <- U3.2: Preparación y PCA ✅
-    tecnicas_principales/index.md        <- U3.3: K-Means, DBSCAN, PCA ✅
-    autoencoders/                        <- U3.4: Autoencoders para anomalías ❌ pendiente
-    anomalias_control/                   <- U3.5: Anomalías como señal de control ❌ pendiente
-
-  U4 - Evaluación y Despliegue en PLC (semanas 15-17):
-  evaluacion_modelo/
-    metricas/index.md                    <- U4.1: Métricas ✅
-    validacion_cruzada/index.md          <- U4.2: Validación cruzada ✅
-    hiperparametros/                     <- U4.3: Selección de hiperparámetros ❌ pendiente
-    sobreajuste_subajuste/               <- U4.4: Sobreajuste y subajuste ❌ pendiente
-    despliegue_plc/                      <- U4.5-4.6: Despliegue en PLC S7-1214C ❌ pendiente
-    panorama_frontera/                   <- U4.7: Physical AI, RL en robótica ❌ pendiente
+  (material viejo, solo referencia, sin enlazar)
+  conceptos_flujo_ml/  aprendizaje_supervisado/  aprendizaje_no_supervisado/
+  evaluacion_modelo/  proyecto/  todo.md  template.md
+  prompt_tema.md  prompt_gam.md  prompt_extra.md  prompt_circ.md
 ```
+
+### Estado de las semanas
+
+| Semana | Tema | Estado |
+|---|---|---|
+| 01 | Encuadre y configuración del entorno | ✅ desarrollada |
+| 02 | La primera señal del sensor (U1) | ⬜ esqueleto |
+| 03 | Recolección de datos etiquetados (U2) | ⬜ esqueleto |
+| 04 | Limpieza y normalización de señales (U2) | ⬜ esqueleto |
+| 05 | Características en el dominio del tiempo (U2) | ⬜ esqueleto |
+| 06 | Características en el dominio de la frecuencia (U2) | ⬜ esqueleto |
+| 07 | Entrenamiento del clasificador (U2) | ⬜ esqueleto |
+| 08 | Redes neuronales y primer bucle de control (U2) | ⬜ esqueleto |
+| 09 | Revisión de avances 1 | ✅ completa |
+| 10 | Aprendizaje no supervisado y PCA (U3) | ⬜ esqueleto |
+| 11 | Agrupamiento: K-Means y DBSCAN (U3) | ⬜ esqueleto |
+| 12 | Autoencoders para detección de anomalías (U3) | ⬜ esqueleto |
+| 13 | La anomalía como señal de control (U3) | ⬜ esqueleto |
+| 14 | Revisión de avances 2 | ✅ completa |
+| 15 | Evaluación del modelo (U4) | ⬜ esqueleto |
+| 16 | Sobreajuste y preparación para producción (U4) | ⬜ esqueleto |
+| 17 | Revisión final | ✅ completa |
 
 ---
 
-## Estructura de cada tema (patrón establecido)
+## Estructura de cada semana (patrón establecido)
 
-Cada subdirectorio de tema contiene:
-- `index.md` — actividad de clase (90 min): objetivo, atributos egreso, método, criterios, desarrollo con código Python anclado al caso del semestre
-- `practica.md` — práctica de laboratorio
-- `*_gam.md` + `*_datos.csv` — actividad de gamificación (5–10 min)
-- `*_extra.md` — actividad extra para casa (40 min, vale 0.1 pts sobre calificación final)
+`semana-NN/index.md` tiene siempre las mismas tres secciones:
 
-Los temas de U2 incluyen además código de adquisición de datos desde el Arduino (pyserial).  
-Los temas de U4 (despliegue) incluyen código de comunicación con el PLC (python-snap7).
+- `## Antes de la clase (aprendizaje invertido)` — la guía que el alumno trabaja antes de la sesión
+- `## Durante la clase (aprendizaje activo)` — lo que se hace en clase sobre el caso central
+- `## Tu proyecto esta semana` — lo que el alumno agrega a su proyecto, con nombres de archivo concretos, y siempre cierra con la entrada de `BITACORA.md` y el push
+
+Las semanas de revisión (09, 14, 17) usan una variante:
+
+- `## Antes de la clase (entrega previa)` — con la lista de "Tu sistema debe:"
+- `## Durante la clase (revisión)`
+- `## Lo que se evalúa`
+
+Cuando la semana se desarrolla a fondo (como la 01), se antepone una introducción que conecta
+con el proyecto, y las secciones se expanden con teoría explicada desde cero, código y tablas.
+
+### Archivos del proyecto del alumno (progresión)
+
+Los nombres de archivo se mantienen consistentes entre semanas para que el proyecto crezca de
+forma acumulable:
+
+| Semana | Archivos que agrega o modifica |
+|---|---|
+| 02 | `sensor.ino`, `leer_sensor.py` |
+| 03 | `adquirir.py` -> `datos.csv` |
+| 04 | `limpiar.py` -> `datos_limpios.csv` |
+| 05 | `features.py` -> `features.csv` |
+| 06 | `features.py` (agrega FFT) |
+| 07 | `entrenar.py` -> `modelo.pkl` |
+| 08 | `control.py`, `control.ino` |
+| 10 | `pca.py` |
+| 11 | `clustering.py` |
+| 12 | `autoencoder.py` |
+| 13 | `control.py` (integra anomalías) |
+| 15 | `evaluar.py` |
+| 16 | `prueba_plc.py` |
 
 ---
 
 ## Prompts de generación de materiales
 
-| Archivo | Uso |
-|---|---|
-| `prompt_tema.md` | Generar actividad de clase (90 min) con código Python anclado al caso del semestre |
-| `prompt_gam.md` | Generar actividad de gamificación (5–10 min) |
-| `prompt_extra.md` | Generar actividad extra para casa (40 min) |
-| `prompt_circ.md` | Generar conexiones de circuitos en KiCad |
+Los prompts `prompt_tema.md`, `prompt_gam.md`, `prompt_extra.md` y `prompt_circ.md` fueron
+escritos para la organización por tema y **ya no aplican tal cual**. Sirven como referencia
+(`prompt_circ.md` sigue siendo útil para circuitos en KiCad).
 
 ---
 
