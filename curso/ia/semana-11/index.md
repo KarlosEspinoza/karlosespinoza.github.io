@@ -14,7 +14,7 @@ K-Means y DBSCAN: cómo agrupan, qué parámetros necesitan y en qué se diferen
 
 Agrupamos las piezas sin usar las etiquetas y comparamos los grupos encontrados contra las clases reales. La pregunta interesante no es si acierta, sino qué descubre el algoritmo que nosotros no le dijimos.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Escribe `clustering.py` que aplique K-Means y DBSCAN sobre tus características.
 - Compara los grupos obtenidos contra tus etiquetas reales.

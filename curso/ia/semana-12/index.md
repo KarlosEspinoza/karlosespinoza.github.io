@@ -14,7 +14,7 @@ El autoencoder: comprimir y reconstruir una señal. El error de reconstrucción 
 
 Entrenamos un autoencoder solo con piezas normales y medimos el error de reconstrucción. Definimos el umbral a partir del cual una pieza se considera anómala. Esto le da a tu sistema algo que el clasificador no tiene: la capacidad de decir "esto no se parece a nada que yo conozca".
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Escribe `autoencoder.py` que entrene solo con tus piezas normales y guarde el modelo.
 - Mide el error de reconstrucción y fija un umbral justificado con tus propios datos.

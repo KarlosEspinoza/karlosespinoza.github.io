@@ -14,7 +14,7 @@ Limpieza de datos de sensores: valores faltantes, valores atípicos y normalizac
 
 Revisamos el dataset que recolectaste, detectamos lecturas erróneas y decidimos qué hacer con ellas. Normalizamos las señales para que un sensor que entrega valores grandes no domine sobre otro que entrega valores pequeños.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Escribe `limpiar.py` que cargue `datos.csv`, trate los valores atípicos y guarde `datos_limpios.csv`.
 - Compara la distribución de tus señales antes y después de normalizar.

@@ -164,7 +164,7 @@ curso/ia/
 | Semana | Tema | Estado |
 |---|---|---|
 | 01 | Encuadre y configuración del entorno | ✅ desarrollada |
-| 02 | La primera señal del sensor (U1) | ⬜ esqueleto |
+| 02 | La primera señal del sensor (U1) | ✅ desarrollada |
 | 03 | Recolección de datos etiquetados (U2) | ⬜ esqueleto |
 | 04 | Limpieza y normalización de señales (U2) | ⬜ esqueleto |
 | 05 | Características en el dominio del tiempo (U2) | ⬜ esqueleto |
@@ -189,7 +189,7 @@ curso/ia/
 
 - `## Antes de la clase (aprendizaje invertido)` — la guía que el alumno trabaja antes de la sesión
 - `## Durante la clase (aprendizaje activo)` — lo que se hace en clase sobre el caso central
-- `## Tu proyecto esta semana` — lo que el alumno agrega a su proyecto, con nombres de archivo concretos, y siempre cierra con la entrada de `BITACORA.md` y el push
+- `## Avance de tu proyecto esta semana` — lo que el alumno agrega a su proyecto, con nombres de archivo concretos, y siempre cierra con la entrada de `BITACORA.md` y el push
 
 Las semanas de revisión (09, 14, 17) usan una variante:
 

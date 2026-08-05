@@ -14,7 +14,7 @@ La señal vista en frecuencia: transformada rápida de Fourier (FFT) y densidad 
 
 Calculamos la FFT de las señales del sensor y vemos qué información aparece en frecuencia que no se alcanzaba a ver en el tiempo. Agregamos características espectrales al dataset y comparamos el espectro de los tres tipos de pieza.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Amplía `features.py` para calcular la FFT de cada ventana y extraer al menos dos características espectrales (por ejemplo frecuencia dominante y energía en una banda).
 - Agrégalas a `features.csv`.

@@ -14,7 +14,7 @@ Aprendizaje no supervisado: buscar estructura en los datos sin etiquetas. Reducc
 
 Aplicamos PCA sobre el dataset del clasificador para ver en dos dimensiones cómo se acomodan las piezas. Interpretamos qué características pesan más en cada componente, que es otra forma de preguntarle a los datos cuáles de tus sensores están aportando de verdad.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Escribe `pca.py` que reduzca `features.csv` a dos componentes y grafique el resultado.
 - Colorea los puntos con la etiqueta real para ver si las clases se separan solas.

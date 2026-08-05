@@ -14,7 +14,7 @@ Sobreajuste y subajuste: cómo se diagnostican y cómo se corrigen. Comunicació
 
 Diagnosticamos si el modelo memorizó en lugar de aprender, y lo corregimos. Después hacemos la primera prueba de conexión con el PLC del laboratorio: leer una entrada y escribir una salida desde Python. Es el puente entre tu prototipo y el hardware industrial.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Compara el desempeño en entrenamiento contra el de prueba y diagnostica si hay sobreajuste.
 - Corrige lo que encuentres (más datos, menos características o un modelo más simple) y deja tu modelo final exportado.

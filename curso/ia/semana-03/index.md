@@ -14,7 +14,7 @@ Qué es el aprendizaje supervisado: ejemplos etiquetados, conjunto de entrenamie
 
 Diseñamos el experimento antes de tocar nada: cuántas repeticiones por tipo de pieza, a qué velocidad pasa, dónde empieza y dónde termina cada ventana de señal. Después recolectamos el dataset de los tres tipos de pieza con su etiqueta y lo guardamos en CSV.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Escribe `adquirir.py` que lea la señal y la guarde en `datos.csv` junto con la etiqueta del tipo de pieza.
 - Recolecta al menos 30 repeticiones de cada uno de tus tres tipos (90 en total).

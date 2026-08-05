@@ -14,7 +14,7 @@ Métricas de clasificación (exactitud, precisión, exhaustividad y F1), validac
 
 Evaluamos el modelo como se hace en serio: con validación cruzada en lugar de una sola partición, y comparando configuraciones de hiperparámetros para elegir la versión que se va a producción. Hasta ahora confiabas en un solo número; esta semana aprendes por qué ese número puede engañarte.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Escribe `evaluar.py` que evalúe tu clasificador con validación cruzada y reporte exactitud, precisión, exhaustividad y F1 por clase.
 - Busca los mejores hiperparámetros de tu modelo y documenta la comparación.

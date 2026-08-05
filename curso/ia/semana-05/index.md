@@ -14,7 +14,7 @@ Ingeniería de características en el dominio del tiempo: media, varianza y ampl
 
 Convertimos cada señal completa en un puñado de números que la describen. El modelo no recibe la señal cruda: recibe estas características. Calculamos las de cada ventana y comparamos sus valores entre los tres tipos de pieza.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Escribe `features.py` que recorra `datos_limpios.csv` por ventanas y calcule media, varianza y amplitud pico a pico.
 - Guarda el resultado en `features.csv`: una fila por pieza, una columna por característica, más la etiqueta.

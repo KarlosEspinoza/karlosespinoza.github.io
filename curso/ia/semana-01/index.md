@@ -113,7 +113,7 @@ La primera sesión es de encuadre y la hacemos **sin laptop**, para conocernos y
 
 ---
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 Esta semana siembras el proyecto. Lo que crees ahora es el terreno sobre el que vas a construir las siguientes 16 semanas.
 
