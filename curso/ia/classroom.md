@@ -544,16 +544,14 @@ Classroom nuevo:
 1. **Reutilizar publicación** para traer las publicaciones del ciclo anterior. Trae el texto, no
    las fechas ni las entregas de los alumnos.
 2. Poner **la fecha de entrega** de cada tarea, traduciendo la semana a día concreto según el
-   calendario del ciclo. La semana viene anotada en cada sección de este archivo.
-3. Revisar que los máximos de faltas sigan correspondiendo al total de sesiones del ciclo. Si
-   cambia el número de semanas, cambian los dos números de la tarea "Faltas".
+   calendario oficial del ciclo: <https://escolar.udg.mx/calendarios>. La semana viene anotada en
+   cada sección de este archivo.
+3. Contar en ese mismo calendario las sesiones reales del ciclo (lunes y miércoles entre el
+   inicio y el fin) y **recalcular los máximos de faltas** de la tarea "Faltas". Como el
+   reglamento pide 80% de asistencia para ordinario y 65% para extraordinario, los máximos son
+   el complemento: 20% y 35% del total de sesiones, redondeando hacia abajo. Con 34 sesiones son
+   6 y 11. Hay que actualizar los dos números y también la línea "El curso tiene 34 sesiones"
+   del texto publicado.
 
 Lo que cambia cada semestre son las fechas, el total de sesiones y los dominios que registran los
 alumnos. Todo lo demás se queda igual.
-
----
-
-## Pendientes
-
-- Confirmar con la Academia la base de conteo de sesiones para el número de faltas
-  (34 sesiones -> máx. 6 y 11 faltas; 40 sesiones -> máx. 8 y 14 faltas).

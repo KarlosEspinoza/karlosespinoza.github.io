@@ -60,6 +60,28 @@ En el **proyecto integrador** se agrega autoevaluación entre pares y los pesos 
 - Revisión 2: semana 14 — cierre U3
 - Revisión final: semana 17 — demo del bucle de control en maqueta con PLC
 
+### Asistencia y calendario oficial
+
+Reglamento General de Evaluación y Promoción de Alumnos de la UdeG (2017):
+
+| Periodo | Asistencia mínima | Artículo |
+|---|---|---|
+| Ordinario | 80% | 20, fracc. II |
+| Extraordinario | 65% | 27, fracc. III |
+
+Justificación de faltas (arts. 53 a 55): se tramita ante la **Coordinación de Carrera, no con el
+profesor**, dentro de los cinco días hábiles siguientes al regreso a clases. Tope justificable:
+20% del total de horas de la materia (35% excepcional por la Coordinación). Si una falta
+justificada cae el día de una revisión de avances, profesor y alumno acuerdan otra fecha
+(art. 55). PDF local: `/home/karlos/curso/reglamento-general-de-evaluacion-y-promocion-de-alumnos-udg.pdf`
+
+**Calendario oficial: <https://escolar.udg.mx/calendarios>.** De ahí salen las fechas de inicio y
+fin del ciclo, y de ahí se cuenta el número real de sesiones (lunes y miércoles) del semestre. Ese
+total es lo que define los máximos de faltas publicados en la tarea "Faltas" del Classroom, y las
+fechas de entrega de las tareas semanales. Se recalcula cada ciclo; no se consulta a la Academia.
+
+Con 34 sesiones (17 semanas x 2) los máximos son 6 faltas para ordinario y 11 para extraordinario.
+
 ---
 
 ## Regla principal: Aprendizaje por proyecto progresivo
