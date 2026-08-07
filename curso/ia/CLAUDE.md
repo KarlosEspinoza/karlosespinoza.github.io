@@ -100,6 +100,39 @@ sensores → Python → modelo → PLC → actuadores.
 **El proyecto individual** es ese mismo sistema, cada alumno con su propio dominio de clasificación (materiales, tamaños, estados de una máquina, etc.).  
 **El proyecto integrador** es una versión más completa desarrollada en equipo, desplegada sobre las maquetas del laboratorio con PLC.
 
+### La banda de la maqueta: acceso diferido y dos etapas de datos
+
+La banda transportadora de la maqueta del laboratorio **no se ha usado todavía** y no está
+disponible como herramienta de práctica semanal: es una sola y no es realista que todo el grupo
+trabaje sobre ella cada semana. Esto **no cambia el caso central** (el sistema sigue siendo el
+clasificador de piezas sobre banda transportadora), solo cambia con qué se practica.
+
+**Etapa 1 (semanas 2 a ~14): sin banda.** El alumno monta su sensor en protoboard y **simula el
+paso moviendo la pieza a mano** sobre una superficie frente al sensor. Para el ML basta con que
+la pieza genere una ventana de señal al pasar; qué la mueve es irrelevante para el modelo. Toda
+la práctica de clase se hace así.
+
+**Etapa 2 (cuando el curso lo exija, U4): con banda.** Cada alumno va **por su cuenta a la
+maqueta del laboratorio a capturar sus datos buenos** sobre la banda real. En clase se practica
+el concepto; los datos definitivos salen de la maqueta. Karlos los lleva primero en una sesión
+para explicar cómo se usa (sugerido: semana 15, con una visita corta previa en la 9 o la 14) y
+después cada quien agenda su captura.
+
+Consecuencias que hay que escribir en los materiales, no ocultar:
+
+- **Semana 3 (recolección):** mover la pieza a mano hace que la velocidad varíe entre pasadas, y
+  eso es **fuga de información** si el alumno mueve un tipo de pieza más rápido que otro: el
+  modelo aprende su mano, no la pieza. Regla de protocolo explícita: velocidad pareja, orden
+  alternado entre tipos, y nota en `BITACORA.md` de cómo lo controlaron.
+- **Semanas 4 y 5:** la variabilidad de duración y amplitud entre pasadas es justo lo que
+  resuelven la normalización y las features. Llega sola, aprovecharla.
+- **Semanas 15 y 16 (U4):** en la banda la velocidad es constante y distinta a la de la mano. Ese
+  desajuste entre datos de entrenamiento y datos de producción es **el ejemplo central de la
+  Unidad 4**: "tu modelo funciona en tu escritorio, por qué falla en la maqueta".
+
+En el texto visible al alumno, hasta la U4 la pieza **"pasa frente al sensor"**, no "avanza sobre
+la banda". La banda física se nombra al hablar del sistema final y de la fase de producción.
+
 ### Cómo aplicarlo al generar materiales
 
 - **Un solo caso central**: todos los ejemplos de código de todas las clases pertenecen al mismo sistema. No se inventa un nuevo contexto por tema.

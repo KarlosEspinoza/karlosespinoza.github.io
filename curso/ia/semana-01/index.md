@@ -100,6 +100,10 @@ El **prototipo** lo armas con un **Arduino Nano** y sensores de bajo costo sobre
 
 La **producción** es la maqueta del laboratorio: bandas transportadoras reales, pistones, sensores capacitivos e inductivos, todo gobernado por un **PLC Siemens S7-1214C**. Ahí el modelo ya no le habla al Arduino sino al PLC, y el PLC mueve la banda y el pistón de verdad.
 
+Para tu semestre esto quiere decir algo muy concreto: **la mayor parte del curso vas a trabajar sin banda**. Montas tu sensor en el protoboard y pasas la pieza a mano frente a él, sobre una mesa. Al modelo le da igual qué mueve la pieza; lo que necesita es la señal que se genera cuando pasa.
+
+La banda de la maqueta llega después. Cuando el curso lo exija, en la Unidad 4, vamos al laboratorio, les explico cómo se usa la maqueta y **cada quien va a capturar ahí sus datos buenos**, los definitivos, sobre la banda real. En clase practicamos el concepto; los datos finales de tu sistema salen de la maqueta.
+
 Esta separación no es un capricho didáctico: **es exactamente como se trabaja en la industria**. Nadie entrena un modelo directamente sobre la línea de producción en marcha. Se prototipa aparte, se valida, y solo entonces se despliega. Lo importante es que **el modelo es el mismo**: lo que cambia es a quién le manda la orden al final. Por eso a lo largo del curso vamos a cuidar que tu código separe bien esas dos cosas.
 
 ### Git y GitHub: la memoria de tu proyecto {#git-y-github}
@@ -196,7 +200,7 @@ Deja instalado y funcionando lo siguiente (en tu computadora, con calma, fuera d
 
    ## Descripción
 
-   Sistema que lee señales de sensores mientras una pieza pasa por la banda,
+   Sistema que lee señales de sensores mientras una pieza pasa frente a ellos,
    clasifica de qué tipo es con un modelo de aprendizaje de máquina y acciona
    un actuador para enrutarla. Crece semana a semana con los temas del curso:
    adquisición, características, clasificación, anomalías y despliegue en PLC.

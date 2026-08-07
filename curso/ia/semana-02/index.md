@@ -22,6 +22,7 @@ Suena modesto, pero es el cimiento de todo lo demás. Un modelo de aprendizaje d
 - [Durante la clase (aprendizaje activo)](#durante-la-clase)
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Conecta tu sensor](#conecta-tu-sensor)
+    - [Cómo vas a pasar la pieza](#pasar-la-pieza)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
 
@@ -200,6 +201,14 @@ Si vas a usar otro de los sensores disponibles, revisa en su hoja de datos cuál
 
 Un consejo sobre la elección: **un sensor digital como el A3144 te da solo dos valores**, así que su "señal" es un escalón, no una forma rica. Sirve muy bien combinado con otro sensor, pero él solo te va a dar poca información para clasificar tres tipos. Si tu dominio lo permite, empieza con uno analógico.
 
+### Cómo vas a pasar la pieza {#pasar-la-pieza}
+
+Todavía no usamos la banda de la maqueta. Por ahora **pasas la pieza a mano** frente al sensor, sobre una mesa: eso genera la misma ventana de señal que generaría la banda, y para el modelo es equivalente.
+
+Cuida dos cosas desde hoy, porque de ahí van a salir tus datos: **pasa siempre a la misma velocidad y a la misma distancia del sensor**. Si un tipo de pieza lo pasas más rápido que otro, la diferencia que va a aprender el modelo va a ser tu mano y no la pieza. En la semana 3 volvemos sobre esto con un protocolo de recolección más formal.
+
+Tus datos buenos, los definitivos, los vas a capturar más adelante sobre la banda real de la maqueta del laboratorio, cuando lleguemos a la Unidad 4. Lo que haces ahora es aprender el procedimiento con el que los vas a capturar allá.
+
 ### Prácticas {#practicas}
 
 1. **Programa `sensor.ino`.** Este código está completo, solo ajusta el pin y el `delay()` a tu caso:
@@ -278,5 +287,5 @@ Un consejo sobre la elección: **un sensor digital como el A3144 te da solo dos 
 
 Con tu equipo, comparen las señales que capturó cada quien. Dos cosas que decidir:
 
-1. **Si sus sensores se estorban entre sí.** Dos sensores infrarrojos apuntando cerca uno del otro se interfieren, y un motor cerca de un sensor Hall mete ruido. Es mejor detectarlo ahora que cuando ya estén montados sobre la banda.
+1. **Si sus sensores se estorban entre sí.** Dos sensores infrarrojos apuntando cerca uno del otro se interfieren, y un motor cerca de un sensor Hall mete ruido. Es mejor detectarlo ahora que cuando ya estén montados en la maqueta.
 2. **Un formato común de línea.** Si desde hoy los tres módulos mandan sus datos con el mismo formato (`valor1,valor2,valor3`), el controlador central de la Unidad 2 va a poder leerlos a todos con el mismo código. Anótenlo en el README del equipo.
