@@ -232,7 +232,7 @@ El curso sigue un modelo de aprendizaje invertido: antes de cada sesión el alum
 | 16 | Sobreajuste, subajuste y preparación del modelo para producción (guía) | U4: diagnosticar y corregir problemas del modelo; exportar con joblib; prueba de conexión con PLC S7-1214C |
 | 17 | Integración final y push a GitHub (evidencias y BITACORA.md) | **Revisión final:** demostración del bucle de control sobre la maqueta vía PLC; panorama de frontera: Physical AI, modelos fundacionales y RL en robótica |
 
-# Recursos
+# Recursos {#recursos}
 
 ## Bibliográficos {#bibliograficos}
 
