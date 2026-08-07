@@ -450,7 +450,81 @@ Fecha de entrega: `[martes de la semana 17]`, 23:59.
 
 ---
 
-## 10. Orden en que conviene armarlo
+## 10. Registro de asistencia
+
+La forma que menos trabajo te da y más le sirve al alumno es **una hoja de cálculo de Google
+publicada, identificada por código**, enlazada desde un Material fijo en el tema *Empieza aqui*.
+Tú actualizas una sola hoja y los 30 ven su avance sin preguntarte nada.
+
+### Estructura de la hoja
+
+Una fila por alumno, una columna por sesión. Las columnas se etiquetan **solo con la fecha**, sin
+ninguna palabra que describa el tipo de sesión.
+
+| codigo | 12/01 | 14/01 | 19/01 | 21/01 | ... | faltas | asistencia |
+|---|---|---|---|---|---|---|---|
+| 2162628 | . | . | F | . | | 1 | 96% |
+| 2162631 | . | F | F | . | | 2 | 92% |
+| 2162640 | . | . | . | J | | 0 | 100% |
+
+- `.` asistió, `F` falta, `J` falta justificada.
+- `faltas` = `=CONTAR.SI(rango;"F")`
+- `asistencia` = `=1-CONTAR.SI(rango;"F")/CONTARA(rango)`
+
+Publícala en **Archivo -> Compartir -> Publicar en la web**, y comparte ese enlace, no el de
+edición. Si compartes el de edición te la pueden modificar.
+
+### Cómo la mantienes
+
+- **Lunes después de las 11:00:** de los commits de los bloques de la sesión.
+- **Miércoles:** del pase de lista en clase.
+
+Actualízala el mismo día. Una hoja que se actualiza cada tres semanas no sirve para nada, porque
+el alumno ya no se acuerda de qué día faltó y la reclamación se te vuelve discusión.
+
+### Material: "Tu asistencia"
+
+Tema: **Empieza aqui**. Fíjalo junto a "Como funciona el curso".
+
+> ## Tu asistencia
+>
+> Aquí puedes consultar tus faltas acumuladas en cualquier momento:
+>
+> `[enlace de la hoja publicada]`
+>
+> Búscate por tu **código**, no por tu nombre. Cada columna es una sesión, con su fecha:
+>
+> - `.` asististe
+> - `F` falta
+> - `J` falta justificada
+>
+> Las dos últimas columnas son tus faltas acumuladas y tu porcentaje de asistencia.
+>
+> La asistencia de la sesión del lunes se registra con **los commits de la actividad de la
+> sesión**. Cuenta que el trabajo exista, no que esté bien: si te atoraste y lo escribiste en tu
+> bitácora, cuenta como asistencia.
+>
+> Necesitas **`[porcentaje]`% de asistencia** para tener derecho a evaluación ordinaria.
+>
+> La hoja se actualiza el mismo día de cada sesión. **Si ves un error, dímelo por comentario
+> privado en esta publicación durante la semana en que ocurrió.** Después ya no hay forma de
+> verificarlo y la falta se queda como está.
+
+> **Notas para ti, no para publicar:**
+>
+> - Confirma el porcentaje que aplica en tu programa antes de publicarlo. En la UdeG lo habitual
+>   es 80% para ordinario y 65% para extraordinario, pero verifícalo contra tu reglamento.
+> - Publicar por código y no por nombre es la práctica normal, pero el código sigue siendo
+>   semi-identificable dentro de un grupo chico. Si prefieres privacidad total, la alternativa es
+>   crear en Classroom una tarea "Asistencia" sin entrega y usar la calificación como número de
+>   faltas: cada quien ve solo la suya. Pierdes el detalle por fecha, que es justamente lo que
+>   permite que reclamen a tiempo.
+> - El plazo para reclamar es lo que te protege. Sin él, en diciembre te llegan reclamaciones de
+>   sesiones de septiembre que ya no puedes verificar.
+
+---
+
+## 11. Orden en que conviene armarlo
 
 1. Crear la clase y los 7 temas.
 2. Publicar "Como funciona el curso" (Material, tema *Empieza aqui*).
@@ -459,5 +533,6 @@ Fecha de entrega: `[martes de la semana 17]`, 23:59.
 5. Crear la tarea de registro de equipo.
 6. Crear las tres revisiones de avances, con sus fechas. Así el calendario del semestre queda
    armado desde el primer día y los alumnos ven a qué le están apuntando.
-7. Publicar semana 1 y semana 2.
-8. Las semanas 3 a 17 se van publicando conforme se desarrollen, con la plantilla del punto 6.
+7. Crear la hoja de asistencia y publicar el Material "Tu asistencia".
+8. Publicar semana 1 y semana 2.
+9. Las semanas 3 a 17 se van publicando conforme se desarrollen, con la plantilla del punto 6.
