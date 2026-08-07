@@ -12,11 +12,26 @@ Suena modesto, pero es el cimiento de todo lo demás. Un modelo de aprendizaje d
 
 ---
 
-## Antes de la clase (aprendizaje invertido)
+- [Antes de la clase (aprendizaje invertido)](#antes-de-la-clase)
+    - [El reparto de papeles: Arduino y Python](#reparto-de-papeles)
+    - [El puerto serial: un canal de texto](#puerto-serial)
+    - [El protocolo: una lectura por línea](#el-protocolo)
+    - [pyserial en cuatro pasos](#pyserial)
+    - [La frecuencia de muestreo](#frecuencia-de-muestreo)
+    - [Una señal no es un número: es una forma](#senal-es-una-forma)
+- [Durante la clase (aprendizaje activo)](#durante-la-clase)
+- [Avance de tu proyecto esta semana](#avance-del-proyecto)
+    - [Conecta tu sensor](#conecta-tu-sensor)
+    - [Prácticas](#practicas)
+    - [Proyecto integrador](#proyecto-integrador)
+
+---
+
+## Antes de la clase (aprendizaje invertido) {#antes-de-la-clase}
 
 Lee esta sección con calma antes de la sesión. En clase la vamos a usar para conectar tu sensor y ver su señal por primera vez.
 
-### El reparto de papeles: Arduino y Python
+### El reparto de papeles: Arduino y Python {#reparto-de-papeles}
 
 Una pregunta razonable antes de empezar: si el Arduino ya lee el sensor, ¿para qué necesitamos Python?
 
@@ -45,7 +60,7 @@ Así que el reparto queda así, y se mantiene todo el semestre:
 
 El Arduino es el músculo: toca el mundo físico. Python es el cerebro: recuerda, aprende y decide. Y el cable USB entre los dos es el sistema nervioso. Esta semana solo construimos la flecha de ida (sensor -> Python). La flecha de regreso, la que acciona el actuador, la cerramos en la semana 8.
 
-### El puerto serial: un canal de texto
+### El puerto serial: un canal de texto {#puerto-serial}
 
 El Arduino y Python se comunican por el **puerto serial**, que va montado sobre el mismo cable USB con el que programas la tarjeta.
 
@@ -55,7 +70,7 @@ Para que ambos lados se entiendan tienen que estar de acuerdo en la **velocidad*
 
 En este curso usaremos **115200 baudios** en lugar de los 9600 típicos. La razón es que vamos a muestrear señales rápido, y a 9600 baudios el canal se satura y empieza a perder lecturas. Con 115200 tienes margen de sobra.
 
-### El protocolo: una lectura por línea
+### El protocolo: una lectura por línea {#el-protocolo}
 
 Necesitamos que los datos lleguen con una forma predecible. La convención que usaremos todo el semestre es simple: **una lectura por línea, y si hay varios sensores, separados por comas**.
 
@@ -81,7 +96,7 @@ Es el mismo formato de un archivo CSV, y no es casualidad: la semana que viene v
 
 Una regla importante: **el Arduino manda solo datos, nunca mensajes para humanos**. Nada de `Serial.println("Leyendo sensor...")`. Ese texto también llega por el mismo canal y rompe a Python cuando intente convertirlo a número. Si necesitas depurar, usa el Monitor Serie del Arduino IDE, pero quita esos mensajes antes de conectar Python.
 
-### pyserial en cuatro pasos
+### pyserial en cuatro pasos {#pyserial}
 
 La biblioteca **pyserial** es la que deja a Python leer ese canal. Lo esencial son cuatro pasos:
 
@@ -108,7 +123,7 @@ valor = float(linea)
 
 **4. Cerrar el puerto** al terminar, con `ser.close()`. Si no lo cierras, el puerto queda ocupado y la siguiente ejecución falla con un error de permiso o de puerto en uso. Si te pasa, cierra el Monitor Serie del Arduino IDE (que también ocupa el puerto) y vuelve a intentar.
 
-Un detalle que te va a ahorrar corajes: **de vez en cuando llega una línea incompleta**, sobre todo la primera. No es un bug tuyo, es normal en comunicación serial. Por eso conviene envolver la conversión en un `try` y simplemente ignorar lo que no se pueda convertir:
+Un detalle que te va a ahorrar corajes: **de vez en cuando llega una línea incompleta**, sobre todo la primera. Pasa porque los dos programas corren por su cuenta y sin sincronizarse: Python puede pedir una línea justo cuando el Arduino apenas mandó la mitad, y `readline()` deja de esperar el salto de línea (por el `timeout`) y devuelve el pedazo que alcanzó a llegar. La primera casi siempre falla porque al abrir el puerto el buffer ya traía un fragmento suelto de antes. Por eso conviene envolver la conversión en un `try` y simplemente ignorar lo que no se pueda convertir:
 
 ```python
 try:
@@ -117,7 +132,7 @@ except ValueError:
     continue   # linea incompleta o basura, la saltamos
 ```
 
-### La frecuencia de muestreo
+### La frecuencia de muestreo {#frecuencia-de-muestreo}
 
 En el Arduino, el `delay()` al final del `loop()` decide cada cuánto tomas una lectura. Ese intervalo define la **frecuencia de muestreo**: cuántas muestras por segundo obtienes.
 
@@ -128,11 +143,13 @@ delay(100)  ->  una lectura cada 100 ms  ->  10 muestras por segundo  (10 Hz)
 
 Elegir bien este número importa más de lo que parece. Si muestreas **demasiado lento**, la pieza pasa entre dos lecturas y te pierdes el evento completo: en tu CSV no queda rastro de que algo pasó. Si muestreas **demasiado rápido**, generas montañas de datos casi idénticos que no aportan información y sí hacen más lento todo lo demás.
 
+Además hay un techo que no depende de ti: **cada sensor tiene su propia velocidad de respuesta**. El HC-SR04 necesita unos 60 ms para completar una medición y el LM35 tarda en reaccionar a un cambio de temperatura, así que pedirles lecturas más seguido que eso no te da más información, solo repite el valor anterior.
+
 La regla práctica para esta semana: **necesitas al menos 20 o 30 muestras mientras la pieza cruza frente al sensor**. Si tu pieza tarda medio segundo en pasar, 100 Hz te da unas 50 muestras, que está bien. Si tarda apenas una décima de segundo, vas a necesitar muestrear más rápido.
 
 En la semana 6, cuando veamos frecuencia, vamos a volver sobre esto con más rigor. Por ahora quédate con la idea de que **la frecuencia de muestreo es una decisión de diseño, no un número que se pone al azar**.
 
-### Una señal no es un número: es una forma
+### Una señal no es un número: es una forma {#senal-es-una-forma}
 
 Este es el concepto central de la semana, y el que cambia cómo vas a pensar tu proyecto.
 
@@ -155,7 +172,7 @@ Por eso hoy no basta con ver que el sensor responde. Lo que buscas es **reconoce
 
 ---
 
-## Durante la clase (aprendizaje activo)
+## Durante la clase (aprendizaje activo) {#durante-la-clase}
 
 Traes tu Arduino, tu sensor y tus piezas. Trabajamos en tres momentos:
 
@@ -167,9 +184,9 @@ Traes tu Arduino, tu sensor y tus piezas. Trabajamos en tres momentos:
 
 ---
 
-## Avance de tu proyecto esta semana
+## Avance de tu proyecto esta semana {#avance-del-proyecto}
 
-### Conecta tu sensor
+### Conecta tu sensor {#conecta-tu-sensor}
 
 Elige el sensor con el que vas a trabajar y conéctalo. Según el tipo de salida, así se lee:
 
@@ -183,7 +200,7 @@ Si vas a usar otro de los sensores disponibles, revisa en su hoja de datos cuál
 
 Un consejo sobre la elección: **un sensor digital como el A3144 te da solo dos valores**, así que su "señal" es un escalón, no una forma rica. Sirve muy bien combinado con otro sensor, pero él solo te va a dar poca información para clasificar tres tipos. Si tu dominio lo permite, empieza con uno analógico.
 
-### Prácticas
+### Prácticas {#practicas}
 
 1. **Programa `sensor.ino`.** Este código está completo, solo ajusta el pin y el `delay()` a tu caso:
 
@@ -257,7 +274,7 @@ Un consejo sobre la elección: **un sensor digital como el A3144 te da solo dos 
    git push
    ```
 
-### Proyecto integrador
+### Proyecto integrador {#proyecto-integrador}
 
 Con tu equipo, comparen las señales que capturó cada quien. Dos cosas que decidir:
 

@@ -12,11 +12,24 @@ Todo el curso gira alrededor de un solo sistema que vas a construir tú mismo: u
 
 ---
 
-## Antes de la clase (aprendizaje invertido)
+- [Antes de la clase (aprendizaje invertido)](#antes-de-la-clase)
+    - [Programar reglas contra aprender de los datos](#reglas-contra-datos)
+    - [El bucle de control inteligente](#bucle-de-control)
+    - [Del prototipo al hardware industrial](#prototipo-y-produccion)
+    - [Git y GitHub: la memoria de tu proyecto](#git-y-github)
+- [Durante la clase (aprendizaje activo)](#durante-la-clase)
+- [Avance de tu proyecto esta semana](#avance-del-proyecto)
+    - [Prepara tu entorno](#prepara-tu-entorno)
+    - [Prácticas](#practicas)
+    - [Proyecto integrador](#proyecto-integrador)
+
+---
+
+## Antes de la clase (aprendizaje invertido) {#antes-de-la-clase}
 
 Lee esta sección con calma antes de la sesión. Está escrita para que la entiendas por tu cuenta. En clase la usaremos como punto de partida para darle forma a tu proyecto.
 
-### Programar reglas contra aprender de los datos
+### Programar reglas contra aprender de los datos {#reglas-contra-datos}
 
 Hasta ahora, cuando querías que un Arduino tomara una decisión, escribías la regla tú mismo:
 
@@ -39,7 +52,7 @@ En la programación tradicional tú aportas la regla. En ML tú aportas los **ej
 
 Eso es lo que vas a construir. No vas a escribir el `if` que separa tus piezas: vas a **recolectar ejemplos de cada tipo de pieza y dejar que el modelo encuentre la frontera**.
 
-### El bucle de control inteligente
+### El bucle de control inteligente {#bucle-de-control}
 
 Aquí está la idea que sostiene todo el curso. Un modelo que solo imprime predicciones en la pantalla es un ejercicio de laboratorio. Lo que hace a este curso de mecatrónica y no de ciencia de datos es que **el modelo mueve algo**.
 
@@ -79,7 +92,7 @@ Las cuatro unidades del curso son, literalmente, las cuatro capas de ese bucle. 
 
 Al final del semestre tu sistema será un clasificador funcional de extremo a extremo: **sensores -> Python -> modelo -> PLC -> actuadores**.
 
-### Del prototipo al hardware industrial
+### Del prototipo al hardware industrial {#prototipo-y-produccion}
 
 Vamos a trabajar en dos escenarios, y conviene que entiendas desde hoy por qué son dos y no uno.
 
@@ -89,7 +102,7 @@ La **producción** es la maqueta del laboratorio: bandas transportadoras reales,
 
 Esta separación no es un capricho didáctico: **es exactamente como se trabaja en la industria**. Nadie entrena un modelo directamente sobre la línea de producción en marcha. Se prototipa aparte, se valida, y solo entonces se despliega. Lo importante es que **el modelo es el mismo**: lo que cambia es a quién le manda la orden al final. Por eso a lo largo del curso vamos a cuidar que tu código separe bien esas dos cosas.
 
-### Git y GitHub: la memoria de tu proyecto
+### Git y GitHub: la memoria de tu proyecto {#git-y-github}
 
 Falta una pieza del entorno, y es tan importante como el Arduino: el control de versiones.
 
@@ -103,7 +116,7 @@ Un detalle que importa en ML y que no aplicaba en otros cursos: **tus datos tamb
 
 ---
 
-## Durante la clase (aprendizaje activo)
+## Durante la clase (aprendizaje activo) {#durante-la-clase}
 
 La primera sesión es de encuadre y la hacemos **sin laptop**, para conocernos y construir entre todos el mapa de los sistemas que vamos a desarrollar. Dos dinámicas:
 
@@ -113,11 +126,11 @@ La primera sesión es de encuadre y la hacemos **sin laptop**, para conocernos y
 
 ---
 
-## Avance de tu proyecto esta semana
+## Avance de tu proyecto esta semana {#avance-del-proyecto}
 
 Esta semana siembras el proyecto. Lo que crees ahora es el terreno sobre el que vas a construir las siguientes 16 semanas.
 
-### Prepara tu entorno
+### Prepara tu entorno {#prepara-tu-entorno}
 
 Deja instalado y funcionando lo siguiente (en tu computadora, con calma, fuera de clase):
 
@@ -149,7 +162,7 @@ Deja instalado y funcionando lo siguiente (en tu computadora, con calma, fuera d
    git config --global user.email "tucorreo@ejemplo.com"
    ```
 
-### Prácticas
+### Prácticas {#practicas}
 
 1. **Elige tu dominio de clasificación** (recuerda: nadie más del grupo puede tener el mismo) y regístralo conmigo. Necesitas **tres tipos de pieza** que se puedan distinguir con los sensores disponibles:
 
@@ -214,7 +227,7 @@ Deja instalado y funcionando lo siguiente (en tu computadora, con calma, fuera d
    git push
    ```
 
-### Proyecto integrador
+### Proyecto integrador {#proyecto-integrador}
 
 1. **Forma tu equipo** de 2 o 3 integrantes.
 2. **Verifiquen que cada integrante tenga un dominio diferente**, porque cada dominio será un módulo del clasificador multi-dominio que construirán juntos. Por ejemplo: uno clasifica por material, otro por tamaño, otro detecta piezas anómalas.
