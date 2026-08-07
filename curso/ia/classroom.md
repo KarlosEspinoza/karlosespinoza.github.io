@@ -1,7 +1,15 @@
 # Google Classroom - IE043 Inteligencia Artificial
 
-Textos listos para copiar y pegar al armar el Classroom. Las fechas van como `[fecha]` porque
-dependen del calendario del ciclo.
+Textos listos para copiar y pegar al armar el Classroom.
+
+**Sin fechas, para poder reusar el curso.** Ningún texto publicable menciona una fecha: dicen
+"al término de la semana 1", "el miércoles", "antes de la fecha de entrega". Lo único que se ata
+al calendario es **el campo de fecha de entrega de Classroom**, que va aparte de la descripción.
+Al reusar el curso el siguiente semestre, con "Reutilizar publicación" copias el texto intacto y
+lo único que vuelves a poner son esas fechas, mapeando semana a día.
+
+Por eso en las notas de cada publicación la fecha aparece como semana ("miércoles de la semana
+2"), que es lo que se traduce a día concreto cada ciclo.
 
 **Cómo está escrito este archivo.** Todo lo que va dentro de un bloque de código se copia y se
 pega tal cual en Classroom. Está en **texto plano a propósito**: Classroom no renderiza markdown
@@ -84,7 +92,7 @@ COMO ENTREGAS
 
 No se entrega nada por Classroom, salvo una cosa: la URL de tu repositorio de GitHub, una sola vez en todo el semestre. De ahí en adelante tu entrega es hacer push.
 
-Tu repositorio es privado, y me agregas a mí como colaborador para que pueda revisarlo (Settings, Collaborators, Add people, usuario [USUARIO_GITHUB_DEL_PROFESOR]). Si no me mandas esa invitación, no puedo ver tu trabajo y cuenta como no entregado. Al terminar el semestre puedes cambiarlo a público si quieres enseñarlo cuando busques trabajo.
+Tu repositorio es privado, y me agregas a mí como colaborador para que pueda revisarlo (Settings, Collaborators, Add people, usuario KarlosEspinoza). Si no me mandas esa invitación, no puedo ver tu trabajo y cuenta como no entregado. Al terminar el semestre puedes cambiarlo a público si quieres enseñarlo cuando busques trabajo.
 
 Tu repositorio tiene esta estructura, y es la misma para todo el grupo:
 
@@ -162,7 +170,7 @@ Para cada revisión tienes que haber hecho push antes del día acordado. Si no h
 ## 4. Tarea única: entrega de la URL de tu repositorio
 
 Tipo: **Pregunta -> Respuesta corta** (así ves todas las URL en una sola lista).
-Tema: **Empieza aqui**. Sin calificación. Fecha de entrega: `[fin de la semana 1]`.
+Tema: **Empieza aqui**. Sin calificación. Fecha de entrega: al término de la semana 1.
 Deja activada la opción de que puedan editar su respuesta: varios van a pegar mal la URL.
 
 **Título:**
@@ -179,7 +187,7 @@ Esta es la única entrega que haces por Classroom en todo el semestre. De aquí 
 Antes de responder, tu repositorio debe tener:
 
 - Nombre clasificador-piezas-ia y visibilidad privada.
-- Mi usuario [USUARIO_GITHUB_DEL_PROFESOR] agregado como colaborador (Settings, Collaborators, Add people). Sin esa invitación no puedo revisarte y tu trabajo cuenta como no entregado.
+- Mi usuario KarlosEspinoza agregado como colaborador (Settings, Collaborators, Add people). Sin esa invitación no puedo revisarte y tu trabajo cuenta como no entregado.
 - README.md con tu nombre, tu código y tu dominio de clasificación.
 - BITACORA.md con la sección de la semana 1.
 - Las carpetas codigo/, datos/ y figuras/.
@@ -196,7 +204,7 @@ https://karlosespinoza.github.io/curso/ia/semana-01
 ## 5. Tarea: registro de equipo del proyecto integrador
 
 Tipo: **Tarea** con archivo adjunto. Tema: **Proyecto integrador**. Sin calificación.
-Fecha: `[fin de la semana 1]`.
+Fecha: al término de la semana 1.
 
 **Entregan todos los integrantes el mismo archivo**, no uno solo por el equipo. Así Classroom te
 marca de inmediato a quien no entregó, que casi siempre es el que se quedó sin equipo, y de paso
@@ -315,7 +323,7 @@ Deja tus dudas de la sesión como comentario en esta publicación.
 
 ### Tarea
 
-Fecha: `[miercoles de la semana 1]`, 9:00. Sin calificación.
+Fecha: miércoles de la semana 1, 9:00. Sin calificación.
 Título: `Semana 1 - avance en tu repositorio`
 
 ```
@@ -359,7 +367,7 @@ Deja tus dudas de la sesión como comentario en esta publicación.
 
 ### Tarea
 
-Fecha: `[miercoles de la semana 2]`, 9:00. Sin calificación.
+Fecha: miércoles de la semana 2, 9:00. Sin calificación.
 Título: `Semana 2 - avance en tu repositorio`
 
 ```
@@ -383,7 +391,7 @@ Estas sí llevan calificación (100 puntos) y son las que alimentan el libro de 
 
 ### Revisión 1 - semana 9
 
-Fecha de entrega: `[martes de la semana 9]`, 23:59 (el push va **antes** de la sesión).
+Fecha de entrega: martes de la semana 9, 23:59 (el push va **antes** de la sesión).
 Título: `Revisión de avances 1 - cierre de las Unidades 1 y 2`
 
 ```
@@ -406,7 +414,7 @@ Detalle: https://karlosespinoza.github.io/curso/ia/semana-09
 
 ### Revisión 2 - semana 14
 
-Fecha de entrega: `[martes de la semana 14]`, 23:59.
+Fecha de entrega: martes de la semana 14, 23:59.
 Título: `Revisión de avances 2 - cierre de la Unidad 3`
 
 ```
@@ -417,7 +425,7 @@ Detalle: https://karlosespinoza.github.io/curso/ia/semana-14
 
 ### Revisión final - semana 17
 
-Fecha de entrega: `[martes de la semana 17]`, 23:59.
+Fecha de entrega: martes de la semana 17, 23:59.
 Título: `Revisión final - demo del bucle de control`
 
 ```
@@ -528,9 +536,24 @@ Dímelo por comentario privado en esta tarea durante la misma semana en que ocur
 
 ---
 
+## Reusar el curso el siguiente semestre
+
+Los textos no llevan fechas ni nombres de ciclo, así que se reusan tal cual. Al abrir el
+Classroom nuevo:
+
+1. **Reutilizar publicación** para traer las publicaciones del ciclo anterior. Trae el texto, no
+   las fechas ni las entregas de los alumnos.
+2. Poner **la fecha de entrega** de cada tarea, traduciendo la semana a día concreto según el
+   calendario del ciclo. La semana viene anotada en cada sección de este archivo.
+3. Revisar que los máximos de faltas sigan correspondiendo al total de sesiones del ciclo. Si
+   cambia el número de semanas, cambian los dos números de la tarea "Faltas".
+
+Lo que cambia cada semestre son las fechas, el total de sesiones y los dominios que registran los
+alumnos. Todo lo demás se queda igual.
+
+---
+
 ## Pendientes
 
-- Sustituir `[USUARIO_GITHUB_DEL_PROFESOR]` por el usuario real de GitHub (aparece en las
-  secciones 3 y 4, y en `semana-01/index.md`).
-- Llenar las fechas `[fecha]` con el calendario del ciclo.
-- Confirmar con la Academia la base de conteo de sesiones para el número de faltas.
+- Confirmar con la Academia la base de conteo de sesiones para el número de faltas
+  (34 sesiones -> máx. 6 y 11 faltas; 40 sesiones -> máx. 8 y 14 faltas).

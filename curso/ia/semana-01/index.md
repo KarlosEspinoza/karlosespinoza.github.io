@@ -98,7 +98,7 @@ git clone https://github.com/TU_USUARIO/clasificador-piezas-ia.git
 cd clasificador-piezas-ia
 ```
 
-Como está privado, tienes que darme acceso o no voy a poder revisarte. En tu repositorio, ve a **Settings -> Collaborators -> Add people**, escribe mi usuario `[USUARIO_GITHUB_DEL_PROFESOR]` y manda la invitación. **Sin esa invitación tu trabajo no existe para mí**, así que hazlo hoy y no la semana de la revisión.
+Como está privado, tienes que darme acceso o no voy a poder revisarte. En tu repositorio, ve a **Settings -> Collaborators -> Add people**, escribe mi usuario `KarlosEspinoza` y manda la invitación. **Sin esa invitación tu trabajo no existe para mí**, así que hazlo hoy y no la semana de la revisión.
 
 Al terminar el semestre puedes cambiarlo a público si quieres: es un proyecto completo y sirve para enseñarlo cuando busques trabajo.
 
