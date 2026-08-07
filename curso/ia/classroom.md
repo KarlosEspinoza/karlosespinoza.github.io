@@ -195,6 +195,8 @@ Antes de responder, tu repositorio debe tener:
 Responde con la URL completa, así:
 https://github.com/tu-usuario/clasificador-piezas-ia
 
+Y en tu computadora deben quedar instalados: Python (marcando la casilla "Add Python to PATH"), Visual Studio Code, Git, el Arduino IDE y el driver CH340. Ese último es importante: sin él Windows no reconoce el Arduino Nano y la tarjeta no aparece por ningún lado. Anota también el puerto COM que le toca a tu tarjeta.
+
 Los pasos están en la guía de la semana 1:
 https://karlosespinoza.github.io/curso/ia/semana-01
 ```
