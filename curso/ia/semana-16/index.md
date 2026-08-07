@@ -185,6 +185,12 @@ Tu Python se comunica con él por Ethernet, con la biblioteca **python-snap7**:
 pip install python-snap7
 ```
 
+Si al importarla te sale un error de que no encuentra `snap7.dll`, es porque las versiones viejas de la biblioteca no traen la DLL incluida en Windows. Se resuelve actualizando:
+
+```bash
+pip install --upgrade python-snap7
+```
+
 La arquitectura queda así:
 
 ```
@@ -234,7 +240,11 @@ plc.disconnect()
 
 Tres cosas que hay que tener claras antes del miércoles:
 
-**La red.** La PC de control es la `192.168.0.10` y va conectada por Ethernet directo al PLC. Si tu laptop no está en esa red, no vas a conectar. Verifica con `ping 192.168.0.1`.
+**La red.** La PC de control es la `192.168.0.10` y va conectada por Ethernet directo al PLC. Si tu laptop no está en esa red, no vas a conectar. Verifica con `ping 192.168.0.1` desde la terminal.
+
+Y en Windows hay un paso extra: la mayoría de las laptops ya no traen puerto Ethernet, así que se usa un adaptador USB. Además, hay que **poner la IP fija a mano**, porque el PLC no reparte direcciones: Configuración, Red e Internet, Ethernet, Editar la asignación de IP, cambiar de Automático (DHCP) a Manual, y poner IP `192.168.0.20` (o la que te diga yo), máscara `255.255.255.0`. Si la dejas en automático, Windows se asigna una dirección `169.254.x.x` y el ping falla siempre.
+
+**El firewall de Windows** puede bloquear la conexión la primera vez. Si al conectar aparece el aviso de Windows Defender, dale permiso en redes privadas.
 
 **PUT/GET tiene que estar habilitado** en la configuración del PLC, y los bloques de datos sin protección de acceso optimizado. Eso ya está configurado en el equipo del laboratorio.
 

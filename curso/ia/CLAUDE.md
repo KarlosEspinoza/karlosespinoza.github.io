@@ -172,6 +172,36 @@ la banda". La banda física se nombra al hablar del sistema final y de la fase d
 
 ---
 
+## Sistema operativo de los alumnos: Windows
+
+**Todos los alumnos usan Windows.** En 6 años de impartir el curso solo hubo un caso de macOS.
+No se enseña Linux ni se documentan sus comandos: es tiempo perdido para este grupo.
+
+Reglas al escribir materiales:
+
+- **Puertos serie:** siempre `COM3` (o `COM4`, `COM5`) como valor por defecto. Nunca
+  `/dev/ttyUSB0` ni rutas de macOS. Se menciona que el número cambia entre puertos USB.
+- **Comandos de terminal:** los de la terminal integrada de Visual Studio Code (PowerShell).
+  Evitar sintaxis que solo funcione en `bash` o solo en `cmd`. Ejemplo: `mkdir` con varios
+  argumentos falla en PowerShell, así que se escriben en líneas separadas.
+- **Rutas en Python:** con `/` (`datos/datos.csv`); funciona igual en Windows y evita el
+  problema de las diagonales invertidas y los escapes.
+
+Tropiezos de Windows ya documentados en los materiales, que se repiten cada semestre:
+
+| Problema | Dónde está documentado |
+|---|---|
+| `python` abre la Microsoft Store (alias de ejecución) | semana 01, bloque 1 |
+| Falta "Add Python to PATH" al instalar | semana 01, bloque 1 |
+| **Driver CH340**: el Arduino Nano no aparece sin él | semana 01, bloque 1 |
+| Encontrar el puerto en el Administrador de dispositivos | semanas 01 y 02 |
+| `PermissionError: Acceso denegado` al abrir el puerto (Monitor Serie abierto) | semana 02, bloque 2 |
+| IP fija manual para hablarle al PLC (si no, Windows toma `169.254.x.x`) | semana 16, bloque 2 |
+| Firewall de Windows bloqueando la conexión al PLC | semana 16, bloque 2 |
+| `snap7.dll` no encontrada en `python-snap7` viejo | semana 16, bloque 2 |
+
+---
+
 ## Stack tecnológico del curso
 
 - **Prototipo:** Arduino Nano + sensores low-cost + pyserial

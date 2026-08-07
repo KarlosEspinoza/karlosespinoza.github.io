@@ -169,11 +169,15 @@ git push
 
 La biblioteca **pyserial** es la que deja a Python leer ese canal. Lo esencial son cuatro pasos:
 
-**1. Abrir el puerto.** Necesitas su nombre (`COM3` en Windows, `/dev/ttyUSB0` en Linux, algo como `/dev/tty.usbserial-XXXX` en macOS) y la misma velocidad que pusiste en el Arduino:
+**1. Abrir el puerto.** Necesitas su nombre y la misma velocidad que pusiste en el Arduino.
+
+En Windows los puertos se llaman `COM` más un número: `COM3`, `COM4`, `COM7`. El tuyo lo anotaste la semana pasada, y si no, lo vuelves a ver en el **Administrador de dispositivos**, sección **Puertos (COM y LPT)**, o en el propio Arduino IDE, en Herramientas, Puerto.
+
+Dos cosas que te van a pasar y conviene saberlas de una vez: **el número puede cambiar** si conectas la tarjeta en otro puerto USB, y **si no aparece ningún COM**, falta el driver CH340 de la semana 1.
 
 ```python
 import serial
-ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=1)
+ser = serial.Serial('COM3', 115200, timeout=1)
 ```
 
 **2. Esperar dos segundos.** Esto sorprende a todo el mundo la primera vez: **abrir el puerto reinicia el Arduino**. Si empiezas a leer de inmediato, las primeras líneas llegan cortadas o vacías porque la tarjeta apenas está arrancando. Se resuelve esperando:
@@ -190,7 +194,14 @@ linea = ser.readline().decode('utf-8').strip()
 valor = float(linea)
 ```
 
-**4. Cerrar el puerto** al terminar, con `ser.close()`. Si no lo cierras, el puerto queda ocupado y la siguiente ejecución falla con un error de permiso o de puerto en uso. Si te pasa, cierra el Monitor Serie del Arduino IDE (que también ocupa el puerto) y vuelve a intentar.
+**4. Cerrar el puerto** al terminar, con `ser.close()`. Si no lo cierras, el puerto queda ocupado y la siguiente ejecución truena con este mensaje, que vas a ver muchas veces:
+
+```
+serial.serialutil.SerialException: could not open port 'COM3':
+PermissionError(13, 'Acceso denegado.', None, 5)
+```
+
+**Acceso denegado casi nunca es un problema de permisos: es que alguien más tiene el puerto abierto.** Los tres sospechosos, en orden: el Monitor Serie del Arduino IDE, otra terminal donde dejaste el script corriendo, o tu propio script anterior que se cerró sin llegar al `ser.close()`. Cierra el Monitor Serie, detén lo que esté corriendo con `Ctrl + C`, y vuelve a intentar. Si nada de eso funciona, desconecta y vuelve a conectar el cable USB.
 
 Un detalle que te va a ahorrar corajes: **de vez en cuando llega una línea incompleta**, sobre todo la primera. Pasa porque los dos programas corren por su cuenta y sin sincronizarse: Python puede pedir una línea justo cuando el Arduino apenas mandó la mitad, y `readline()` deja de esperar el salto de línea (por el `timeout`) y devuelve el pedazo que alcanzó a llegar. La primera casi siempre falla porque al abrir el puerto el buffer ya traía un fragmento suelto de antes. Por eso conviene envolver la conversión en un `try` y simplemente ignorar lo que no se pueda convertir:
 
@@ -247,7 +258,7 @@ import serial
 import time
 import matplotlib.pyplot as plt
 
-PUERTO = '/dev/ttyUSB0'   # Windows: 'COM3'
+PUERTO = 'COM3'          # el tuyo puede ser otro: COM4, COM5...
 BAUDIOS = 115200
 N_MUESTRAS = 200          # con delay(10) son unos 2 segundos
 

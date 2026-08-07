@@ -163,7 +163,7 @@ import serial
 import time
 import csv
 
-PUERTO = '/dev/ttyUSB0'   # Windows: 'COM3'
+PUERTO = 'COM3'          # el tuyo puede ser otro: COM4, COM5...
 BAUDIOS = 115200
 N_MUESTRAS = 200          # largo de cada ventana
 ARCHIVO = 'datos/datos.csv'

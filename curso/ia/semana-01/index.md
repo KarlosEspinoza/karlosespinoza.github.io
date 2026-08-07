@@ -61,6 +61,8 @@ Un detalle que importa en aprendizaje de máquina y que no aplicaba en otros cur
 
 #### Instala lo que vas a necesitar
 
+Todo el curso se trabaja en **Windows**. Los comandos que verás en las guías van escritos para la terminal de Visual Studio Code, que abres con `Ctrl + ñ` (o el menú Terminal, Nueva terminal).
+
 1. **Python y Visual Studio Code.** Si ya los traes de cursos anteriores, solo verifica que respondan:
 
    ```bash
@@ -68,7 +70,9 @@ Un detalle que importa en aprendizaje de máquina y que no aplicaba en otros cur
    code --version
    ```
 
-2. **Las bibliotecas del curso.** Desde la terminal:
+   Si `python` te abre la Microsoft Store en vez de responder una versión, es que Windows tiene puesto un acceso directo falso. Se quita en Configuración, Aplicaciones, Configuración avanzada de la aplicación, Alias de ejecución de la aplicación: desactiva los dos que dicen `python.exe` y `python3.exe`. Si aun así no responde, instala Python desde python.org y **marca la casilla "Add Python to PATH"** durante la instalación. Esa casilla es la causa del 90% de los problemas de esta semana.
+
+2. **Las bibliotecas del curso.** Desde la terminal de Visual Studio Code:
 
    ```bash
    pip install numpy pandas matplotlib scikit-learn pyserial joblib
@@ -80,7 +84,13 @@ Un detalle que importa en aprendizaje de máquina y que no aplicaba en otros cur
    python -c "import numpy, pandas, matplotlib, sklearn, serial, joblib; print('entorno listo')"
    ```
 
-3. **Arduino IDE.** Si tienes tu Arduino Nano a la mano, conéctalo y confirma que la computadora lo reconoce, y anota el puerto que le asigna (`COM3` en Windows, `/dev/ttyUSB0` en Linux). Si no lo tienes contigo, deja el IDE instalado y el puerto lo anotas el miércoles.
+3. **Arduino IDE**, y **el driver CH340**. Esto último es importante y casi nadie lo sabe: los Arduino Nano que usamos en clase llevan un chip USB CH340, y Windows no trae su driver. Sin él, la tarjeta simplemente **no aparece** aunque el cable esté bien y el LED encienda.
+
+   Busca "driver CH340 Windows", instálalo y reinicia. Si ya lo tienes de otro curso, mejor.
+
+   Si tienes tu Arduino a la mano, conéctalo y averigua qué puerto COM le tocó: clic derecho en el botón de Inicio, **Administrador de dispositivos**, sección **Puertos (COM y LPT)**. Ahí va a aparecer algo como `USB-SERIAL CH340 (COM3)`. **Anota ese número**, lo vas a usar todas las semanas.
+
+   Si no aparece ninguna sección de Puertos, o aparece un dispositivo con un triángulo amarillo, es el driver. Si no traes la tarjeta contigo, deja el IDE y el driver instalados y el puerto lo anotas el miércoles.
 
 4. **Git**, configurado con tu identidad:
 
@@ -115,11 +125,15 @@ clasificador-piezas-ia/
   figuras/       <- las graficas que generes: senal.png, ...
 ```
 
-Créala de una vez, aunque las carpetas estén vacías:
+Créala de una vez, aunque las carpetas estén vacías. Una por línea:
 
 ```bash
-mkdir codigo datos figuras
+mkdir codigo
+mkdir datos
+mkdir figuras
 ```
+
+Ojo: Git no sube carpetas vacías. Van a quedar registradas hasta que pongas un archivo dentro, cosa que pasa la semana que viene. No te preocupes si al hacer `git status` no las ves.
 
 `BITACORA.md` lleva **una sección por semana, y cada semana tiene dos partes fijas**: lo que trabajaste el lunes en la guía y lo que le agregaste al proyecto. Siempre igual, todas las semanas:
 

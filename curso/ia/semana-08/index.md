@@ -216,7 +216,7 @@ import numpy as np
 import pandas as pd
 import joblib
 
-PUERTO = '/dev/ttyUSB0'
+PUERTO = 'COM3'
 BAUDIOS = 115200
 N_MUESTRAS = 200
 UMBRAL = 30          # el mismo que usaste para detectar el evento
