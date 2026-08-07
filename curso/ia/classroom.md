@@ -487,20 +487,61 @@ ya no se acuerda de qué día faltó y la reclamación se te vuelve discusión.
 > sesión**. Cuenta que el trabajo exista, no que esté bien: si te atoraste y lo escribiste en tu
 > bitácora, cuenta como asistencia.
 >
-> Necesitas **`[porcentaje]`% de asistencia** para tener derecho a evaluación ordinaria, que en
-> este curso son **`[numero]`** faltas como máximo.
+> ### Cuántas faltas puedes tener
 >
-> **Si ves un error, dímelo por comentario privado en esta tarea durante la misma semana en que
-> ocurrió.** Después ya no hay forma de verificarlo y la falta se queda como está.
+> El Reglamento General de Evaluación y Promoción de Alumnos de la UdeG pide un mínimo de
+> asistencia para tener derecho a que se te registre calificación:
+>
+> | | Asistencia mínima | En este curso |
+> |---|---|---|
+> | Evaluación ordinaria (art. 20) | 80% | máximo **6 faltas** |
+> | Evaluación extraordinaria (art. 27) | 65% | máximo **11 faltas** |
+>
+> El curso tiene 34 sesiones. Con 7 faltas pierdes el ordinario aunque tengas 100 de
+> calificación, y no es algo que yo pueda dispensar.
+>
+> ### Faltas justificadas
+>
+> Las faltas se justifican **ante la Coordinación de Carrera, no conmigo** (art. 54). Llevas el
+> documento que la respalda dentro de los **cinco días hábiles** siguientes a la fecha en que
+> pudiste regresar a clases. Si la Coordinación las considera justificadas, me avisa y yo hago
+> la anotación.
+>
+> El reglamento reconoce como causas la enfermedad, una comisión conferida por autoridad
+> universitaria y la fuerza mayor a juicio de la Coordinación (art. 53). Y hay un tope: no se
+> puede justificar más del 20% del total de horas de la materia.
+>
+> Si una falta justificada te cae **el día de una revisión de avances**, acordamos otra fecha
+> para hacerla (art. 55). Avísame en cuanto sepas.
+>
+> ### Si algo está mal
+>
+> **Dímelo por comentario privado en esta tarea durante la misma semana en que ocurrió.** Después
+> ya no hay forma de verificarlo y la falta se queda como está.
 
 > **Notas para ti, no para publicar:**
 >
-> - Confirma el porcentaje que aplica en tu programa antes de publicarlo. En la UdeG lo habitual
->   es 80% para ordinario y 65% para extraordinario, pero verifícalo contra tu reglamento.
-> - Traduce el porcentaje a un número de faltas concreto. "80%" no le dice nada al alumno; "7
->   faltas" sí.
-> - El plazo para reclamar es lo que te protege. Sin él, en diciembre te llegan reclamaciones de
->   sesiones de septiembre que ya no puedes verificar.
+> - Los porcentajes están verificados contra el reglamento vigente (2017): art. 20 fracc. II
+>   (80% ordinario), art. 27 fracc. III (65% extraordinario), arts. 53 a 55 (justificación).
+> - **El número de faltas depende de cómo cuentes el total, y ahí hay una inconsistencia que
+>   tienes que resolver.** El calendario real son 17 semanas x 2 sesiones = **34 sesiones**, pero
+>   `programa/index.md` declara **80 horas totales**, que a 4 horas por semana son 20 semanas o
+>   40 sesiones. Los números publicados arriba salen de 34 sesiones:
+>
+>   | Base | 80% ordinario | 65% extraordinario |
+>   |---|---|---|
+>   | 34 sesiones (calendario real) | máx. 6 faltas | máx. 11 faltas |
+>   | 40 sesiones (80 hrs del programa) | máx. 8 faltas | máx. 14 faltas |
+>
+>   El art. 19 deja los porcentajes de evaluación a lo aprobado por la Academia, así que confirma
+>   ahí cuál es la base antes de publicarlo. Si eliges la otra, cambia los dos números.
+> - Traducir el porcentaje a un número concreto es lo que hace que sirva: "80%" no le dice nada
+>   al alumno, "6 faltas" sí.
+> - Mandar las justificaciones a la Coordinación no es rigidez, es el reglamento. Si no lo dejas
+>   escrito, te van a llegar recetas médicas todo el semestre y cada una es una decisión tuya que
+>   después tienes que defender.
+> - El plazo para reclamar es lo que te protege. Sin él, al cierre te llegan reclamaciones de
+>   sesiones de hace dos meses que ya no puedes verificar.
 
 ---
 
