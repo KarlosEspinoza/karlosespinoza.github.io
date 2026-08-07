@@ -92,7 +92,26 @@ De aquí en adelante los scripts se corren **desde la raíz de tu repositorio**,
 python codigo/adquirir.py
 ```
 
-Así las rutas dentro del código son simples y siempre iguales: `datos/datos.csv`, `figuras/senal.png`. Si lo corres desde otra carpeta, no va a encontrar los archivos.
+Así las rutas dentro del código son simples y siempre iguales: `datos/datos.csv`, `figuras/senal.png`.
+
+Dos cosas sobre las rutas, porque van a ser fuente de errores:
+
+**Escríbelas siempre con diagonal normal `/`**, aunque estés en Windows. Funciona igual y te ahorra un problema feo: si copias la ruta del Explorador de Windows te va a dar diagonales invertidas, y en Python `'datos\notas.csv'` se lee como `datos`, un salto de línea y `otas.csv`, porque `\n` significa otra cosa. El archivo existe y Python jura que no.
+
+**Abre en Visual Studio Code la carpeta del repositorio, no la de `codigo/`.** La ruta `datos/datos.csv` es relativa a donde estés parado, así que si ejecutas desde otro lado te sale esto:
+
+```
+FileNotFoundError: [Errno 2] No such file or directory: 'datos/datos.csv'
+```
+
+Y no significa que el archivo no exista, sino que lo estás buscando desde la carpeta equivocada. Para saber dónde estás parado:
+
+```python
+import os
+print(os.getcwd())
+```
+
+Tiene que imprimir la carpeta `clasificador-piezas-ia`, no `codigo`.
 
 **Lo que entregas de este bloque**
 

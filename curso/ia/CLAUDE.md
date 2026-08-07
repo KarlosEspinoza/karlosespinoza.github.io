@@ -199,6 +199,8 @@ Tropiezos de Windows ya documentados en los materiales, que se repiten cada seme
 | IP fija manual para hablarle al PLC (si no, Windows toma `169.254.x.x`) | semana 16, bloque 2 |
 | Firewall de Windows bloqueando la conexión al PLC | semana 16, bloque 2 |
 | `snap7.dll` no encontrada en `python-snap7` viejo | semana 16, bloque 2 |
+| `FileNotFoundError` por abrir en VS Code la carpeta equivocada | semana 03, bloque 1 |
+| Rutas copiadas del Explorador: `\n` de `datos\notas.csv` | semana 03, bloque 1 |
 
 ---
 
