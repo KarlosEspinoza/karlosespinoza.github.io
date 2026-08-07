@@ -232,6 +232,70 @@ Las semanas de revisión (09, 14, 17) usan una variante:
 
 Cuando la semana se desarrolla a fondo (como la 01), se antepone una introducción que conecta
 con el proyecto, y las secciones se expanden con teoría explicada desde cero, código y tablas.
+Además, toda semana desarrollada lleva un **índice** después de la introducción, con el formato de
+`programa/index.md` (lista de enlaces entre dos `---`) y **anclas explícitas `{#id}`** en cada
+encabezado, porque kramdown se come los acentos al generar los ids solos.
+
+### La sesión del lunes: estructura de bloques
+
+`## Antes de la clase` es una **guía de trabajo, no una lectura**. Se trabaja durante la sesión del
+lunes (2 horas) y se parte siempre así:
+
+- `### Cómo se trabaja esta guía` — tabla de bloques y la nota de "si te atoras, escríbelo y haz
+  commit igual"
+- `### Bloque 1: <nombre>` — obligatorio
+- `### Bloque 2: <nombre>` — obligatorio
+- `### Bloque extra: <nombre>` — opcional
+
+Reglas de diseño de los bloques:
+
+- **Dos bloques obligatorios de ~30 min de contenido cada uno.** El grupo es flojo y de nivel bajo:
+  30 min de contenido les toma cerca de una hora real. Ese es el criterio de calibración, no
+  "cuánto cabe en dos horas".
+- **Cada bloque cierra con un entregable concreto** bajo `**Lo que entregas de este bloque**`, más
+  su bloque `bash` con `git add / commit / push`. Un commit por bloque, nunca uno solo al final:
+  las horas de los commits son lo que deja ver si trabajaron la sesión completa.
+- **El entregable no se puede improvisar ni copiar**: se apoya en que cada alumno tiene un dominio
+  distinto (justificaciones, números medidos de su propio caso, tres líneas de ejemplo de su
+  sensor). Vale como entregado aunque esté mal; lo que no vale es no dejar rastro.
+- **El bloque extra nunca es requisito de nada**: el miércoles debe poder arrancar solo con los
+  bloques 1 y 2. Es para los 2 o 3 alumnos fuertes, y se paga solo en las evidencias de su
+  revisión (50%), sin puntos aparte.
+- **Sin hardware.** El Arduino y los sensores están en el aula, así que los bloques del lunes se
+  resuelven leyendo, escribiendo código y decidiendo. El hardware se conecta el miércoles.
+- **El miércoles arranca donde terminó el lunes** ("llegas con X ya escrito del lunes"). Ese es el
+  mecanismo real de cumplimiento: no hacerlo tiene costo visible el mismo miércoles.
+
+La asistencia del lunes se registra con los commits de los bloques. **Eso no se escribe en el
+programa**; se comunica en el encuadre y en Classroom con redacción neutra ("la asistencia del
+lunes se registra con el commit de la actividad de la sesión"). En ningún material visible se dice
+que la sesión del lunes es a distancia; se escribe siempre como "durante la sesión".
+
+### Organización del repositorio del alumno
+
+Definida en `semana-01` y fija para todo el semestre:
+
+```
+clasificador-piezas-ia/
+  README.md      <- quien es y que clasifica su sistema
+  BITACORA.md    <- una seccion por semana
+  codigo/        <- sensor.ino, leer_sensor.py, adquirir.py, ...
+  datos/         <- datos.csv, features.csv, ...
+  figuras/       <- senal.png, ...
+```
+
+`BITACORA.md` lleva una sección por semana con **dos subsecciones fijas**: `### Antes de la clase`
+(entregables de los bloques del lunes) y `### Avance del proyecto` (lo del miércoles en adelante).
+Eso es lo que permite distinguir de un vistazo el trabajo de la guía del trabajo del proyecto.
+
+Convención de mensajes de commit (`sNN` = número de semana):
+
+| Momento | Mensaje |
+|---|---|
+| Fin del bloque 1 | `sNN bloque 1: ...` |
+| Fin del bloque 2 | `sNN bloque 2: ...` |
+| Bloque extra | `sNN extra: ...` |
+| Avance del proyecto | `sNN proyecto: ...` |
 
 ### Archivos del proyecto del alumno (progresión)
 
@@ -240,7 +304,7 @@ forma acumulable:
 
 | Semana | Archivos que agrega o modifica |
 |---|---|
-| 02 | `sensor.ino`, `leer_sensor.py` |
+| 02 | `codigo/sensor.ino`, `codigo/leer_sensor.py` |
 | 03 | `adquirir.py` -> `datos.csv` |
 | 04 | `limpiar.py` -> `datos_limpios.csv` |
 | 05 | `features.py` -> `features.csv` |
