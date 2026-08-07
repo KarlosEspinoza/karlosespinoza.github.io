@@ -235,7 +235,7 @@ curso/ia/
   requisitos/index.md             <- Configuración del entorno
   CLAUDE.md                       <- Este archivo
   evaluacion/
-    individual/index.md           <- Prácticas (proyecto individual) ⚠️ pendiente rediseñar al esquema nuevo
+    individual/index.md           <- Prácticas (proyecto individual)
     proyecto_integrador/index.md  <- Proyecto integrador (clasificador multi-dominio)
 
   semana-01/index.md ... semana-17/index.md
