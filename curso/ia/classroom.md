@@ -219,9 +219,12 @@ déjala activada, porque algunos van a pegar mal la URL.
 
 ## 5. Tarea: registro de equipo del proyecto integrador
 
-Tipo: **Tarea**, sin archivo. Tema: **Proyecto integrador**. Sin calificación.
-Fecha: `[fin de la semana 1]`. Marcar "Los alumnos pueden entregar por equipo" no existe en
-Classroom, así que **que entregue solo un integrante** y lo diga en la respuesta.
+Tipo: **Tarea** con archivo adjunto. Tema: **Proyecto integrador**. Sin calificación.
+Fecha: `[fin de la semana 1]`.
+
+**Entregan todos los integrantes el mismo archivo**, no uno solo por el equipo. Así Classroom te
+marca de inmediato a quien no entregó, que casi siempre es el que se quedó sin equipo, y de paso
+que los tres suban el mismo `equipo.csv` confirma que están de acuerdo en quién es quién.
 
 **Título:** Registro de equipo y dominios
 
@@ -231,16 +234,32 @@ Classroom, así que **que entregue solo un integrante** y lo diga en la respuest
 > distinto**, porque cada dominio va a ser un módulo del clasificador multi-dominio que van a
 > integrar juntos.
 >
-> Un solo integrante entrega por el equipo, con este formato:
+> Pónganse de acuerdo y suban un archivo llamado **`equipo.csv`** con una línea por integrante:
 >
 > ```
-> Equipo:
-> - Ana Pérez (2162628) - clasificación por material
-> - Luis Gómez (2162631) - clasificación por tamaño
-> - Sara Ruiz (2162640) - detección de piezas anómalas
+> codigo,dominio
+> 2162628,material
+> 2162631,tamano
+> 2162640,anomalias
 > ```
 >
-> Si dos integrantes traen el mismo dominio, resuélvanlo antes de entregar.
+> Reglas del archivo, porque lo voy a procesar con un script y si viene mal no lo lee:
+>
+> - La primera línea es exactamente `codigo,dominio`.
+> - Una línea por integrante del equipo.
+> - El código va sin espacios y sin guiones.
+> - El dominio en **una sola palabra, en minúsculas y sin acentos**: `material`, `tamano`,
+>   `color`, `contenido`, `estado`, `anomalias`. Si el tuyo no está en esa lista, invéntale una
+>   palabra corta y consúltalo conmigo.
+> - Nada de comas de más, ni líneas en blanco al final.
+>
+> **Lo suben los tres integrantes**, el mismo archivo cada quien. Si dos traen el mismo dominio,
+> resuélvanlo antes de entregar: no puede repetirse ni dentro del equipo ni en todo el grupo.
+
+> **Nota para ti, no para publicar:** al juntar todos los `equipo.csv` puedes verificar de un
+> jalón que ningún dominio se repita en el grupo entero, y cruzar la columna `codigo` contra la
+> lista de inscritos para ver quién se quedó sin equipo. Ese es el punto de pedirlo en CSV y no
+> en texto libre.
 
 ---
 

@@ -364,6 +364,15 @@ El repositorio ya lo creaste el lunes. Lo que queda es cerrarlo y dejarlo entreg
 
 1. **Forma tu equipo** de 2 o 3 integrantes.
 2. **Verifiquen que cada integrante tenga un dominio diferente**, porque cada dominio será un módulo del clasificador multi-dominio que construirán juntos. Por ejemplo: uno clasifica por material, otro por tamaño, otro detecta piezas anómalas.
-3. **Registren el equipo y los dominios** conmigo durante esta semana.
+3. **Registren el equipo** subiendo a Classroom un archivo `equipo.csv` con una línea por integrante. Lo sube cada uno de los integrantes, el mismo archivo:
+
+   ```
+   codigo,dominio
+   2162628,material
+   2162631,tamano
+   2162640,anomalias
+   ```
+
+   El dominio va en una sola palabra, en minúsculas y sin acentos, porque ese archivo lo proceso con un script.
 
 Todavía no hay código del integrador: por ahora basta con que el equipo quede formado y los dominios reservados, porque a partir de la Unidad 2 cada módulo empezará a integrarse en un controlador central que desarrollarán en conjunto.
