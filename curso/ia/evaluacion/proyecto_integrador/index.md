@@ -11,7 +11,22 @@ title: Inteligencia Artificial
 
 ---
 
-## Descripción general
+- [Descripción general](#descripcion-general)
+- [Formación de equipos](#formacion-de-equipos)
+- [Lo que construyen, capa por capa](#capa-por-capa)
+- [Arquitectura del sistema](#arquitectura)
+- [Estructura del repositorio](#estructura-del-repositorio)
+- [Revisiones de avances](#revisiones)
+    - [Revisión 1: semana 9](#revision-1)
+    - [Revisión 2: semana 14](#revision-2)
+    - [Revisión final: semana 17](#revision-final)
+- [Autoevaluación del equipo](#autoevaluacion)
+- [Calificación](#calificacion)
+- [Atributos de egreso](#atributos)
+
+---
+
+## Descripción general {#descripcion-general}
 
 El proyecto integrador es un **Sistema Clasificador Multi-Dominio** desarrollado en equipo. Cada integrante aporta su propio clasificador (de su proyecto individual) como un módulo del sistema. Un **Controlador Central** en Python los integra, toma la decisión de ruteo combinada y la ejecuta sobre la maqueta del laboratorio a través del PLC S7-1214C.
 
@@ -19,7 +34,7 @@ El resultado es un sistema de control inteligente real: múltiples modelos de ML
 
 ---
 
-## Formación de equipos
+## Formación de equipos {#formacion-de-equipos}
 
 - Equipos de **2 o 3 integrantes** (no se permiten equipos de 1 ni de 4 o más).
 - **Cada integrante debe tener un dominio diferente** al de sus compañeros, ya que cada uno aporta su módulo clasificador.
@@ -37,7 +52,7 @@ El resultado es un sistema de control inteligente real: múltiples modelos de ML
 
 ---
 
-## Lo que construyen, capa por capa
+## Lo que construyen, capa por capa {#capa-por-capa}
 
 Al igual que el proyecto individual, el integrador crece con cada unidad del curso. Cada tema visto en clase se aplica al sistema del equipo:
 
@@ -50,7 +65,7 @@ Al igual que el proyecto individual, el integrador crece con cada unidad del cur
 
 ---
 
-## Arquitectura del sistema
+## Arquitectura del sistema {#arquitectura}
 
 ```
            Pipeline de Control Central (Python)
@@ -78,7 +93,7 @@ El **Pipeline Central** recorre la secuencia de decisión en cada ciclo:
 
 ---
 
-## Estructura del repositorio
+## Estructura del repositorio {#estructura-del-repositorio}
 
 ```
 proyecto-integrador/
@@ -113,7 +128,7 @@ proyecto-integrador/
 
 ---
 
-## Revisiones de avances
+## Revisiones de avances {#revisiones}
 
 El proyecto se revisa en las **mismas 3 semanas** que el proyecto individual. El equipo debe hacer **push a GitHub de sus avances antes del día de la revisión** (a más tardar en la sesión previa de esa semana), para que el asesor revise el código y la BITACORA.md con anticipación. El día de la revisión la sesión se dedica únicamente a las **preguntas (orales o escritas, en papel o en archivo de texto)**. Si el equipo no hizo el push a tiempo, no hay nada que revisar y la revisión cuenta como no entregada. Además, cada integrante actualiza y hace push de su autoevaluación privada antes de cada revisión (ver la sección "Autoevaluación del equipo"). En cada revisión cuentan:
 
@@ -126,7 +141,7 @@ El proyecto se revisa en las **mismas 3 semanas** que el proyecto individual. El
 
 ---
 
-### Revisión 1 -- Semana 9
+### Revisión 1 -- Semana 9 {#revision-1}
 
 **Introducción y Aprendizaje Supervisado**
 
@@ -143,7 +158,7 @@ El proyecto se revisa en las **mismas 3 semanas** que el proyecto individual. El
 
 ---
 
-### Revisión 2 -- Semana 14
+### Revisión 2 -- Semana 14 {#revision-2}
 
 **Aprendizaje No Supervisado y detección de anomalías**
 
@@ -160,7 +175,7 @@ El proyecto se revisa en las **mismas 3 semanas** que el proyecto individual. El
 
 ---
 
-### Revisión Final -- Semana 17
+### Revisión Final -- Semana 17 {#revision-final}
 
 **Despliegue en PLC y demo del sistema completo**
 
@@ -177,7 +192,7 @@ El proyecto se revisa en las **mismas 3 semanas** que el proyecto individual. El
 
 ---
 
-## Autoevaluación del equipo
+## Autoevaluación del equipo {#autoevaluacion}
 
 Cada integrante evalúa de forma **anónima** la contribución real de sus compañeros al proyecto integrador. La evaluación es privada: tus compañeros nunca ven la calificación que les pusiste; solo la ve el asesor. La autoevaluación vale el **10% de cada revisión de avances**.
 
@@ -203,7 +218,7 @@ codigo,calificacion
 
 ---
 
-## Calificación
+## Calificación {#calificacion}
 
 | Revisión | Semana | Peso |
 |---|---|---|
@@ -215,7 +230,7 @@ codigo,calificacion
 
 ---
 
-## Atributos de Egreso
+## Atributos de Egreso {#atributos}
 
 - **AE2A Nivel Avanzado:** Diseñar e implementar un sistema de control inteligente end-to-end (sensores -> modelo -> PLC -> actuadores) desplegado sobre hardware industrial real.
 - **AE7A Nivel Avanzado:** Favorecer el trabajo colaborativo y el liderazgo en la integración de módulos de distintos dominios, cumplir fechas de revisión y analizar riesgos del sistema en producción.
