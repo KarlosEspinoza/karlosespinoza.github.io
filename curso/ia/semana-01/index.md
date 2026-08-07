@@ -91,12 +91,16 @@ Un detalle que importa en aprendizaje de máquina y que no aplicaba en otros cur
 
 #### Crea tu repositorio
 
-Crea el repositorio en GitHub (por ejemplo `clasificador-piezas-ia`, **público**) y clónalo:
+Crea el repositorio en GitHub con el nombre `clasificador-piezas-ia` y **visibilidad privada**. Privado quiere decir que solo lo ves tú y quien tú autorices: tu proyecto es tuyo y el de tu compañero es suyo.
 
 ```bash
 git clone https://github.com/TU_USUARIO/clasificador-piezas-ia.git
 cd clasificador-piezas-ia
 ```
+
+Como está privado, tienes que darme acceso o no voy a poder revisarte. En tu repositorio, ve a **Settings -> Collaborators -> Add people**, escribe mi usuario `[USUARIO_GITHUB_DEL_PROFESOR]` y manda la invitación. **Sin esa invitación tu trabajo no existe para mí**, así que hazlo hoy y no la semana de la revisión.
+
+Al terminar el semestre puedes cambiarlo a público si quieres: es un proyecto completo y sirve para enseñarlo cuando busques trabajo.
 
 #### Cómo se organiza tu repositorio
 
@@ -169,7 +173,7 @@ El dominio lo terminas de decidir en el bloque 2, así que por ahora déjalo en 
 
 **Lo que entregas de este bloque**
 
-- El repositorio creado en GitHub, público.
+- El repositorio creado en GitHub, privado y con la invitación de colaborador ya enviada.
 - Las carpetas `codigo/`, `datos/` y `figuras/`.
 - `README.md` con tu nombre y tu código.
 - `BITACORA.md` con la estructura de la semana 1.

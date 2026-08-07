@@ -75,6 +75,11 @@ Tema: **Empieza aqui**. Es la publicación más importante del Classroom.
 > No se entrega nada por Classroom, salvo una cosa: **la URL de tu repositorio de GitHub, una
 > sola vez en todo el semestre**. De ahí en adelante tu entrega es hacer `push`.
 >
+> Tu repositorio es **privado**, y me agregas a mí como colaborador para que pueda revisarlo
+> (Settings -> Collaborators -> Add people, usuario `[USUARIO_GITHUB_DEL_PROFESOR]`). **Si no me
+> mandas esa invitación, no puedo ver tu trabajo y cuenta como no entregado.** Al terminar el
+> semestre puedes cambiarlo a público si quieres enseñarlo cuando busques trabajo.
+>
 > Tu repositorio tiene esta estructura, y es la misma para todo el grupo:
 >
 > ```
@@ -137,6 +142,16 @@ Tema: **Empieza aqui**. Es la publicación más importante del Classroom.
 > salió, me quedé atorado aquí" es trabajo hecho y me sirve para saber dónde apoyarte el
 > miércoles. Lo que no cuenta es no dejar rastro.
 >
+> ### Sobre copiar
+>
+> Cada quien tiene un dominio distinto, sus propias piezas y sus propios datos, así que el
+> código de otro no le sirve a tu sistema: te va a dar resultados que no corresponden a tus
+> gráficas ni a tu CSV, y se nota de inmediato.
+>
+> Además, el 20% de cada revisión son **preguntas sobre tu propio código**, en el momento. Ahí
+> es donde se cae el trabajo que no hiciste tú. Si vas a apoyarte en alguien, que sea para
+> entender, no para copiar: lo segundo se ve.
+>
 > ### La asistencia
 >
 > La asistencia de la sesión del lunes se registra con **los commits de la actividad de la
@@ -183,7 +198,10 @@ Tema: **Empieza aqui**. Sin calificación. Fecha de entrega: `[fin de la semana 
 >
 > Antes de responder, tu repositorio debe tener:
 >
-> - Nombre `clasificador-piezas-ia` y visibilidad **pública**.
+> - Nombre `clasificador-piezas-ia` y visibilidad **privada**.
+> - Mi usuario `[USUARIO_GITHUB_DEL_PROFESOR]` agregado como colaborador
+>   (Settings -> Collaborators -> Add people). **Sin esa invitación no puedo revisarte y tu
+>   trabajo cuenta como no entregado.**
 > - `README.md` con tu nombre, tu código y tu dominio de clasificación.
 > - `BITACORA.md` con la sección de la semana 1.
 > - Las carpetas `codigo/`, `datos/` y `figuras/`.

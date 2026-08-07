@@ -273,7 +273,13 @@ que la sesión del lunes es a distancia; se escribe siempre como "durante la ses
 
 ### Organización del repositorio del alumno
 
-Definida en `semana-01` y fija para todo el semestre:
+El repositorio es **privado**, con Karlos agregado como colaborador. Público no: todos los repos
+se llaman igual y se encuentran buscando el nombre en GitHub, lo que invita a copiar. En los
+materiales aparece como `[USUARIO_GITHUB_DEL_PROFESOR]`, pendiente de sustituir por el usuario
+real. La invitación de colaborador se manda en el bloque 1 de la semana 1 y hay que verificarla
+esa misma semana: un repo sin invitación es invisible y no se puede evaluar.
+
+Estructura, definida en `semana-01` y fija para todo el semestre:
 
 ```
 clasificador-piezas-ia/
