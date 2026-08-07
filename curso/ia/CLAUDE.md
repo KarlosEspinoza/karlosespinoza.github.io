@@ -220,20 +220,20 @@ curso/ia/
 |---|---|---|
 | 01 | Encuadre y configuración del entorno | ✅ desarrollada |
 | 02 | La primera señal del sensor (U1) | ✅ desarrollada |
-| 03 | Recolección de datos etiquetados (U2) | ⬜ esqueleto |
-| 04 | Limpieza y normalización de señales (U2) | ⬜ esqueleto |
-| 05 | Características en el dominio del tiempo (U2) | ⬜ esqueleto |
-| 06 | Características en el dominio de la frecuencia (U2) | ⬜ esqueleto |
-| 07 | Entrenamiento del clasificador (U2) | ⬜ esqueleto |
-| 08 | Redes neuronales y primer bucle de control (U2) | ⬜ esqueleto |
+| 03 | Recolección de datos etiquetados (U2) | ✅ desarrollada |
+| 04 | Limpieza y normalización de señales (U2) | ✅ desarrollada |
+| 05 | Características en el dominio del tiempo (U2) | ✅ desarrollada |
+| 06 | Características en el dominio de la frecuencia (U2) | ✅ desarrollada |
+| 07 | Entrenamiento del clasificador (U2) | ✅ desarrollada |
+| 08 | Redes neuronales y primer bucle de control (U2) | ✅ desarrollada |
 | 09 | Revisión de avances 1 | ✅ completa |
-| 10 | Aprendizaje no supervisado y PCA (U3) | ⬜ esqueleto |
-| 11 | Agrupamiento: K-Means y DBSCAN (U3) | ⬜ esqueleto |
-| 12 | Autoencoders para detección de anomalías (U3) | ⬜ esqueleto |
-| 13 | La anomalía como señal de control (U3) | ⬜ esqueleto |
+| 10 | Aprendizaje no supervisado y PCA (U3) | ✅ desarrollada |
+| 11 | Agrupamiento: K-Means y DBSCAN (U3) | ✅ desarrollada |
+| 12 | Autoencoders para detección de anomalías (U3) | ✅ desarrollada |
+| 13 | La anomalía como señal de control (U3) | ✅ desarrollada |
 | 14 | Revisión de avances 2 | ✅ completa |
-| 15 | Evaluación del modelo (U4) | ⬜ esqueleto |
-| 16 | Sobreajuste y preparación para producción (U4) | ⬜ esqueleto |
+| 15 | Evaluación del modelo (U4) | ✅ desarrollada |
+| 16 | Sobreajuste y preparación para producción (U4) | ✅ desarrollada |
 | 17 | Revisión final | ✅ completa |
 
 ---
@@ -333,18 +333,18 @@ forma acumulable:
 | Semana | Archivos que agrega o modifica |
 |---|---|
 | 02 | `codigo/sensor.ino`, `codigo/leer_sensor.py` |
-| 03 | `adquirir.py` -> `datos.csv` |
-| 04 | `limpiar.py` -> `datos_limpios.csv` |
-| 05 | `features.py` -> `features.csv` |
-| 06 | `features.py` (agrega FFT) |
-| 07 | `entrenar.py` -> `modelo.pkl` |
-| 08 | `control.py`, `control.ino` |
-| 10 | `pca.py` |
-| 11 | `clustering.py` |
-| 12 | `autoencoder.py` |
-| 13 | `control.py` (integra anomalías) |
-| 15 | `evaluar.py` |
-| 16 | `prueba_plc.py` |
+| 03 | `codigo/adquirir.py` -> `datos/datos.csv` |
+| 04 | `codigo/limpiar.py` -> `datos/datos_limpios.csv` |
+| 05 | `codigo/features.py` -> `datos/features.csv` |
+| 06 | `codigo/features.py` (agrega FFT) |
+| 07 | `codigo/entrenar.py` -> `modelo.pkl` |
+| 08 | `codigo/control.py`, `codigo/control.ino` |
+| 10 | `codigo/pca.py`, `datos/anomalias.csv` |
+| 11 | `codigo/clustering.py` |
+| 12 | `codigo/autoencoder.py` -> `detector.pkl` |
+| 13 | `codigo/control.py` (integra anomalías) |
+| 15 | `codigo/evaluar.py`, `datos/datos_banda.csv` |
+| 16 | `codigo/prueba_plc.py` -> `modelo_produccion.pkl` |
 
 ---
 
