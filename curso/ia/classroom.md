@@ -44,8 +44,8 @@ sesiones**. Siempre "durante la sesión", nunca "en linea", "a distancia" ni "vi
 ### Ajustes recomendados
 
 - **Tablón:** dejar en "Los alumnos pueden comentar" (no "publicar"). El hilo de comentarios de
-  la publicación de cada semana es el canal de dudas de la sesión, y de paso te queda registro
-  escrito de quién preguntó qué.
+  la tarea de cada semana es el canal de dudas de la sesión, y de paso te queda registro escrito
+  de quién preguntó qué.
 - **Trabajo de clase:** organizar por tema, no por fecha.
 - **Calificaciones:** solo las tres revisiones de avances llevan calificación. Las tareas
   semanales van "Sin calificación" para que el libro de calificaciones no se llene de ruido.
@@ -128,7 +128,7 @@ Haz un commit al terminar cada bloque, no uno solo al final.
 
 COMO SE TRABAJA CADA SEMANA
 
-Lunes. Trabajas la guía "Antes de la clase" de la semana. Está partida en dos bloques obligatorios y uno extra, y cada bloque termina con algo concreto que subes a tu repositorio. La guía se trabaja durante la sesión, no la noche anterior. Voy a estar disponible toda la sesión para resolver dudas: déjalas como comentario en la publicación de la semana.
+Lunes. Trabajas la guía "Antes de la clase" de la semana. Está partida en dos bloques obligatorios y uno extra, y cada bloque termina con algo concreto que subes a tu repositorio. La guía se trabaja durante la sesión, no la noche anterior. Voy a estar disponible toda la sesión para resolver dudas: déjalas como comentario en la tarea de la semana.
 
 Miércoles. Aplicamos sobre el hardware lo que preparaste el lunes. La clase arranca donde terminó tu guía: si no la trabajaste, no vas a tener con qué trabajar.
 
@@ -246,145 +246,63 @@ Lo suben los tres integrantes, el mismo archivo cada quien. Si dos traen el mism
 
 ---
 
-## 6. Publicación semanal (plantilla)
+## 6. Tarea semanal
 
-Para cada semana se publican **dos cosas**: un Material con el contenido y una Tarea con la
-fecha, para que les aparezca en "Pendientes".
+Una sola publicación por semana, tipo **Tarea**, sin archivo adjunto, que el alumno marca como
+completada. Sin calificación. Fecha de entrega: **miércoles 9:00** de esa semana.
 
-### 6.1 Material de la semana
+No lleva Material aparte: **el detalle vive en la página del curso**. La tarea es solo el
+recordatorio y el enlace, así hay un solo lugar que mantener y nunca se desincroniza con el
+sitio. Las dudas de la sesión se dejan como comentario en esta misma tarea.
 
-Tipo: **Material**. Tema: la unidad que corresponda.
-Título: `Semana NN - <titulo de la semana>`
+**Título:** `Semana NN - <titulo de la semana>`
 
-```
-Guía de la sesión: <URL de la semana>
-
-<una o dos lineas de que se construye esta semana>
-
-LUNES. Trabajas la guía "Antes de la clase". Bloques de esta semana:
-
-1. <nombre del bloque 1>
-2. <nombre del bloque 2>
-Extra (opcional): <nombre del bloque extra>
-
-Haz commit al terminar cada bloque.
-
-MIERCOLES. <que se hace en clase, y con que hay que llegar>
-
-Deja tus dudas de la sesión como comentario en esta publicación.
-```
-
-### 6.2 Tarea de la semana
-
-Tipo: **Tarea**, sin archivo adjunto, el alumno la marca como completada.
-**Sin calificación.** Fecha de entrega: **miércoles 9:00**.
-Título: `Semana NN - avance en tu repositorio`
+**Instrucciones** (idénticas todas las semanas, solo cambia el número en la URL):
 
 ```
-Al terminar la semana, tu repositorio debe tener:
+Guía de la semana: https://karlosespinoza.github.io/curso/ia/semana-NN
 
-- <archivo o archivos nuevos>
-- La entrada de la semana en BITACORA.md, con sus dos partes: "Antes de la clase" y "Avance del proyecto".
+Ahí está lo que trabajas durante la sesión del lunes (los dos bloques y el extra) y lo que le agregas a tu proyecto.
 
-Marca esta tarea como completada cuando hayas hecho push.
+Haz commit al terminar cada bloque. Marca esta tarea como completada cuando hayas hecho push de tu avance de la semana.
 
-Guía completa: <URL de la semana>
+Si tienes dudas, déjalas como comentario aquí.
 ```
 
-> **Nota para ti, no para publicar:** la palomita de "completada" no prueba nada, la puede marcar
-> cualquiera. Sirve como recordatorio y para que les aparezca en su calendario. El registro real
-> es el `git log`.
+### Las tareas semanales
+
+Créalas todas de una vez al inicio del ciclo y ponles fecha. Así el semestre completo queda a la
+vista del alumno desde el primer día y tú no vuelves a tocar el Classroom más que para las
+calificaciones de las revisiones.
+
+| Tarea (título) | URL de la guía | Tema |
+|---|---|---|
+| Semana 1 - Encuadre y configuración del entorno | `.../semana-01` | U1 |
+| Semana 2 - La primera señal del sensor | `.../semana-02` | U1 |
+| Semana 3 - Recolección de datos etiquetados | `.../semana-03` | U2 |
+| Semana 4 - Limpieza y normalización de señales | `.../semana-04` | U2 |
+| Semana 5 - Características en el dominio del tiempo | `.../semana-05` | U2 |
+| Semana 6 - Características en el dominio de la frecuencia | `.../semana-06` | U2 |
+| Semana 7 - Entrenamiento del clasificador | `.../semana-07` | U2 |
+| Semana 8 - Redes neuronales y primer bucle de control | `.../semana-08` | U2 |
+| (semana 9) | | -> sección 7, con calificación |
+| Semana 10 - Aprendizaje no supervisado y PCA | `.../semana-10` | U3 |
+| Semana 11 - Agrupamiento: K-Means y DBSCAN | `.../semana-11` | U3 |
+| Semana 12 - Autoencoders para detección de anomalías | `.../semana-12` | U3 |
+| Semana 13 - La anomalía como señal de control | `.../semana-13` | U3 |
+| (semana 14) | | -> sección 7, con calificación |
+| Semana 15 - Evaluación del modelo | `.../semana-15` | U4 |
+| Semana 16 - Sobreajuste y preparación para producción | `.../semana-16` | U4 |
+| (semana 17) | | -> sección 7, con calificación |
+
+Base de las URL: `https://karlosespinoza.github.io/curso/ia/`
+
+Las semanas 9, 14 y 17 no llevan tarea semanal: en su lugar van las tres revisiones de avances de
+la sección 7, que sí llevan calificación.
 
 ---
 
-## 7. Semana 1
-
-### Material
-
-Tema: **Unidad 1 - Introducción**. Título: `Semana 1 - Encuadre y configuración del entorno`
-
-```
-Guía de la sesión: https://karlosespinoza.github.io/curso/ia/semana-01
-
-Esta semana dejas listo tu entorno de trabajo y creado el repositorio donde va a vivir tu proyecto todo el semestre. Y entiendes de qué se trata realmente el aprendizaje de máquina.
-
-LUNES. Trabajas la guía "Antes de la clase". Bloques de esta semana:
-
-1. Tu entorno y tu repositorio: instalas todo y creas tu repo en GitHub.
-2. De programar reglas a aprender de los datos: el concepto, y eliges tu dominio.
-Extra (opcional): la hoja de datos de tu sensor.
-
-Haz commit al terminar cada bloque.
-
-MIERCOLES. Sesión de encuadre, sin laptop. Registramos los dominios de todo el grupo en el pizarrón y hacemos la dinámica del clasificador humano. Llegas con tu dominio ya elegido.
-
-Deja tus dudas de la sesión como comentario en esta publicación.
-```
-
-### Tarea
-
-Fecha: miércoles de la semana 1, 9:00. Sin calificación.
-Título: `Semana 1 - avance en tu repositorio`
-
-```
-Al terminar la semana, tu repositorio debe tener:
-
-- README.md con tu nombre, tu código y tu dominio.
-- BITACORA.md con la sección de la semana 1 y sus dos partes.
-- Las carpetas codigo/, datos/ y figuras/.
-- Mi usuario agregado como colaborador.
-
-Marca esta tarea como completada cuando hayas hecho push.
-
-Guía completa: https://karlosespinoza.github.io/curso/ia/semana-01
-```
-
----
-
-## 8. Semana 2
-
-### Material
-
-Tema: **Unidad 1 - Introducción**. Título: `Semana 2 - La primera señal del sensor`
-
-```
-Guía de la sesión: https://karlosespinoza.github.io/curso/ia/semana-02
-
-Esta semana construyes la primera flecha del bucle: la que va del sensor a Python. Todavía no hay modelo ni actuador; la meta es que una señal del mundo físico llegue viva hasta tu computadora y la puedas ver.
-
-LUNES. Trabajas la guía "Antes de la clase". Todo se hace sin el Arduino conectado: hoy escribes el código y tomas las decisiones.
-
-1. Cómo se hablan el Arduino y Python: escribes sensor.ino.
-2. Leerlo desde Python, y a qué velocidad: escribes leer_sensor.py y decides tu frecuencia de muestreo.
-Extra (opcional): mandar dos sensores en la misma línea.
-
-Haz commit al terminar cada bloque.
-
-MIERCOLES. Conectamos. Llegas con sensor.ino y leer_sensor.py ya escritos del lunes y con tu delay() decidido, y comprobamos si aguantan la realidad. Trae tu Arduino, tu sensor y tus tres tipos de pieza.
-
-Deja tus dudas de la sesión como comentario en esta publicación.
-```
-
-### Tarea
-
-Fecha: miércoles de la semana 2, 9:00. Sin calificación.
-Título: `Semana 2 - avance en tu repositorio`
-
-```
-Al terminar la semana, tu repositorio debe tener:
-
-- codigo/sensor.ino y codigo/leer_sensor.py
-- En figuras/, la gráfica de la señal de cada uno de tus tres tipos de pieza, y una gráfica con las tres juntas.
-- La entrada de la semana 2 en BITACORA.md, con sus dos partes.
-
-Marca esta tarea como completada cuando hayas hecho push.
-
-Guía completa: https://karlosespinoza.github.io/curso/ia/semana-02
-```
-
----
-
-## 9. Las tres revisiones de avances
+## 7. Las tres revisiones de avances
 
 Tipo: **Tarea**, sin archivo, marcar como completada. Tema: **Revisiones de avances**.
 Estas sí llevan calificación (100 puntos) y son las que alimentan el libro de calificaciones.
@@ -436,7 +354,7 @@ Detalle: https://karlosespinoza.github.io/curso/ia/semana-17
 
 ---
 
-## 10. Registro de faltas
+## 8. Registro de faltas
 
 Una **Tarea** llamada `Faltas`, en el tema *Empieza aqui*, donde el número que aparece en la
 calificación **no es una calificación: es el número de faltas acumuladas**. Cada alumno ve solo
@@ -521,18 +439,18 @@ Dímelo por comentario privado en esta tarea durante la misma semana en que ocur
 
 ---
 
-## 11. Orden en que conviene armarlo
+## 9. Orden en que conviene armarlo
 
 1. Crear la clase y los 7 temas.
 2. Publicar "Como funciona el curso" (Material, tema *Empieza aqui*).
 3. Publicar el anuncio de bienvenida y fijarlo.
 4. Crear la pregunta de la URL del repositorio.
 5. Crear la tarea de registro de equipo.
-6. Crear las tres revisiones de avances, con sus fechas. Así el calendario del semestre queda
-   armado desde el primer día y los alumnos ven a qué le están apuntando.
-7. Crear la tarea "Faltas" y dejarla publicada todo el semestre.
-8. Publicar semana 1 y semana 2.
-9. Las semanas 3 a 17 se van publicando conforme se desarrollen, con la plantilla del punto 6.
+6. Crear la tarea "Faltas" y dejarla publicada todo el semestre.
+7. Crear **las 14 tareas semanales y las 3 revisiones de avances**, todas de un jalón, con sus
+   fechas tomadas del calendario oficial. Es lo más tardado del armado y solo se hace una vez:
+   despues de esto el Classroom ya no se toca en todo el semestre, salvo para poner faltas y las
+   calificaciones de las revisiones.
 
 ---
 
@@ -544,8 +462,8 @@ Classroom nuevo:
 1. **Reutilizar publicación** para traer las publicaciones del ciclo anterior. Trae el texto, no
    las fechas ni las entregas de los alumnos.
 2. Poner **la fecha de entrega** de cada tarea, traduciendo la semana a día concreto según el
-   calendario oficial del ciclo: <https://escolar.udg.mx/calendarios>. La semana viene anotada en
-   cada sección de este archivo.
+   calendario oficial del ciclo: <https://escolar.udg.mx/calendarios>. El número de semana va en
+   el título de cada tarea, así que la traducción es directa.
 3. Contar en ese mismo calendario las sesiones reales del ciclo (lunes y miércoles entre el
    inicio y el fin) y **recalcular los máximos de faltas** de la tarea "Faltas". Como el
    reglamento pide 80% de asistencia para ordinario y 65% para extraordinario, los máximos son
