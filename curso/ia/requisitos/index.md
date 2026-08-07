@@ -120,11 +120,13 @@ En la semana 1 eliges **qué va a clasificar tu sistema**, y de esa decisión de
 | **HC-SR04** | Distancia (ultrasonido) | Por pulso | Tamaño, altura, nivel |
 | **LM35** | Temperatura | Analógica | Estado térmico |
 | **A3144** | Campo magnético | Digital | Material (metal contra no metal) |
-| **HW-870** | Vibración | Digital | Estado, golpes, movimiento |
+| **HW-870** | Interrupción de un haz óptico (ranura) | Digital | Conteo, presencia, velocidad de giro |
 
 Dos consejos que te van a ahorrar semanas:
 
 **Empieza con un sensor analógico.** El A3144 y el HW-870 son digitales: solo dan 0 o 1, así que su señal es un escalón y no una forma. Sirven muy bien acompañando a otro sensor, pero solos te van a dar poca información para separar tres tipos de pieza.
+
+El **HW-870** merece una nota aparte: es un optoacoplador de ranura, así que detecta cuando algo interrumpe el haz entre sus dos brazos. Es excelente para **contar** y para medir **velocidad de giro** (poniendo un disco ranurado en un eje), pero no distingue de qué está hecha la pieza ni qué tamaño tiene. Piénsalo como el sensor que te dice *cuándo* pasó algo, no *qué* pasó.
 
 **Es muy probable que acabes necesitando dos.** Casi nunca se separan tres clases con un solo sensor, y en la semana 5 lo vas a ver en tus propias gráficas. Si puedes, ten un segundo sensor a la mano desde el principio.
 
