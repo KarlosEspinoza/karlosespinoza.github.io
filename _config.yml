@@ -87,5 +87,13 @@ exclude:
   - CLAUDE.md
   - "**/CLAUDE.md"
   - "**/prompt_*.md"
+  - "**/PROMPT-*.md"
   - "**/todo.md"
   - "**/template.md"
+  # Material interno de trabajo: no se sirve en el sitio.
+  # Ojo: excluir aqui solo evita que Jekyll lo publique. El repositorio del
+  # sitio es publico, asi que estos archivos se siguen leyendo en GitHub.
+  # Lo que de verdad no debe salir del control del asesor va en el repositorio
+  # privado so-profesor, no aqui.
+  - "**/classroom.md"
+  - "**/recurso/**"

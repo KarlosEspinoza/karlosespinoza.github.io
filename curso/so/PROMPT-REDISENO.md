@@ -97,8 +97,8 @@ REGLAS DE ESCRITURA QUE NO SE NEGOCIAN:
 
 - En archivos visibles al alumno, NADA de caracteres que no se escriban con un teclado normal:
   nada de guiones largos, flechas unicode ni comillas curvas. Usa -> y -- y comillas rectas.
-- NUNCA escribas que la sesión del lunes es en línea, a distancia o virtual. Siempre "durante
-  la sesión". La modalidad publicada es presencial, aula C5.
+- NUNCA describas la modalidad de las sesiones. Siempre "durante la sesión". La modalidad
+  publicada es presencial, aula C5, para las dos sesiones de la semana.
 - El código de ejemplo es incompleto A PROPÓSITO en lo que el alumno ya sabe (Java básico,
   estructuras de datos); solo el fragmento nuevo del tema del día va listo. Marca lo demás
   como TODO con una pista.

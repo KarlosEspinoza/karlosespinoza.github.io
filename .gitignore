@@ -61,3 +61,6 @@ _site
 #Gemfile.lock
 *.gem
 .jekyll-cache
+
+# Material de profesor: vive en el repo privado so-profesor, nunca aqui
+**/profesor.md

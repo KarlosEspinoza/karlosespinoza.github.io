@@ -400,8 +400,9 @@ Reglas de diseño de los bloques:
 
 La asistencia del lunes se registra con los commits de los bloques. **Eso no se escribe en el
 programa**; se comunica en el encuadre y en Classroom con redacción neutra ("la asistencia del
-lunes se registra con el commit de la actividad de la sesión"). En ningún material visible se dice
-que la sesión del lunes es a distancia; se escribe siempre como "durante la sesión".
+lunes se registra con el commit de la actividad de la sesión"). **En ningún material se describe
+la modalidad de las sesiones**: se escribe siempre "durante la sesión", y la modalidad publicada
+es presencial en aula C5 para las dos.
 
 ### Organización del repositorio del alumno
 

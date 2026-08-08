@@ -20,7 +20,7 @@ algo, hazlo con la barra de formato de Classroom después de pegar.
 Lo que está fuera de los bloques de código son notas para ti y no se publica.
 
 Regla de redacción para todo lo que se publique: **nunca se menciona la modalidad de las
-sesiones**. Siempre "durante la sesión", nunca "en linea", "a distancia" ni "virtual".
+sesiones**. Siempre "durante la sesión". La modalidad publicada es presencial, aula C5.
 
 ---
 

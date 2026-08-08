@@ -7,8 +7,12 @@ dedicadas a revision de proyectos.
 Fuente: Calendario Escolar para Centros Universitarios 2026-2027, UdeG.
 https://escolar.udg.mx/calendario-escolar-para-centros-universitarios-2026-2027
 
-Horario del curso: lunes (en linea) y miercoles (presencial). 2 sesiones por
-semana. Cada sesion efectiva ~1.5 h reales.
+Horario del curso: lunes y miercoles, 2 sesiones por semana.
+Cada sesion efectiva ~1.5 h reales.
+
+Nomenclatura interna: la sesion del lunes es la **sesion de guia** (el alumno
+trabaja los bloques por su cuenta con el asesor disponible para dudas) y la del
+miercoles es la **sesion de aula** (trabajo conjunto sobre el caso central).
 
 ---
 
