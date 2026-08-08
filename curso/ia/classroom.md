@@ -257,7 +257,10 @@ No lleva Material aparte: **el detalle vive en la página del curso**. La tarea 
 recordatorio y el enlace, así hay un solo lugar que mantener y nunca se desincroniza con el
 sitio. Las dudas de la sesión se dejan como comentario en esta misma tarea.
 
-**Título:** `Semana NN - <titulo de la semana>`
+**Título:** `Semana NN` y nada más.
+
+Sin el tema en el título, a propósito: **si más adelante cambias de qué trata una semana, lo cambias
+en la página del curso y el Classroom no se toca**. El título del tema vive en un solo lugar.
 
 **Instrucciones** (idénticas todas las semanas, solo cambia el número en la URL):
 
@@ -277,24 +280,27 @@ Créalas todas de una vez al inicio del ciclo y ponles fecha. Así el semestre c
 vista del alumno desde el primer día y tú no vuelves a tocar el Classroom más que para las
 calificaciones de las revisiones.
 
-| Tarea (título) | URL de la guía | Tema |
+El título en Classroom es solo `Semana N`. La columna del tema es **para ti**, para saber cuál es
+cuál al ponerles fecha; no se escribe en Classroom.
+
+| Título en Classroom | URL de la guía | Tema (solo tu referencia) |
 |---|---|---|
-| Semana 1 - Encuadre y configuración del entorno | `.../semana-01` | U1 |
-| Semana 2 - La primera señal del sensor | `.../semana-02` | U1 |
-| Semana 3 - Recolección de datos etiquetados | `.../semana-03` | U2 |
-| Semana 4 - Limpieza y normalización de señales | `.../semana-04` | U2 |
-| Semana 5 - Características en el dominio del tiempo | `.../semana-05` | U2 |
-| Semana 6 - Características en el dominio de la frecuencia | `.../semana-06` | U2 |
-| Semana 7 - Entrenamiento del clasificador | `.../semana-07` | U2 |
-| Semana 8 - Redes neuronales y primer bucle de control | `.../semana-08` | U2 |
+| `Semana 1` | `.../semana-01` | Encuadre y configuración del entorno (U1) |
+| `Semana 2` | `.../semana-02` | La primera señal del sensor (U1) |
+| `Semana 3` | `.../semana-03` | Recolección de datos etiquetados (U2) |
+| `Semana 4` | `.../semana-04` | Limpieza y normalización de señales (U2) |
+| `Semana 5` | `.../semana-05` | Características en el dominio del tiempo (U2) |
+| `Semana 6` | `.../semana-06` | Características en el dominio de la frecuencia (U2) |
+| `Semana 7` | `.../semana-07` | Entrenamiento del clasificador (U2) |
+| `Semana 8` | `.../semana-08` | Redes neuronales y primer bucle de control (U2) |
 | (semana 9) | | -> sección 7, con calificación |
-| Semana 10 - Aprendizaje no supervisado y PCA | `.../semana-10` | U3 |
-| Semana 11 - Agrupamiento: K-Means y DBSCAN | `.../semana-11` | U3 |
-| Semana 12 - Autoencoders para detección de anomalías | `.../semana-12` | U3 |
-| Semana 13 - La anomalía como señal de control | `.../semana-13` | U3 |
+| `Semana 10` | `.../semana-10` | Aprendizaje no supervisado y PCA (U3) |
+| `Semana 11` | `.../semana-11` | Agrupamiento: K-Means y DBSCAN (U3) |
+| `Semana 12` | `.../semana-12` | Autoencoders para detección de anomalías (U3) |
+| `Semana 13` | `.../semana-13` | La anomalía como señal de control (U3) |
 | (semana 14) | | -> sección 7, con calificación |
-| Semana 15 - Evaluación del modelo | `.../semana-15` | U4 |
-| Semana 16 - Sobreajuste y preparación para producción | `.../semana-16` | U4 |
+| `Semana 15` | `.../semana-15` | Evaluación del modelo (U4) |
+| `Semana 16` | `.../semana-16` | Sobreajuste y preparación para producción (U4) |
 | (semana 17) | | -> sección 7, con calificación |
 
 Base de las URL: `https://karlosespinoza.github.io/curso/ia/`
