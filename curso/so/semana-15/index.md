@@ -14,7 +14,7 @@ Sistemas de archivos: organización física, mecanismos de acceso (secuencial y 
 
 Construimos el log persistente de pedidos (`pedidos.log`) en organización secuencial y la búsqueda directa de un pedido por su ID.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Persiste todos los pedidos atendidos en `pedidos.log` (organización secuencial).
 - Permite consultar un pedido por su ID (acceso directo al log).

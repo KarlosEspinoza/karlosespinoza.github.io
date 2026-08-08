@@ -17,9 +17,9 @@ title: Configuracion del entorno - Sistemas Operativos
     - [Paso 5 - Crear cuenta en GitHub](#paso-5)
     - [Paso 6 - Autenticar GitHub desde la terminal](#paso-6)
     - [Paso 7 - Elegir tu dominio y registrarlo](#paso-7)
-    - [Paso 8 - Crear tu repositorio desde la plantilla](#paso-8)
-    - [Paso 9 - Clonar tu repositorio en WSL2](#paso-9)
-    - [Paso 10 - Verificar que el proyecto compila](#paso-10)
+    - [Paso 8 - Crear tu repositorio](#paso-8)
+    - [Paso 9 - Darle acceso al asesor](#paso-9)
+    - [Paso 10 - Clonar tu repositorio y crear la estructura](#paso-10)
     - [Paso 11 - Editar README.md y BITACORA.md](#paso-11)
     - [Paso 12 - Primer commit y push](#paso-12)
     - [Paso 13 - Entregar en Google Classroom](#paso-13)
@@ -30,11 +30,12 @@ title: Configuracion del entorno - Sistemas Operativos
 
 # Configuracion del entorno
 
-Esta actividad se hace **antes de la sesion 2**, de forma asincrona.
-No se realiza en clase.
+Esta es la referencia detallada de la configuracion del entorno, con todos los pasos
+y las fallas mas comunes. Es la version larga del **bloque 1 de la
+[semana 1](/curso/so/semana-01)**: si ahi algo se atora, aqui esta el detalle.
 
-El video te guia paso a paso. Las instrucciones escritas estan debajo como referencia.
-Al terminar tendras tu entorno de desarrollo listo y tu repositorio del proyecto creado.
+El video te guia paso a paso. Al terminar tendras tu entorno de desarrollo listo y tu
+repositorio del proyecto creado.
 
 ---
 
@@ -179,17 +180,35 @@ Los detalles estan en [Prácticas](/curso/so/evaluacion/practicas).
 
 ---
 
-### Paso 8 - Crear tu repositorio desde la plantilla {#paso-8}
+### Paso 8 - Crear tu repositorio {#paso-8}
 
-1. Abre la plantilla: [github.com/KarlosEspinoza/so-proyecto-template](https://github.com/KarlosEspinoza/so-proyecto-template)
-2. Haz clic en **Use this template** -> **Create a new repository**.
-3. Nombre del repositorio: `so-proyecto`
-4. Visibilidad: **Public**.
+1. Entra a [github.com](https://github.com) y haz clic en **New repository**.
+2. Nombre del repositorio: `so-proyecto`
+3. Visibilidad: **Private**.
+4. Marca la casilla **Add a README file**.
 5. Haz clic en **Create repository**.
+
+Privado, y no publico, por una razon concreta: todos los repositorios del grupo se
+llaman igual, asi que uno publico lo encuentra cualquiera buscando el nombre en GitHub.
+Al terminar el semestre puedes cambiarlo a publico si quieres ensenarlo cuando busques
+trabajo.
 
 ---
 
-### Paso 9 - Clonar tu repositorio en WSL2 {#paso-9}
+### Paso 9 - Darle acceso al asesor {#paso-9}
+
+Como tu repositorio es privado, **sin este paso tu trabajo es invisible y cuenta como
+no entregado**.
+
+1. En tu repositorio, ve a **Settings** -> **Collaborators** -> **Add people**.
+2. Escribe el usuario `KarlosEspinoza`.
+3. Manda la invitacion.
+
+Hazlo el mismo dia que creas el repositorio, no la semana de la revision.
+
+---
+
+### Paso 10 - Clonar tu repositorio y crear la estructura {#paso-10}
 
 Copia la URL de tu repositorio desde GitHub (boton verde **Code** -> HTTPS).
 
@@ -197,22 +216,31 @@ Copia la URL de tu repositorio desde GitHub (boton verde **Code** -> HTTPS).
 cd ~
 git clone https://github.com/tu-usuario/so-proyecto.git
 cd so-proyecto
+mkdir src
+mkdir datos
+mkdir evidencias
 ```
 
----
+Esta estructura es la misma para todo el grupo y para todo el semestre:
 
-### Paso 10 - Verificar que el proyecto compila {#paso-10}
+```
+so-proyecto/
+  README.md      <- quien eres y que dominio es tu servidor
+  BITACORA.md    <- una seccion por semana
+  src/           <- todo el codigo Java
+  datos/         <- catalogo.txt, pedidos.log, recibos/
+  evidencias/    <- salidas de terminal: procesos.txt, strace.txt, ...
+```
 
-La plantilla ya trae un servidor minimo. Compruebalo:
+Git no sube carpetas vacias, asi que no te preocupes si al hacer `git status` no las ves.
+Quedan registradas en cuanto pongas un archivo dentro.
+
+Comprueba de paso que Java funciona:
 
 ```bash
-cd src
-javac ServidorPedidos.java
-java ServidorPedidos
-cd ..
+java -version
+javac -version
 ```
-
-Debe imprimir `Servidor listo.`. Si lo ves, tu entorno de Java funciona.
 
 ---
 
@@ -250,7 +278,7 @@ Gracias al Paso 6, el push no te pedira credenciales.
 ### Paso 13 - Entregar en Google Classroom {#paso-13}
 
 1. Abre Google Classroom.
-2. Busca la tarea **Tarea 0 - URL del repositorio**.
+2. Busca la tarea **Entrega la URL de tu repositorio de GitHub**.
 3. Pega la URL de tu repositorio (por ejemplo: `https://github.com/tu-usuario/so-proyecto`).
 4. Entrega.
 
@@ -262,10 +290,10 @@ Gracias al Paso 6, el push no te pedira credenciales.
 
 Antes de entregar, revisa que tu repositorio en GitHub muestre:
 
-- `README.md` con tu nombre y tu dominio elegido
+- Visibilidad **Private** y el usuario `KarlosEspinoza` invitado como colaborador
+- `README.md` con tu nombre, tu codigo y tu dominio elegido
 - `BITACORA.md` con la entrada de la Semana 1
-- `src/ServidorPedidos.java` (lo compilaste y corrio: `Servidor listo.`)
-- `catalogo.txt` presente
+- Las carpetas `src/`, `datos/` y `evidencias/` creadas en tu maquina
 - Al menos un commit con un mensaje descriptivo
 
 ---
@@ -277,7 +305,7 @@ Antes de entregar, revisa que tu repositorio en GitHub muestre:
 Puedes ir guardando commits y subirlos todos juntos cuando tengas conexion.
 
 **Mi computadora no soporta WSL2, que hago?**  
-Avisame antes de la sesion 2. Hay opciones alternativas (maquina virtual o una computadora del laboratorio).
+Avisame en la primera semana. Hay opciones alternativas (maquina virtual o una computadora del laboratorio).
 
 **Al hacer `git push` me pide usuario y contrasena.**  
 No completaste el Paso 6. Ejecuta `gh auth login` (responde **Yes** a "Authenticate Git with your GitHub credentials")

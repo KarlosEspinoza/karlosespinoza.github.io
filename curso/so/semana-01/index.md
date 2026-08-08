@@ -4,21 +4,231 @@ title: Fundamentos de Sistemas Operativos
 ---
 [Inicio](/curso/so)
 
-# Semana 1 - Encuadre y configuración del entorno
+# Semana 1 - Encuadre y configuración del entorno (U1)
 
-Esta primera semana tiene dos metas. La primera es que entiendas, con calma y desde cero, **qué es un sistema operativo y por qué es el punto de partida de todo el software que vas a escribir**. La segunda es que dejes **listo tu entorno de trabajo** y creado el repositorio donde vivirá tu proyecto durante todo el semestre.
+Esta primera semana tiene dos metas. La primera es dejar **listo tu entorno de trabajo** y creado el repositorio donde va a vivir tu proyecto durante todo el semestre. La segunda es entender, desde cero, **qué es un sistema operativo y por qué es el punto de partida de todo el software que vas a escribir**.
 
-Todo el curso gira alrededor de un solo sistema que vas a construir tú mismo: un **Servidor de Pedidos**. Imagina el sistema que usa una tienda para vender: hay varias cajas (cajeros) atendiendo clientes al mismo tiempo, y todas comparten un mismo inventario. Ese tipo de sistema, el que opera por ejemplo una empresa como SICAR, es justo el que iremos levantando capa por capa. Y cada concepto de sistemas operativos va a aparecer de forma natural cuando tu servidor lo necesite.
+Todo el curso gira alrededor de un solo sistema que vas a construir tú mismo: un **Servidor de Pedidos**. Imagina el sistema que usa una tienda para vender: hay varias cajas atendiendo clientes al mismo tiempo, y todas comparten un mismo inventario. Ese tipo de sistema, el que opera por ejemplo una empresa como SICAR, es justo el que iremos levantando capa por capa. Cada concepto de sistemas operativos va a aparecer de forma natural cuando tu servidor lo necesite, no porque venga en el temario.
 
 ---
 
-## Antes de la clase (aprendizaje invertido)
+- [Antes de la clase (aprendizaje invertido)](#antes-de-la-clase)
+    - [Cómo se trabaja esta guía](#como-se-trabaja)
+    - [Bloque 1: tu entorno y tu repositorio](#bloque-1)
+    - [Bloque 2: qué es un sistema operativo y dónde vive tu servidor](#bloque-2)
+    - [Bloque extra: el mapa de tu servidor](#bloque-extra)
+- [Durante la clase (aprendizaje activo)](#durante-la-clase)
+- [Avance de tu proyecto esta semana](#avance-del-proyecto)
+    - [Prácticas](#practicas)
+    - [Proyecto integrador](#proyecto-integrador)
 
-Lee esta sección con calma antes de la sesión. Está escrita para que la entiendas por tu cuenta, sin necesidad de que yo te la explique en vivo. En clase la usaremos como punto de partida para discutir y para empezar a darle forma a tu proyecto.
+---
 
-### Qué es un sistema operativo
+## Antes de la clase (aprendizaje invertido) {#antes-de-la-clase}
 
-Cuando enciendes una computadora, el hardware por sí solo no sabe hacer nada útil. Un procesador es un circuito que suma y compara números muy rápido; la memoria RAM es un enorme casillero donde se guardan datos temporalmente; el disco es una bodega donde las cosas se quedan aunque apagues el equipo. Pero nada de eso, por sí mismo, sabe abrir una aplicación, atender a dos usuarios a la vez o guardar un archivo. Hace falta un programa que coordine todo ese hardware y lo ponga a disposición de los demás programas de forma ordenada. Ese programa es el **sistema operativo (SO)**.
+### Cómo se trabaja esta guía {#como-se-trabaja}
+
+Esta guía se trabaja **durante la sesión**, no en tu casa la noche anterior ni la madrugada del miércoles. Está partida en **dos bloques obligatorios y uno extra**, y cada bloque termina con algo concreto que subes a tu repositorio. Así tu trabajo queda registrado conforme lo vas haciendo, sin que tengas que entregar nada aparte.
+
+Voy a estar disponible durante toda la sesión para resolver dudas. Aprovéchala: es el único rato de la semana en que puedes preguntar **mientras** lo estás haciendo, en vez de quedarte atorado.
+
+| Bloque | Qué haces | Qué entregas |
+|---|---|---|
+| 1 | Instalas el entorno y creas tu repositorio | El repositorio con su estructura y tu `README.md` |
+| 2 | Entiendes qué es el SO y eliges tu dominio | Tu entrada de `BITACORA.md` |
+| Extra | Trazas el mapa completo de tu servidor | La tabla de lo que tu servidor le pedirá al SO |
+
+El **bloque extra es opcional**. Es para quien terminó los dos primeros y quiere que su proyecto llegue más lejos. No hace falta para la clase del miércoles, y no pasa nada si no lo haces.
+
+Una última cosa, y es la más importante de la semana: **si te atoras, escríbelo y haz commit igual**. Un commit que dice "no me salió, me quedé atorado instalando WSL2" es trabajo hecho y me sirve muchísimo para saber dónde apoyarte el miércoles. Lo que no sirve es no dejar rastro.
+
+---
+
+### Bloque 1: tu entorno y tu repositorio {#bloque-1}
+
+Antes de cualquier concepto, necesitas la herramienta. Este bloque es puro trabajo de preparación, pero es el que sostiene todo el semestre.
+
+#### Git y GitHub: la memoria de tu proyecto
+
+**Git** es un programa que guarda "fotos" de tu proyecto a lo largo del tiempo. Cada foto se llama **commit**, y lleva fecha, hora, tu nombre y una descripción de lo que cambiaste. Si algo se rompe, vuelves a una foto anterior. **GitHub** es el sitio en la nube donde publicas ese historial para que quede respaldado y yo pueda revisarlo.
+
+En este curso Git no es un adorno: es **la columna vertebral de cómo entregas y cómo te evalúo**. Tu proyecto crece commit a commit, semana a semana. El historial es la prueba de que trabajaste de forma constante y no todo la última noche. Cuando llegue una revisión de avances, haces `push` antes del día acordado y yo reviso tu código con anticipación.
+
+Y aquí entra un archivo que vas a cuidar toda la vida del proyecto: **`BITACORA.md`**. Es un documento, dentro de tu mismo repositorio, donde cada semana explicas **con tus propias palabras** qué concepto viste y cómo lo aplicaste en tu servidor. No es un trámite: vale el 30% de cada revisión, y es donde demuestras que entendiste lo que programaste.
+
+#### Instala lo que vas a necesitar
+
+Todo el curso se trabaja sobre **Linux dentro de Windows**, con una herramienta que se llama **WSL2** (Windows Subsystem for Linux, versión 2). Te permite correr un Ubuntu real dentro de tu Windows, sin reiniciar la máquina ni partir el disco. Para ti es una terminal más que abres en Windows; por debajo hay un kernel de Linux completo.
+
+En el bloque 2 vas a entender por qué insisto tanto en Linux. Por ahora, los cuatro pasos:
+
+1. **Activa WSL2.** Abre **PowerShell como administrador** y ejecuta:
+
+   ```powershell
+   wsl --install
+   ```
+
+   Reinicia si te lo pide. Al abrir Ubuntu por primera vez, crea tu usuario y contraseña de Linux (apúntala, la vas a usar para `sudo`). Verifica que quedó en versión 2:
+
+   ```powershell
+   wsl -l -v
+   ```
+
+   > A partir de aquí, **todos los comandos van dentro de la terminal de Ubuntu**, no en PowerShell.
+
+2. **Instala Java, Git y la herramienta de GitHub** dentro de Ubuntu:
+
+   ```bash
+   sudo apt update
+   sudo apt install openjdk-21-jdk git gh -y
+   ```
+
+   Comprueba que respondan los tres:
+
+   ```bash
+   java -version
+   git --version
+   gh --version
+   ```
+
+3. **Configura tu identidad de Git.** Esto es lo que va a aparecer en cada commit tuyo:
+
+   ```bash
+   git config --global user.name "Tu Nombre Completo"
+   git config --global user.email "tu.correo@alumnos.udg.mx"
+   ```
+
+4. **Conecta tu terminal con tu cuenta de GitHub.** GitHub ya no acepta contraseña para `git`, así que la autenticación va por el navegador:
+
+   ```bash
+   gh auth login
+   gh auth setup-git
+   ```
+
+   En `gh auth login` responde `GitHub.com`, protocolo `HTTPS`, `Yes` a autenticar Git con tus credenciales, y `Login with a web browser`. Copia el código de 8 caracteres, presiona Enter y autoriza en el navegador. Después de esto, tus `git push` ya no te piden usuario ni contraseña.
+
+Si algo de esto se atora, los pasos vienen con más detalle y con las fallas típicas en [Configuración del entorno](/curso/so/entorno). Ahí también está el video.
+
+#### Crea tu repositorio
+
+Crea el repositorio en GitHub con el nombre `so-proyecto` y **visibilidad privada**.
+
+Privado, y no público, por una razón concreta: todos los repositorios del grupo se llaman igual, así que uno público lo encuentra cualquiera buscando el nombre en GitHub. Tu proyecto es tuyo y el de tu compañero es suyo.
+
+```bash
+cd ~
+git clone https://github.com/TU_USUARIO/so-proyecto.git
+cd so-proyecto
+```
+
+Como está privado, **tienes que darme acceso o no voy a poder revisarte**. En tu repositorio, ve a **Settings -> Collaborators -> Add people**, escribe mi usuario `KarlosEspinoza` y manda la invitación. Sin esa invitación tu trabajo no existe para mí y cuenta como no entregado, así que hazlo hoy y no la semana de la revisión.
+
+Al terminar el semestre puedes cambiarlo a público si quieres: es un proyecto completo y sirve para enseñarlo cuando busques trabajo.
+
+#### Cómo se organiza tu repositorio
+
+Esta estructura es la misma para todo el grupo y para todo el semestre. No la cambies: es la que me permite revisar tu proyecto rápido y sin andar buscando archivos.
+
+```
+so-proyecto/
+  README.md      <- quien eres y que dominio es tu servidor
+  BITACORA.md    <- una seccion por semana
+  src/           <- todo el codigo Java: ServidorPedidos.java, Pedido.java, ...
+  datos/         <- catalogo.txt, pedidos.log, recibos/
+  evidencias/    <- salidas de terminal: procesos.txt, strace.txt, ...
+```
+
+Créala de una vez, aunque las carpetas estén vacías:
+
+```bash
+mkdir src
+mkdir datos
+mkdir evidencias
+```
+
+Un detalle de `evidencias/` que vale la pena entender desde hoy. En este curso, buena parte de lo que demuestras **no es código: es la salida de un comando**. Cuando en la semana 2 observes tu servidor con `ps`, lo que prueba que lo hiciste es el texto que escupió tu terminal, con **tu** número de proceso. Eso se guarda ahí, así:
+
+```bash
+ps -ef > evidencias/procesos.txt
+```
+
+Ojo: Git no sube carpetas vacías. Van a quedar registradas hasta que pongas un archivo dentro, cosa que pasa la semana que viene. No te preocupes si al hacer `git status` no las ves.
+
+#### Cómo se escribe la bitácora
+
+`BITACORA.md` lleva **una sección por semana, y cada semana tiene dos partes fijas**: lo que trabajaste en la guía y lo que le agregaste al proyecto. Siempre igual, todas las semanas:
+
+```markdown
+# Bitácora del proyecto
+
+## Semana 1 - Encuadre y configuración del entorno
+
+### Antes de la clase
+
+(aquí van los entregables de los bloques de la guía)
+
+### Avance del proyecto
+
+(aquí va lo que le agregaste a tu sistema)
+```
+
+#### Cómo nombrar tus commits
+
+El mensaje del commit me dice qué estabas haciendo sin que yo tenga que abrir nada. Usa siempre este formato:
+
+| Cuándo haces commit | Mensaje |
+|---|---|
+| Al terminar el bloque 1 | `s01 bloque 1: entorno y repositorio listos` |
+| Al terminar el bloque 2 | `s01 bloque 2: eleccion de dominio` |
+| Si hiciste el bloque extra | `s01 extra: mapa del servidor` |
+| Al terminar el avance de tu proyecto | `s01 proyecto: ...` |
+
+El `s01` es el número de semana, y cambia cada semana (`s02`, `s03`, y así). **Haz un commit al terminar cada bloque, no uno solo al final.** Es menos trabajo de lo que parece y deja ver tu avance a lo largo de la sesión.
+
+#### Escribe tu `README.md`
+
+```markdown
+# Servidor de Pedidos - Farmacia
+
+Proyecto del curso Fundamentos de Sistemas Operativos.
+
+- Alumno: Ana Pérez
+- Código: 2162628
+- Dominio: Farmacia
+
+## Descripción
+
+Servidor que recibe pedidos de varios cajeros y gestiona un inventario
+compartido de medicamentos. Crece semana a semana con los temas del
+curso: procesos, concurrencia, memoria, archivos y red.
+```
+
+El dominio lo terminas de decidir en el bloque 2, así que por ahora déjalo en blanco o pon el que traigas en mente.
+
+**Lo que entregas de este bloque**
+
+- El repositorio `so-proyecto` creado en GitHub, **privado** y con la invitación de colaborador ya enviada.
+- Las carpetas `src/`, `datos/` y `evidencias/`.
+- `README.md` con tu nombre y tu código.
+- `BITACORA.md` con la estructura de la semana 1.
+
+```bash
+git add .
+git commit -m "s01 bloque 1: entorno y repositorio listos"
+git push
+```
+
+---
+
+### Bloque 2: qué es un sistema operativo y dónde vive tu servidor {#bloque-2}
+
+Ya tienes dónde guardar. Ahora el concepto que le da nombre al curso.
+
+#### Qué es un sistema operativo
+
+Cuando enciendes una computadora, el hardware por sí solo no sabe hacer nada útil. Un procesador es un circuito que suma y compara números muy rápido; la memoria RAM es un enorme casillero donde se guardan datos temporalmente; el disco es una bodega donde las cosas se quedan aunque apagues el equipo. Pero nada de eso, por sí mismo, sabe abrir una aplicación, atender a dos usuarios a la vez o guardar un archivo.
+
+Hace falta un programa que coordine todo ese hardware y lo ponga a disposición de los demás programas de forma ordenada. Ese programa es el **sistema operativo (SO)**.
 
 Una buena forma de imaginarlo es pensar en el SO como el **administrador de un edificio de oficinas** donde trabajan muchos inquilinos (los programas):
 
@@ -29,11 +239,13 @@ Una buena forma de imaginarlo es pensar en el SO como el **administrador de un e
 
 La idea más importante que tienes que llevarte es esta: **tus programas nunca hablan directamente con el hardware; le piden todo al sistema operativo**. Tu programa no le dice al disco "muévete a tal sector y graba estos bytes"; le dice al SO "guárdame este archivo", y el SO se encarga del resto.
 
-Esto es clave para nuestro curso, porque el sistema que vas a construir, el Servidor de Pedidos, **no es más que un programa que vive sobre el SO y le pide servicios constantemente**. Lo podemos dibujar en capas:
+#### Dónde vive tu servidor
+
+Esto es clave para el curso, porque el sistema que vas a construir **no es más que un programa que vive sobre el SO y le pide servicios constantemente**. Lo podemos dibujar en capas:
 
 ```
 +--------------------------------+
-|   Tu Servidor de Pedidos       |   <- programa de usuario (lo escribes tú)
+|   Tu Servidor de Pedidos       |   <- programa de usuario (lo escribes tu)
 +--------------------------------+
 |   Sistema operativo (kernel)   |   <- procesos, memoria, archivos, red
 +--------------------------------+
@@ -41,7 +253,7 @@ Esto es clave para nuestro curso, porque el sistema que vas a construir, el Serv
 +--------------------------------+
 ```
 
-Tu servidor está arriba. Cada vez que quiera hacer algo "real" (correr, recordar el catálogo, guardar un pedido, atender a un cajero por la red) tendrá que bajar a pedírselo al SO. Y resulta que **cada unidad del curso es uno de esos servicios**. Mira cómo encaja:
+Tu servidor está arriba. Cada vez que quiera hacer algo "real" (correr, recordar el catálogo, guardar un pedido, atender a un cajero por la red) tiene que bajar a pedírselo al SO. Y resulta que **cada unidad del curso es uno de esos servicios**:
 
 | Unidad | Lo que tu servidor le pedirá al SO | Cuándo lo construyes |
 |---|---|---|
@@ -52,175 +264,167 @@ Tu servidor está arriba. Cada vez que quiera hacer algo "real" (correr, recorda
 | U5 Archivos | "Guarda permanentemente todos los pedidos." | Semana 15 |
 | U6 Red | "Recibe a un cajero que se conecta desde otra máquina." | Semana 16 |
 
-Cuando trabajes el **proyecto integrador** con tu equipo, esta idea se multiplica: tendrás **varios servidores corriendo a la vez** (uno por cada sucursal) más un Servidor Central que los coordina. Todos compitiendo por el mismo procesador y la misma memoria de la máquina. Ahí el papel del SO como "administrador del edificio" se vuelve todavía más evidente, porque hay muchos más inquilinos pidiendo recursos al mismo tiempo.
+Ese es el curso completo, en una tabla. No hay temas sueltos: hay seis cosas que tu servidor necesita y seis unidades que se las dan.
 
-### El kernel y los dos modos de ejecución
+#### El kernel y los dos modos de ejecución
 
 El corazón del sistema operativo se llama **kernel**. Es la parte que tiene **control total sobre el hardware**: puede tocar cualquier zona de memoria, mandar órdenes al disco, configurar la red. Como es una pieza tan poderosa, hay que protegerla para que un programa cualquiera no haga un desastre. Por eso el procesador funciona en **dos modos**:
 
 - **Modo usuario:** es donde corren tus programas normales (tu servidor, el navegador, VS Code). En este modo el procesador tiene los permisos limitados a propósito. Si tu programa intenta tocar directamente el hardware o la memoria de otro programa, el SO lo frena en seco.
 - **Modo kernel:** es donde corre el kernel. En este modo se puede hacer todo.
 
-¿Por qué tanta separación? Para que **un programa con un error, o uno malicioso, no pueda tumbar toda la máquina ni espiar a los demás**. Piénsalo en términos de tu proyecto: si tu Servidor de Pedidos tiene un bug y truena, lo que se cae es tu servidor, no Windows ni Linux completos. Esa estabilidad no la programaste tú: te la regala el SO gracias a esta separación de modos.
+Para qué tanta separación: para que **un programa con un error, o uno malicioso, no pueda tumbar toda la máquina ni espiar a los demás**. Piénsalo en términos de tu proyecto: si tu Servidor de Pedidos tiene un bug y truena, lo que se cae es tu servidor, no Windows ni Linux completos. Esa estabilidad no la programaste tú: te la regala el SO gracias a esta separación de modos.
 
-En el proyecto integrador esto importa todavía más. Cada sucursal corre como un proceso independiente y aislado. Si la sucursal "farmacia" se cae por un error, las sucursales "restaurante" y "librería" siguen funcionando, porque el SO mantiene a cada proceso en su propia burbuja de memoria. Ese aislamiento entre procesos es una de las cosas que estaremos comprobando en clase.
+#### Las llamadas al sistema
 
-### Las llamadas al sistema (system calls)
-
-Si tu programa corre en modo usuario y no puede tocar el hardware, surge una pregunta lógica: ¿entonces cómo hace para leer un archivo o abrir una conexión de red? La respuesta es la **llamada al sistema** (en inglés *system call* o *syscall*): una petición formal que tu programa le hace al kernel para que haga algo por él.
+Si tu programa corre en modo usuario y no puede tocar el hardware, surge una pregunta lógica: entonces cómo hace para leer un archivo o abrir una conexión de red. La respuesta es la **llamada al sistema** (en inglés *system call* o *syscall*): una petición formal que tu programa le hace al kernel para que haga algo por él.
 
 Funciona como cuando llegas a una ventanilla de gobierno: tú no entras a las oficinas internas a buscar tu documento; llenas una solicitud, la entregas en la ventanilla, y un empleado autorizado entra, hace el trámite y te devuelve el resultado. La ventanilla es la frontera entre tú (modo usuario) y las oficinas (modo kernel). La llamada al sistema es esa solicitud.
 
-Cuando más adelante escribas en Java algo como esto para cargar tu catálogo:
+Cuando más adelante escribas en Java algo así para cargar tu catálogo:
 
 ```java
-List<String> lineas = Files.readAllLines(Path.of("catalogo.txt"));
+List<String> lineas = Files.readAllLines(Path.of("datos/catalogo.txt"));
 ```
 
-por debajo, esa instrucción se traduce en varias llamadas al sistema: una para **abrir** el archivo (`open`), otras para **leer** su contenido (`read`) y una para **cerrarlo** (`close`). Java te lo presenta bonito en una sola línea, pero quien realmente toca el disco es el kernel, a través de esas syscalls. Lo mismo pasará cuando tu servidor escriba un recibo o cuando acepte la conexión de un cajero por la red: siempre hay una llamada al sistema de por medio.
+por debajo esa instrucción se traduce en varias llamadas al sistema: una para **abrir** el archivo (`openat`), otras para **leer** su contenido (`read`) y una para **cerrarlo** (`close`). Java te lo presenta bonito en una sola línea, pero quien realmente toca el disco es el kernel. En la semana 13 vamos a **verlas ocurrir en vivo** con una herramienta llamada `strace`, y ese día esta idea deja de ser teoría.
 
-Por ahora quédate con la idea: **la llamada al sistema es la puerta por la que tu servidor le pide servicios al SO**. En la Unidad 4 las veremos a detalle, pero te las menciono desde hoy porque van a estar presentes en cada cosa "real" que haga tu proyecto.
+#### Por qué tu software vivirá en Linux
 
-### Por qué tu software vivirá en Linux
+Tu laptop probablemente tiene Windows, y está bien. Pero el **destino de casi todo el software que vas a escribir como profesional es Linux**:
 
-Tu laptop probablemente tiene Windows, y está bien. Pero el **destino de casi todo el software que vas a escribir como profesional es Linux**. Vale la pena que entiendas por qué, porque define cómo trabajaremos:
-
-- Los **servidores** que están detrás de las páginas web, las apps, las bases de datos y los puntos de venta corren casi siempre sobre Linux.
-- Empresas locales como **SICAR** (puntos de venta) y prácticamente todo el trabajo de **DevOps y administración de servidores** se hace sobre Linux.
+- Los **servidores** detrás de las páginas web, las apps, las bases de datos y los puntos de venta corren casi siempre sobre Linux.
+- Empresas locales como **SICAR** y prácticamente todo el trabajo de **DevOps y administración de servidores** se hace sobre Linux.
 - Los **contenedores** (Docker) y la nube son, por dentro, Linux.
 
-En otras palabras: el Servidor de Pedidos que vas a construir es exactamente el tipo de programa que en la vida real correría en un servidor Linux, no en una PC con Windows. Por eso desarrollaremos sobre Linux desde el primer día. Y para no tener que borrar tu Windows ni instalar una máquina virtual pesada, usamos una herramienta que mete Linux dentro de Windows: **WSL2**.
+En otras palabras: el Servidor de Pedidos que vas a construir es exactamente el tipo de programa que en la vida real correría en un servidor Linux, no en una PC con Windows. Cuando abres esa terminal de Ubuntu que instalaste en el bloque 1, **ya estás trabajando dentro de un servidor Linux igual al que usarías en producción**. No es un simulador de juguete.
 
-### WSL2: Linux dentro de Windows
+#### Elige tu dominio
 
-**WSL2** (Windows Subsystem for Linux, versión 2) te permite correr un Linux real (usaremos Ubuntu) **dentro de tu Windows**, sin reiniciar la máquina ni partir el disco. Para ti, en el día a día, es simplemente una terminal más que abres en Windows; pero por debajo hay un kernel de Linux completo y funcional.
+El dominio es el tipo de negocio cuyo servidor construyes. Todos comparten la misma estructura (pedidos que llegan, inventario compartido), y lo que cambia es qué se pide y qué se agota.
 
-Ahí, dentro de esa terminal, instalaremos Java, Git y todo lo del curso. La ventaja es enorme: cuando abras esa terminal de Ubuntu, **ya estás trabajando "dentro" de un servidor Linux igual al que usarías en producción**. Lo que construyas ahí es directamente transportable a un servidor real. No estás practicando en un simulador de juguete: estás en Linux de verdad.
+**Nadie más del grupo puede tener el mismo dominio**, porque cada dominio va a ser una sucursal distinta cuando armemos los equipos del proyecto integrador.
 
-### Git y GitHub: la memoria de tu proyecto
+| Dominio | Ejemplo de pedido | Ejemplo de inventario |
+|---|---|---|
+| Restaurante | Orden de platillos en mesa | Existencia de ingredientes |
+| Farmacia | Solicitud de medicamentos | Stock de medicamentos |
+| Librería | Pedido de libros | Ejemplares disponibles |
+| Taller de servicio | Orden de reparación | Disponibilidad de técnicos |
+| Renta de equipo | Reserva de herramientas | Unidades disponibles |
+| Estacionamiento | Solicitud de lugar | Cajones libres |
+| Veterinaria | Cita o servicio | Consultorios disponibles |
 
-Falta una pieza más del entorno, y es tan importante como Linux: el control de versiones.
+Si se te ocurre uno que no está en la lista, adelante: solo necesita cumplir dos cosas, que haya **algo que se pida** y **algo que se acabe**. Sin recurso limitado no hay condición de carrera, y sin condición de carrera te quedas sin la mitad de la Unidad 2.
 
-**Git** es un programa que guarda "fotos" de tu proyecto a lo largo del tiempo. Cada foto se llama **commit**, y lleva una fecha, tu nombre y una descripción de lo que cambiaste. Si algo se rompe, puedes volver a una foto anterior. **GitHub** es el sitio en la nube donde publicas ese historial para que quede respaldado y otros (en tu caso, yo y tu equipo) puedan verlo.
+**Lo que entregas de este bloque**
 
-En este curso Git y GitHub no son un adorno: son **la columna vertebral de cómo entregas y cómo te evalúo**. Tu proyecto va a crecer commit a commit, semana a semana. El historial de commits es la prueba de que fuiste trabajando de forma constante y no todo a última hora. Cuando llegue una revisión de avances, lo que harás es un `push` a GitHub antes del día acordado, y yo reviso tu código y tu bitácora con anticipación.
+En `BITACORA.md`, bajo `### Antes de la clase`, responde con tus palabras:
 
-Y aquí entra un archivo que vas a cuidar toda la vida del proyecto: **`BITACORA.md`**. Es un documento, dentro de tu mismo repositorio, donde cada semana explicas **con tus propias palabras** qué concepto viste y cómo lo aplicaste en tu servidor. No es un trámite: es donde demuestras que entendiste, y es una parte importante de cada revisión. La gran ventaja de tenerlo versionado en Git es que se nota cómo fuiste razonando a lo largo del semestre.
+1. **Cuál es tu dominio**, qué se pide en él y qué se agota.
+2. **Por qué tu servidor no puede tocar el disco directamente.** Explica la ventanilla con tus palabras, no con las de la guía.
+3. **Un ejemplo tuyo de cada capa.** Completa esta tabla con **tu** dominio, no con farmacia:
 
-En el proyecto integrador, Git además les sirve para **trabajar en equipo sobre el mismo código** sin pisarse: cada integrante aporta su parte (su sucursal) y todo se integra en un repositorio común del equipo.
+   | Capa | En mi sistema esto es... |
+   |---|---|
+   | Programa de usuario | |
+   | Servicio que le pido al SO | |
+   | Hardware que termina moviéndose | |
+
+Actualiza también el dominio en tu `README.md`.
+
+```bash
+git add .
+git commit -m "s01 bloque 2: eleccion de dominio"
+git push
+```
 
 ---
 
-## Durante la clase (aprendizaje activo)
+### Bloque extra: el mapa de tu servidor {#bloque-extra}
 
-La primera sesión es de encuadre y la hacemos **sin laptop**, para conocernos y construir entre todos el mapa del sistema que vamos a desarrollar. Dos dinámicas:
+Opcional. Si ya terminaste los dos bloques anteriores, este te va a dar la foto completa del semestre y te va a servir de índice para tu bitácora.
 
-**1. Nombre de tu sistema.** Cada quien dice un apodo y el dominio de negocio que está pensando para su servidor: restaurante "El Fogón", farmacia "SaludYa", librería "Página 7", lo que quieras. Lo anotamos en el pizarrón. La regla es que **no se pueden repetir dominios**, porque cada dominio será una sucursal distinta cuando armemos los equipos del proyecto integrador. Al final de la dinámica, el pizarrón ya es el mapa de sucursales del grupo.
+Vuelve a la tabla de las seis unidades y **tradúcela a tu dominio**. Para cada unidad, escribe qué va a hacer **tu** servidor en concreto:
 
-**2. El SO invisible.** En equipos pequeños, durante unos minutos, hagan una lista de todo lo que ocurre "por debajo" desde que un cajero teclea un pedido hasta que se imprime el recibo. ¿Quién decide cuál caja usa el procesador en ese instante? ¿Dónde está guardado el inventario mientras tanto? ¿Qué pasaría si dos cajas piden el último producto exactamente al mismo tiempo? No hay que resolverlo todavía: la meta es solo **descubrir en qué momentos aparece el sistema operativo**. Vas a ver que aparece en todos. Cada uno de esos momentos es, de hecho, un tema que veremos a lo largo del curso.
+| Unidad | Qué hará mi servidor | Qué se rompe si el SO no me lo da |
+|---|---|---|
+| U1 Procesos | | |
+| U2 Concurrencia | | |
+| U3 Memoria | | |
+| U4 Entrada/Salida | | |
+| U5 Archivos | | |
+| U6 Red | | |
+
+La segunda columna es la fácil. **La tercera es la que vale**: obliga a pensar qué pasaría si ese servicio no existiera. Por ejemplo, en U2: si el SO no me diera forma de coordinar dos cajeros, el inventario quedaría en un número equivocado y vendería medicamento que ya no tengo.
+
+Guárdala en tu `BITACORA.md`. En la semana 17 vas a volver a leerla, y la gracia es ver cuánto de lo que escribiste hoy resultó cierto.
+
+```bash
+git add .
+git commit -m "s01 extra: mapa del servidor"
+git push
+```
 
 ---
 
-## Tu proyecto esta semana
+## Durante la clase (aprendizaje activo) {#durante-la-clase}
 
-Esta semana siembras el proyecto. Lo que crees ahora es el terreno sobre el que vas a construir las siguientes 16 semanas.
+Llegas con tu entorno instalado, tu repositorio creado y tu dominio elegido. La sesión es de encuadre y la hacemos **sin laptop**, para conocernos y construir entre todos el mapa de los sistemas que vamos a desarrollar. Dos dinámicas:
 
-### Prepara tu entorno
+**1. El mapa de sucursales.** Cada quien dice su nombre y el dominio que eligió. Lo anotamos en el pizarrón. La regla es que **no se pueden repetir dominios**: si dos coinciden, ahí mismo se resuelve. Al final el pizarrón ya es el mapa de sucursales del grupo, y de ahí salen los equipos del proyecto integrador.
 
-Deja instalado y funcionando lo siguiente (lo haces en tu computadora, con calma, fuera de clase):
+**2. El SO invisible.** En equipos pequeños, hagan una lista de todo lo que ocurre "por debajo" desde que un cajero teclea un pedido hasta que se imprime el recibo. Quién decide cuál caja usa el procesador en ese instante. Dónde está guardado el inventario mientras tanto. Qué pasaría si dos cajas piden el último producto exactamente al mismo tiempo.
 
-1. **Activa WSL2.** En PowerShell como administrador:
+No hay que resolverlo: la meta es **descubrir en qué momentos aparece el sistema operativo**. Van a ver que aparece en todos, y cada uno de esos momentos es un tema que veremos a lo largo del curso. Al final juntamos las listas de todos los equipos y las acomodamos sobre las seis unidades. Esa lista compartida es el temario del curso escrito por ustedes.
 
-   ```powershell
-   wsl --install
-   ```
+---
 
-   Reinicia si te lo pide. Al abrir Ubuntu por primera vez, crea tu usuario y contraseña de Linux. Verifica que quedó en versión 2:
+## Avance de tu proyecto esta semana {#avance-del-proyecto}
 
-   ```powershell
-   wsl -l -v
-   ```
+### Prácticas {#practicas}
 
-2. **Instala Git y Java** dentro de la terminal de Ubuntu, y configura tu identidad de Git:
+El repositorio ya lo creaste en el bloque 1. Lo que queda es cerrarlo y dejarlo entregado.
 
-   ```bash
-   sudo apt update
-   sudo apt install git openjdk-21-jdk -y
-   git config --global user.name "Tu Nombre"
-   git config --global user.email "tucorreo@ejemplo.com"
-   ```
+1. **Entrega la URL de tu repositorio en Google Classroom.** Esto se hace **una sola vez en todo el semestre**: de ahí en adelante yo reviso directo en GitHub y tú solo haces `push`.
 
-   Comprueba que respondan: `git --version` y `java -version`.
+2. **Verifica que me llegó la invitación de colaborador.** En tu repositorio, Settings -> Collaborators, mi usuario `KarlosEspinoza` tiene que aparecer en la lista (aunque diga "pending"). Si no está, tu trabajo es invisible para mí.
 
-3. **Instala Visual Studio Code** en Windows y su extensión **WSL**, que te deja abrir carpetas de Linux directamente. Desde una carpeta en la terminal de Ubuntu puedes abrirlo con `code .`.
-
-### Prácticas
-
-1. **Elige tu dominio** de esta lista (recuerda: nadie más del grupo puede tener el mismo) y regístralo conmigo:
-
-   | Dominio | Ejemplo de pedido | Ejemplo de inventario |
-   |---|---|---|
-   | Restaurante | Orden de platillos | Ingredientes |
-   | Farmacia | Solicitud de medicamentos | Stock de medicamentos |
-   | Librería | Pedido de libros | Ejemplares |
-   | Taller de servicio | Orden de reparación | Técnicos disponibles |
-   | Renta de equipo | Reserva de herramienta | Unidades disponibles |
-   | Estacionamiento | Solicitud de lugar | Cajones libres |
-   | Veterinaria | Cita o servicio | Consultorios |
-
-2. **Crea tu repositorio** en GitHub (por ejemplo `servidor-pedidos-so`, público) y clónalo dentro de tu Ubuntu:
-
-   ```bash
-   git clone https://github.com/TU_USUARIO/servidor-pedidos-so.git
-   cd servidor-pedidos-so
-   ```
-
-3. **Escribe tu `README.md`** con tus datos y tu dominio:
+3. **Cierra tu entrada de la semana en `BITACORA.md`**, bajo `### Avance del proyecto`:
 
    ```markdown
-   # Servidor de Pedidos - Farmacia
+   ### Avance del proyecto
 
-   Proyecto del curso Fundamentos de Sistemas Operativos.
+   Instalé WSL2 con Ubuntu, Java 21 y Git, y creé este repositorio. Elegí el
+   dominio de farmacia porque me interesa cómo se controla el stock cuando
+   varios cajeros atienden al mismo tiempo.
 
-   - Alumno: Ana Pérez
-   - Código: 2162628
-   - Dominio: Farmacia
-
-   ## Descripción
-
-   Servidor que recibe pedidos de varios cajeros y gestiona un inventario
-   compartido de medicamentos. Crecerá semana a semana con los temas del
-   curso: procesos, concurrencia, memoria, archivos y red.
+   En la dinámica del SO invisible nos dimos cuenta de que casi todo lo que
+   creíamos que hacía el programa lo hace en realidad el sistema operativo:
+   nosotros solo se lo pedimos.
    ```
 
-4. **Escribe la primera entrada de tu `BITACORA.md`**, explicando con tus palabras lo que entendiste esta semana:
-
-   ```markdown
-   # Bitácora del proyecto
-
-   ## Semana 1 - Configuración del entorno
-
-   Configuré WSL2 para tener Linux dentro de Windows, instalé Git y Java, y
-   creé mi repositorio. Elegí el dominio de farmacia porque me interesa cómo
-   se controla el stock cuando varios cajeros atienden al mismo tiempo.
-
-   Entendí que el sistema operativo administra el hardware y se lo ofrece a
-   mis programas, y que mi servidor no tocará el hardware directamente: todo
-   se lo pedirá al SO mediante llamadas al sistema.
-   ```
-
-5. **Guarda y sube tu avance**, y entrega la URL del repositorio en Google Classroom (esto se hace una sola vez en todo el semestre):
+4. **Sube tu avance:**
 
    ```bash
    git add .
-   git commit -m "inicio: configuracion del entorno y eleccion de dominio"
+   git commit -m "s01 proyecto: repositorio entregado y dominio registrado"
    git push
    ```
 
-### Proyecto integrador
+### Proyecto integrador {#proyecto-integrador}
 
 1. **Forma tu equipo** de 2 o 3 integrantes.
 2. **Verifiquen que cada integrante tenga un dominio diferente**, porque cada dominio será una sucursal del sistema multi-sucursal que construirán juntos. Por ejemplo: uno farmacia, otro restaurante, otro librería.
-3. **Registren el equipo y los dominios** conmigo durante esta semana.
+3. **Registren el equipo** subiendo a Classroom un archivo `equipo.csv` con una línea por integrante. Lo sube cada uno de los integrantes, el mismo archivo:
+
+   ```
+   codigo,dominio
+   2162628,farmacia
+   2162631,restaurante
+   2162640,libreria
+   ```
+
+   El dominio va en una sola palabra, en minúsculas y sin acentos, porque ese archivo lo proceso con un script.
 
 Todavía no hay código del integrador: por ahora basta con que el equipo quede formado y los dominios reservados, porque a partir de la Unidad 2 cada sucursal empezará a conectarse a un Servidor Central que desarrollarán en conjunto.

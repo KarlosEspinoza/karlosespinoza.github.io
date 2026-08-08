@@ -14,7 +14,7 @@ Administración de memoria: memoria virtual, memoria real e intercambio (SWAP) (
 
 Implementamos el catálogo de productos en memoria (caché) para que el servidor no tenga que leer el archivo en cada pedido.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Carga `catalogo.txt` en memoria (HashMap) al arrancar el servidor.
 - Atiende las consultas de catálogo desde memoria.

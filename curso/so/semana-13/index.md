@@ -14,7 +14,7 @@ Llamadas al sistema y operaciones de entrada/salida: controladores, mecanismos y
 
 Implementamos la lectura del catálogo desde archivo y la escritura de un recibo por cada pedido, identificando las llamadas al sistema involucradas.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Lee el catálogo desde `catalogo.txt` al arrancar (en `GestorArchivos.java`).
 - Escribe un recibo en archivo (`recibo_NNN.txt`) por cada pedido atendido.

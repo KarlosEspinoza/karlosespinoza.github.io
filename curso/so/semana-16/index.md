@@ -14,7 +14,7 @@ El socket como abstracción del SO (no solo de la red). Sockets servidor y clien
 
 Convertimos al cajero en un cliente que se conecta por socket al servidor. El servidor atiende varios cajeros a la vez.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Implementa `ClienteCajero.java` como cliente que se conecta por socket.
 - Haz que tu servidor atienda al menos 2 cajeros simultáneos sin perder pedidos.

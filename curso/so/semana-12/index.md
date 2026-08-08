@@ -14,7 +14,7 @@ Diagnóstico de memoria: consumo, fugas de memoria y el OOM killer (guía).
 
 Construimos el buffer de pedidos pendientes con tamaño máximo y diagnosticamos su consumo de memoria bajo carga.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Implementa un buffer en memoria de pedidos pendientes con capacidad máxima.
 - Define que pasa cuando el buffer se llena.

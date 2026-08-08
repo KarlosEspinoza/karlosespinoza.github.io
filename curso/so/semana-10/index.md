@@ -14,7 +14,7 @@ Planificación de procesos: por lotes y primero en llegar primero en ser atendid
 
 Comparamos políticas de planificación aplicadas al caso: en que orden conviene que el servidor atienda los pedidos pendientes.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Aplica una política de planificación (lotes o FIFO) al orden en que tu servidor atiende los pedidos.
 - Explica en `BITACORA.md` que política elegiste y por que, y como se compara con tiempo real, distribuido y embebido. Haz push.

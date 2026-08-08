@@ -14,7 +14,7 @@ Sección crítica, exclusión mutua y semáforos (guía).
 
 Resolvemos en equipo el caso de dos cajeros simultáneos sin romper el inventario, usando un semáforo. Comparamos la versión con carrera y la versión protegida.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Protege tu inventario con un semáforo en `GestorInventario.java`.
 - Demuestra el antes (condición de carrera) y el después (inventario consistente).

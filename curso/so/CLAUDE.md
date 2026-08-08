@@ -372,7 +372,7 @@ Convención de mensajes de commit (`sNN` = número de semana):
 
 | Sem | Tema | Bloque 1 | Bloque 2 | Bloque extra | Estado |
 |---|---|---|---|---|---|
-| 01 | Encuadre y configuración del entorno (U1) | El SO, kernel, modos y syscalls | Entorno WSL2 + repositorio | Mapa de syscalls por unidad | |
+| 01 | Encuadre y configuración del entorno (U1) | Entorno WSL2 + repositorio privado | El SO, kernel, modos y syscalls; elección de dominio | El mapa del servidor por unidad | ✅ |
 | 02 | Linux y el primer proceso (U1) | Árbol de procesos: `ps`, `top`, STAT, `/proc` | `ServidorPedidos.java` vivo y con log | `/proc/<pid>/status` campo por campo | |
 | 03 | Contenedores y concepto de proceso (U1-U2) | Proceso vs programa: PCB, namespaces, cgroups | Proceso hijo con `ProcessBuilder` | El servidor dentro de Docker | |
 | 04 | Hilos: pedidos concurrentes (U2) | Estados del proceso y qué comparte un hilo | Un hilo por pedido; `nlwp`, `top -H` | Pool con `ExecutorService` | |

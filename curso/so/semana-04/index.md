@@ -14,7 +14,7 @@ Estados y transiciones de los procesos. Procesos ligeros: hilos o hebras (guía)
 
 Construimos hilos en Java. El servidor empieza a aceptar pedidos en texto plano y atiende cada pedido en su propio hilo.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Haz que tu servidor acepte pedidos por consola en texto plano.
 - Procesa cada pedido en un hilo separado.

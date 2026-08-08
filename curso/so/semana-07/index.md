@@ -14,7 +14,7 @@ Bloqueos (deadlocks) y sincronización entre hilos (guía).
 
 Depuramos y diagnosticamos problemas de concurrencia sobre el caso: como detectar un bloqueo y como evitarlo con sincronización ordenada.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Revisa tu servidor en busca de un posible bloqueo entre hilos y corrígelo.
 - Añade sincronización donde haga falta para que ningún pedido quede atorado.

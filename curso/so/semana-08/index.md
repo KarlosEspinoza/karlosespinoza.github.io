@@ -14,7 +14,7 @@ Comunicación entre procesos: señales, alarmas y tuberías (pipes) (guía).
 
 Implementamos comunicación entre procesos del servidor con pipes y manejamos una señal para apagado ordenado.
 
-## Tu proyecto esta semana
+## Avance de tu proyecto esta semana
 
 - Comunica dos procesos de tu servidor con un pipe.
 - Maneja una señal (por ejemplo SIGINT) para que tu servidor cierre de forma ordenada.
