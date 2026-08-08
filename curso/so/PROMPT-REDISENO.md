@@ -73,6 +73,26 @@ Lo que hay que TRAER de curso/ia, porque es lo que se desarrolló después:
    markdown ni admite tablas), cada párrafo en una sola línea, sin fechas, con los títulos de
    las tareas semanales como "Semana N" a secas para no tener que tocarlas si cambia el tema.
 
+7. REVISAR LAS FECHAS DEL CICLO. Hazlo al principio, porque de ahí sale todo lo demás.
+   curso/so/CLAUDE.md trae hoy las revisiones de avances en el 14 de octubre, el 18 de
+   noviembre y el 9 de diciembre. Esas fechas vienen de un ciclo anterior y hay que
+   verificarlas antes de usarlas.
+
+   La fuente oficial es https://escolar.udg.mx/calendarios y de ahí salen tres cosas:
+   - Las fechas de inicio y fin del ciclo.
+   - El número REAL de sesiones (lunes y miércoles entre esas dos fechas, descontando
+     festivos). Ese total define los máximos de faltas: 20% del total para ordinario y 35%
+     para extraordinario, redondeando hacia abajo (reglamento UdeG, arts. 20 y 27).
+   - En qué semana del calendario caen las revisiones 1, 2 y 3.
+
+   Compara también con curso/so/recurso/calendario-clases.md, que ya calcula sesiones por
+   ciclo, y dime si no coinciden.
+
+   Pregúntame por el calendario del ciclo vigente antes de escribir cualquier fecha. Si
+   todavía no lo tengo, deja las fechas fuera del material visible y expresadas como semana
+   ("miércoles de la semana 9"), igual que se hizo en curso/ia: así el curso se reusa cada
+   semestre sin volver a tocar los textos.
+
 REGLAS DE ESCRITURA QUE NO SE NEGOCIAN:
 
 - En archivos visibles al alumno, NADA de caracteres que no se escriban con un teclado normal:
@@ -130,6 +150,11 @@ sin hardware porque el Arduino está en el aula. En SO no hay esa restricción f
 que decidir a propósito qué se hace el lunes y qué el miércoles. La regla que funcionó: **el lunes
 se lee, se decide y se escribe código; el miércoles se ejecuta, se rompe y se depura en conjunto.**
 
-**Lo del calendario.** `recurso/calendario-clases.md` ya calcula las sesiones reales del ciclo. Las
-fechas de las revisiones que están hoy en `CLAUDE.md` (14 oct, 18 nov, 9 dic) hay que verificarlas
-contra <https://escolar.udg.mx/calendarios> antes de publicarlas.
+**Lo del calendario.** Es el punto 7 del prompt y conviene resolverlo antes que nada, porque las
+fechas de las revisiones amarran la mitad de las decisiones del semestre. Las que están hoy en
+`CLAUDE.md` (14 oct, 18 nov, 9 dic) son de un ciclo anterior.
+
+En IA la solución que funcionó fue **no meter fechas en el material visible**: todo se expresa como
+semana ("miércoles de la semana 9") y lo único atado al calendario es el campo de fecha de entrega
+de Google Classroom. Eso permite reusar el curso cada semestre sin reescribir nada. Vale la pena
+hacer lo mismo aquí, y de paso quitar de `CLAUDE.md` las tres fechas fijas.
