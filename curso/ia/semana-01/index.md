@@ -295,6 +295,8 @@ Nadie más del grupo puede tener el mismo dominio, porque cada dominio va a ser 
 
 Aún no tienes que estar seguro de qué sensores vas a usar. Eso lo terminas de decidir en la semana 3, cuando diseñemos el experimento de recolección.
 
+**Pero sí tienes que comprar el sensor esta semana.** El miércoles que viene es el primer día de hardware y la clase entera se trabaja sobre tu sensor: sin él no puedes hacer nada. Todo el material es tuyo, el laboratorio no presta equipo. Consíguelo en tienda física si puedes, porque un envío por internet no te llega a tiempo. La lista completa con precios aproximados está en [Materiales y configuración](/curso/ia/requisitos/).
+
 **Lo que entregas de este bloque**
 
 En `BITACORA.md`, bajo `### Antes de la clase`, responde con tus palabras:

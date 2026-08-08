@@ -5,7 +5,7 @@ title: Inteligencia Artificial
 # Inteligencia Artificial
 
 - [Programa del curso](programa)
-- [Configuración del entorno](requisitos/)
+- [Materiales y configuración](requisitos/)
 
 ## Evaluación
 

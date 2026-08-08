@@ -12,6 +12,7 @@ Todo el curso se trabaja en **Windows**.
 
 ---
 
+- [Qué necesitas y cuándo](#cuando)
 - [Software](#software)
     - [Python](#python)
     - [Visual Studio Code](#vscode)
@@ -25,6 +26,50 @@ Todo el curso se trabaja en **Windows**.
     - [Actuadores](#actuadores)
     - [Lo que no necesitas](#lo-que-no-necesitas)
 - [El hardware del laboratorio](#laboratorio)
+
+---
+
+## Qué necesitas y cuándo {#cuando}
+
+**Todo el material es tuyo y lo compras tú.** El laboratorio no presta equipo: lo único que aporta es la maqueta con la banda transportadora y el PLC, y eso se usa hasta la Unidad 4.
+
+No compres todo de golpe. Esto es lo que necesitas y en qué semana:
+
+| Semana | Qué necesitas | Para qué |
+|---|---|---|
+| 1 | Solo tu computadora | Instalar el entorno y crear tu repositorio |
+| **2** | **Arduino Nano, cable USB, protoboard, jumpers y tu sensor** | Leer tu primera señal |
+| 3 | Tus **tres tipos de pieza** y algo para marcar la mesa (cinta) | Recolectar tu dataset |
+| 5 | Probablemente un **segundo sensor** | Cuando descubras que con uno no separas tus clases |
+| 8 | Un **actuador** (servo, LED RGB o buzzer) | Cerrar el bucle de control |
+| 10 | Objetos ajenos a tus tres clases | Tus piezas anómalas |
+| 15 | Nada nuevo | La maqueta, la banda y el PLC son del laboratorio |
+
+### La fecha que de verdad importa
+
+**Tu sensor tiene que estar en tus manos el miércoles de la semana 2.** Ese es el primer día de hardware y la clase entera se trabaja sobre él; sin sensor no puedes hacer nada ese día ni el resto de la semana.
+
+Y aquí está el problema de tiempos: **eliges tu dominio el lunes de la semana 1**, y de esa elección depende qué sensor necesitas. Entre esos dos días hay poco más de una semana. Si lo pides por internet y tarda en llegar, te quedas fuera.
+
+Dos recomendaciones concretas:
+
+- **Cómpralo en tienda física** si puedes, o pídelo el mismo lunes de la semana 1, no el fin de semana.
+- **Si no alcanzas a conseguir el sensor de tu dominio**, consigue cualquiera de la lista y avísame. Es preferible arrancar la semana 2 con un sensor prestado o distinto y ajustar después, que llegar sin nada.
+
+El **segundo sensor** casi siempre acaba haciendo falta, y te vas a enterar en la semana 5, cuando grafiques tus características y veas que dos de tus clases se enciman. Si lo tienes contemplado desde ahora, no pierdes dos semanas esperando un envío justo cuando empieza el entrenamiento.
+
+### Cuánto vas a gastar
+
+Precios aproximados en pesos, para que te des una idea. Varían mucho entre proveedores, así que compara.
+
+| | Aproximado |
+|---|---|
+| Lo básico (Nano, cable, protoboard, jumpers, resistencias) | 300 a 450 |
+| Tu sensor | 20 a 250, según cuál (ver la tabla de abajo) |
+| Un actuador | 20 a 90 |
+| **Total para arrancar** | **alrededor de 400 a 700** |
+
+Si tu presupuesto es corto, el camino más barato que funciona bien es **TCRT5000 más un LED RGB**: entre los dos no pasan de 60 pesos y te alcanzan para todo el semestre.
 
 ---
 
@@ -99,6 +144,8 @@ Si las cuatro responden, ya tienes el entorno del semestre.
 
 ### Lo básico, para todos {#lo-basico}
 
+Esto lo necesitas desde la semana 2 y lo vas a usar todo el semestre.
+
 | Componente | Cantidad | Notas |
 |---|---|---|
 | **Arduino Nano** (o UNO compatible) | 1 | Con su cable USB |
@@ -114,17 +161,17 @@ Todo se monta en **protoboard**. En este curso no se suelda nada.
 
 En la semana 1 eliges **qué va a clasificar tu sistema**, y de esa decisión depende qué sensor necesitas. **No compres sensores antes de tener tu dominio registrado**, o vas a terminar con el equivocado.
 
-| Sensor | Qué mide | Tipo de salida | Sirve para clasificar por |
-|---|---|---|---|
-| **TCRT5000** | Luz reflejada, a pocos milímetros | Analógica | Color, material, acabado. **El más recomendado.** |
-| **TCS3200** | Color (canales rojo, verde y azul) | Por pulso | Color, material |
-| **GP2Y0A21YK0F** | Distancia (infrarrojo) | Analógica | Tamaño, altura, presencia |
-| **HC-SR04** | Distancia (ultrasonido) | Por pulso | Tamaño, altura, nivel |
-| **LDR** + resistencia 10k | Luz ambiente | Analógica | Color, acabado |
-| **LM35** | Temperatura | Analógica | Estado térmico |
-| **LJ12A3-4-Z/BX** | Presencia de metal (inductivo) | Digital | Material (metal contra no metal) |
-| **A3144** | Campo magnético | Digital | Material (imanes, metal imantado) |
-| **HW-870** | Interrupción de un haz óptico (ranura) | Digital | Conteo, presencia, velocidad de giro |
+| Sensor | Qué mide | Salida | Sirve para clasificar por | Aprox. |
+|---|---|---|---|---|
+| **TCRT5000** | Luz reflejada, a pocos milímetros | Analógica | Color, material, acabado. **El más recomendado.** | 20 a 40 |
+| **TCS3200** | Color (canales rojo, verde y azul) | Por pulso | Color, material | 90 a 150 |
+| **GP2Y0A21YK0F** | Distancia (infrarrojo) | Analógica | Tamaño, altura, presencia | 150 a 250 |
+| **HC-SR04** | Distancia (ultrasonido) | Por pulso | Tamaño, altura, nivel | 40 a 60 |
+| **LDR** + resistencia 10k | Luz ambiente | Analógica | Color, acabado | 10 a 20 |
+| **LM35** | Temperatura | Analógica | Estado térmico | 30 a 60 |
+| **LJ12A3-4-Z/BX** | Presencia de metal (inductivo) | Digital | Material (metal contra no metal) | 80 a 150 |
+| **A3144** | Campo magnético | Digital | Material (imanes, metal imantado) | 15 a 30 |
+| **HW-870** | Interrupción de un haz óptico (ranura) | Digital | Conteo, presencia, velocidad de giro | 25 a 50 |
 
 #### Los tres que conviene conocer
 

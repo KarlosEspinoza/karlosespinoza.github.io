@@ -9,7 +9,14 @@ Materiales del curso de Inteligencia Artificial para Ingeniería Mecatrónica,
 
 ---
 
-## Hardware disponible en clase
+## Hardware del alumno (lo compra cada quien)
+
+**El laboratorio no presta material.** Cada alumno compra su Arduino, su protoboard, sus sensores,
+sus actuadores y sus piezas. Lo único que aporta el laboratorio es la maqueta con la banda y el PLC,
+y se usa hasta la Unidad 4. Al escribir materiales hay que decirlo así, nunca "hardware disponible
+en clase". La fecha límite real de compra es el **miércoles de la semana 2**, que es el primer día
+de hardware, y el alumno elige su dominio (y por lo tanto su sensor) apenas el lunes de la 1: ese
+margen apretado está advertido en `requisitos/index.md` y en la semana 01.
 
 - **Microcontrolador:** Arduino Nano
 - **Sensores:** LM35, HC-SR04, LDR, A3144, HW-870, GP2Y0A21YK0F, TCRT5000, TCS3200, LJ12A3-4-Z/BX (inductivo)
