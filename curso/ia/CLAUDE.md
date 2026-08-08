@@ -9,6 +9,65 @@ Materiales del curso de Inteligencia Artificial para Ingeniería Mecatrónica,
 
 ---
 
+## REGLA DE MODIFICACIONES DURANTE EL CURSO
+
+El curso arranca a finales de agosto de 2026 (Karlos lo confirmó el 2026-08-07 diciendo "en 2
+semanas"). A partir de ese momento **los alumnos ya están trabajando sobre este material y su
+calificación depende de él**, así que cualquier cambio puede afectarlos y dar pie a una queja
+legítima.
+
+### Protocolo
+
+**Karlos indica en qué semana va el curso** al pedir una modificación. Si no lo dice, **hay que
+preguntárselo antes de tocar cualquier archivo de `semana-NN/` o de `evaluacion/`**. Sin ese dato
+no se puede saber si un cambio es seguro.
+
+Con la semana en curso `N`, el material se clasifica en tres:
+
+| Objetivo del cambio | Se puede | Cómo |
+|---|---|---|
+| **Semana > N** (futura) | Libre | Material que nadie ha visto. Se edita sin restricción. |
+| **Semana = N** (en curso) | Con cuidado | Solo si no agrega ni endurece lo que se pide. |
+| **Semana < N** (pasada) | Muy restringido | Solo correcciones que no cambien lo evaluado. |
+
+### Qué se puede cambiar siempre, en cualquier semana
+
+- Erratas, redacción, claridad, ejemplos adicionales.
+- Enlaces rotos, anclas, formato.
+- Bugs en el código de ejemplo, **siempre que no cambie lo que se le pide al alumno**.
+- **Quitar o relajar** un requisito (nadie sale perjudicado).
+
+### Qué NO se puede hacer en la semana en curso ni en semanas pasadas
+
+- **Agregar un entregable o un requisito.** El alumno que ya la trabajó bien tiene que seguir
+  estando bien. Si hace falta algo nuevo, va en la semana siguiente con la redacción "a partir de
+  esta semana...", nunca retroactivo.
+- **Renombrar archivos del proyecto** (`features.csv`, `modelo.pkl`, `codigo/`, etc.). Los alumnos
+  ya hicieron commit con esos nombres y la progresión de semanas los encadena. Los nombres quedan
+  **congelados** en cuanto pasa la semana que los introduce.
+- **Cambiar la convención de commits o la estructura de `BITACORA.md`.** Es el formato del
+  historial ya escrito.
+- **Tocar las listas "Tu sistema debe" de las semanas 9, 14 y 17**, ni los pesos de evaluación, una
+  vez iniciada la unidad que evalúan. Son el instrumento de calificación.
+
+### Cómo se hace un cambio necesario pero riesgoso
+
+1. **Moverlo a la semana siguiente** en vez de editar la pasada. Es lo primero que hay que intentar.
+2. Si de verdad tiene que ir en la semana ya publicada, **agregar, no reemplazar**: una nota
+   fechada y visible ("**Corrección del <fecha>:** ...") para que el alumno vea que cambió y no
+   crea que leyó mal.
+3. **Avisarle a Karlos explícitamente** que el cambio toca material ya visto, para que él lo
+   comunique en Classroom.
+
+### La red de seguridad
+
+El sitio está en git. Si un alumno reclama que "eso no decía eso", `git log` sobre el archivo
+muestra exactamente qué decía la página en la fecha en que él la trabajó. Por eso **cada cambio va
+en su propio commit con un mensaje claro**, y por eso nunca se reescribe la historia del
+repositorio.
+
+---
+
 ## Hardware del alumno (lo compra cada quien)
 
 **El laboratorio no presta material.** Cada alumno compra su Arduino, su protoboard, sus sensores,
