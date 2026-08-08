@@ -12,8 +12,21 @@ Materiales del curso de Inteligencia Artificial para Ingeniería Mecatrónica,
 ## Hardware disponible en clase
 
 - **Microcontrolador:** Arduino Nano
-- **Sensores:** LM35, HC-SR04, LDR, A3144, HW-870, GP2Y0A21YK0F
+- **Sensores:** LM35, HC-SR04, LDR, A3144, HW-870, GP2Y0A21YK0F, TCRT5000, TCS3200, LJ12A3-4-Z/BX (inductivo)
 - **Actuadores:** Servomotor, Motor CD, Buzzer, LED, LED RGB, Válvula, Relé
+
+Notas sobre los sensores agregados en 2026 para el caso de la banda:
+
+- **TCRT5000** (reflectivo, analógico) es el **recomendado por defecto**: trae su propio emisor IR, así
+  que no le afecta la luz ambiente y es el que menos desajuste produce entre el escritorio del alumno
+  y la maqueta. Sustituye al LDR como sensor de reflectancia.
+- **TCS3200** (color, salida por pulso) da 3 canales, ideal para el dominio de color. Limitación:
+  `pulseIn` canal por canal lo deja en unos 30 Hz, así que la pieza debe tardar cerca de 1 s en pasar.
+- **LJ12A3-4-Z/BX** (inductivo, digital) es del mismo tipo que el de la maqueta. **Trabaja a 6-36 V:
+  requiere divisor de voltaje (10k/20k) antes del pin del Nano.** Es digital, así que va como
+  complemento del TCRT5000, no como sensor único.
+- **HW-870** es un **optoacoplador de ranura** (cuenta interrupciones del haz, sirve para RPM), no un
+  sensor de vibración.
 
 ### Hardware de laboratorio (fase de producción)
 

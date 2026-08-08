@@ -106,6 +106,7 @@ Si las cuatro responden, ya tienes el entorno del semestre.
 | **Jumpers Dupont** (M-M y M-F) | 20 a 40 | Los M-F son para los módulos de sensores |
 | **Resistencias** de 220 ohm y 330 ohm | 5 a 10 | Para los LED |
 | **Resistencia** de 10k ohm | 2 | Divisor de voltaje del LDR y pull-ups |
+| **Resistencias** de 10k y 20k ohm | 1 de cada una | Solo si usas el sensor inductivo LJ12A3 |
 
 Todo se monta en **protoboard**. En este curso no se suelda nada.
 
@@ -115,16 +116,36 @@ En la semana 1 eliges **qué va a clasificar tu sistema**, y de esa decisión de
 
 | Sensor | Qué mide | Tipo de salida | Sirve para clasificar por |
 |---|---|---|---|
-| **LDR** + resistencia 10k | Luz reflejada | Analógica | Color, material, acabado |
+| **TCRT5000** | Luz reflejada, a pocos milímetros | Analógica | Color, material, acabado. **El más recomendado.** |
+| **TCS3200** | Color (canales rojo, verde y azul) | Por pulso | Color, material |
 | **GP2Y0A21YK0F** | Distancia (infrarrojo) | Analógica | Tamaño, altura, presencia |
 | **HC-SR04** | Distancia (ultrasonido) | Por pulso | Tamaño, altura, nivel |
+| **LDR** + resistencia 10k | Luz ambiente | Analógica | Color, acabado |
 | **LM35** | Temperatura | Analógica | Estado térmico |
-| **A3144** | Campo magnético | Digital | Material (metal contra no metal) |
+| **LJ12A3-4-Z/BX** | Presencia de metal (inductivo) | Digital | Material (metal contra no metal) |
+| **A3144** | Campo magnético | Digital | Material (imanes, metal imantado) |
 | **HW-870** | Interrupción de un haz óptico (ranura) | Digital | Conteo, presencia, velocidad de giro |
+
+#### Los tres que conviene conocer
+
+**TCRT5000.** Es el que recomiendo por defecto. Trae su propio emisor infrarrojo, así que **la luz del cuarto deja de importar**: lee prácticamente igual en tu escritorio que en el laboratorio. Ese detalle vale mucho más de lo que parece, y en la semana 16 vas a entender por qué. Su alcance útil son unos pocos milímetros, así que necesita una distancia fija y bien sujeta.
+
+Comparado con el LDR le gana en todo para nuestro caso, porque el LDR mide la luz que hay en el cuarto y esa cambia entre la mañana y el mediodía.
+
+**TCS3200.** Sensor de color con sus propios LED blancos. Devuelve tres canales, así que **te da tres señales desde el primer día** en vez de una, y eso hace que las semanas 5 y 10 te rindan mucho más. Si tu dominio es color, es claramente el mejor.
+
+Su límite: lee los canales de uno en uno con `pulseIn`, así que en la práctica no pasa de unos 30 muestreos por segundo. Con la regla de la semana 2 (al menos 20 o 30 muestras mientras la pieza cruza), eso significa que tu pieza tiene que tardar cerca de un segundo en pasar. Si va más rápido, se queda corto.
+
+**LJ12A3-4-Z/BX.** Sensor inductivo: detecta metal y nada más. Es el sensor que la industria pone en las bandas, y **es del mismo tipo que trae la maqueta del laboratorio**, así que es el que menos se descuadra al pasar del prototipo a producción.
+
+Dos advertencias antes de comprarlo:
+
+- **Trabaja de 6 a 36 V**, así que su salida NO se conecta directo al Arduino, que es de 5 V. Necesita un divisor de voltaje con dos resistencias (por ejemplo 10k y 20k) o un optoacoplador. Consúltalo conmigo antes de conectarlo o puedes dañar el pin.
+- **Es digital**, solo dice hay metal o no hay metal. Como único sensor te da un escalón, no una forma. Su lugar es acompañando a un TCRT5000: uno te dice si es metal y el otro qué tan reflejante es la superficie. Ese par resuelve el dominio de material mucho mejor que cualquiera de los dos por separado.
 
 Dos consejos que te van a ahorrar semanas:
 
-**Empieza con un sensor analógico.** El A3144 y el HW-870 son digitales: solo dan 0 o 1, así que su señal es un escalón y no una forma. Sirven muy bien acompañando a otro sensor, pero solos te van a dar poca información para separar tres tipos de pieza.
+**Empieza con un sensor analógico.** El A3144, el HW-870 y el LJ12A3 son digitales: solo dan 0 o 1, así que su señal es un escalón y no una forma. Sirven muy bien acompañando a otro sensor, pero solos te van a dar poca información para separar tres tipos de pieza.
 
 El **HW-870** merece una nota aparte: es un optoacoplador de ranura, así que detecta cuando algo interrumpe el haz entre sus dos brazos. Es excelente para **contar** y para medir **velocidad de giro** (poniendo un disco ranurado en un eje), pero no distingue de qué está hecha la pieza ni qué tamaño tiene. Piénsalo como el sensor que te dice *cuándo* pasó algo, no *qué* pasó.
 

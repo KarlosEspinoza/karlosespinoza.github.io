@@ -54,11 +54,11 @@ Necesitas **tres tipos de pieza** que se puedan distinguir con los sensores disp
 
 | Dominio | Los tres tipos | Señales que podrían distinguirlos |
 |---|---|---|
-| Material | Madera, metal, plástico | Magnetismo (A3144), reflectancia (LDR) |
+| Material | Madera, metal, plástico | Metal (LJ12A3 o A3144) + reflectancia (TCRT5000) |
 | Tamaño | Chica, mediana, grande | Distancia (HC-SR04 o GP2Y0A21YK0F) |
-| Color | Clara, media, oscura | Reflectancia (LDR) |
+| Color | Clara, media, oscura | Color (TCS3200) o reflectancia (TCRT5000) |
 | Contenido | Llena, media, vacía | Peso o distancia al nivel |
-| Estado | Buena, marcada, deforme | Combinación de reflectancia y distancia |
+| Estado | Buena, marcada, deforme | Reflectancia (TCRT5000) + distancia |
 
 El dominio se elige y se registra en la **semana 1**. A partir de ahí, todos los ejemplos de clase los adaptas a tu caso.
 

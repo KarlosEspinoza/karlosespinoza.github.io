@@ -287,11 +287,11 @@ Nadie más del grupo puede tener el mismo dominio, porque cada dominio va a ser 
 
 | Dominio | Los tres tipos | Señales que podrían distinguirlos |
 |---|---|---|
-| Material | Madera, metal, plástico | Magnetismo (A3144), reflectancia (LDR) |
+| Material | Madera, metal, plástico | Metal (LJ12A3 o A3144) + reflectancia (TCRT5000) |
 | Tamaño | Chica, mediana, grande | Distancia (HC-SR04 o GP2Y0A21YK0F) |
-| Color | Clara, media, oscura | Reflectancia (LDR) |
+| Color | Clara, media, oscura | Color (TCS3200) o reflectancia (TCRT5000) |
 | Contenido | Llena, media, vacía | Peso o distancia al nivel |
-| Estado | Buena, marcada, deforme | Combinación de reflectancia y distancia |
+| Estado | Buena, marcada, deforme | Reflectancia (TCRT5000) + distancia |
 
 Aún no tienes que estar seguro de qué sensores vas a usar. Eso lo terminas de decidir en la semana 3, cuando diseñemos el experimento de recolección.
 

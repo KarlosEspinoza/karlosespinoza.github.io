@@ -116,9 +116,9 @@ Según el tipo de salida que tenga, así se lee en el Arduino:
 
 | Tipo de salida | Sensores | Cómo se lee |
 |---|---|---|
-| Analógica | LM35, LDR, GP2Y0A21YK0F | `analogRead(A0)`, devuelve 0 a 1023 |
-| Digital | A3144 | `digitalRead(2)`, devuelve 0 o 1 |
-| Por pulso | HC-SR04 | `pulseIn()` sobre el pin de eco |
+| Analógica | LM35, LDR, GP2Y0A21YK0F, TCRT5000 | `analogRead(A0)`, devuelve 0 a 1023 |
+| Digital | A3144, HW-870, LJ12A3 | `digitalRead(2)`, devuelve 0 o 1 |
+| Por pulso | HC-SR04, TCS3200 | `pulseIn()` sobre el pin de salida |
 
 Si vas a usar otro de los sensores disponibles, revisa en su hoja de datos cuál de estos tres casos le corresponde.
 

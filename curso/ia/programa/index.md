@@ -258,7 +258,7 @@ El curso sigue un modelo de aprendizaje invertido: antes de cada sesión el alum
 * Visual Studio Code  
 * Arduino IDE  
 * Arduino Nano  
-* Sensores: LM35, HC-SR04, LDR, A3144, HW-870, GP2Y0A21YK0F  
+* Sensores: LM35, HC-SR04, LDR, A3144, HW-870, GP2Y0A21YK0F, TCRT5000, TCS3200, LJ12A3-4-Z/BX  
 * Actuadores: Servomotor, Motor CD, Buzzer, LED, LED RGB  
 * Siemens S7-1214C PLC (disponible en laboratorio)  
 * Maquetas de laboratorio: bandas transportadoras, pistones, sensores capacitivos e inductivos  
