@@ -8,19 +8,23 @@
   {% endif %}
 
   {% if site.navigation %}
-  <h3 class="sidebar-h3">Contenido:</h3>
+  <h3 class="sidebar-h3">Contenido</h3>
+  <nav class="site-nav" aria-label="Navegacion del sitio">
   <ul class="content">
   {%- for item in site.navigation %}
-  <li><a href="{{ item.link }}">{{ item.name }}</a>
+  <li><a href="{{ item.link }}"
+         {% if page.url == item.link %}aria-current="page"{% elsif page.url contains item.link %}class="is-ancestor"{% endif %}>{{ item.name }}</a>
       {% if item.sublist %}
       <ul class="sublist">
           {%- for subitem in item.sublist %}
-          <li><a href="{{ subitem.link }}">{{ subitem.name }}</a>
+          <li><a href="{{ subitem.link }}"
+                 {% if page.url == subitem.link %}aria-current="page"{% elsif page.url contains subitem.link %}class="is-ancestor"{% endif %}>{{ subitem.name }}</a>
 
               {% if subitem.subsublist %}
               <ul class="sublist">
                   {%- for subsubitem in subitem.subsublist %}
-                  <li><a href="{{ subsubitem.link }}">{{ subsubitem.name }}</a>
+                  <li><a href="{{ subsubitem.link }}"
+                         {% if page.url == subsubitem.link %}aria-current="page"{% endif %}>{{ subsubitem.name }}</a>
                   </li>
                   {%- endfor %}
               </ul>
@@ -33,5 +37,6 @@
   </li>
   {%- endfor %}
   </ul>
+  </nav>
   {% endif %}
 </div>

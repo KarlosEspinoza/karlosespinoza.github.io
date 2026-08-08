@@ -69,68 +69,108 @@ document.addEventListener('DOMContentLoaded', () => {
 {% include head-custom.html %}
   </head>
   <body>
-    <div class="wrapper">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-    <!-- 🔘 Botón SIEMPRE visible -->
+    <!-- Boton de menu: siempre presente, fijo en pantalla -->
     <button id="menu-toggle"
             class="menu-toggle"
-            aria-label="Abrir/cerrar menú"
-            aria-expanded="true"
+            type="button"
+            aria-label="Abrir o cerrar el menu"
+            aria-expanded="false"
             aria-controls="site-sidebar">
-      ☰
+      <span class="icon-open" aria-hidden="true">&#9776;</span>
+      <span class="icon-close" aria-hidden="true">&#10005;</span>
     </button>
 
+    <!-- Barra superior: solo visible en movil/tablet -->
+    <div class="topbar">
+      <span class="topbar-title">{{ page.title | default: site.title }}</span>
+    </div>
 
-
-
+    <div class="wrapper">
       <div class="sidebar" id="site-sidebar">
         <header>
           {%- include header.html -%}
         </header>
-        {% include mobile.html %}
         <div class="sidebar-footer">
           {%- include footer.html -%}
         </div>
       </div>
-      <section>
+
+      <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+      <section id="contenido">
         {{ content }}
       </section>
       <footer>
         {%- include footer.html -%}
       </footer>
     </div>
-    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     <script>
 (function () {
-  const btn = document.getElementById('menu-toggle');
-  const sidebar = document.getElementById('site-sidebar');
+  var btn = document.getElementById('menu-toggle');
+  var sidebar = document.getElementById('site-sidebar');
+  var backdrop = document.getElementById('nav-backdrop');
+  var body = document.body;
 
   if (!btn || !sidebar) return;
 
-  const isMobile = () => window.matchMedia('(max-width: 992px)').matches;
+  var mq = window.matchMedia('(max-width: 992px)');
+  var isMobile = function () { return mq.matches; };
 
+  // En movil el menu es un cajon (nav-open). En escritorio esta siempre
+  // visible y el boton solo lo pliega (nav-collapsed).
   function setState(open) {
     if (isMobile()) {
-      sidebar.classList.toggle('is-open', open);
-      sidebar.classList.toggle('is-collapsed', !open);
+      body.classList.toggle('nav-open', open);
+      body.classList.remove('nav-collapsed');
     } else {
-      sidebar.classList.toggle('is-collapsed', !open);
+      body.classList.toggle('nav-collapsed', !open);
+      body.classList.remove('nav-open');
     }
     btn.setAttribute('aria-expanded', String(open));
   }
 
-  // Estado inicial: abierto en desktop, cerrado en móvil
-  setState(!isMobile() ? true : false);
+  function isOpen() {
+    return btn.getAttribute('aria-expanded') === 'true';
+  }
 
-  btn.addEventListener('click', () => {
-    const openNow = btn.getAttribute('aria-expanded') !== 'true';
-    setState(openNow);
+  // Estado inicial: abierto en escritorio, cerrado en movil
+  setState(!isMobile());
+
+  btn.addEventListener('click', function () {
+    setState(!isOpen());
   });
 
-  // Recalcular al redimensionar
-  window.addEventListener('resize', () => {
-    setState(!isMobile());
+  // Cerrar tocando el fondo oscuro
+  if (backdrop) {
+    backdrop.addEventListener('click', function () { setState(false); });
+  }
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && isMobile() && isOpen()) {
+      setState(false);
+      btn.focus();
+    }
   });
+
+  // En movil, al elegir un enlace se cierra el cajon
+  sidebar.addEventListener('click', function (e) {
+    var link = e.target.closest ? e.target.closest('a') : null;
+    if (link && isMobile()) setState(false);
+  });
+
+  // Solo reaccionamos al cambio real de breakpoint (girar el telefono,
+  // redimensionar la ventana). Usar 'resize' hacia que el menu se cerrara
+  // solo al hacer scroll en iOS, porque la barra de direcciones dispara
+  // eventos de resize constantemente.
+  var onChange = function () { setState(!isMobile()); };
+  if (mq.addEventListener) {
+    mq.addEventListener('change', onChange);
+  } else if (mq.addListener) {
+    mq.addListener(onChange);
+  }
 })();
 </script>
 

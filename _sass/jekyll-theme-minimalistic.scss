@@ -324,21 +324,10 @@ hr {
   margin: 0 0 0.25em;
 }
 
+// Nota: el ancho fijo de 610px que traia el tema rompia la vista en movil
+// (el contenido quedaba mas ancho que la pantalla). El layout responsivo
+// completo vive ahora en assets/css/style.scss.
 @media print, screen and (max-width: 960px) {
-  .wrapper {
-    width: 610px;
-  }
-
-  .sidebar {
-    width: 200px;
-    height: calc(100vh - 50px);  
-  }
-
-  section {
-    //width: 375px;
-    width: 100%;
-  }
-
   .sidebar-footer {
     width: auto;
     padding-bottom: inherit;

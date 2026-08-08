@@ -3,48 +3,397 @@
 
 @import "jekyll-theme-minimalistic";
 
-.sidebar {
-  padding-top: 40px;  /* ajusta este valor hasta que tu nombre quede visible */
+/* ==========================================================================
+   Layout responsivo: sidebar fija en escritorio, cajon deslizable en movil.
+   Inspirado en la navegacion de docs.arduino.cc.
+   ========================================================================== */
+
+:root {
+  --sidebar-w: 265px;
+  --topbar-h: 52px;
+  --content-max: 900px;
+  --gutter: 28px;
+  /* Grises neutros: funcionan igual sobre fondo claro u oscuro */
+  --nav-border: rgba(128, 128, 128, 0.28);
+  --nav-hover-bg: rgba(128, 128, 128, 0.16);
+  --nav-active-bg: rgba(128, 128, 128, 0.22);
+  --nav-radius: 7px;
 }
 
-/* Botón hamburguesa fijo y siempre por encima del sidebar */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* Evita el zoom automatico de iOS al girar el telefono */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  display: block;
+  width: auto;
+  max-width: none;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Barra superior (solo movil)
+   -------------------------------------------------------------------------- */
+
+.topbar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--topbar-h);
+  z-index: 60;
+  align-items: center;
+  /* Deja libre el hueco del boton, que va fijo por encima */
+  padding: 0 12px 0 60px;
+  background: var(--clr-card-bg);
+  border-bottom: 1px solid var(--nav-border);
+}
+
+.topbar-title {
+  font-weight: 700;
+  color: var(--clr-h1-and-bold);
+  font-size: 1.05rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --------------------------------------------------------------------------
+   Boton de menu
+   -------------------------------------------------------------------------- */
+
 .menu-toggle {
   position: fixed;
-  top: 12px;
-  left: 12px;          /* ajústalo a tu gusto */
-  z-index: 9999;       /* mayor que el z-index del sidebar */
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(255,255,255,.15);
-  border-radius: 10px;
-  background: rgba(0,0,0,.35);
-  color: #fff;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  top: 10px;
+  left: 10px;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  padding: 0;
+  border: 1px solid var(--nav-border);
+  border-radius: var(--nav-radius);
+  background: var(--clr-card-bg);
+  color: var(--clr-h1-and-bold);
   cursor: pointer;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Transición de entrada/salida del sidebar */
+.menu-toggle:hover,
+.menu-toggle:focus-visible {
+  background: var(--nav-hover-bg);
+}
+
+.menu-toggle .icon-close {
+  display: none;
+}
+
+body.nav-open .menu-toggle .icon-open {
+  display: none;
+}
+
+body.nav-open .menu-toggle .icon-close {
+  display: inline;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar
+   -------------------------------------------------------------------------- */
+
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: var(--sidebar-w);
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 60px 18px 24px;
+  background: var(--clr-card-bg);
+  border-right: 1px solid var(--nav-border);
   transition: transform 0.25s ease;
   will-change: transform;
 }
 
-/* Estado colapsado: lo sacamos de la vista hacia la izquierda */
-.sidebar.is-collapsed { transform: translateX(-100%); }
-
-/* En móvil: cerrado por defecto; abrimos con .is-open */
-@media (max-width: 992px) {
-  .sidebar { transform: translateX(-100%); }
-  .sidebar.is-open { transform: translateX(0); }
+.sidebar h1 {
+  font-size: 26px;
+  margin-bottom: 8px;
 }
 
+.sidebar p {
+  margin-bottom: 14px;
+  font-size: 13.5px;
+}
 
+.sidebar-h3 {
+  margin: 18px 0 8px;
+  font-size: 11.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--clr-small-in-a);
+}
 
+/* Listas de navegacion: sin vinetas, con area tactil generosa */
+.sidebar ul.link,
+.sidebar ul.content,
+.sidebar ul.sublist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
+.sidebar ul.content a,
+.sidebar ul.link a {
+  display: block;
+  padding: 7px 10px;
+  border-radius: var(--nav-radius);
+  line-height: 1.35;
+  color: var(--clr-text);
+  transition: background 0.15s ease, color 0.15s ease;
+}
 
+.sidebar ul.content > li > a {
+  color: var(--clr-h1-and-bold);
+  font-weight: 600;
+}
+
+.sidebar ul.content a:hover,
+.sidebar ul.link a:hover,
+.sidebar ul.content a:focus-visible,
+.sidebar ul.link a:focus-visible {
+  background: var(--nav-hover-bg);
+  color: var(--clr-a-text-hvr);
+}
+
+/* Pagina actual */
+.sidebar a[aria-current="page"] {
+  background: var(--nav-active-bg);
+  color: var(--clr-a-text);
+  font-weight: 700;
+  box-shadow: inset 2px 0 0 var(--clr-a-text);
+}
+
+/* Seccion que contiene a la pagina actual */
+.sidebar a.is-ancestor {
+  color: var(--clr-a-text);
+  font-weight: 700;
+}
+
+/* Subniveles: linea guia a la izquierda, como en docs.arduino.cc */
+.sidebar ul.sublist {
+  margin: 2px 0 6px 10px;
+  padding-left: 10px;
+  border-left: 1px solid var(--nav-border);
+}
+
+.sidebar ul.sublist a {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.sidebar ul.link li + li {
+  margin-top: 0;
+}
+
+.sidebar-footer {
+  width: auto;
+  float: none;
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid var(--nav-border);
+  font-size: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   Contenido
+   -------------------------------------------------------------------------- */
+
+section {
+  margin-left: var(--sidebar-w);
+  min-width: 0;
+  max-width: none;
+  padding: 34px var(--gutter) 60px;
+  transition: margin-left 0.25s ease;
+  overflow-wrap: break-word;
+}
+
+section > * {
+  max-width: var(--content-max);
+}
+
+/* Elementos anchos: que hagan scroll dentro de si mismos, no de la pagina */
+section pre,
+section table,
+section .mermaid,
+section mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* Sidebar plegada en escritorio */
+body.nav-collapsed .sidebar {
+  transform: translateX(-100%);
+}
+
+body.nav-collapsed section {
+  margin-left: 0;
+}
+
+/* Fondo oscuro detras del cajon (solo movil) */
+.nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 10px 14px;
+  background: var(--clr-card-bg);
+  border: 1px solid var(--nav-border);
+  border-radius: var(--nav-radius);
+}
+
+.skip-link:focus {
+  left: 8px;
+  top: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   Movil y tablet: el sidebar se vuelve un cajon deslizable
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 992px) {
+  .topbar {
+    display: flex;
+  }
+
+  .menu-toggle {
+    top: calc((var(--topbar-h) - 40px) / 2);
+    left: 12px;
+  }
+
+  .sidebar {
+    top: var(--topbar-h);
+    height: calc(100vh - var(--topbar-h));
+    height: calc(100dvh - var(--topbar-h));
+    width: min(310px, 86vw);
+    padding-top: 18px;
+    transform: translateX(-100%);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.45);
+  }
+
+  body.nav-open .sidebar {
+    transform: translateX(0);
+  }
+
+  /* El contenido nunca se reajusta: siempre ocupa todo el ancho */
+  section,
+  body.nav-collapsed section {
+    margin-left: 0;
+    padding: calc(var(--topbar-h) + 18px) 16px 48px;
+  }
+
+  .nav-backdrop {
+    display: block;
+    top: var(--topbar-h);
+    pointer-events: none;
+  }
+
+  body.nav-open .nav-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Bloquea el scroll del fondo mientras el cajon esta abierto */
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  .sidebar h1 {
+    font-size: 22px;
+  }
+}
+
+/* Telefono en horizontal: el cajon no debe comerse la pantalla */
+@media (max-width: 992px) and (orientation: landscape) {
+  :root {
+    --topbar-h: 44px;
+  }
+
+  .sidebar {
+    width: min(300px, 44vw);
+  }
+
+  section {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  section,
+  .nav-backdrop {
+    transition: none;
+  }
+}
+
+@media print {
+  .topbar,
+  .menu-toggle,
+  .sidebar,
+  .nav-backdrop {
+    display: none !important;
+  }
+
+  section {
+    margin-left: 0;
+    padding: 0;
+  }
+}
+
+/* ==========================================================================
+   Componentes heredados del tema
+   ========================================================================== */
 
 .overlay {
   position: fixed;
@@ -95,12 +444,12 @@
   font: 15px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 700px) {
   .box {
     width: 70%;
   }
+
   .popup {
     width: 70%;
   }
 }
-
