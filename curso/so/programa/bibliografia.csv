@@ -1,0 +1,11 @@
+titulo,autor,editorial,año,tipo
+Operating Systems: Three Easy Pieces (OSTEP),"Arpaci-Dusseau, Remzi H.; Arpaci-Dusseau, Andrea C.",Arpaci-Dusseau Books,2023,basica
+Modern Operating Systems,"Tanenbaum, Andrew S.; Bos, Herbert",Pearson,2022,basica
+Operating System Concepts,"Silberschatz, Abraham; Galvin, Peter B.; Gagne, Greg",Wiley,2018,basica
+Sistemas operativos: panorama para ingeniería en computación e informática,"Sol Llaven, Daniel",Patria,2016,basica
+Administración de sistemas operativos,"Feria Martínez, José F.",Síntesis,2021,complementaria
+Java Concurrency in Practice,"Goetz, Brian; et al.",Addison-Wesley,2006,complementaria
+The Linux Programming Interface,"Kerrisk, Michael",No Starch Press,2010,complementaria
+The Linux Command Line,"Shotts, William",No Starch Press,2024,complementaria
+Docker Deep Dive,"Poulton, Nigel",Independiente,2024,complementaria
+Systems Performance: Enterprise and the Cloud,"Gregg, Brendan",Pearson,2020,complementaria

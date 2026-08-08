@@ -41,6 +41,8 @@ navigation:
         link: /curso/ia/
       - name: Matemáticas para Ingeniería de Materiales
         link: /curso/mim/
+      - name: Sistemas Operativos
+        link: /curso/so/
       - name: Aplicación Web
         link: /curso/webapp/
 #        subsublist:

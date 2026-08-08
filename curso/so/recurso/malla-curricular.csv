@@ -1,0 +1,72 @@
+ciclo,clave,nombre,archivo
+1,TU173,Seminario de Comunicacion Oral y Escrita,seminario-comunicacion.md
+1,IN245,Fundamentos de Creatividad y Desarrollo,(falta)
+1,TU169,Ingles Tecnico I,ingles-tecnico-1.md
+1,IN250,Taller de Instrumentacion,taller-de-instrumentacion.md
+1,IN281,Manejo y Programacion de Multimedia,manejo-y-programacion-de-multimedia.md
+1,IN227,Fundamentos de Computacion,fundamentos-de-computacion.md
+1,IN222,Algebra y Geometria,(falta)
+1,IN253,Seminario de Actualizacion Tecnologica I,(falta)
+1,IN252,Taller de Redes,(falta)
+2,TU170,Ingles Tecnico II,ingles-tecnico-2.md
+2,IN248,Curso de Internet,(falta)
+2,IN238,Programacion Imperativa,programacion-imperativa.md
+2,IN232,Teleinformatica I,teleinformatica-1.md
+2,IN228,Electronica Analogica,eectronica-analogica.md
+2,IN236,Redes de Computo I,redes-de-computo-1.md
+2,IN223,Teoria del Calculo I,teoria-del-calculo-1.md
+2,IN254,Seminario de Actualizacion Tecnologica II,apto-2.md
+3,TU172,Cultura Deportiva,cultura-deportiva.md
+3,IN279,Ciencia y Tecnologia,ciencia-y-tecnologia-ficha-de-identificacion.md
+3,IN239,Fundamentos de Programacion Orientada a Objetos,(falta)
+3,IN265,Tecnologias de la Informacion,tecnologias-de-la-informacion.md (ADVERTENCIA: archivo es de Lic. Administracion no Teleinformatica)
+3,IN229,Electronica Digital I,electronica-digital-1.md
+3,IN237,Redes de Computo II,redes-de-computo-2.md
+3,IN224,Teoria del Calculo II,(falta)
+3,IN255,Seminario de Actualizacion Tecnologica III,apto-3.md
+4,TU171,Arte y Cultura,arte-y-cultura.md
+4,CA102,Administracion General I,(falta)
+4,IN226,Fundamentos de Estructura de Datos,fundamentos-de-estructuras-de-datos.md
+4,IN287,Teleinformatica II,teleinformatica-2.md
+4,IN230,Electronica Digital II,electronica-digital-2.md
+4,IN285,Redes de Computo III,redes-de-computo-3.md
+4,IN225,Teoria del Calculo III,teoria-del-calculo-3.md
+4,IN256,Seminario de Actualizacion Tecnologica IV,apto-4.md
+5,IN235,Fundamentos de Sistemas Operativos,fundamentos-de-sistemas-operativos.md
+5,CA103,Administracion General II,(falta)
+5,IN234,Fundamentos de Sistemas de Informacion,fundamentos-de-sistemas-de-informacion.md
+5,IN271,Redes Inalambricas y Emergentes,redes-inalambricas-y-emergentes.md
+5,IN251,Arquitectura de Computadoras,arquitectura-de-computadoras.md
+5,IN261,Matematica Avanzada,(falta)
+5,IN272,Seminario de Investigacion,seminario-de-investigacion.md
+5,IN257,Seminario de Actualizacion Tecnologica V,apto-5.md
+6,IN269,Tecnologia Cliente Servidor,cliente-servidor.md
+6,IN273,Programacion Avanzada en Internet,programacion-avanzada-en-internet.md
+6,IN233,Introduccion a la Ingenieria Economica,introduccion-a-la-ingenieria-economica.md
+6,IN270,Tecnologia de la Comunicacion I,tecnologias-de-la-comunicacion-1.md
+6,IN264,Fundamentos de Programacion de Sistemas,fundamentos-de-programacion-de-sistemas.md
+6,IN244,Aprendizaje de Proyectos Basicos,(falta)
+6,IN267,Sistemas Operativos Abiertos,sistemas-operativos-abiertos.md
+6,IN258,Seminario de Actualizacion Tecnologica VI,apto-6.md
+7,IN268,Ingenieria de Software,ingenieria-de-software.md
+7,CP179,Planeacion de Proyectos de Inversion,(falta)
+7,IN246,Introduccion a los Lenguajes Visuales,(falta)
+7,IN280,Tecnologia de la Comunicacion II,tecnologias-de-la-comunicacion-2.md
+7,IN247,Teoria y Tecnologia de Rutas,(falta)
+7,IN278,Probabilidad y Estadistica,(falta)
+7,IN259,Seminario de Actualizacion Tecnologica VII,(falta)
+8,IN276,Seminario de Proyecto Terminal,(falta)
+8,EJ199,Seminario de Propiedad Intelectual,(falta)
+8,IN262,Fundamentos de Auditoria Informatica,auditoria-informatica.md
+8,IN283,Tecnologia de la Comunicacion III,tecnologias-de-la-comunicacion-3.md
+8,IN274,Fundamentos de Internet 2,fundamentos-de-internet-2.md
+8,IN282,Matematicas Discretas para Teleinformatica,(falta)
+8,IN286,Sistemas de Control,(falta)
+8,IN260,Seminario de Actualizacion Tecnologica VIII,(falta)
+8,IN263,Diseno de Sistemas Distribuidos,diseno-de-sistemas-distribuidos.md
+8,IN284,Bases de Datos Distribuidas,bases-de-datos-distribuidas.md
+OA-variable,CP177,Finanzas Basicas I,(falta)
+OA-variable,CP178,Finanzas Basicas II,(falta)
+OA-variable,IN266,Taller de Mantenimiento de Perifericos,(falta)
+OA-variable,IN275,Desarrollo de Electronica Integrada,(falta)
+OA-variable,IN277,Programacion Avanzada Orientada a Objetos,(falta)

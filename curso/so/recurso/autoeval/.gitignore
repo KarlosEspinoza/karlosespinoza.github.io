@@ -1,0 +1,4 @@
+# No versionar las URLs reales ni los repos clonados (contienen calificaciones).
+autoevals.txt
+repos/
+resultado.csv
