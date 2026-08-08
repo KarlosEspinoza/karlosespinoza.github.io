@@ -300,11 +300,12 @@ Tropiezos de Windows ya documentados en los materiales, que se repiten cada seme
 El curso está organizado **por semana**, igual que `curso/so/`. La semana es la unidad de
 navegación, de seguimiento y de entrega. No hay directorios por tema.
 
-Esto sustituye a la organización anterior por tema. **El material viejo (`conceptos_flujo_ml/`,
-`aprendizaje_supervisado/`, `aprendizaje_no_supervisado/`, `evaluacion_modelo/`) ya no se usa
-y no se enlaza desde el índice.** Se conserva en el repositorio solo como referencia: al
-desarrollar una semana se puede rescatar de ahí lo que sirva (ecuaciones, ejemplos, código,
-gamificaciones), reescribiéndolo para el caso del semestre y el proyecto progresivo.
+Esto sustituyó a la organización anterior por tema. **El material viejo se borró del repositorio
+el 2026-08-07**, una vez que las 17 semanas quedaron desarrolladas: `conceptos_flujo_ml/`,
+`aprendizaje_supervisado/`, `aprendizaje_no_supervisado/`, `evaluacion_modelo/`, `proyecto/`,
+`todo.md`, `template.md`, `modulos_sensores_arduino.md` y los prompts `prompt_tema.md`,
+`prompt_gam.md` y `prompt_extra.md`. Sigue todo en el historial de git si hiciera falta rescatar
+algo: `git log --diff-filter=D --name-only`.
 
 ```
 curso/ia/
@@ -319,10 +320,8 @@ curso/ia/
 
   semana-01/index.md ... semana-17/index.md
 
-  (material viejo, solo referencia, sin enlazar)
-  conceptos_flujo_ml/  aprendizaje_supervisado/  aprendizaje_no_supervisado/
-  evaluacion_modelo/  proyecto/  todo.md  template.md
-  prompt_tema.md  prompt_gam.md  prompt_extra.md  prompt_circ.md
+  classroom.md                    <- Textos para copiar y pegar en Google Classroom
+  prompt_circ.md                  <- Prompt para circuitos en KiCad (vigente)
 ```
 
 ### Estado de las semanas
@@ -461,9 +460,10 @@ forma acumulable:
 
 ## Prompts de generación de materiales
 
-Los prompts `prompt_tema.md`, `prompt_gam.md`, `prompt_extra.md` y `prompt_circ.md` fueron
-escritos para la organización por tema y **ya no aplican tal cual**. Sirven como referencia
-(`prompt_circ.md` sigue siendo útil para circuitos en KiCad).
+Solo queda `prompt_circ.md`, que sirve para pedir las conexiones de un sensor al Arduino y el
+`kicad_sym` cuando el componente no está en las librerías de KiCad. Los otros tres
+(`prompt_tema.md`, `prompt_gam.md`, `prompt_extra.md`) se escribieron para la organización por
+tema y se borraron.
 
 ---
 
