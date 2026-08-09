@@ -94,7 +94,7 @@ Tu dominio necesita cumplir dos cosas: que haya algo que se pida y algo que se a
 
 COMO ENTREGAS
 
-No se entrega nada por Classroom, salvo una cosa: la URL de tu repositorio de GitHub, una sola vez en todo el semestre. De ahí en adelante tu entrega es hacer push.
+Por Classroom entregas tres cosas, todas en la primera semana y todas una sola vez: la URL de tu repositorio de GitHub, el archivo equipo.csv con tu equipo del proyecto integrador, y la URL del repositorio del equipo. De ahí en adelante, durante todo el semestre, tu entrega es hacer push.
 
 Tu repositorio es privado, y me agregas a mí como colaborador para que pueda revisarlo (Settings, Collaborators, Add people, usuario KarlosEspinoza). Si no me mandas esa invitación, no puedo ver tu trabajo y cuenta como no entregado. Al terminar el semestre puedes cambiarlo a público si quieres enseñarlo cuando busques trabajo.
 
@@ -165,7 +165,7 @@ Además, el 20% de cada revisión son preguntas sobre tu propio código, en el m
 
 LA ASISTENCIA
 
-La asistencia de la sesión del lunes se registra con el commit de la actividad de la sesión. Cuenta que el trabajo exista, no que esté bien. Consulta tus faltas acumuladas en la tarea "Faltas".
+La asistencia se registra con el commit de la actividad de la sesión y con el pase de lista. Del commit cuenta que el trabajo exista, no que esté bien. Consulta tus faltas acumuladas en la tarea "Faltas".
 
 COMO SE EVALUA
 
@@ -191,7 +191,15 @@ Para cada revisión tienes que haber hecho push antes de la fecha de entrega, qu
 
 Tipo: **Pregunta -> Respuesta corta** (así ves todas las URL en una sola lista).
 Tema: **Empieza aqui**. Sin calificación. Fecha de entrega: al término de la semana 1.
-Deja activada la opción de que puedan editar su respuesta: varios van a pegar mal la URL.
+
+**Dos opciones que hay que tocar al crearla, y la segunda importa:**
+
+- **Deja activado** que puedan editar su respuesta: varios van a pegar mal la URL.
+- **Desactiva "Los alumnos pueden ver las respuestas de sus compañeros".** Viene encendido por
+  omisión, y con él encendido todo el grupo ve la lista de repositorios y de usuarios de GitHub.
+  Los repositorios son privados, así que nadie entraría, pero el motivo de que sean privados es
+  precisamente que no se encuentren buscando: publicar la lista completa deshace la mitad de esa
+  medida. Es un clic y se olvida fácil.
 
 **Título:**
 
@@ -202,7 +210,7 @@ Entrega la URL de tu repositorio de GitHub
 **Instrucciones:**
 
 ```
-Esta es la única entrega que haces por Classroom en todo el semestre. De aquí en adelante tu entrega es hacer push a este mismo repositorio.
+Esta entrega se hace una sola vez en todo el semestre. De aquí en adelante tu entrega es hacer push a este mismo repositorio.
 
 Antes de responder, tu repositorio debe tener:
 
@@ -265,7 +273,7 @@ Reglas del archivo, porque lo voy a procesar con un script y si viene mal no lo 
 
 Lo suben los integrantes, el mismo archivo cada quien. Si dos traen el mismo dominio, resuélvanlo antes de entregar: no puede repetirse ni dentro del equipo ni en todo el grupo.
 
-Además, creen el repositorio privado del equipo (por ejemplo integrador-so), agréguenme como colaborador y pongan la URL en el mismo comentario de esta entrega. Es aparte del repositorio individual de cada quien: ahí vive el Servidor Central y la bitácora del equipo.
+Además, creen el repositorio privado del equipo (por ejemplo integrador-so), agréguenme como colaborador y mándenme la URL por comentario privado en esta misma entrega. Es aparte del repositorio individual de cada quien: ahí vive el Servidor Central y la bitácora del equipo.
 ```
 
 > **Nota para ti, no para publicar:** al juntar todos los `equipo.csv` puedes verificar de un
@@ -378,6 +386,57 @@ Base de las URL: `https://karlosespinoza.github.io/curso/so/`
 Las semanas 9, 14 y 17 no llevan tarea semanal: en su lugar van las tres revisiones de avances de
 la sección 8, que sí llevan calificación.
 
+### Fechas del ciclo 2026B
+
+**Esta es la única tabla de este archivo que hay que rehacer cada ciclo**, y es justo la que
+convierte "semana N" en el campo de fecha de Classroom. Todo lo demás se reusa intacto.
+
+Inicio de clases: **lunes 17 de agosto de 2026**. Fin: **viernes 11 de diciembre de 2026**.
+
+| Semana | Lun | Mié | Fecha de entrega a poner en Classroom |
+|---|---|---|---|
+| 1 | 17 ago | 19 ago | mié 19 ago, 9:00 |
+| 2 | 24 ago | 26 ago | mié 26 ago, 9:00 |
+| 3 | 31 ago | 2 sep | mié 2 sep, 9:00 |
+| 4 | 7 sep | 9 sep | mié 9 sep, 9:00 |
+| 5 | 14 sep | **16 sep, festivo** | mié 16 sep, 9:00 |
+| 6 | 21 sep | 23 sep | mié 23 sep, 9:00 |
+| 7 | 28 sep | 30 sep | mié 30 sep, 9:00 |
+| 8 | 5 oct | 7 oct | mié 7 oct, 9:00 |
+| **9** | 12 oct | **14 oct, revisión 1** | **mar 13 oct, 23:59** |
+| 10 | 19 oct | 21 oct | mié 21 oct, 9:00 |
+| 11 | 26 oct | 28 oct | mié 28 oct, 9:00 |
+| 12 | 2 nov | 4 nov | mié 4 nov, 9:00 |
+| 13 | 9 nov | 11 nov | mié 11 nov, 9:00 |
+| **14** | **16 nov, festivo** | **18 nov, revisión 2** | **mar 17 nov, 23:59** |
+| 15 | 23 nov | 25 nov | mié 25 nov, 9:00 |
+| 16 | 30 nov | 2 dic | mié 2 dic, 9:00 |
+| **17** | 7 dic | **9 dic, revisión final** | **mar 8 dic, 23:59** |
+
+**Los dos festivos que caen en día de clase:** miércoles 16 de septiembre (Independencia) y lunes
+16 de noviembre (Revolución, observado). Son 34 sesiones brutas y **32 reales**.
+
+Consecuencias prácticas al armar el Classroom:
+
+- **No pongas nada con fecha en esos dos días.** La entrega de la semana 5 puede quedar el mismo
+  16 de septiembre a las 9:00 sin problema (es una fecha límite, no una sesión), pero no anuncies
+  actividad para ese día.
+- **La semana 14 no pierde nada**: es semana de revisión y el trabajo va antes.
+- **El 2 de noviembre** aparece en el programa como posible suspensión, no como festivo oficial.
+  Si la universidad lo suspende, la semana 12 se queda solo con el miércoles: confírmalo contra
+  el calendario oficial unas semanas antes.
+
+Si cambia el ciclo, recalcula esta tabla contra <https://escolar.udg.mx/calendarios> **antes** de
+crear las publicaciones. Es lo primero que hay que hacer, porque las tres revisiones amarran la
+mitad de las decisiones del semestre.
+
+### El video del entorno
+
+`entorno/index.md` dice "video pendiente de publicación, se anunciará por Google Classroom". Si lo
+grabas, va como **Material** en el tema *Empieza aqui*, junto a "Como funciona el curso", y hay
+que quitar esa línea de la página del entorno. Si no lo grabas este ciclo, quita la línea de todos
+modos: una promesa colgada en la primera página que leen es peor que no ofrecer el video.
+
 ---
 
 ## 8. Las tres revisiones de avances
@@ -417,7 +476,7 @@ Fecha de entrega: **martes de la semana 14, 23:59**.
 Título: `Revisión de avances 2 - cierre de las Unidades 3 y 4`
 
 ```
-Cierre de las Unidades 3 y 4. Mismo formato que la revisión 1: haz push antes de la fecha de entrega y revisamos tu servidor el miércoles en clase.
+Cierre de las Unidades 3 y 4, y de la planificación de procesos que cerró la Unidad 2. Mismo formato que la revisión 1: haz push antes de la fecha de entrega y revisamos tu servidor el miércoles en clase.
 
 Acuérdate de actualizar tu archivo de autoevaluación entre pares y hacer push antes de esta fecha.
 
@@ -476,7 +535,7 @@ Aquí llevo el registro de tus faltas. El número que ves no es una calificació
 
 No tienes que entregar nada en esta tarea. Solo consultarla.
 
-La asistencia de la sesión del lunes se registra con el commit de la actividad de la sesión. Cuenta que el trabajo exista, no que esté bien: si te atoraste y lo documentaste en tu bitácora, cuenta como asistencia.
+La asistencia se registra con el commit de la actividad de la sesión y con el pase de lista. Del commit cuenta que el trabajo exista, no que esté bien: si te atoraste y lo documentaste en tu bitácora, cuenta como asistencia.
 
 CUANTAS FALTAS PUEDES TENER
 
@@ -526,11 +585,34 @@ Dímelo por comentario privado en esta tarea durante la misma semana en que ocur
 
 ## 10. Orden en que conviene armarlo
 
+0. **Verificar el calendario del ciclo** contra <https://escolar.udg.mx/calendarios> y actualizar
+   la tabla de fechas de la sección 7. Todo lo demás depende de eso.
 1. Crear la clase y los 9 temas.
 2. Publicar "Como funciona el curso" (Material, tema *Empieza aqui*).
 3. Publicar el anuncio de bienvenida y fijarlo.
-4. Crear la pregunta de la URL del repositorio.
+4. Crear la pregunta de la URL del repositorio, **desactivando que vean las respuestas de los
+   compañeros**.
 5. Crear la tarea de registro de equipo.
 6. Crear el material de autoevaluación entre pares.
-7. Crear la tarea "Faltas" y dejarla publicada todo el semestre.
-8. Crear las 14 tareas semanales y las 3 revisiones, con sus fechas.
+7. Crear la tarea "Faltas", con su categoría de peso 0%, y dejarla publicada todo el semestre.
+8. Crear las 14 tareas semanales y las 3 revisiones, con sus fechas de la tabla.
+
+**Los dos ajustes que se olvidan y cuestan:** las respuestas visibles del paso 4, y la categoría
+de peso 0% del paso 7. El primero publica la lista de repositorios al grupo; el segundo mete las
+faltas al promedio y le baja la calificación general a todos.
+
+---
+
+## 11. Lo que se mantiene durante el semestre
+
+Casi nada, y esa es la idea. Una vez armado, el Classroom no se vuelve a tocar salvo para:
+
+| Cuándo | Qué |
+|---|---|
+| Después de cada sesión | Actualizar el número de la tarea "Faltas" |
+| Después de cada revisión | Poner las calificaciones de las tres revisiones |
+| Cuando haga falta | Contestar los comentarios de la tarea de la semana |
+
+**El contenido de las semanas no se toca nunca**: vive en la página del curso, y la tarea de
+Classroom solo enlaza. Si cambias de qué trata una semana, cambias la página y el Classroom sigue
+siendo correcto. Ese es el motivo de que los títulos sean `Semana N` a secas.
