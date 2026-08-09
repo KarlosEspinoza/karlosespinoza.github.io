@@ -81,6 +81,28 @@ Cuando la máquina arranca, la RAM está vacía: no hay sistema operativo, porqu
 
 Un aviso para que no lo busques y no lo encuentres: en tu laptop **no vas a ver GRUB**. Quien arrancó con UEFI fue Windows; WSL2 lanza después una máquina virtual ligera que salta directo al paso 3, sin firmware ni cargador propios. La cadena completa la verías en una computadora con Linux instalado directamente, y es exactamente la que sigue cualquier servidor de los que vas a administrar.
 
+#### Qué hace el PID 1 el resto del tiempo
+
+Vale la pena detenerse un momento en ese primer proceso, porque es el que vas a usar todos los días si acabas administrando servidores.
+
+En un Linux de servidor el PID 1 es **`systemd`**, y su trabajo no termina al arrancar. Es quien mantiene vivos los **servicios**: la base de datos, el servidor web, y algún día tu Servidor de Pedidos. Un servicio es simplemente un proceso que `systemd` arranca al encender la máquina, vigila mientras corre, y reinicia si se cae. Dos comandos concentran casi todo el trato con él:
+
+```bash
+systemctl status nombre-del-servicio    # esta vivo? desde cuando? se cayo?
+journalctl -u nombre-del-servicio -f    # sus ultimas lineas de log, en vivo
+```
+
+Cuando en un trabajo te digan "revisa por qué se cayó el servicio", eso es lo que vas a teclear.
+
+**En tu WSL2 no van a funcionar todavía**, y ya sabes por qué: tu PID 1 no es `systemd`, es `/init`. Compruébalo:
+
+```bash
+ps -p 1 -o pid,comm
+systemctl status          # probablemente falle, y esta bien
+```
+
+No es un problema que haya que resolver hoy. Lo que importa es que ubiques la pieza: **el PID 1 es el que sostiene todo lo que corre en un servidor**, y en la semana 8, cuando tu servidor aprenda a apagarse de forma ordenada, vas a ver que la secuencia que usa `systemd` para detener un servicio es exactamente la que vas a programar. Ahí puedes convertir tu servidor en un servicio de verdad, si quieres.
+
 #### Mirar los procesos: `ps`
 
 `ps` lista procesos. La forma que vas a usar todo el semestre:

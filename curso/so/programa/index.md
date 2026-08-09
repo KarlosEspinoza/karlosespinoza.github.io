@@ -126,7 +126,9 @@ Todo se construye sobre un único caso a lo largo del semestre: un **servidor de
         1. Por que un proceso no puede leer la memoria de otro directamente
         1. Permisos de proceso en Linux (panorama)
     1. Por qué el destino del software es Linux (panorama del mercado)
-    1. Operar Linux: procesos (ps, top), servicios (systemctl), registros o logs (journalctl), permisos
+    1. Arranque del sistema: firmware (BIOS/UEFI), cargador de arranque, kernel y el primer proceso (PID 1)
+    1. Operar Linux: procesos (ps, top), estados de proceso, el sistema de archivos /proc
+    1. Servicios y registros del sistema: el PID 1 como administrador de servicios (systemctl, journalctl); se retoma en la Unidad 2 al programar el apagado ordenado
     1. Qué es un contenedor: aislamiento con namespaces y cgroups (Docker como SO aplicado, nivel conceptual)
     1. El servidor de pedidos como proceso observable del sistema operativo
 1. Procesos y concurrencia
@@ -143,7 +145,8 @@ Todo se construye sobre un único caso a lo largo del semestre: un **servidor de
     1. Comunicación entre procesos
         1. Señales
         1. Alarmas
-        1. Tuberías (pipes)
+        1. Tuberías (pipes) y tuberías con nombre (FIFO)
+        1. Apagado ordenado de un servicio: la secuencia SIGTERM, espera y SIGKILL que aplica systemd
     1. Planificación de procesos
         1. Por lotes y multiprogramación
         1. Primero en llegar primero en ser atendido (FIFO)
@@ -223,13 +226,13 @@ El ciclo 2026B comprende del 17 de agosto al 11 de diciembre de 2026. El curso s
 | Semana | Fechas | Actividades realizadas antes de la clase (aprendizaje invertido) | Actividades de aprendizaje activo a realizar durante la clase |
 |---|---|---|---|
 | 1 | 17 y 19 ago | Encuadre del curso y Tarea 0: configuración del entorno (WSL2, Git, GitHub, repo) | U1: discusión guiada sobre qué es un SO, el kernel, las llamadas al sistema y el modelo de proteccion (usuario/kernel); por qué el destino del software es Linux |
-| 2 | 24 y 26 ago | Operar Linux: guía de ps, top, systemctl, journalctl y permisos | U1: práctica en terminal y primer proceso Java "Servidor listo"; el servidor como proceso observable |
+| 2 | 24 y 26 ago | Operar Linux: cadena de arranque (firmware, cargador, kernel, PID 1) y el árbol de procesos con ps, top, estados y /proc | U1: primer proceso Java vivo y observable; procesos huérfanos y zombis; comparación de estados; costo de crear un proceso |
 | 3 | 31 ago y 2 sep | Qué es un contenedor: namespaces y cgroups (lectura/video) | U1 a U2: demo de Docker como SO aplicado; modelado del concepto de proceso sobre el caso |
 | 4 | 7 y 9 sep | Estados y transiciones de procesos. Hilos (guía) | U2: construir hilos en Java; el servidor acepta pedidos en texto plano |
 | 5 | 14 y 16 sep (1) | Concurrencia: condición de carrera (guía con ejemplo reproducible) | Sin sesión (1) |
 | 6 | 21 y 23 sep | Sección crítica, exclusión mutua y semáforos (guía) | U2: resolver en equipo el caso de dos cajeros simultáneos sin romper el inventario (semáforo) |
 | 7 | 28 y 30 sep | Bloqueos (deadlocks) y sincronización (guía) | U2: depurar y diagnosticar problemas de concurrencia sobre el caso |
-| 8 | 5 y 7 oct | Comunicación entre procesos: señales y pipes (guía) | U2: implementar IPC con pipes entre procesos del servidor |
+| 8 | 5 y 7 oct | Comunicación entre procesos: señales, apagado ordenado y pipes (guía) | U2: implementar IPC y el apagado ordenado del servidor; medir lo que se pierde según la señal recibida; opcionalmente publicarlo como servicio del sistema (systemd) |
 | 9 | 12 y 14 oct | Push a GitHub de evidencias y BITACORA.md (entrega previa a la revisión) | **Revisión de avances 1**: preguntas orales o escritas, U1 y U2 (prácticas e integrador) |
 | 10 | 19 y 21 oct | Planificación de procesos: lotes, FIFO y panorama (RT, distribuido, embebido) (guía) | U2: comparar políticas de planificación aplicadas al caso |
 | 11 | 26 y 28 oct | Administración de memoria: virtual, real e intercambio (guía) | U3: implementar el catálogo de productos en memoria (caché) |

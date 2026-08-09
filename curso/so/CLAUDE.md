@@ -455,6 +455,7 @@ moverlos o ampliarlos, aquí es donde están:
 | Tema | Dónde vive | Enganchado a |
 |---|---|---|
 | Arranque del sistema: BIOS/UEFI, GRUB, kernel, PID 1 | Semana 2, bloque 1, "De dónde sale el primer proceso" | La raíz del árbol de procesos: el PID 1 es el único que no creó otro proceso |
+| `systemctl` y `journalctl` | Se nombran en la semana 2 (el PID 1 como administrador de servicios) y se **trabajan** en el bloque extra de la semana 8, opción B | La secuencia `SIGTERM` -> espera -> `SIGKILL` que el alumno programa esa semana es la que aplica `systemd` |
 | OOM killer | Primera aparición en la semana 3 (aula, `--memory`), tema completo en la 12 | El cgroup como límite de consumo |
 | Señales | Semana 8 completa; el código 137 se menciona de pasada en la 3 | La muerte por `SIGKILL` del cgroup |
 | Espera activa | Se plantea como pregunta abierta en la semana 2 (aula), se responde en la 6 | Comparación de estados `S` contra `R` |

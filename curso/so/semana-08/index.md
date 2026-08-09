@@ -16,7 +16,7 @@ Y de paso contestamos la pregunta que quedó abierta la semana pasada, cuando `k
     - [Cómo se trabaja esta guía](#como-se-trabaja)
     - [Bloque 1: señales, o cómo se le habla a un proceso](#bloque-1)
     - [Bloque 2: apagado ordenado y comunicación por tubería](#bloque-2)
-    - [Bloque extra: una tubería con nombre](#bloque-extra)
+    - [Bloque extra: elige uno de los dos](#bloque-extra)
 - [Durante la clase (aprendizaje activo)](#durante-la-clase)
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
@@ -32,7 +32,7 @@ Y de paso contestamos la pregunta que quedó abierta la semana pasada, cuando `k
 |---|---|---|
 | 1 | Entiendes las señales y por qué `SIGKILL` no se atrapa | Tu tabla de señales y tu plan de apagado |
 | 2 | Le pones apagado ordenado a tu servidor y lo comunicas con otro proceso | `src/ServidorPedidos.java` y `evidencias/senales.txt` |
-| Extra | Comunicas dos procesos que no son padre e hijo, con `mkfifo` | La evidencia de la tubería con nombre |
+| Extra | Eliges uno: una tubería con nombre (`mkfifo`), o convertir tu servidor en un servicio de `systemd` | La evidencia de la opción que hayas elegido |
 
 Un commit al terminar cada bloque. Y lo de siempre: **si te atoras, lo documentas y haces commit igual**, con las cuatro partes de la [subsección `#### Atorones`](/curso/so/semana-01#como-se-trabaja).
 
@@ -309,9 +309,18 @@ git push
 
 ---
 
-### Bloque extra: una tubería con nombre {#bloque-extra}
+### Bloque extra: elige uno de los dos {#bloque-extra}
 
-Opcional. La tubería del bloque 2 tiene una limitación grande: **solo funciona entre padre e hijo**, porque el canal se hereda. Si quieres que un cajero lanzado desde otra terminal le mande pedidos a tu servidor, no sirve.
+Opcional, y esta semana hay **dos caminos distintos**. Haz el que te interese; no hace falta hacer los dos y ninguno es requisito de nada.
+
+| Opción | De qué se trata | Para quién |
+|---|---|---|
+| **A** | Comunicar dos procesos que no son parientes, con una tubería con nombre | Si te interesa el lado de sistemas y quieres llegar mejor preparado a los sockets de la semana 16 |
+| **B** | Convertir tu servidor en un servicio de `systemd` de verdad | Si te interesa administrar servidores. Es lo que más se parece a un trabajo de DevOps |
+
+#### Opción A: una tubería con nombre
+
+La tubería del bloque 2 tiene una limitación grande: **solo funciona entre padre e hijo**, porque el canal se hereda. Si quieres que un cajero lanzado desde otra terminal le mande pedidos a tu servidor, no sirve.
 
 La solución de Unix es la **tubería con nombre** o **FIFO**: una tubería que existe como **un archivo en el sistema de archivos**, así que cualquier proceso que conozca la ruta puede abrirla.
 
@@ -382,6 +391,123 @@ Esa fila de "entre máquinas distintas" es la razón de que la Unidad 6 exista.
 ```bash
 git add .
 git commit -m "s08 extra: tuberia con nombre"
+git push
+```
+
+#### Opción B: tu servidor como servicio de systemd
+
+En la semana 2 viste que el PID 1 de un servidor Linux es `systemd`, y que es quien mantiene vivos los servicios. Aquí tu servidor se convierte en uno.
+
+Esto es lo más parecido a un trabajo real que vas a hacer en el curso: así se instala software en un servidor de producción. Y encaja justo aquí porque **la secuencia que usa `systemd` para detener un servicio es la que acabas de programar**: manda `SIGTERM`, espera, y si el proceso no obedece, `SIGKILL`.
+
+**Primero, activa systemd en tu WSL2.** No viene encendido, y por eso todos los comandos de esta opción fallan hasta que lo hagas. Edita el archivo de configuración:
+
+```bash
+sudo nano /etc/wsl.conf
+```
+
+Y déjalo con esto:
+
+```
+[boot]
+systemd=true
+```
+
+Ahora **cierra todas las terminales de Ubuntu** y, desde **PowerShell en Windows**:
+
+```powershell
+wsl --shutdown
+```
+
+Vuelve a abrir Ubuntu y comprueba que el PID 1 cambió:
+
+```bash
+ps -p 1 -o pid,comm
+systemctl status
+```
+
+Ahora dice `systemd`, no `/init`. Acabas de sustituir el primer proceso de tu sistema.
+
+**Segundo, describe tu servicio.** Un servicio de `systemd` es un archivo de texto. Crea `/etc/systemd/system/servidor-pedidos.service`:
+
+```
+[Unit]
+Description=Servidor de Pedidos - Farmacia SaludYa
+After=network.target
+
+[Service]
+Type=simple
+User=TU_USUARIO
+WorkingDirectory=/home/TU_USUARIO/so-proyecto
+ExecStart=/usr/bin/java -cp /home/TU_USUARIO/so-proyecto/src ServidorPedidos
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Cuatro líneas de ahí valen todo el bloque, porque son cosas que ya entiendes:
+
+| Línea | Qué significa, con lo que ya sabes |
+|---|---|
+| `WorkingDirectory` | El directorio de trabajo que imprimiste en la semana 2. Sin esto, tu servidor no encuentra `datos/catalogo.txt` |
+| `Restart=on-failure` | Si tu proceso muere, `systemd` lo vuelve a levantar. Es el reinicio automático que salva servidores |
+| `TimeoutStopSec=20` | **Cuánto espera tu shutdown hook antes del `SIGKILL`.** Justo lo que discutimos en el bloque 1 |
+| `StandardOutput=journal` | Tu `System.out` ya no va a un archivo: va al registro del sistema |
+
+**Tercero, arráncalo:**
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl start servidor-pedidos
+systemctl status servidor-pedidos
+```
+
+Y ahí está tu servidor, con su PID, su estado y sus últimas líneas de log, en el mismo formato en que verías cualquier servicio de un servidor real.
+
+**Los comandos que vas a usar el resto de tu vida profesional:**
+
+```bash
+systemctl status servidor-pedidos        # esta vivo? desde cuando?
+sudo systemctl stop servidor-pedidos     # SIGTERM, espera, SIGKILL
+sudo systemctl restart servidor-pedidos
+sudo systemctl enable servidor-pedidos   # que arranque solo al encender
+journalctl -u servidor-pedidos -f        # sus logs en vivo
+journalctl -u servidor-pedidos --since "10 min ago"
+```
+
+**Y ahora las dos pruebas que conectan con el bloque 1**, que son el punto del ejercicio:
+
+1. **Comprueba que `stop` ejecuta tu apagado ordenado.** Corre `sudo systemctl stop servidor-pedidos` y después `journalctl -u servidor-pedidos | tail -15`. Tiene que aparecer tu resumen final. Es la misma `SIGTERM` del bloque 2, mandada por `systemd`.
+
+2. **Rompe el tiempo límite a propósito.** Pon en tu shutdown hook el `Thread.sleep(600000)` de la actividad del miércoles, reinicia el servicio, y páralo. `systemd` va a esperar los 20 segundos de `TimeoutStopSec` y después lo va a matar con `SIGKILL`. Míralo en el log:
+
+   ```bash
+   journalctl -u servidor-pedidos | grep -i -E "timeout|killed|stopping"
+   ```
+
+Anota en tu bitácora:
+
+- **Qué dice `systemctl status`** de tu servicio: pega la salida y explica qué es cada campo.
+- **Qué pasó en las dos pruebas**, con las líneas del `journalctl`.
+- **Qué ventaja tiene esto** sobre lanzar el servidor con `&`, que es lo que has hecho desde la semana 2. Mínimo tres, y una de ellas la puedes comprobar matando el proceso con `kill -9` y viendo qué ocurre.
+
+Para dejarlo limpio al terminar:
+
+```bash
+sudo systemctl stop servidor-pedidos
+sudo systemctl disable servidor-pedidos
+```
+
+Guarda el archivo `.service` en tu repositorio, en `datos/` o en una carpeta `despliegue/`, porque es parte de tu proyecto y es de las cosas que vale la pena enseñar.
+
+```bash
+git add .
+git commit -m "s08 extra: servidor como servicio de systemd"
 git push
 ```
 
