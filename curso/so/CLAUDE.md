@@ -432,20 +432,20 @@ Convención de mensajes de commit (`sNN` = número de semana):
 | 01 | Encuadre y configuración del entorno (U1) | Entorno WSL2 + repositorio privado | El SO, kernel, modos y syscalls; elección de dominio | El mapa del servidor por unidad | ✅ |
 | 02 | Linux y el primer proceso (U1) | Cadena de arranque y árbol de procesos: `ps`, `top`, STAT, `/proc` | `ServidorPedidos.java` vivo y con log | `/proc/<pid>/status` campo por campo | ✅ |
 | 03 | Contenedores y concepto de proceso (U1-U2) | Proceso vs programa: PCB, namespaces, cgroups | Proceso hijo con `ProcessBuilder` | El servidor dentro de Docker | ✅ |
-| 04 | Hilos: pedidos concurrentes (U2) | Estados del proceso y qué comparte un hilo | Un hilo por pedido; `nlwp`, `top -H` | Pool con `ExecutorService` | |
-| 05 | Condición de carrera (U2) | Sección crítica: el intercalado a mano | `PruebaCarrera.java`, 5 corridas distintas | Cuántos hilos para que falle siempre | |
-| 06 | Exclusión mutua y semáforos (U2) | Espera activa, `synchronized`, `Semaphore` | Inventario protegido, mismas 5 corridas | Medir el costo del candado | |
-| 07 | Bloqueos y sincronización (U2) | Las 4 condiciones de Coffman en tu dominio | Provocar el deadlock y leerlo con `jstack` | `tryLock` con timeout | |
-| 08 | Comunicación entre procesos (U2) | Espacios separados; señales; SIGKILL no se atrapa | Shutdown hook + pipe entre dos procesos | Pipe con nombre (`mkfifo`) | |
-| 09 | **Revisión de avances 1** | | | | |
-| 10 | Planificación de procesos (U2) | Quantum, cambio de contexto, FIFO/SJF/RR, `nice` | `PlanificadorPedidos.java`, dos políticas | `nice`/`renice` bajo carga | |
-| 11 | Administración de memoria (U3) | Virtual, real y swap; páginas; stack vs heap | Catálogo a `HashMap`; `VmSize` vs `VmRSS` | Archivo vs caché, 10000 consultas | |
-| 12 | Diagnóstico de memoria (U3) | Fuga y OOM killer; JVM vs kernel | `BufferPedidos.java` acotado | Provocar la fuga y graficar `VmRSS` | |
-| 13 | Llamadas al sistema y E/S (U4) | Trap, descriptores 0/1/2, buffering y `flush` | `GestorArchivos.java` visto con `strace` | `strace -c`: con y sin `BufferedWriter` | |
-| 14 | **Revisión de avances 2** | | | | |
-| 15 | Sistemas de archivos (U5) | Inodo, nombre vs contenido, `stat`, `df`, `du` | `pedidos.log` en append + índice con `seek` | Secuencial vs `seek` en 100000 líneas | |
-| 16 | Sockets y red (U6) | El socket como descriptor; `accept()`, `ss` | `ClienteCajero.java` + un hilo por conexión | Cliente desde otra máquina | |
-| 17 | **Revisión final** | | | | |
+| 04 | Hilos: pedidos concurrentes (U2) | Estados del proceso y qué comparte un hilo | Un hilo por pedido; `nlwp`, `top -H` | Pool con `ExecutorService` | ✅ |
+| 05 | Condición de carrera (U2) | Sección crítica: el intercalado a mano | `PruebaCarrera.java`, 5 corridas distintas | Cuántos hilos para que falle siempre | ✅ |
+| 06 | Exclusión mutua y semáforos (U2) | Espera activa, `synchronized`, `Semaphore` | Inventario protegido, mismas 5 corridas | Medir el costo del candado | ✅ |
+| 07 | Bloqueos y sincronización (U2) | Las 4 condiciones de Coffman en tu dominio | Provocar el deadlock y leerlo con `jstack` | `tryLock` con timeout | ✅ |
+| 08 | Comunicación entre procesos (U2) | Espacios separados; señales; SIGKILL no se atrapa | Shutdown hook + pipe entre dos procesos | Pipe con nombre (`mkfifo`) | ✅ |
+| 09 | **Revisión de avances 1** | | | | ✅ |
+| 10 | Planificación de procesos (U2) | Quantum, cambio de contexto, FIFO/SJF/RR, `nice` | `PlanificadorPedidos.java`, dos políticas | `nice`/`renice` bajo carga | ✅ |
+| 11 | Administración de memoria (U3) | Virtual, real y swap; páginas; stack vs heap | Catálogo a `HashMap`; `VmSize` vs `VmRSS` | Archivo vs caché, 10000 consultas | ✅ |
+| 12 | Diagnóstico de memoria (U3) | Fuga y OOM killer; JVM vs kernel | `BufferPedidos.java` acotado | Provocar la fuga y graficar `VmRSS` | ✅ |
+| 13 | Llamadas al sistema y E/S (U4) | Trap, descriptores 0/1/2, buffering y `flush` | `GestorArchivos.java` visto con `strace` | `strace -c`: con y sin `BufferedWriter` | ✅ |
+| 14 | **Revisión de avances 2** | | | | ✅ |
+| 15 | Sistemas de archivos (U5) | Inodo, nombre vs contenido, `stat`, `df`, `du` | `pedidos.log` en append + índice con `seek` | Secuencial vs `seek` en 100000 líneas | ✅ |
+| 16 | Sockets y red (U6) | El socket como descriptor; `accept()`, `ss` | `ClienteCajero.java` + un hilo por conexión | Cliente desde otra máquina | ✅ |
+| 17 | **Revisión final** | | | | ✅ |
 
 ### Temas que solo aparecen una vez y hay que saber dónde están
 
