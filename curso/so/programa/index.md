@@ -236,7 +236,7 @@ El ciclo 2026B comprende del 17 de agosto al 11 de diciembre de 2026. El curso s
 | 12 | 2 y 4 nov (2) | Diagnóstico de memoria: consumo, fugas y OOM killer (guía) | U3: construir el buffer de pedidos pendientes y diagnosticar su consumo |
 | 13 | 9 y 11 nov | Llamadas al sistema y operaciones de E/S (guía) | U4: implementar lectura del catálogo y escritura de recibos con syscalls |
 | 14 | 16 y 18 nov (3) | Push a GitHub de evidencias y BITACORA.md (entrega previa a la revisión) | **Revisión de avances 2**: preguntas orales o escritas, U3 y U4 (prácticas e integrador) |
-| 15 | 23 y 25 nov | Sistemas de archivos: acceso y el FS de Linux (guía) | U5: construir el log persistente de pedidos (pedidos.txt) y búsqueda por ID |
+| 15 | 23 y 25 nov | Sistemas de archivos: acceso y el FS de Linux (guía) | U5: construir el log persistente de pedidos (pedidos.log) y búsqueda por ID |
 | 16 | 30 nov y 2 dic | El socket como abstraccion del SO. Sockets servidor y cliente. Flujos de E/S (guía) | U6: implementar el cajero como cliente que se conecta por socket |
 | 17 | 7 y 9 dic | Integración final y push a GitHub de la entrega (evidencias y BITACORA.md) | **Revisión final**: preguntas orales o escritas y cierre (prácticas e integrador) |
 

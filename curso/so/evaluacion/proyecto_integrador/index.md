@@ -4,60 +4,52 @@ title: Fundamentos de Sistemas Operativos
 ---
 [Inicio](/curso/so)
 
-# Proyecto Integrador
+# Proyecto integrador
 
-**Ingeniería en Teleinformática - Quinto Semestre**  
-**Valor:** 50% de la calificación final
+**Ingeniería en Teleinformática - Quinto semestre**
+**Valor: 50% de la calificación final**
 
----
+El proyecto integrador es un **sistema multi-sucursal** desarrollado en equipo. Cada integrante aporta su propio Servidor de Pedidos, el que construye en sus prácticas, como una **sucursal** del sistema. Un **Servidor Central** las conecta, consolida la información de todas y ofrece una vista única del negocio.
 
-## Descripción general
-
-El proyecto integrador es un **Sistema Multi-Sucursal** desarrollado en equipo. Cada integrante aporta su propio servidor de pedidos (el que construye en sus prácticas) como una sucursal del sistema. Un **Servidor Central** los conecta, agrega información de todas las sucursales y ofrece una vista consolidada del negocio.
-
-El resultado es un sistema distribuido real: múltiples procesos independientes corriendo sobre Linux y comunicándose por sockets, con inventario consolidado entre sucursales y una bitácora central de eventos. Es el mismo tipo de arquitectura cliente-servidor que opera un punto de venta multi-tienda como SICAR.
+El resultado es un sistema distribuido de verdad: varios procesos independientes corriendo sobre Linux, comunicándose por sockets, con un registro central de eventos y con las tres sucursales pudiendo caerse sin arrastrar a las demás. Es el mismo tipo de arquitectura que opera un punto de venta multi-tienda como SICAR.
 
 ---
 
-## Formación de equipos
-
-- Equipos de **2 o 3 integrantes** (no se permiten equipos de 1 ni de 4 o más).
-- **Cada integrante debe tener un dominio diferente** al de sus compañeros, ya que cada uno aporta su sucursal.
-- Regístrate con tu equipo y dominios con el asesor durante la primera semana.
-
-**Ejemplo para un equipo de 3:**
-
-| Integrante | Dominio (sucursal) | Servidor de la sucursal |
-|---|---|---|
-| Alumno A | Restaurante | `ServidorPedidos.java` del restaurante |
-| Alumno B | Farmacia | `ServidorPedidos.java` de la farmacia |
-| Alumno C | Librería | `ServidorPedidos.java` de la librería |
-
-> El Servidor Central no pertenece a ninguno en particular: es responsabilidad compartida del equipo.
+- [Formación de equipos](#equipos)
+- [Arquitectura del sistema](#arquitectura)
+- [Lo que construyen, unidad por unidad](#lo-que-construyen)
+- [El repositorio del equipo](#repositorio)
+- [Cómo se revisa](#como-se-revisa)
+    - [Las tres revisiones](#las-tres-revisiones)
+    - [Cómo se califica cada instrumento](#rubricas)
+- [Autoevaluación entre pares](#autoevaluacion)
+- [Atributos de egreso](#atributos)
 
 ---
 
-## Lo que construyen, capa por capa
+## Formación de equipos {#equipos}
 
-Al igual que las prácticas, el integrador crece con cada unidad del curso. Cada tema visto en clase se aplica al sistema del equipo:
+- Equipos de **2 o 3 integrantes**. No se permiten de 1 ni de 4 o más.
+- **Cada integrante tiene un dominio diferente**, porque cada uno aporta su sucursal.
+- Se registra en la primera semana subiendo a Classroom un `equipo.csv` con una línea por integrante. Lo sube cada uno de los integrantes, el mismo archivo.
 
-| Unidad | Lo que agrega el equipo al sistema |
+Ejemplo de un equipo de 3:
+
+| Integrante | Dominio (sucursal) |
 |---|---|
-| **U1** Perspectivas y Linux | Cada sucursal corre sobre Linux (WSL2) como proceso observable (`ps`, `top`). Opcional: cada sucursal en su propio contenedor Docker para mostrar el aislamiento entre sucursales. |
-| **U2** Procesos | Cada sucursal corre como proceso independiente. El equipo muestra los procesos corriendo simultáneamente en el SO. |
-| **U2** Concurrencia | El Servidor Central recibe pedidos de todas las sucursales en hilos simultáneos. El inventario central se protege con semáforos. |
-| **U3** Memoria y diagnóstico | El Servidor Central mantiene en memoria un resumen consolidado del inventario de todas las sucursales y diagnostica su consumo conforme crecen las sucursales y los pedidos. |
-| **U4** E/S | El Servidor Central lee los catálogos de cada sucursal al arrancar y escribe eventos en una bitácora central mediante llamadas al sistema. |
-| **U5** Archivos | La bitácora central (`bitacora.log`) registra eventos de todas las sucursales en organización secuencial. Se puede consultar por sucursal (acceso directo). |
-| **U6** Red | Cada servidor de sucursal se conecta al Servidor Central por socket. El panel de administración es un cliente adicional que monitorea todo el sistema. |
+| Alumno A | Restaurante |
+| Alumno B | Farmacia |
+| Alumno C | Librería |
+
+El Servidor Central **no pertenece a nadie en particular**: es responsabilidad compartida del equipo, y en la revisión cualquier integrante puede tener que explicarlo.
 
 ---
 
-## Arquitectura del sistema
+## Arquitectura del sistema {#arquitectura}
 
 ```
                    Servidor Central
-          (inventario consolidado + bitacora.log)
+        (registro consolidado + vista de sucursales)
                 /          |          \
            [socket]     [socket]    [socket]
               |             |            |
@@ -68,145 +60,137 @@ Al igual que las prácticas, el integrador crece con cada unidad del curso. Cada
           (clientes)   (clientes)   (clientes)
 ```
 
+Cada sucursal es el `ServidorPedidos` de un integrante, con su propio inventario y su propio catálogo. Lo que se comparte no es el inventario: es **el formato de los mensajes** y los acuerdos de diseño.
+
 ---
 
-## Estructura del repositorio
+## Lo que construyen, unidad por unidad {#lo-que-construyen}
+
+| Unidad | Semanas | Lo que agrega el equipo |
+|---|---|---|
+| **U1** Perspectivas y Linux | 1 a 3 | Las tres sucursales corren a la vez en una máquina como procesos independientes. Acuerdan el formato de línea de un pedido, que va a durar todo el semestre |
+| **U2** Procesos y concurrencia | 4 a 8, 10 | El Central atiende a las tres sucursales en hilos separados. Acuerdan el modelo de concurrencia y el orden global de candados del equipo. Demuestran la condición de carrera del sistema integrado y la resuelven, y diagnostican un interbloqueo entre dos componentes |
+| **U3** Memoria | 11 y 12 | Deciden dónde vive el catálogo en el sistema integrado. El Central aplica contrapresión hacia las sucursales: una sucursal saturada no puede tumbar a las otras dos |
+| **U4** Entrada y salida | 13 | Cada sucursal emite sus recibos y el Central lleva el registro consolidado de las tres |
+| **U5** Archivos | 15 | El registro del Central va indexado, con consulta cruzada: un cajero de una sucursal consulta un pedido de otra |
+| **U6** Red | 16 | Las sucursales dejan las tuberías y se conectan al Central **por socket**, en más de una computadora. Prueban los tres modos de falla |
+
+Lo que se agrega cada semana viene en la sección **Proyecto integrador** de la [página de esa semana](/curso/so).
+
+---
+
+## El repositorio del equipo {#repositorio}
+
+Un repositorio **privado** del equipo, con el asesor agregado como colaborador, aparte del repositorio individual de cada quien.
 
 ```
-proyecto-integrador/
-  README.md                    # Integrantes, dominios y descripción del sistema
-  BITACORA.md                  # Bitácora del equipo: conceptos del SO aplicados
+integrador-so/
+  README.md            integrantes, dominios, como se corre, Y LOS ACUERDOS DEL EQUIPO
+  BITACORA.md          bitacora del equipo
   src/
-    ServidorCentral.java       # Servidor que conecta todas las sucursales
-    ConexionSucursal.java      # Hilo que gestiona cada sucursal conectada
-    InventarioCentral.java     # Inventario consolidado (concurrencia)
-    PanelAdmin.java            # Cliente administrador: monitorea todo el sistema
-    GestorBitacora.java        # Escritura concurrente a la bitacora central
-  bitacora.log                 # Registro de eventos de todas las sucursales
-
-  sucursal-a/                  # Servidor de la sucursal del integrante A (modificado)
-    ServidorPedidos.java
-    ClienteCajero.java
-    catalogo.txt
-    pedidos.log
-
-  sucursal-b/                  # Servidor de la sucursal del integrante B (modificado)
-    ServidorPedidos.java
-    ClienteCajero.java
-    catalogo.txt
-    pedidos.log
-
-  sucursal-c/                  # Servidor de la sucursal del integrante C (modificado)
-    ServidorPedidos.java
-    ClienteCajero.java
-    catalogo.txt
-    pedidos.log
+    ServidorCentral.java       conecta a todas las sucursales
+    ConexionSucursal.java      un hilo por sucursal conectada
+    RegistroCentral.java       el log consolidado, con su indice
+    PanelAdmin.java            cliente que monitorea todo el sistema
+  datos/
+    central.log        eventos de todas las sucursales
+  evidencias/          salidas de terminal del sistema completo
 ```
 
-> Cada integrante modifica su `ServidorPedidos.java` para que, además de atender cajeros, reporte sus eventos al Servidor Central.
+Las sucursales **no se copian aquí**: cada una vive en el repositorio individual de su dueño. Lo que el README del equipo tiene que decir es de quién es cada sucursal y cómo se lanza.
+
+**El `README.md` del equipo es el documento más importante del integrador**, porque es donde viven los acuerdos. Sin escribir, un acuerdo no existe. Tiene que traer, como mínimo:
+
+| Acuerdo | Se decide en |
+|---|---|
+| El formato de línea de un pedido | Semana 3 |
+| El modelo de concurrencia (hilo por pedido o pool, y de qué tamaño) | Semana 4 |
+| El orden global de candados | Semana 7 |
+| La política de planificación del Central | Semana 10 |
+| Dónde vive el catálogo y cómo se evita que los ids se repitan entre sucursales | Semanas 11 y 15 |
+| El protocolo sucursal-Central | Semana 16 |
 
 ---
 
-## Revisiones de avances
+## Cómo se revisa {#como-se-revisa}
 
-El proyecto se revisa en las **mismas 3 semanas** que las prácticas. El equipo debe hacer **push a GitHub de sus avances antes del día de la revisión** (a más tardar en la sesión previa de esa semana), para que el asesor revise el código y la BITACORA.md con anticipación. El día de la revisión la sesión se dedica únicamente a las **preguntas (orales o escritas, en papel o en archivo de texto)**. Si el equipo no hizo el push a tiempo, no hay nada que revisar y la revisión cuenta como no entregada. Además, cada integrante actualiza y hace push de su autoevaluación privada antes de cada revisión (ver la sección "Autoevaluación del equipo"). En cada revisión cuentan:
+En las **mismas tres semanas** que las prácticas: 9, 14 y 17. El equipo hace `push` antes de la fecha de entrega, el asesor revisa el código y la bitácora con anticipación, y el día de la revisión la sesión se dedica a las preguntas. En la revisión final hay además **demostración en vivo**.
+
+**Si no hay push a tiempo, la revisión cuenta como no entregada.**
+
+Las preguntas son al equipo y **cualquier integrante puede tener que contestarlas**. Es a propósito: un sistema que solo entiende quien lo escribió no está integrado.
+
+Además, **cada integrante actualiza y hace push de su autoevaluación antes de cada revisión** (ver abajo).
+
+### Las tres revisiones {#las-tres-revisiones}
+
+| | Semana | Qué cierra | Peso |
+|---|---|---|---|
+| Revisión 1 | 9 | Las tres sucursales corriendo, el Central concurrente, la condición de carrera del sistema demostrada y resuelta | 33% |
+| Revisión 2 | 14 | Contrapresión, memoria del sistema completo, registro consolidado | 34% |
+| Revisión final | 17 | Sockets, montaje en más de una máquina, consulta cruzada, los tres modos de falla, demo | 33% |
+
+La lista contra la que se revisa está en la página de cada revisión:
+
+- [Semana 9, proyecto integrador](/curso/so/semana-09#integrador-entrega)
+- [Semana 14, proyecto integrador](/curso/so/semana-14#integrador-entrega)
+- [Semana 17, proyecto integrador](/curso/so/semana-17#integrador-entrega)
+
+### Cómo se califica cada instrumento {#rubricas}
 
 | Instrumento | Peso dentro de la revisión |
 |---|---|
-| Evidencias: código, commits y funcionamiento del sistema completo entregados en GitHub antes de la revisión | 45% |
-| BITACORA.md del equipo: explicación de los conceptos aplicados | 25% |
-| 2 preguntas (orales o escritas), una por integrante seleccionada al azar | 20% |
-| Autoevaluación entre pares: contribución de cada integrante al equipo | 10% |
+| Evidencias: código, commits y funcionamiento del sistema completo | 45% |
+| `BITACORA.md` del equipo | 25% |
+| Dos preguntas el día de la revisión | 20% |
+| Autoevaluación entre pares | 10% |
+
+| Nivel | Qué se ve en las evidencias |
+|---|---|
+| Excelente | El sistema completo corre de punta a punta, montado en más de una máquina. Los acuerdos están escritos y se respetan en las tres sucursales. Los modos de falla están probados con evidencia. Commits de **todos** los integrantes, repartidos en el semestre |
+| Bueno | El sistema corre y las sucursales se conectan, con algún acuerdo sin escribir o algún modo de falla sin probar |
+| Suficiente | Las piezas funcionan por separado pero el sistema integrado no arranca completo |
+| Insuficiente | No corre, o el historial muestra que lo hizo una sola persona |
+
+**Los commits de todos los integrantes son parte de la evidencia.** Un repositorio donde el 90% de los commits son de una persona dice algo, y lo dice antes de que nadie pregunte.
 
 ---
 
-### Revisión 1 - Miércoles 14 de octubre
-**Perspectivas, Linux, Procesos y Concurrencia**
+## Autoevaluación entre pares {#autoevaluacion}
 
-**El sistema debe:**
-- Correr las sucursales sobre Linux (WSL2) como **procesos independientes** (muestran los procesos en `ps` o `top`)
-- El Servidor Central recibe mensajes de cada sucursal en **hilos separados**
-- El inventario central maneja el acceso concurrente con **semáforos**
-- El sistema no pierde datos cuando dos sucursales actualizan el inventario al mismo tiempo
+Cada integrante evalúa la contribución real de sus compañeros. Es **anónima entre ustedes**: nadie del equipo ve lo que pusieron los demás, solo el asesor. Vale el **10% de cada revisión**.
 
-**La BITACORA.md debe explicar:**
-- ¿Cómo se organizan los procesos del sistema? (diagrama de procesos) ¿Qué aportaría ejecutar cada sucursal en un contenedor?
-- ¿Qué problemas de concurrencia aparecen en el inventario central?
-- ¿Cómo los resolvió el equipo?
+Para que sea anónima **no se entrega en el repositorio del equipo**, porque ahí todos se verían. Va por un canal privado y separado.
 
----
+**Cómo se configura, una sola vez en el semestre:**
 
-### Revisión 2 - Miércoles 18 de noviembre
-**Memoria, diagnóstico, E/S y Archivos parciales**
+1. Crea un **repositorio privado** solo para tu autoevaluación, con el nombre que quieras (por ejemplo `autoeval-so`). Distinto de `so-proyecto`.
+2. **Agrega al asesor como colaborador** (Settings, Collaborators, Add people, usuario `KarlosEspinoza`). Esa invitación es el aviso de que tu repositorio existe: no hace falta entregar la URL en ningún otro lado. Si quieres confirmarlo, mándala por **comentario privado** en la publicación de Classroom, que solo lee el asesor.
+3. Dentro, crea un archivo de texto llamado con **tu propio código de alumno** y terminación `.csv`. Si tu código es `2162628`, el archivo se llama `2162628.csv`. **El nombre del archivo dice quién evalúa**, así que no lo cambies.
 
-**El sistema debe:**
-- El Servidor Central mantiene el inventario consolidado en **memoria** (suma de todas las sucursales)
-- **Diagnosticar** el consumo de memoria del Servidor Central conforme aumentan las sucursales y los pedidos
-- Al arrancar, leer los catálogos de cada sucursal desde sus archivos
-- Registrar cada evento (pedido recibido, inventario actualizado) en `bitacora.log`
-- La escritura concurrente a `bitacora.log` está protegida (sin líneas mezcladas)
+**El contenido** es una línea por cada compañero de tu equipo, con su código y la calificación de 0 a 100. No te incluyas a ti mismo.
 
-**La BITACORA.md debe explicar:**
-- ¿Cómo administra la memoria el Servidor Central y cómo diagnostica su consumo?
-- ¿Cómo se garantiza que la bitácora es consistente si varias sucursales escriben al mismo tiempo?
-
----
-
-### Revisión 3 - Miércoles 9 de diciembre
-**Archivos, Red y Sistema completo**
-
-**El sistema debe:**
-- `bitacora.log` en organización secuencial con consulta por sucursal (acceso directo)
-- `PanelAdmin.java` conectado al Servidor Central por socket, muestra el estado en tiempo real de todas las sucursales
-- Al menos **2 cajeros por sucursal** y el panel de admin conectados simultáneamente
-- El sistema completo funcionando: cajero -> sucursal -> servidor central -> bitácora
-
-**La BITACORA.md debe incluir:**
-- Una sección por cada unidad del curso explicando cómo aparece ese concepto en el sistema integrador
-- Tabla de contribución de cada integrante al código del integrador
-
----
-
-## Autoevaluación del equipo
-
-Cada integrante evalúa de forma **anónima** la contribución real de sus compañeros al proyecto integrador. La evaluación es privada: tus compañeros nunca ven la calificación que les pusiste; solo la ve el asesor. La autoevaluación vale el **10% de cada revisión de avances**.
-
-Para que sea anónima, la autoevaluación **no se entrega en el repositorio del equipo** (ahí todos se verían). Se entrega por un canal privado y separado:
-
-**Cómo se entrega:**
-1. Cada integrante crea un **repositorio privado** de GitHub solo para su autoevaluación (por ejemplo `autoeval-so`) y **agrega al asesor como colaborador**. Al ser privado y sin tus compañeros, nadie más puede verlo.
-2. Dentro del repositorio coloca un archivo CSV cuyo nombre sea **tu propio código de alumno**, por ejemplo `2162628.csv`.
-3. El archivo tiene dos columnas, `codigo` y `calificacion`: una fila por cada compañero al que calificas (no te incluyas a ti mismo). La calificación va de 0 a 100.
-4. Entrega la URL de tu repositorio privado en Google Classroom **una sola vez**. Después, **antes de cada una de las 3 revisiones**, actualiza tu archivo `<tu_codigo>.csv` con tu evaluación de esa etapa y haz push.
-
-**Ejemplo:** el alumno `2162628`, en un equipo con `2152525` y `2178899`, sube el archivo `2162628.csv`:
-
-```csv
+```
 codigo,calificacion
 2152525,90
 2178899,100
 ```
 
+La primera línea es exactamente `codigo,calificacion`.
+
+**Cómo se entrega:** antes de **cada una de las tres revisiones** actualizas tu archivo y haces `push`. Son tres entregas, no una: la participación de un compañero puede cambiar entre unidades y esto lo tiene que reflejar.
+
+**Qué estás calificando:** si cumplió lo que le tocaba, si lo entregó a tiempo para que los demás pudieran seguir, y si se puede contar con él cuando algo se rompe. No es simpatía.
+
 **Reglas:**
-- La calificación que recibe cada integrante es el **promedio de las calificaciones que le asignaron sus compañeros**, ponderado con la evaluación del asesor.
-- **Si no haces push de tu autoevaluación antes de una revisión, pierdes el 10% de la autoevaluación en esa revisión** (cuenta como no entregada). Esto **no afecta a tus compañeros**: el promedio que ellos reciben se calcula solo con las autoevaluaciones que sí se entregaron.
+
+- La calificación que recibe cada integrante es el **promedio de lo que le pusieron sus compañeros**, ponderado con la evaluación del asesor.
+- **Si no haces push antes de una revisión, pierdes ese 10% en esa revisión.** No afecta a tus compañeros: su promedio se calcula solo con las autoevaluaciones que sí se entregaron.
 
 ---
 
-## Calificación
+## Atributos de egreso {#atributos}
 
-| Revisión | Fecha | Peso |
-|---|---|---|
-| Revisión 1 | 14 de octubre | 33% |
-| Revisión 2 | 18 de noviembre | 34% |
-| Revisión 3 | 9 de diciembre | 33% |
-
-> El proyecto integrador equivale al **50% de la calificación final del curso**.
-
----
-
-## Atributos de Egreso
-
-- **AE2 Nivel Introductorio:** Identifica y resuelve problemas complejos de sistemas de información mediante el diseño de un sistema distribuido multi-sucursal que opera sobre Linux.
-- **AE4 Nivel Medio:** Reproduce un ambiente simulado que integra procesos concurrentes, gestión de memoria, E/S y comunicación en red en un solo sistema funcional.
-- **AE6 Nivel Medio:** Desarrolla un sistema de información que permite analizar e interpretar datos consolidados de múltiples fuentes, evaluando el comportamiento del SO bajo carga concurrente.
+- **AE2, nivel introductorio:** identifica y resuelve problemas complejos de sistemas de información mediante el diseño de un sistema distribuido multi-sucursal que opera sobre Linux.
+- **AE4, nivel medio:** reproduce un ambiente simulado que integra procesos concurrentes, gestión de memoria, entrada/salida y comunicación en red en un solo sistema funcional.
+- **AE6, nivel medio:** desarrolla un sistema de información que permite analizar e interpretar datos consolidados de múltiples fuentes, evaluando el comportamiento del sistema operativo bajo carga concurrente.
