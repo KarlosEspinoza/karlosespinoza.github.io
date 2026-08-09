@@ -10,6 +10,7 @@
 
 :root {
   --sidebar-w: 265px;
+  --toc-w: 245px;
   --topbar-h: 52px;
   --content-max: 900px;
   --gutter: 28px;
@@ -71,13 +72,13 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Boton de menu
+   Botones: menu general (izquierda) e indice de la pagina (derecha)
    -------------------------------------------------------------------------- */
 
-.menu-toggle {
+.menu-toggle,
+.toc-toggle {
   position: fixed;
   top: 10px;
-  left: 10px;
   z-index: 70;
   display: flex;
   align-items: center;
@@ -96,20 +97,38 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+.menu-toggle {
+  left: 10px;
+}
+
+.toc-toggle {
+  right: 10px;
+  font-size: 1rem;
+}
+
+.toc-toggle[hidden] {
+  display: none;
+}
+
 .menu-toggle:hover,
-.menu-toggle:focus-visible {
+.menu-toggle:focus-visible,
+.toc-toggle:hover,
+.toc-toggle:focus-visible {
   background: var(--nav-hover-bg);
 }
 
-.menu-toggle .icon-close {
+.menu-toggle .icon-close,
+.toc-toggle .icon-close {
   display: none;
 }
 
-body.nav-open .menu-toggle .icon-open {
+body.nav-open .menu-toggle .icon-open,
+body.toc-open .toc-toggle .icon-open {
   display: none;
 }
 
-body.nav-open .menu-toggle .icon-close {
+body.nav-open .menu-toggle .icon-close,
+body.toc-open .toc-toggle .icon-close {
   display: inline;
 }
 
@@ -225,6 +244,82 @@ body.nav-open .menu-toggle .icon-close {
 }
 
 /* --------------------------------------------------------------------------
+   Indice de la pagina actual (panel derecho)
+   -------------------------------------------------------------------------- */
+
+.toc {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 50;
+  width: var(--toc-w);
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 62px 16px 24px;
+  background: var(--clr-card-bg);
+  border-left: 1px solid var(--nav-border);
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
+
+body.toc-open .toc {
+  transform: translateX(0);
+}
+
+.toc-title {
+  margin: 0 0 10px;
+  font-size: 11.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--clr-small-in-a);
+}
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid var(--nav-border);
+}
+
+.toc-item a {
+  display: block;
+  padding: 5px 10px;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  font-size: 13.5px;
+  line-height: 1.35;
+  color: var(--clr-text);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.toc-item.toc-h3 a {
+  padding-left: 22px;
+  font-size: 13px;
+}
+
+.toc-item a:hover,
+.toc-item a:focus-visible {
+  color: var(--clr-a-text-hvr);
+  border-left-color: var(--nav-border);
+}
+
+.toc-item a.is-active {
+  color: var(--clr-a-text);
+  border-left-color: var(--clr-a-text);
+  font-weight: 600;
+}
+
+/* Que el titulo no quede tapado por la barra superior al saltar a el */
+section h2,
+section h3 {
+  scroll-margin-top: 16px;
+}
+
+/* --------------------------------------------------------------------------
    Contenido
    -------------------------------------------------------------------------- */
 
@@ -258,6 +353,12 @@ body.nav-collapsed .sidebar {
 
 body.nav-collapsed section {
   margin-left: 0;
+}
+
+/* En escritorio el indice empuja al contenido en vez de taparlo */
+body.toc-open section {
+  margin-right: var(--toc-w);
+  transition: margin-left 0.25s ease, margin-right 0.25s ease;
 }
 
 /* Fondo oscuro detras del cajon (solo movil) */
@@ -296,9 +397,41 @@ body.nav-collapsed section {
     display: flex;
   }
 
-  .menu-toggle {
+  .menu-toggle,
+  .toc-toggle {
     top: calc((var(--topbar-h) - 40px) / 2);
+  }
+
+  .menu-toggle {
     left: 12px;
+  }
+
+  .toc-toggle {
+    right: 12px;
+  }
+
+  /* Deja libre el hueco de los dos botones */
+  .topbar {
+    padding: 0 60px;
+  }
+
+  .topbar-title {
+    text-align: center;
+    width: 100%;
+  }
+
+  .toc {
+    top: var(--topbar-h);
+    height: calc(100vh - var(--topbar-h));
+    height: calc(100dvh - var(--topbar-h));
+    width: min(300px, 82vw);
+    padding-top: 18px;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.45);
+  }
+
+  /* En movil el indice se monta encima, no empuja */
+  body.toc-open section {
+    margin-right: 0;
   }
 
   .sidebar {
@@ -328,18 +461,26 @@ body.nav-collapsed section {
     pointer-events: none;
   }
 
-  body.nav-open .nav-backdrop {
+  body.nav-open .nav-backdrop,
+  body.toc-open .nav-backdrop {
     opacity: 1;
     pointer-events: auto;
   }
 
-  /* Bloquea el scroll del fondo mientras el cajon esta abierto */
-  body.nav-open {
+  /* Bloquea el scroll del fondo mientras un cajon esta abierto */
+  body.nav-open,
+  body.toc-open {
     overflow: hidden;
   }
 
   .sidebar h1 {
     font-size: 22px;
+  }
+
+  /* Al saltar a un titulo, que no quede debajo de la barra superior */
+  section h2,
+  section h3 {
+    scroll-margin-top: calc(var(--topbar-h) + 12px);
   }
 }
 
@@ -349,7 +490,8 @@ body.nav-collapsed section {
     --topbar-h: 44px;
   }
 
-  .sidebar {
+  .sidebar,
+  .toc {
     width: min(300px, 44vw);
   }
 
@@ -371,6 +513,7 @@ body.nav-collapsed section {
 
 @media (prefers-reduced-motion: reduce) {
   .sidebar,
+  .toc,
   section,
   .nav-backdrop {
     transition: none;
@@ -380,13 +523,17 @@ body.nav-collapsed section {
 @media print {
   .topbar,
   .menu-toggle,
+  .toc-toggle,
   .sidebar,
+  .toc,
   .nav-backdrop {
     display: none !important;
   }
 
-  section {
+  section,
+  body.toc-open section {
     margin-left: 0;
+    margin-right: 0;
     padding: 0;
   }
 }

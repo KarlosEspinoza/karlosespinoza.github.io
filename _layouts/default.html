@@ -82,6 +82,18 @@ document.addEventListener('DOMContentLoaded', () => {
       <span class="icon-close" aria-hidden="true">&#10005;</span>
     </button>
 
+    <!-- Indice de la pagina actual. El script lo oculta si no hay titulos. -->
+    <button id="toc-toggle"
+            class="toc-toggle"
+            type="button"
+            hidden
+            aria-label="Abrir o cerrar el indice de esta pagina"
+            aria-expanded="false"
+            aria-controls="page-toc">
+      <span class="icon-open" aria-hidden="true"><i class="fa-solid fa-list-ul"></i></span>
+      <span class="icon-close" aria-hidden="true">&#10005;</span>
+    </button>
+
     <!-- Barra superior: solo visible en movil/tablet -->
     <div class="topbar">
       <span class="topbar-title">{{ page.title | default: site.title }}</span>
@@ -98,6 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
 
       <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+      <aside class="toc" id="page-toc" aria-label="Indice de esta pagina">
+        <p class="toc-title">En esta pagina</p>
+        <nav>
+          <ul class="toc-list" id="toc-list"></ul>
+        </nav>
+      </aside>
 
       <section id="contenido">
         {{ content }}
@@ -129,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
       body.classList.remove('nav-open');
     }
     btn.setAttribute('aria-expanded', String(open));
+    if (open) document.dispatchEvent(new Event('nav:open'));
   }
 
   function isOpen() {
@@ -161,6 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (link && isMobile()) setState(false);
   });
 
+  // Al abrir el indice de la pagina en movil, se cierra este menu
+  document.addEventListener('toc:open', function () {
+    if (isMobile()) setState(false);
+  });
+
   // Solo reaccionamos al cambio real de breakpoint (girar el telefono,
   // redimensionar la ventana). Usar 'resize' hacia que el menu se cerrara
   // solo al hacer scroll en iOS, porque la barra de direcciones dispara
@@ -171,6 +196,119 @@ document.addEventListener('DOMContentLoaded', () => {
   } else if (mq.addListener) {
     mq.addListener(onChange);
   }
+})();
+
+/* ---------------------------------------------------------------------
+   Indice de la pagina actual: se arma con los titulos del contenido.
+   --------------------------------------------------------------------- */
+(function () {
+  var btn = document.getElementById('toc-toggle');
+  var toc = document.getElementById('page-toc');
+  var list = document.getElementById('toc-list');
+  var content = document.getElementById('contenido');
+  var backdrop = document.getElementById('nav-backdrop');
+  var body = document.body;
+
+  if (!btn || !toc || !list || !content) return;
+
+  var mqMobile = window.matchMedia('(max-width: 992px)');
+  var mqWide = window.matchMedia('(min-width: 1400px)');
+  var isMobile = function () { return mqMobile.matches; };
+
+  var headings = [].slice.call(content.querySelectorAll('h2, h3'));
+
+  // Sin titulos suficientes no vale la pena mostrar el indice
+  if (headings.length < 2) return;
+
+  var links = [];
+
+  headings.forEach(function (h, i) {
+    if (!h.id) h.id = 'seccion-' + (i + 1);
+
+    var li = document.createElement('li');
+    li.className = 'toc-item toc-' + h.tagName.toLowerCase();
+
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.trim();
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push(a);
+  });
+
+  btn.hidden = false;
+
+  function setState(open) {
+    body.classList.toggle('toc-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    if (open) document.dispatchEvent(new Event('toc:open'));
+  }
+
+  function isOpen() {
+    return btn.getAttribute('aria-expanded') === 'true';
+  }
+
+  // Abierto de entrada solo cuando hay pantalla de sobra
+  setState(mqWide.matches);
+
+  btn.addEventListener('click', function () { setState(!isOpen()); });
+
+  if (backdrop) {
+    backdrop.addEventListener('click', function () { setState(false); });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && isOpen()) {
+      setState(false);
+      btn.focus();
+    }
+  });
+
+  // En movil, al elegir un titulo se cierra el panel
+  toc.addEventListener('click', function (e) {
+    var link = e.target.closest ? e.target.closest('a') : null;
+    if (link && isMobile()) setState(false);
+  });
+
+  // Al abrir el menu general en movil, se cierra el indice
+  document.addEventListener('nav:open', function () {
+    if (isMobile()) setState(false);
+  });
+
+  var onWide = function () { setState(mqWide.matches); };
+  if (mqWide.addEventListener) {
+    mqWide.addEventListener('change', onWide);
+  } else if (mqWide.addListener) {
+    mqWide.addListener(onWide);
+  }
+
+  // Resaltar la seccion que se esta leyendo
+  if (!('IntersectionObserver' in window)) return;
+
+  var visible = {};
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      visible[entry.target.id] = entry.isIntersecting;
+    });
+
+    var activo = null;
+    for (var i = 0; i < headings.length; i++) {
+      if (visible[headings[i].id]) { activo = headings[i].id; break; }
+    }
+    // Si no hay ninguno visible, se queda el ultimo que quedo arriba
+    if (!activo) {
+      for (var j = headings.length - 1; j >= 0; j--) {
+        if (headings[j].getBoundingClientRect().top < 0) { activo = headings[j].id; break; }
+      }
+    }
+
+    links.forEach(function (a) {
+      a.classList.toggle('is-active', a.getAttribute('href') === '#' + activo);
+    });
+  }, { rootMargin: '-70px 0px -65% 0px' });
+
+  headings.forEach(function (h) { observer.observe(h); });
 })();
 </script>
 
