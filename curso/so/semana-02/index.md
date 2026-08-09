@@ -36,7 +36,7 @@ Este es el salto de "el SO administra programas" a "el SO está administrando **
 
 Todo dentro de la terminal de Ubuntu (WSL2). Un commit al terminar cada bloque.
 
-Y lo de siempre: **si te atoras, escríbelo en la bitácora y haz commit igual**. Un "no me salió, `ps` no me muestra mi proceso" es información útil para el miércoles.
+Y lo de siempre: **si te atoras, lo documentas y haces commit igual**. Con las cuatro partes de la [subsección `#### Atorones`](/curso/so/semana-01#como-se-trabaja) de la semana pasada: comando exacto, error completo copiado y pegado, qué intentaste en orden, y dónde te quedaste. Así vale como bloque entregado.
 
 ---
 
@@ -51,6 +51,35 @@ Un **programa** es un archivo muerto en el disco: `ServidorPedidos.class`, unos 
 De un mismo programa pueden salir **muchos procesos a la vez**, y cada uno es independiente del otro. Es exactamente lo que va a pasar en tu proyecto integrador: tres sucursales corriendo el mismo tipo de servidor, cada una con su propio inventario, sin enterarse una de la otra.
 
 Cada proceso tiene un número único, el **PID** (Process ID), que el SO le asigna al nacer. Y tiene un **PPID**, el PID de su padre: el proceso que lo lanzó. Porque en Linux los procesos no aparecen de la nada, **alguien los crea**. Tu terminal crea a `java`, y de ahí para arriba hasta el primer proceso del sistema.
+
+#### De dónde sale el primer proceso
+
+Si todo proceso lo crea otro proceso, la pregunta obvia es quién creó al primero. Y para contestarla hay que retroceder hasta el momento en que aprietas el botón de encendido.
+
+Cuando la máquina arranca, la RAM está vacía: no hay sistema operativo, porque el SO también es un programa y también está guardado en el disco. Alguien tiene que ir por él. Ese alguien es una cadena de cuatro pasos, cada uno cargando al siguiente:
+
+```
+1. Firmware (BIOS o UEFI)   <- vive en un chip de la tarjeta madre, no en el disco
+        |
+        v
+2. Cargador de arranque     <- un programa chiquito en el disco (GRUB)
+        |
+        v
+3. Kernel del SO            <- se copia a la RAM y toma el control
+        |
+        v
+4. Primer proceso, PID 1    <- el kernel lo crea a mano
+```
+
+**1. El firmware.** Es el único programa que no está en el disco: viene grabado en un chip de la tarjeta madre, así que existe desde antes que cualquier sistema operativo. En las máquinas viejas se llamaba **BIOS**; en las de hoy es **UEFI** (también escrito EFI), que hace lo mismo pero moderno. Su trabajo es corto: revisa que el hardware básico responda, decide de cuál disco se va a arrancar y le pasa el control a lo que encuentre ahí.
+
+**2. El cargador de arranque.** En Linux normalmente es **GRUB**, y es ese menú negro donde a veces alcanzas a ver dos versiones del sistema. Es un programa muy pequeño cuyo único propósito es encontrar el archivo del kernel en el disco, copiarlo a la memoria y saltar a él.
+
+**3. El kernel toma el control.** Ya en RAM, inicializa el hardware de verdad, monta el sistema de archivos raíz y se convierte en lo que va a ser el resto del tiempo: el administrador del que hablamos la semana pasada.
+
+**4. El kernel crea el PID 1 a mano.** Y aquí está la respuesta. El primer proceso **no lo crea otro proceso: lo crea el kernel directamente**, por eso es el único cuyo padre no existe. En un Linux normal ese primer proceso es `systemd`; en WSL2 es `/init`. A partir de ahí ya todo sigue la regla: el PID 1 arranca los servicios, alguno de ellos arranca tu terminal, tu terminal arranca a `java`. **El árbol de procesos que vas a mirar en un momento tiene raíz, y esa raíz es el final del arranque.**
+
+Un aviso para que no lo busques y no lo encuentres: en tu laptop **no vas a ver GRUB**. Quien arrancó con UEFI fue Windows; WSL2 lanza después una máquina virtual ligera que salta directo al paso 3, sin firmware ni cargador propios. La cadena completa la verías en una computadora con Linux instalado directamente, y es exactamente la que sigue cualquier servidor de los que vas a administrar.
 
 #### Mirar los procesos: `ps`
 
@@ -134,7 +163,10 @@ Esos archivos no existen en el disco: los inventa el kernel en el momento en que
 
    Elige uno que esté en `S` y explica qué crees que está esperando. Esa columna es la que vale.
 
-3. Una pregunta para contestar en dos líneas: **el proceso con PID 1, quién es y quién es su padre?** Búscalo con `ps -ef | head -3` y explica lo que ves.
+3. Dos preguntas cortas sobre la raíz del árbol:
+
+   - **El proceso con PID 1, quién es y qué PPID tiene?** Búscalo con `ps -ef | head -3` y explica qué significa el número que aparece en su columna PPID.
+   - **Por qué ese proceso es el único que no pudo ser creado por otro proceso?** Contéstala con la cadena de arranque, en tres o cuatro líneas.
 
 ```bash
 git add .
@@ -313,15 +345,164 @@ git push
 
 ## Durante la clase (aprendizaje activo) {#durante-la-clase}
 
-Llegas con tu servidor escrito y corriendo, y con tu `evidencias/procesos.txt` hecho. Hoy toca romperlo, que es la mejor forma de entender qué lo sostiene.
+Llegas con tu servidor escrito y corriendo, y con tu `evidencias/procesos.txt` hecho. Hoy toca romperlo, que es la mejor forma de entender qué lo sostiene. Trae tu laptop y ten tu proyecto compilado.
 
-**1. El padre y el huérfano.** Lanzas tu servidor desde una terminal y **cierras la terminal**. Qué le pasa al proceso? Lo buscamos con `ps -ef` y miramos su PPID: cambió. Alguien lo adoptó. De ahí sale la conversación de por qué el SO no deja procesos sin padre, y de por qué un servidor de verdad se lanza de una manera que sobrevive a la terminal.
+Cada actividad trae los comandos y el esqueleto de código listos. **Lo que no viene es la explicación**: eso es lo que vas a escribir tú, y lo que discutimos entre todos.
 
-**2. La fábrica de zombis.** Escribimos juntos un programa de tres líneas que lanza un hijo y no recoge su resultado, y lo vemos aparecer como `Z` en `ps`. Un zombi no consume CPU ni memoria, pero **ocupa un PID**, y los PIDs se acaban. Es el primer caso del curso de un recurso del SO que se puede agotar por un descuido del programador.
+#### 1. El padre y el huérfano
 
-**3. Comparación de estados.** Cada quien pone su servidor en un estado distinto y comparamos: uno dormido en `S`, otro pausado con `Ctrl + Z` en `T`, otro con un ciclo sin `sleep` clavado en `R` al 100% de CPU. Ese último es el que hay que ver bien en `top`, porque es el error que vamos a diagnosticar en la semana 6.
+Lanza tu servidor en segundo plano y anota los dos números que salen:
 
-**4. El costo de arrancar.** Medimos con `time` cuánto tarda en arrancar la JVM contra lo que tarda un programa en C. La diferencia lleva directo a la pregunta de la semana que viene: qué hace el SO cuando crea un proceso, y por qué eso no es gratis.
+```bash
+cd ~/so-proyecto/src
+java ServidorPedidos > ../datos/servidor.log 2>&1 &
+ps -o pid,ppid,stat,cmd -p $!
+```
+
+`$!` es el PID del último proceso que lanzaste en segundo plano, así no tienes que buscarlo.
+
+Ahora **cierra esa terminal completa** (la X de la ventana, no `Ctrl + C`). Abre una terminal nueva y búscalo otra vez:
+
+```bash
+ps -o pid,ppid,stat,cmd -C java
+```
+
+Compara las dos salidas y contesta: **sigue vivo? qué cambió?** La columna que hay que mirar es PPID. Después de eso, la pregunta buena: **por qué el SO se toma la molestia de buscarle un padre nuevo en vez de dejarlo huérfano?**
+
+#### 2. La fábrica de zombis
+
+Crea `Zombi.java` en tu `src/`. Está casi completo: lo único que le falta es lo que **no** hay que hacer.
+
+```java
+// Zombi.java - un padre descuidado
+public class Zombi {
+    public static void main(String[] args) throws Exception {
+
+        ProcessBuilder pb = new ProcessBuilder("sleep", "1");
+        Process hijo = pb.start();
+
+        System.out.println("Hijo lanzado con PID " + hijo.pid());
+
+        // TODO: aqui DEBERIA ir hijo.waitFor(), pero lo omitimos a proposito.
+        //       El padre se queda vivo un minuto sin recoger al hijo.
+        Thread.sleep(60000);
+    }
+}
+```
+
+```bash
+javac Zombi.java
+java Zombi
+```
+
+Anota el PID que imprime. En **otra terminal**, espera 2 segundos y busca al hijo:
+
+```bash
+ps -ef | grep defunct
+```
+
+`defunct` es como `ps` escribe "zombi". Míralo también en la columna STAT:
+
+```bash
+ps -o pid,ppid,stat,cmd -C sleep
+```
+
+Tres cosas que vas a comprobar y anotar:
+
+1. Cuánta CPU y memoria consume el zombi. (Míralo con `ps -o pid,stat,%cpu,%mem,cmd`.)
+2. Qué le pasa al zombi cuando **matas al padre**: `kill PID_DEL_PADRE`, y vuelve a buscarlo.
+3. Cuántos PIDs tiene tu sistema en total: `cat /proc/sys/kernel/pid_max`.
+
+Con esos tres datos, la pregunta que cierra la actividad: **si un zombi no gasta CPU ni memoria, por qué es un problema?** Y la versión de tu proyecto: si tu servidor creara un proceso por pedido y se le olvidara el `waitFor()`, cuánto aguantaría atendiendo 50 pedidos por minuto?
+
+#### 3. Comparación de estados
+
+Aquí ponemos el mismo tipo de programa en tres estados distintos y los miramos lado a lado. Crea `EstadoR.java`, que es el servidor mal hecho:
+
+```java
+// EstadoR.java - la version mala de esperar
+public class EstadoR {
+    public static void main(String[] args) {
+
+        System.out.println("PID " + ProcessHandle.current().pid());
+
+        long inicio = System.currentTimeMillis();
+
+        // Espera exactamente lo mismo que el servidor: 60 segundos.
+        // Pero en vez de dormir, se queda preguntando la hora sin parar.
+        while (System.currentTimeMillis() - inicio < 60000) {
+            // a proposito vacio
+        }
+
+        System.out.println("Termine");
+    }
+}
+```
+
+Lee las dos versiones juntas antes de correr nada: `ServidorPedidos` espera con `Thread.sleep`, `EstadoR` espera con un ciclo vacío. **Las dos esperan lo mismo, 60 segundos.**
+
+Ahora los tres estados. Necesitas tres terminales:
+
+```bash
+# Terminal 1: estado S
+java ServidorPedidos
+
+# Terminal 2: estado R
+java EstadoR
+
+# Terminal 3: observar
+top
+```
+
+En `top`, teclea `P` para ordenar por CPU. Los dos `java` van a estar en la lista con números muy distintos.
+
+Para el tercer estado, vuelve a la terminal 1 y presiona **`Ctrl + Z`**. Eso pausa el proceso. Míralo:
+
+```bash
+ps -o pid,stat,%cpu,cmd -C java
+```
+
+Llena esta tabla con **tus** números:
+
+| Programa | STAT | %CPU | Qué está esperando | Cuánto trabajo útil hace |
+|---|---|---|---|---|
+| `ServidorPedidos` | | | | |
+| `EstadoR` | | | | |
+| `ServidorPedidos` pausado con `Ctrl + Z` | | | | |
+
+Para reanudar el pausado: `fg`. Para matar el de `R`: `Ctrl + C`.
+
+La pregunta que dejamos abierta y **no vamos a responder hoy**: los dos esperan 60 segundos y los dos acaban al mismo tiempo. Por qué uno gasta el 100% de un núcleo y el otro casi 0? Eso se llama espera activa y es la semana 6.
+
+#### 4. El costo de arrancar
+
+Un programa que no hace nada, en dos lenguajes. Primero el de C, que lo escribes con un solo comando:
+
+```bash
+printf '#include <stdio.h>\nint main(){printf("listo\\n");return 0;}\n' > /tmp/listo.c
+gcc /tmp/listo.c -o /tmp/listo
+```
+
+Y el equivalente en Java, `Vacio.java`:
+
+```java
+public class Vacio {
+    public static void main(String[] args) {
+        System.out.println("listo");
+    }
+}
+```
+
+Mídelos:
+
+```bash
+time /tmp/listo
+time java Vacio
+```
+
+De las tres líneas que imprime `time`, la que nos interesa es `real`. Anota los dos números y **el factor entre ellos**.
+
+La conversación que abre esto: los dos programas imprimen una palabra. Entonces **en qué se le fue al segundo todo ese tiempo?** No se le fue a tu código: se le fue al SO creando el proceso y a la JVM montándose. La semana que viene vemos exactamente qué hace el SO en ese rato, y en la semana 4 vas a ver por qué eso nos obliga a atender los pedidos con hilos y no con procesos.
 
 ---
 

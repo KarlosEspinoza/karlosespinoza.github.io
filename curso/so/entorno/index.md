@@ -134,11 +134,25 @@ git config --list
 
 ### Paso 5 - Crear cuenta en GitHub {#paso-5}
 
-Si ya tienes cuenta, salta este paso.
+Si ya tienes cuenta, salta este paso y solo comprueba que puedes entrar.
 
 1. Ve a [github.com](https://github.com) en tu navegador de Windows.
 2. Haz clic en **Sign up**.
-3. Usa tu correo y elige un nombre de usuario profesional (por ejemplo: `karlos-espinoza`).
+3. Usa un **correo al que vayas a tener acceso siempre** (institucional o personal, pero no uno
+   de una escuela anterior). Ahi llegan las confirmaciones y las recuperaciones de contrasena.
+4. Elige un **nombre de usuario presentable**, con tu nombre real o algo cercano
+   (`ana-perez`, `aperez-dev`). Aparece en la URL de tu repositorio, y ese repositorio es de las
+   primeras cosas que vas a ensenar cuando busques trabajo.
+5. Apunta tu contrasena y activa la **verificacion en dos pasos** si te la ofrece. GitHub la pide
+   para varias operaciones y recuperar una cuenta bloqueada a media semana de revision es un
+   problema evitable.
+
+**Errores tipicos aqui:**
+
+- No confirmar el correo. GitHub manda un enlace de verificacion y hasta que lo abres no te deja
+  crear repositorios privados. Revisa tambien la carpeta de spam.
+- Crear la cuenta con un correo y despues poner otro distinto en `git config --global user.email`.
+  No rompe nada, pero tus commits no se asocian a tu perfil de GitHub. Usa el mismo en los dos.
 
 ---
 

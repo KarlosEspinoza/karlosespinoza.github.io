@@ -36,6 +36,8 @@ Y con eso ya tienes lo necesario para entender los **contenedores**, que es la p
 
 El bloque extra necesita instalar Docker Desktop, que tarda. **No es requisito de nada**: la clase del miércoles arranca solo con los bloques 1 y 2, y la demostración de Docker la hacemos ahí en conjunto.
 
+Y lo de siempre: **si te atoras, lo documentas y haces commit igual**, con las cuatro partes de la [subsección `#### Atorones`](/curso/so/semana-01#como-se-trabaja): comando exacto, error completo copiado y pegado, qué intentaste en orden, y dónde te quedaste.
+
 ---
 
 ### Bloque 1: lo que el SO guarda de tu proceso {#bloque-1}
@@ -332,15 +334,157 @@ git push
 
 ## Durante la clase (aprendizaje activo) {#durante-la-clase}
 
-Llegas con tu servidor lanzando un hijo y con tu tabla de namespaces escrita. Hoy comprobamos lo que predijiste y le damos forma al dato central del proyecto.
+Llegas con tu servidor lanzando un hijo y con tu tabla de namespaces escrita. Hoy comprobamos lo que predijiste y le damos forma al dato central del proyecto. Trae tu laptop y tu tabla del bloque 1 a la mano, porque la vas a corregir en vivo.
 
-**1. La demostración de los namespaces.** Corremos un contenedor en pantalla grande y hacemos `ps -ef` dentro y fuera al mismo tiempo. Vamos cotejando contra la tabla que cada quien escribió el lunes: quién acertó en que se vería como PID 1, quién esperaba ver la máquina completa. Después, desde fuera, buscamos **ese mismo proceso** en la lista de la máquina anfitriona y comprobamos que ahí tiene otro PID. El mismo proceso, dos números, según quién pregunte.
+#### 1. La demostración de los namespaces
 
-**2. El cgroup mata.** Corremos un servidor con `--memory=64m` y lo forzamos a pedir más. Miramos cómo el kernel lo mata y dónde queda registrado. Es la primera aparición del OOM killer, que es tema completo de la semana 12.
+**No necesitas tener Docker instalado**: la corremos en pantalla, y quien sí lo tenga la sigue en su máquina.
 
-**3. Modelamos el pedido, entre todos.** Aquí bajamos del SO al diseño. Un pedido de tu dominio, qué datos tiene exactamente? Lo discutimos en el pizarrón hasta sacar una lista mínima común (identificador, producto, cantidad, hora, estado) y cada quien la adapta a lo suyo. De ahí sale `Pedido.java`, que es lo que te llevas de tarea.
+Primero, desde fuera, la foto de referencia:
 
-**4. La pregunta que abre la Unidad 2.** Tu servidor lanza un hijo y lo espera con `waitFor()`. Mientras espera, está bloqueado. Ahora imagina 5 cajeros mandando pedidos a la vez: si tu servidor atiende a uno y se bloquea, qué pasa con los otros cuatro? Esa pregunta es la Unidad 2 completa, y la respuesta empieza la semana que viene.
+```bash
+ps -ef | wc -l
+```
+
+Ese número es cuántos procesos ve tu Ubuntu. Anótalo.
+
+Ahora arrancamos un contenedor y le pedimos lo mismo desde dentro:
+
+```bash
+docker run --rm -it eclipse-temurin:21-jdk bash
+```
+
+Ya adentro:
+
+```bash
+ps -ef
+whoami
+hostname
+```
+
+Saca tu tabla del bloque 1 y **cotéjala renglón por renglón**. Vamos a preguntar quién acertó en las tres, y sobre todo **por qué** quien falló esperaba otra cosa.
+
+La segunda mitad es la que de verdad enseña el concepto. Dentro del contenedor deja algo corriendo y mira su PID desde dentro:
+
+```bash
+sleep 300 &
+ps -ef
+```
+
+Sin cerrar el contenedor, abre **otra terminal de Ubuntu** y busca ese mismo proceso en la máquina anfitriona:
+
+```bash
+ps -ef | grep "sleep 300"
+```
+
+Llena esto:
+
+| | PID del `sleep` | Cuántos procesos ve `ps -ef` |
+|---|---|---|
+| Visto desde dentro del contenedor | | |
+| Visto desde tu Ubuntu | | |
+
+**Es un solo proceso con dos números.** La pregunta para escribir en la bitácora: cuál de los dos es "el verdadero", y por qué esa pregunta está mal planteada.
+
+#### 2. El cgroup mata
+
+Ahora la otra mitad de la definición. Necesitamos un programa que pida memoria sin parar; escríbelo como `Tragon.java`:
+
+```java
+// Tragon.java - pide memoria hasta que alguien lo detenga
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tragon {
+    public static void main(String[] args) throws Exception {
+
+        List<byte[]> bloques = new ArrayList<>();
+        int mb = 0;
+
+        while (true) {
+            bloques.add(new byte[1024 * 1024]);   // un bloque de 1 MB
+            mb++;
+            System.out.println("Reservados " + mb + " MB");
+            Thread.sleep(50);
+        }
+    }
+}
+```
+
+Córrelo **primero sin límite**, en tu Ubuntu normal:
+
+```bash
+javac Tragon.java
+java -Xmx128m Tragon
+```
+
+Anota hasta qué número llegó y con qué mensaje murió. Ese mensaje viene de la JVM.
+
+Ahora el mismo programa dentro de un contenedor con un cgroup de memoria:
+
+```bash
+docker run --rm -it --memory=64m -v ~/so-proyecto/src:/app -w /app eclipse-temurin:21-jdk \
+  java Tragon
+```
+
+Compara:
+
+| | Hasta cuántos MB llegó | Qué mensaje salió | Quién lo mató |
+|---|---|---|---|
+| Sin límite, con `-Xmx128m` | | | |
+| En contenedor con `--memory=64m` | | | |
+
+Las dos muertes se ven parecidas y **no son lo mismo**: una la decide la JVM y la otra la decide el kernel. Buscamos la del kernel en el registro del sistema:
+
+```bash
+dmesg | tail -20
+```
+
+Ahí aparece el **OOM killer**, que es tema completo de la semana 12. Por hoy basta con que lo hayas visto una vez y sepas que existe.
+
+#### 3. Modelamos el pedido, entre todos
+
+Aquí bajamos del SO al diseño, y de aquí sale tu tarea de la semana.
+
+Cada quien escribe en una hoja **qué datos tiene un pedido en su dominio**. Después los juntamos en el pizarrón y buscamos el mínimo común. La lista base con la que vamos a arrancar la discusión es esta:
+
+| Campo | Tipo | Por qué está |
+|---|---|---|
+| `id` | `int` | Identifica el pedido de forma única |
+| `producto` | `String` | Qué se pidió |
+| `cantidad` | `int` | Cuánto se pidió. Sin esto no hay nada que agotar |
+| `hora` | `LocalTime` | Cuándo llegó. Lo vas a necesitar en la semana 10 para planificar |
+| `estado` | `String` | `pendiente`, `atendido`, `rechazado` |
+
+Las preguntas que vamos a discutir sobre esa tabla, y que cada quien resuelve para lo suyo:
+
+1. **Qué campo le falta a tu dominio** que no está en la lista. (Mesa, en un restaurante. Placa, en un estacionamiento. Receta, en una farmacia.)
+2. **De dónde sale el `id`?** Si dos cajeros mandan un pedido al mismo tiempo, quién decide el número y cómo evitas que se repita? Anota tu respuesta: la vamos a destruir en la semana 5.
+3. **Por qué `estado` y no un `boolean atendido`?** Piensa en el pedido que llegó pero no había existencia.
+
+#### 4. La pregunta que abre la Unidad 2
+
+Cerramos con esto, y no lo resolvemos hoy.
+
+Tu servidor lanza un hijo y lo espera con `waitFor()`. Mientras espera, **está bloqueado**: no puede hacer nada más. Compruébalo ahora mismo, subiendo el número de pedidos del generador para que tarde:
+
+```java
+new ProcessBuilder("java", "GeneradorPedidos", "2000000")
+```
+
+Córrelo y, desde otra terminal, mira el estado del padre mientras el hijo trabaja:
+
+```bash
+ps -o pid,ppid,stat,cmd -C java
+```
+
+El padre está en `S`, esperando. Ahora imagina cinco cajeros mandando pedidos al mismo tiempo:
+
+- Si tu servidor atiende a uno y se bloquea, **qué pasa con los otros cuatro?**
+- Se te ocurre lanzar un proceso por cada cajero. Con lo que midieron la semana pasada en "el costo de arrancar", cuánto le cuesta eso a tu servidor con 50 pedidos por minuto?
+- Y aunque pudieras: los cinco procesos tendrían que descontar del **mismo inventario**. Con lo del bloque 1 sobre espacios de direcciones separados, ves ya el problema?
+
+Esas tres preguntas son la Unidad 2 completa. La respuesta empieza la semana que viene con los hilos.
 
 ---
 

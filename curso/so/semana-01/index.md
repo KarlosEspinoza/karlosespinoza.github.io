@@ -30,7 +30,7 @@ Todo el curso gira alrededor de un solo sistema que vas a construir tú mismo: u
 
 Esta guía se trabaja **durante la sesión**, no en tu casa la noche anterior ni la madrugada del miércoles. Está partida en **dos bloques obligatorios y uno extra**, y cada bloque termina con algo concreto que subes a tu repositorio. Así tu trabajo queda registrado conforme lo vas haciendo, sin que tengas que entregar nada aparte.
 
-Voy a estar disponible durante toda la sesión para resolver dudas. Aprovéchala: es el único rato de la semana en que puedes preguntar **mientras** lo estás haciendo, en vez de quedarte atorado.
+Pregunta en cuanto algo no salga. No te aguantes la duda hasta el final: se resuelve mucho más rápido en el momento en que aparece que media hora después, cuando ya le moviste a cinco cosas y ya no sabes cuál fue.
 
 | Bloque | Qué haces | Qué entregas |
 |---|---|---|
@@ -40,7 +40,44 @@ Voy a estar disponible durante toda la sesión para resolver dudas. Aprovéchala
 
 El **bloque extra es opcional**. Es para quien terminó los dos primeros y quiere que su proyecto llegue más lejos. No hace falta para la clase del miércoles, y no pasa nada si no lo haces.
 
-Una última cosa, y es la más importante de la semana: **si te atoras, escríbelo y haz commit igual**. Un commit que dice "no me salió, me quedé atorado instalando WSL2" es trabajo hecho y me sirve muchísimo para saber dónde apoyarte el miércoles. Lo que no sirve es no dejar rastro.
+#### Si te atoras, se documenta y se hace commit igual
+
+Esta es la regla más importante de todo el semestre, y aplica a las 17 semanas.
+
+**Nunca te quedes sin entregar por no haberlo logrado.** Un bloque que no salió, pero que está bien documentado, **cuenta como entregado**. Lo que no cuenta es no dejar rastro.
+
+Ahora, "documentado" tiene una forma, y no es escribir "no me salió". Cuando algo se rompa, abre en tu `BITACORA.md` una subsección `#### Atorones` y anota **cuatro cosas**:
+
+```markdown
+#### Atorones
+
+**Bloque:** 1
+
+**Comando exacto que ejecuté:** wsl --install
+
+**Error completo, copiado y pegado tal cual:**
+
+    Error: 0x80370102 The virtual machine could not be started because
+    a required feature is not installed.
+
+**Qué intenté, en orden:**
+1. Reinicié la computadora y lo volví a correr: mismo error.
+2. Busqué el codigo 0x80370102 y varias respuestas dicen que hay que
+   activar la virtualizacion en el BIOS.
+3. Entré al BIOS (tecla F2 al arrancar) y busqué la opcion, pero en mi
+   modelo no la encontré con ese nombre.
+
+**Dónde me quedé exactamente:** en el paso 1. No llegué a instalar Ubuntu,
+así que tampoco pude hacer nada de lo que venía después.
+```
+
+Por qué te pido tanto detalle, y no es por burocracia:
+
+- **Copiar el error completo te obliga a leerlo.** La mitad de los errores de este curso dicen en su propio texto qué hay que hacer, y se resuelven solos en cuanto alguien los lee en vez de asustarse.
+- **Escribir "qué intenté" te obliga a intentar.** No se puede llenar esa lista sin haber probado algo. Ese es justo el punto.
+- **Me deja llegar el miércoles con la solución lista**, en vez de gastar la sesión averiguando qué te pasó.
+
+Un atorón con las cuatro partes vale como bloque entregado. Un "no me salió" a secas, no.
 
 ---
 
@@ -98,7 +135,15 @@ En el bloque 2 vas a entender por qué insisto tanto en Linux. Por ahora, los cu
    git config --global user.email "tu.correo@alumnos.udg.mx"
    ```
 
-4. **Conecta tu terminal con tu cuenta de GitHub.** GitHub ya no acepta contraseña para `git`, así que la autenticación va por el navegador:
+4. **Crea tu cuenta de GitHub**, si todavía no tienes una. Abre [github.com](https://github.com) en el navegador de Windows y haz clic en **Sign up**. Tres detalles que importan más de lo que parecen:
+
+   - **Usa un correo al que vayas a tener acceso siempre.** Tu correo institucional o uno personal, pero no uno de una escuela anterior ni uno que ya no revisas: ahí llegan las confirmaciones y las recuperaciones de contraseña.
+   - **Elige un nombre de usuario presentable**, con tu nombre real o algo cercano (`ana-perez`, `aperez-dev`). Este repositorio va a ser de las primeras cosas que enseñes cuando busques trabajo, y el usuario aparece en la URL. Un apodo de videojuego no ayuda.
+   - **Apunta tu contraseña** y activa la verificación en dos pasos si te la ofrece. GitHub la pide para varias operaciones y recuperar una cuenta bloqueada a media semana de revisión es un problema evitable.
+
+   Si ya tienes cuenta, solo comprueba que puedes entrar.
+
+5. **Conecta tu terminal con tu cuenta de GitHub.** GitHub ya no acepta contraseña para `git`, así que la autenticación va por el navegador:
 
    ```bash
    gh auth login
@@ -370,13 +415,32 @@ git push
 
 ## Durante la clase (aprendizaje activo) {#durante-la-clase}
 
-Llegas con tu entorno instalado, tu repositorio creado y tu dominio elegido. La sesión es de encuadre y la hacemos **sin laptop**, para conocernos y construir entre todos el mapa de los sistemas que vamos a desarrollar. Dos dinámicas:
+Llegas con tu entorno instalado, tu repositorio creado y tu dominio elegido. **Trae tu laptop**: la mayor parte de la sesión es de encuadre y trabajo en el pizarrón, pero si algo del bloque 1 se te atoró, la abrimos y lo resolvemos ahí mismo.
 
-**1. El mapa de sucursales.** Cada quien dice su nombre y el dominio que eligió. Lo anotamos en el pizarrón. La regla es que **no se pueden repetir dominios**: si dos coinciden, ahí mismo se resuelve. Al final el pizarrón ya es el mapa de sucursales del grupo, y de ahí salen los equipos del proyecto integrador.
+**1. Rescate de instalaciones.** Lo primero. Quien traiga un atorón documentado, lo vemos. Es más rápido de lo que parece porque casi siempre son los mismos tres o cuatro problemas, y viéndolo una vez se le resuelve a todo el que lo tenga.
 
-**2. El SO invisible.** En equipos pequeños, hagan una lista de todo lo que ocurre "por debajo" desde que un cajero teclea un pedido hasta que se imprime el recibo. Quién decide cuál caja usa el procesador en ese instante. Dónde está guardado el inventario mientras tanto. Qué pasaría si dos cajas piden el último producto exactamente al mismo tiempo.
+**2. El mapa de sucursales.** Cada quien dice su nombre y el dominio que eligió. Lo anotamos en el pizarrón. La regla es que **no se pueden repetir dominios**: si dos coinciden, ahí mismo se resuelve. Al final el pizarrón ya es el mapa de sucursales del grupo, y de ahí salen los equipos del proyecto integrador.
 
-No hay que resolverlo: la meta es **descubrir en qué momentos aparece el sistema operativo**. Van a ver que aparece en todos, y cada uno de esos momentos es un tema que veremos a lo largo del curso. Al final juntamos las listas de todos los equipos y las acomodamos sobre las seis unidades. Esa lista compartida es el temario del curso escrito por ustedes.
+**3. El SO invisible.** En equipos de 3, van a reconstruir todo lo que ocurre "por debajo" desde que un cajero teclea un pedido hasta que se imprime el recibo.
+
+Para que no arranquen de una hoja en blanco, la historia se parte en estos seis momentos. Cada equipo toma la tabla y llena las dos columnas de la derecha:
+
+| Momento | Qué pasa a la vista | Qué tuvo que hacer alguien por debajo | Quién crees que lo hizo |
+|---|---|---|---|
+| 1 | El cajero abre el programa de la caja | | |
+| 2 | Teclea el producto y la cantidad | | |
+| 3 | El sistema revisa si hay existencia | | |
+| 4 | Otra caja pide el mismo producto en ese instante | | |
+| 5 | Se descuenta del inventario | | |
+| 6 | Se imprime el recibo | | |
+
+Tres reglas para llenarla:
+
+- En la columna 3 la respuesta nunca es "el programa". Pregúntense **quién le dio** al programa lo que necesitaba: quién trajo el archivo del disco, quién le prestó el procesador, quién le dio memoria.
+- En la columna 4, si no saben el nombre técnico, descríbanlo. "Alguien tuvo que decidir cuál de las dos cajas iba primero" es una respuesta perfecta.
+- El renglón 4 es el importante y probablemente el que los deje discutiendo. Déjenlo así: es el tema de la Unidad 2 y no se resuelve hoy.
+
+Al final juntamos las tablas de todos los equipos en el pizarrón y les ponemos encima las seis unidades del curso. Van a ver que **cada renglón cae en alguna unidad** y que no sobra ninguna. Ese pizarrón es el temario del curso, escrito por ustedes antes de que yo se los dictara.
 
 ---
 

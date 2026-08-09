@@ -299,8 +299,7 @@ generarlas solo.
 
 `## Antes de la clase` es una **guía de trabajo, no una lectura**. Se parte siempre así:
 
-- `### Cómo se trabaja esta guía` - tabla de bloques y la nota de "si te atoras, escríbelo y haz
-  commit igual"
+- `### Cómo se trabaja esta guía` - tabla de bloques y la nota del atorón documentado
 - `### Bloque 1: <nombre>` - obligatorio
 - `### Bloque 2: <nombre>` - obligatorio
 - `### Bloque extra: <nombre>` - opcional
@@ -329,6 +328,64 @@ Reglas de diseño de los bloques:
 La asistencia del lunes se registra con los commits de los bloques. **Eso no se escribe en el
 programa**; se comunica en el encuadre y en Classroom con redacción neutra ("la asistencia se
 registra con el commit de la actividad de la sesión").
+
+### El atorón documentado (convención de todo el semestre)
+
+La versión suave ("si te atoras, escríbelo y haz commit igual") **no se usa**: invita a un commit
+de una línea que se escribe sin haber intentado nada. La convención del curso pide **cuatro
+partes** en una subsección `#### Atorones` de `BITACORA.md`:
+
+1. **Comando exacto** que ejecutó.
+2. **Error completo, copiado y pegado**, no descrito de memoria.
+3. **Qué intentó, en orden, mínimo dos cosas.**
+4. **Dónde se quedó exactamente.**
+
+Las cuatro partes están explicadas con plantilla en `semana-01/index.md`, dentro de
+`### Cómo se trabaja esta guía`, bajo el subtítulo "Si te atoras, se documenta y se hace commit
+igual". **Las demás semanas no la repiten**: ponen una línea corta que enlaza a
+`/curso/so/semana-01#como-se-trabaja`.
+
+Las razones de diseño, por si hay que defenderlas o reescribirlas:
+
+- **Copiar el error completo obliga a leerlo.** Buena parte de los errores del curso dicen en su
+  propio texto qué hay que hacer, y varios se resuelven solos al escribirlos.
+- **La lista de "qué intenté" es la única parte que no se puede fingir.** Comando y error se
+  copian en diez segundos; dos intentos documentados, no. Si una bitácora trae siempre las otras
+  tres y esa vacía, ahí está el que cumple el trámite sin intentar.
+- **Un atorón con las cuatro partes vale como bloque entregado, completo.** No es media entrega.
+  Un "no me salió" a secas es no entregado. La regla de calificación está en `so-profesor`,
+  `semana-01.md`, sección "Como se califica un atoron".
+
+La sesión de aula **abre con 10-15 min de "rescate de atorones"** en todas las semanas. No es
+relleno: es lo que valida públicamente la convención. Si no se atiende, la sección se muere en dos
+semanas y con ella el registro de asistencia del lunes.
+
+### La sesión de aula: lo que hay que darle escrito al alumno
+
+`## Durante la clase` **no es una lista de intenciones**. La regla, que salió de la revisión de las
+tres primeras semanas: cada actividad se entrega con material de arranque concreto.
+
+Lo que sí lleva cada actividad:
+
+- **Los comandos exactos**, en bloques `bash`, con lo que hay que sustituir marcado (`TU_PID`).
+- **El código de apoyo completo o casi completo**, en un archivo nombrado (`Zombi.java`,
+  `EstadoR.java`, `Tragon.java`). Si tiene un `TODO`, que sea uno solo y que sea el punto del
+  ejercicio, no plomería.
+- **Una tabla vacía que el alumno llena con sus propios números.** Es lo que convierte la
+  actividad en evidencia y lo que evita que se quede mirando la pantalla del compañero.
+- **La pregunta de cierre**, y si la respuesta es de una semana futura, decirlo explícitamente
+  ("eso se llama espera activa y es la semana 6").
+
+Lo que **no** lleva: la explicación. Esa se construye en la sesión y es lo que el alumno escribe.
+
+Criterio para saber si está bien calibrada: **un alumno que llega tarde a media actividad tiene
+que poder alcanzarla leyendo la página**, sin preguntarle a nadie qué hay que teclear.
+
+En `so-profesor` la contraparte es más exigente todavía: el guion de aula lleva **el código
+completo sin `TODO`, la salida esperada real y los números típicos**, más la sección de
+preparación previa con lo que hay que dejar listo antes de la sesión (imágenes de Docker
+descargadas, binarios compilados). El criterio ahí es que la sesión se pueda dar sin improvisar
+nada y sin depender de que a los alumnos les compile.
 
 ---
 
@@ -373,8 +430,8 @@ Convención de mensajes de commit (`sNN` = número de semana):
 | Sem | Tema | Bloque 1 | Bloque 2 | Bloque extra | Estado |
 |---|---|---|---|---|---|
 | 01 | Encuadre y configuración del entorno (U1) | Entorno WSL2 + repositorio privado | El SO, kernel, modos y syscalls; elección de dominio | El mapa del servidor por unidad | ✅ |
-| 02 | Linux y el primer proceso (U1) | Árbol de procesos: `ps`, `top`, STAT, `/proc` | `ServidorPedidos.java` vivo y con log | `/proc/<pid>/status` campo por campo | |
-| 03 | Contenedores y concepto de proceso (U1-U2) | Proceso vs programa: PCB, namespaces, cgroups | Proceso hijo con `ProcessBuilder` | El servidor dentro de Docker | |
+| 02 | Linux y el primer proceso (U1) | Cadena de arranque y árbol de procesos: `ps`, `top`, STAT, `/proc` | `ServidorPedidos.java` vivo y con log | `/proc/<pid>/status` campo por campo | ✅ |
+| 03 | Contenedores y concepto de proceso (U1-U2) | Proceso vs programa: PCB, namespaces, cgroups | Proceso hijo con `ProcessBuilder` | El servidor dentro de Docker | ✅ |
 | 04 | Hilos: pedidos concurrentes (U2) | Estados del proceso y qué comparte un hilo | Un hilo por pedido; `nlwp`, `top -H` | Pool con `ExecutorService` | |
 | 05 | Condición de carrera (U2) | Sección crítica: el intercalado a mano | `PruebaCarrera.java`, 5 corridas distintas | Cuántos hilos para que falle siempre | |
 | 06 | Exclusión mutua y semáforos (U2) | Espera activa, `synchronized`, `Semaphore` | Inventario protegido, mismas 5 corridas | Medir el costo del candado | |
@@ -389,6 +446,18 @@ Convención de mensajes de commit (`sNN` = número de semana):
 | 15 | Sistemas de archivos (U5) | Inodo, nombre vs contenido, `stat`, `df`, `du` | `pedidos.log` en append + índice con `seek` | Secuencial vs `seek` en 100000 líneas | |
 | 16 | Sockets y red (U6) | El socket como descriptor; `accept()`, `ss` | `ClienteCajero.java` + un hilo por conexión | Cliente desde otra máquina | |
 | 17 | **Revisión final** | | | | |
+
+### Temas que solo aparecen una vez y hay que saber dónde están
+
+Temas del programa que no tienen semana propia y viven enganchados dentro de otra. Si hace falta
+moverlos o ampliarlos, aquí es donde están:
+
+| Tema | Dónde vive | Enganchado a |
+|---|---|---|
+| Arranque del sistema: BIOS/UEFI, GRUB, kernel, PID 1 | Semana 2, bloque 1, "De dónde sale el primer proceso" | La raíz del árbol de procesos: el PID 1 es el único que no creó otro proceso |
+| OOM killer | Primera aparición en la semana 3 (aula, `--memory`), tema completo en la 12 | El cgroup como límite de consumo |
+| Señales | Semana 8 completa; el código 137 se menciona de pasada en la 3 | La muerte por `SIGKILL` del cgroup |
+| Espera activa | Se plantea como pregunta abierta en la semana 2 (aula), se responde en la 6 | Comparación de estados `S` contra `R` |
 
 ### Archivos del proyecto del alumno (progresión)
 
