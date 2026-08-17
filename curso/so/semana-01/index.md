@@ -97,7 +97,7 @@ Y aquí entra un archivo que vas a cuidar toda la vida del proyecto: **`BITACORA
 
 Todo el curso se trabaja sobre **Linux dentro de Windows**, con una herramienta que se llama **WSL2** (Windows Subsystem for Linux, versión 2). Te permite correr un Ubuntu real dentro de tu Windows, sin reiniciar la máquina ni partir el disco. Para ti es una terminal más que abres en Windows; por debajo hay un kernel de Linux completo.
 
-En el bloque 2 vas a entender por qué insisto tanto en Linux. Por ahora, los cuatro pasos:
+En el bloque 2 vas a entender por qué insisto tanto en Linux. Por ahora, los cinco pasos:
 
 1. **Activa WSL2.** Abre **PowerShell como administrador** y ejecuta:
 
@@ -394,8 +394,8 @@ Vuelve a la tabla de las seis unidades y **tradúcela a tu dominio**. Para cada 
 
 | Unidad | Qué hará mi servidor | Qué se rompe si el SO no me lo da |
 |---|---|---|
-| U1 Procesos | | |
-| U2 Concurrencia | | |
+| U1 Perspectivas | | |
+| U2 Procesos | | |
 | U3 Memoria | | |
 | U4 Entrada/Salida | | |
 | U5 Archivos | | |
