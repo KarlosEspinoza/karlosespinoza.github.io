@@ -86,7 +86,9 @@ Como funciona el curso
 ```
 EL CASO DEL SEMESTRE
 
-Todo el curso gira alrededor de un solo sistema: un clasificador de piezas sobre banda transportadora. Cada quien elige su propio dominio de clasificación (por material, por tamaño, por color, lo que quieras) y ningún dominio se puede repetir en el grupo, porque después cada dominio va a ser un módulo distinto del proyecto integrador.
+Todo el curso gira alrededor de un solo sistema: un clasificador de piezas sobre banda transportadora. Cada quien elige su propio dominio de clasificación, que son dos cosas juntas: la categoría por la que clasificas (material, tamaño, color, lo que quieras) y los tres tipos de pieza concretos con los que lo haces.
+
+No puede haber dos sistemas iguales en el grupo. La categoría se puede repetir entre compañeros, pero tus tres tipos de pieza tienen que ser tuyos. Dentro de tu equipo del proyecto integrador la regla es más estricta: los tres integrantes necesitan categorías distintas, porque cada categoría va a ser un módulo del sistema que van a integrar.
 
 COMO ENTREGAS
 
@@ -221,7 +223,7 @@ Registro de equipo y dominios
 **Instrucciones:**
 
 ```
-El proyecto integrador se hace en equipos de 2 o 3. Cada integrante trabaja un dominio distinto, porque cada dominio va a ser un módulo del clasificador multi-dominio que van a integrar juntos.
+El proyecto integrador se hace en equipos de 2 o 3. Cada integrante trabaja una categoría distinta, porque cada categoría va a ser un módulo del clasificador multi-dominio que van a integrar juntos.
 
 Pónganse de acuerdo y suban un archivo llamado equipo.csv con una línea por integrante:
 
@@ -235,16 +237,17 @@ Reglas del archivo, porque lo voy a procesar con un script y si viene mal no lo 
 - La primera línea es exactamente: codigo,dominio
 - Una línea por integrante del equipo.
 - El código va sin espacios y sin guiones.
-- El dominio en una sola palabra, en minúsculas y sin acentos: material, tamano, color, contenido, estado, anomalias. Si el tuyo no está en esa lista, invéntale una palabra corta y consúltalo conmigo.
+- La columna dominio lleva tu categoría en una sola palabra, en minúsculas y sin acentos: material, tamano, color, contenido, estado, anomalias. Si la tuya no está en esa lista, invéntale una palabra corta y consúltalo conmigo. Tus tres tipos de pieza no van aquí, van en tu README.md.
 - Nada de comas de más, ni líneas en blanco al final.
 
-Lo suben los tres integrantes, el mismo archivo cada quien. Si dos traen el mismo dominio, resuélvanlo antes de entregar: no puede repetirse ni dentro del equipo ni en todo el grupo.
+Lo suben los tres integrantes, el mismo archivo cada quien. Si dos traen la misma categoría, resuélvanlo antes de entregar: dentro del equipo las tres categorías tienen que ser distintas.
 ```
 
 > **Nota para ti, no para publicar:** al juntar todos los `equipo.csv` puedes verificar de un
-> jalón que ningún dominio se repita en el grupo entero, y cruzar la columna `codigo` contra la
-> lista de inscritos para ver quién se quedó sin equipo. Ese es el punto de pedirlo en CSV y no
-> en texto libre.
+> jalón que dentro de cada equipo no se repita la categoría, y cruzar la columna `codigo` contra
+> la lista de inscritos para ver quién se quedó sin equipo. Ese es el punto de pedirlo en CSV y
+> no en texto libre. Que los tres tipos de pieza no se repitan en el grupo lo controlas en el
+> pizarrón de la semana 1, no aquí.
 
 ---
 

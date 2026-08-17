@@ -48,17 +48,22 @@ Al final del semestre tu sistema es un clasificador funcional de extremo a extre
 
 ## Tu dominio {#tu-dominio}
 
-Cada quien elige **qué clasifica su sistema**, y **ningún dominio se puede repetir en el grupo**, porque después cada dominio será un módulo distinto del [proyecto integrador](../proyecto_integrador).
+Cada quien elige **qué clasifica su sistema**. Tu dominio son dos cosas juntas: **la categoría** por la que clasificas y **los tres tipos de pieza** concretos con los que lo haces.
 
 Necesitas **tres tipos de pieza** que se puedan distinguir con los sensores disponibles en clase:
 
-| Dominio | Los tres tipos | Señales que podrían distinguirlos |
+| Categoría | Ejemplo de tres tipos | Señales que podrían distinguirlos |
 |---|---|---|
 | Material | Madera, metal, plástico | Metal (LJ12A3 o A3144) + reflectancia (TCRT5000) |
 | Tamaño | Chica, mediana, grande | Distancia (HC-SR04 o GP2Y0A21YK0F) |
 | Color | Clara, media, oscura | Color (TCS3200) o reflectancia (TCRT5000) |
 | Contenido | Llena, media, vacía | Peso o distancia al nivel |
 | Estado | Buena, marcada, deforme | Reflectancia (TCRT5000) + distancia |
+| Anomalías | Correcta, incompleta, objeto ajeno | Reflectancia (TCRT5000) + distancia |
+
+Los tres tipos de la tabla son un **ejemplo**. Dentro de una misma categoría caben proyectos muy distintos: en material, uno puede trabajar madera, metal y plástico, y otro cartón, vidrio y PET.
+
+**No puede haber dos sistemas iguales en el grupo.** La categoría se puede repetir entre compañeros, pero tus tres tipos de pieza tienen que ser tuyos, porque son los que hacen que tus datos y tu modelo sean tuyos. Dentro de tu equipo del [proyecto integrador](../proyecto_integrador) la regla es más estricta: los tres integrantes necesitan **categorías distintas**, porque cada categoría es un módulo del sistema que van a integrar.
 
 El dominio se elige y se registra en la **semana 1**. A partir de ahí, todos los ejemplos de clase los adaptas a tu caso.
 

@@ -37,7 +37,7 @@ El resultado es un sistema de control inteligente real: múltiples modelos de ML
 ## Formación de equipos {#formacion-de-equipos}
 
 - Equipos de **2 o 3 integrantes** (no se permiten equipos de 1 ni de 4 o más).
-- **Cada integrante debe tener un dominio diferente** al de sus compañeros, ya que cada uno aporta su módulo clasificador.
+- **Cada integrante debe tener una categoría diferente** a la de sus compañeros de equipo, ya que cada uno aporta su módulo clasificador. Entre equipos distintos la categoría sí se puede repetir; lo que no se repite en todo el grupo son los tres tipos de pieza de cada quien.
 - Registra tu equipo y dominios con el asesor durante la primera semana del curso.
 
 **Ejemplo para un equipo de 3:**

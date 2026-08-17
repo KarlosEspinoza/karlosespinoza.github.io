@@ -284,15 +284,20 @@ Esta separación no es un capricho didáctico: **es exactamente como se trabaja 
 
 #### Elige tu dominio de clasificación
 
-Nadie más del grupo puede tener el mismo dominio, porque cada dominio va a ser un módulo distinto cuando armemos los equipos del proyecto integrador. Necesitas **tres tipos de pieza** que se puedan distinguir con los sensores disponibles:
+Tu dominio son dos cosas juntas: **la categoría** por la que clasificas y **los tres tipos de pieza** concretos con los que lo vas a hacer. Necesitas los tres tipos de pieza que se puedan distinguir con los sensores disponibles:
 
-| Dominio | Los tres tipos | Señales que podrían distinguirlos |
+| Categoría | Ejemplo de tres tipos | Señales que podrían distinguirlos |
 |---|---|---|
 | Material | Madera, metal, plástico | Metal (LJ12A3 o A3144) + reflectancia (TCRT5000) |
 | Tamaño | Chica, mediana, grande | Distancia (HC-SR04 o GP2Y0A21YK0F) |
 | Color | Clara, media, oscura | Color (TCS3200) o reflectancia (TCRT5000) |
 | Contenido | Llena, media, vacía | Peso o distancia al nivel |
 | Estado | Buena, marcada, deforme | Reflectancia (TCRT5000) + distancia |
+| Anomalías | Correcta, incompleta, objeto ajeno | Reflectancia (TCRT5000) + distancia |
+
+Los tres tipos de la tabla son un **ejemplo**, no la única opción. Dentro de una misma categoría caben proyectos muy distintos: en material, uno puede trabajar madera, metal y plástico, y otro cartón, vidrio y PET.
+
+**Y ahí está la regla: no puede haber dos sistemas iguales en el grupo.** La categoría se puede repetir entre compañeros, pero tus **tres tipos de pieza** tienen que ser tuyos. Eso se resuelve en el pizarrón durante la sesión, así que llega con una idea y con un plan B por si alguien se te adelanta.
 
 Aún no tienes que estar seguro de qué sensores vas a usar. Eso lo terminas de decidir en la semana 3, cuando diseñemos el experimento de recolección.
 
@@ -343,7 +348,36 @@ git push
 
 Llegas con tu dominio ya elegido y tu repositorio creado. La sesión es de encuadre y la hacemos **sin laptop**, para conocernos y construir entre todos el mapa de los sistemas que vamos a desarrollar. Dos dinámicas:
 
-**1. Tu línea de clasificación.** Cada quien dice qué va a clasificar su sistema, el dominio que eligió el lunes. Lo anotamos en el pizarrón. La regla es que **no se pueden repetir dominios**: si dos coinciden, ahí mismo se resuelve. Al final el pizarrón ya es el mapa de módulos del grupo.
+**1. Tu línea de clasificación.** Cada quien dice qué va a clasificar su sistema: su categoría y sus tres tipos de pieza. Lo anotamos en el pizarrón, agrupado por categoría. La regla es que **no puede haber dos sistemas iguales**: la categoría sí se puede repetir, los tres tipos de pieza no. Si dos coinciden, el que llegó después cambia una de sus tres piezas, no la categoría entera.
+
+Así se ve el pizarrón terminado (nombres de ejemplo):
+
+```
+categoria  | alumno           | sus tres tipos de pieza
+-----------+------------------+---------------------------------------------
+material   | Ana Perez        | madera / metal / plastico
+           | Luis Ramirez     | carton / vidrio / PET
+           | Sofia Gutierrez  | MDF / aluminio / acrilico
+tamano     | Beto Navarro     | tuerca de 1/4 / de 1/2 / de 3/4
+           | Rosa Delgado     | tornillo corto / medio / largo
+           | Ivan Contreras   | pieza de 2 cm / de 4 cm / de 6 cm
+color      | Karla Mendoza    | tapa blanca / amarilla / roja
+           | Diego Salas      | bloque claro / medio / oscuro
+           | Nayeli Ortiz     | cable rojo / verde / azul
+contenido  | Emilio Vargas    | frasco lleno / medio / vacio
+           | Paola Cruz       | caja con 3 tuercas / con 1 / vacia
+           | Hugo Renteria    | jeringa de 10 ml / de 5 ml / de 0 ml
+estado     | Mariana Ibarra   | superficie lisa / rayada / abollada
+           | Tomas Aguilar    | tapa bien puesta / floja / sin tapa
+           | Fernanda Rios    | etiqueta recta / torcida / sin etiqueta
+anomalias  | Oscar Lara       | pieza correcta / incompleta / objeto ajeno
+           | Valeria Solis    | tornillo bueno / sin cuerda / doblado
+           | Raul Estrada     | pieza de la linea / de otra linea / basura
+```
+
+Fíjate en la columna de la izquierda: **seis categorías y tres personas en cada una**, y aun así no hay dos sistemas iguales. Las tres de material son proyectos completamente distintos, con piezas distintas, datos distintos y probablemente sensores distintos.
+
+Al final el pizarrón ya es el mapa de los sistemas del grupo, y de ahí salen los equipos: **los tres integrantes de un equipo tienen que venir de renglones de categorías diferentes.**
 
 **2. El clasificador humano.** En equipos, les paso tres piezas físicas distintas. Sin usar instrumentos, describan **qué señales medibles** permitirían distinguirlas: ¿pesa más?, ¿refleja más luz?, ¿es magnética?, ¿es más alta? Después viene la pregunta difícil: si solo pudieran usar **un** sensor, ¿cuál elegirían y qué par de piezas seguirían confundiéndose? Esa confusión que descubran hoy a mano es exactamente el problema que en la semana 7 va a resolver el modelo, y la razón por la que necesitamos varias señales y no una.
 
@@ -382,7 +416,7 @@ El repositorio ya lo creaste el lunes. Lo que queda es cerrarlo y dejarlo entreg
 ### Proyecto integrador {#proyecto-integrador}
 
 1. **Forma tu equipo** de 2 o 3 integrantes.
-2. **Verifiquen que cada integrante tenga un dominio diferente**, porque cada dominio será un módulo del clasificador multi-dominio que construirán juntos. Por ejemplo: uno clasifica por material, otro por tamaño, otro detecta piezas anómalas.
+2. **Verifiquen que cada integrante tenga una categoría diferente**, porque cada categoría será un módulo del clasificador multi-dominio que construirán juntos. Por ejemplo: uno clasifica por material, otro por tamaño, otro detecta piezas anómalas. Dentro del equipo esto no es negociable, aunque en el grupo la categoría sí se pueda repetir entre equipos.
 3. **Registren el equipo** subiendo a Classroom un archivo `equipo.csv` con una línea por integrante. Lo sube cada uno de los integrantes, el mismo archivo:
 
    ```
