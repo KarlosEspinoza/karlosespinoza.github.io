@@ -14,15 +14,6 @@ title: Fundamentos de Sistemas Operativos
 - [Prácticas](evaluacion/practicas)
 - [Proyecto integrador](evaluacion/proyecto_integrador)
 
-| Rubro | Peso |
-|---|---|
-| Proyecto integrador (en equipo) | 50% |
-| Prácticas (tu proyecto individual) | 35% |
-| Actividades integradoras (las coordina la carrera) | 5% |
-| Asistencia | 10% |
-
-Las prácticas y el proyecto integrador se califican en tres revisiones de avances, en las semanas 9, 14 y 17. En cada una haces `push` antes de la fecha de entrega, el asesor revisa tu código y tu bitácora con anticipación, y el día de la revisión la sesión se dedica a las preguntas. Si no hay push a tiempo, la revisión cuenta como no entregada.
-
 ## El caso del semestre
 
 Todo el curso gira alrededor de un solo sistema que construyes tú mismo: un **Servidor de Pedidos** que recibe pedidos desde varias terminales de cajero, los atiende al mismo tiempo y gestiona un inventario compartido. Es el mismo tipo de sistema que opera una empresa de punto de venta. Cada unidad le agrega una capa: primero existe como proceso, luego atiende a varios cajeros a la vez sin romper el inventario, luego administra su memoria, escribe en archivos y al final recibe conexiones por red desde otra máquina.
