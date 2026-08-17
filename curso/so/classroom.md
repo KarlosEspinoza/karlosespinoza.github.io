@@ -304,7 +304,7 @@ El 10% de cada revisión del proyecto integrador sale de cómo evalúan tus comp
 
 Se entrega así, y solo se configura una vez en todo el semestre:
 
-1. Crea un repositorio privado con el nombre que quieras, distinto de so-proyecto. Puede ser autoeval-so.
+1. Crea un repositorio privado con el nombre autoeval-so.
 2. Agrégame como colaborador (Settings, Collaborators, Add people, usuario KarlosEspinoza). Esa invitación es el aviso de que tu repositorio existe: no entregas la URL en ningún otro lado. Si quieres confirmarlo, mándamela por comentario privado en esta publicación, que solo leo yo.
 3. Dentro, crea un archivo de texto llamado con tu propio código de alumno y terminación .csv. Si tu código es 2162628, el archivo se llama 2162628.csv. El nombre del archivo dice quién está evaluando, así que no lo cambies.
 4. El contenido es una línea por cada compañero de tu equipo, con su código y la calificación que le pones de 0 a 100:
