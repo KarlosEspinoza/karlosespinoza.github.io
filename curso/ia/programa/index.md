@@ -48,7 +48,7 @@ title: Inteligencia Artificial
 * **Horas totales:** 80  
 * **Créditos:** 8  
 * **CNR:** 182168  
-* **Aula:** T7, C7  
+* **Aula:** T6, C7  
 * **Horario de clase síncrona:** Lunes y Miércoles 09:00 hrs a 11:00 hrs  
 * **Asesor:** Karlos Emmanuel Espinoza Ramos  
 * **Correo electrónico del asesor:** [karlos.espinoza@academicos.udg.mx](mailto:karlos.espinoza@academicos.udg.mx)  
