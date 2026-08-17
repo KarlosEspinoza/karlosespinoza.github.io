@@ -19,6 +19,7 @@ Todo el curso gira alrededor de un solo sistema que vas a construir tú mismo: u
     - [Bloque extra: la hoja de datos de tu sensor](#bloque-extra)
 - [Durante la clase (aprendizaje activo)](#durante-la-clase)
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
+    - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
 
 ---
@@ -352,7 +353,9 @@ Llegas con tu dominio ya elegido y tu repositorio creado. La sesión es de encua
 
 El repositorio ya lo creaste el lunes. Lo que queda es cerrarlo y dejarlo entregado.
 
-1. **Entrega la URL de tu repositorio en Google Classroom.** Esto se hace **una sola vez en todo el semestre**: de ahí en adelante yo reviso directo en GitHub y tú solo haces `push`.
+### Prácticas {#practicas}
+
+1. **Entrega en Google Classroom la URL de tu repositorio individual**, el de tu proyecto de prácticas. Esto se hace **una sola vez en todo el semestre**: de ahí en adelante yo reviso directo en GitHub y tú solo haces `push`. El equipo no entrega ninguna URL, solo el `equipo.csv` que viene más abajo.
 
 2. **Cierra tu entrada de la semana en `BITACORA.md`**, bajo `### Avance del proyecto`:
 
