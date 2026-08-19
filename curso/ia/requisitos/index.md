@@ -85,11 +85,15 @@ Si al escribir `python` se te abre la Microsoft Store en vez de responder, es un
 
 Es el editor del curso. Instala también la **extensión de Python** desde el panel de extensiones.
 
-Los comandos que aparecen en las guías van escritos para su terminal integrada, que abres con `Ctrl + ñ`.
+Los comandos que aparecen en las guías van escritos para su **terminal integrada**, que abres con `Ctrl + ñ` (o con el menú Terminal, Nueva terminal). Esa es la **única terminal que usamos en todo el curso**: ahí corren `python`, `pip`, `git` y todo lo demás. No hace falta abrir Git Bash, ni el Símbolo del sistema, ni una ventana aparte de PowerShell.
 
 ### Git {#git}
 
-Instálalo desde [git-scm.com](https://git-scm.com/) y configúralo con tu identidad:
+Instálalo desde [git-scm.com](https://git-scm.com/). Durante la instalación deja todas las opciones como vienen, no hay que cambiar nada.
+
+**El instalador agrega un programa llamado Git Bash. En este curso no se usa.** Es una terminal aparte, con sus propias reglas, y mezclarla con la de Visual Studio Code es la forma más rápida de acabar sin saber dónde estás parado. Si te abrió Git Bash al terminar de instalar, ciérralo.
+
+Ya instalado, abre Visual Studio Code y configura Git con tu identidad **desde la terminal integrada** (`Ctrl + ñ`):
 
 ```bash
 git config --global user.name "Tu Nombre"

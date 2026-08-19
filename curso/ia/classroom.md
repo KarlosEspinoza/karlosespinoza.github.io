@@ -199,6 +199,8 @@ https://github.com/tu-usuario/clasificador-piezas-ia
 
 Y en tu computadora deben quedar instalados: Python (marcando la casilla "Add Python to PATH"), Visual Studio Code, Git, el Arduino IDE y el driver CH340. Ese último es importante: sin él Windows no reconoce el Arduino Nano y la tarjeta no aparece por ningún lado. Anota también el puerto COM que le toca a tu tarjeta.
 
+Un aviso para ahorrarte un rato de confusión: el instalador de Git deja un programa llamado Git Bash, y en este curso no se usa. Todos los comandos, los de Python y los de Git, se escriben en la terminal integrada de Visual Studio Code, la que abres con Ctrl + ñ. Es la única terminal que vamos a usar en todo el semestre.
+
 Los pasos están en la guía de la semana 1:
 https://karlosespinoza.github.io/curso/ia/semana-01
 ```

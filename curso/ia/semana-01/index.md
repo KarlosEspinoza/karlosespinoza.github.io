@@ -62,7 +62,9 @@ Un detalle que importa en aprendizaje de máquina y que no aplicaba en otros cur
 
 #### Instala lo que vas a necesitar
 
-Todo el curso se trabaja en **Windows**. Los comandos que verás en las guías van escritos para la terminal de Visual Studio Code, que abres con `Ctrl + ñ` (o el menú Terminal, Nueva terminal).
+Todo el curso se trabaja en **Windows** y en **una sola terminal**: la de Visual Studio Code, que abres con `Ctrl + ñ` (o el menú Terminal, Nueva terminal). Ahí van todos los comandos de las guías, los de Python y los de Git por igual.
+
+El instalador de Git agrega un programa aparte que se llama **Git Bash**. **No lo usamos en este curso.** Si se te abrió, ciérralo y regresa a la terminal de Visual Studio Code.
 
 1. **Python y Visual Studio Code.** Si ya los traes de cursos anteriores, solo verifica que respondan:
 
