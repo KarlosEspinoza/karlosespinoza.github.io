@@ -491,4 +491,14 @@ El repositorio ya lo creaste en el bloque 1. Lo que queda es cerrarlo y dejarlo 
 
    El dominio va en una sola palabra, en minúsculas y sin acentos, porque ese archivo lo proceso con un script.
 
+4. **Creen el repositorio del equipo.** Es **uno solo para todo el equipo**, no uno por persona, y es aparte del `so-proyecto` de cada quien. Ahí va a vivir el Servidor Central, que es un solo programa y es responsabilidad de los tres.
+
+   - Pónganse de acuerdo en quién de ustedes lo crea. Una sola persona.
+   - Esa persona crea un repositorio **privado** llamado `integrador-so`.
+   - Esa misma persona agrega como colaboradores a los otros integrantes y al asesor, usuario `KarlosEspinoza` (Settings, Collaborators, Add people). Los demás aceptan la invitación que les llega por correo.
+   - En el `README.md` ponen una línea por integrante con nombre, código y dominio.
+   - Esa persona manda la URL por comentario privado en Classroom, en la misma entrega del `equipo.csv`. Los demás no mandan URL de equipo.
+
+   Si cada quien crea el suyo no hay proyecto integrador: serían tres Servidores Centrales distintos en vez de uno, y en la Unidad 6 sus sucursales no se podrían conectar al mismo lugar.
+
 Todavía no hay código del integrador: por ahora basta con que el equipo quede formado y los dominios reservados, porque a partir de la Unidad 2 cada sucursal empezará a conectarse a un Servidor Central que desarrollarán en conjunto.

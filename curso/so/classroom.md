@@ -94,7 +94,7 @@ Tu dominio necesita cumplir dos cosas: que haya algo que se pida y algo que se a
 
 COMO ENTREGAS
 
-Por Classroom entregas tres cosas, todas en la primera semana y todas una sola vez: la URL de tu repositorio de GitHub, el archivo equipo.csv con tu equipo del proyecto integrador, y la URL del repositorio del equipo. De ahí en adelante, durante todo el semestre, tu entrega es hacer push.
+Por Classroom entregas dos cosas, las dos en la primera semana y las dos una sola vez: la URL de tu repositorio de GitHub y el archivo equipo.csv con tu equipo del proyecto integrador. El equipo entrega una tercera, la URL del repositorio del equipo, pero esa la manda un solo integrante en nombre de los tres. De ahí en adelante, durante todo el semestre, tu entrega es hacer push.
 
 Tu repositorio es privado, y me agregas a mí como colaborador para que pueda revisarlo (Settings, Collaborators, Add people, usuario KarlosEspinoza). Si no me mandas esa invitación, no puedo ver tu trabajo y cuenta como no entregado. Al terminar el semestre puedes cambiarlo a público si quieres enseñarlo cuando busques trabajo.
 
@@ -273,7 +273,17 @@ Reglas del archivo, porque lo voy a procesar con un script y si viene mal no lo 
 
 Lo suben los integrantes, el mismo archivo cada quien. Si dos traen el mismo dominio, resuélvanlo antes de entregar: no puede repetirse ni dentro del equipo ni en todo el grupo.
 
-Además, creen el repositorio privado del equipo (por ejemplo integrador-so), agréguenme como colaborador y mándenme la URL por comentario privado en esta misma entrega. Es aparte del repositorio individual de cada quien: ahí vive el Servidor Central y la bitácora del equipo.
+Además, el equipo necesita un repositorio propio. Es UNO SOLO para todo el equipo, no uno por persona. Ahí vive el Servidor Central, que es un solo programa y es responsabilidad de los tres, más la bitácora del equipo. Es aparte del repositorio individual de cada quien, que ese sí es de una sola persona.
+
+Háganlo así:
+
+1. Pónganse de acuerdo en quién de ustedes lo crea. Una sola persona.
+2. Esa persona crea un repositorio privado llamado integrador-so.
+3. Esa misma persona agrega como colaboradores a los otros integrantes del equipo y a KarlosEspinoza (Settings, Collaborators, Add people). Los compañeros tienen que aceptar la invitación que les llega por correo.
+4. En el README.md ponen una línea por integrante con nombre, código y dominio.
+5. Esa persona manda la URL por comentario privado en esta misma entrega. Los demás no mandan URL de equipo.
+
+Si cada quien crea el suyo no hay proyecto integrador: habría tres Servidores Centrales distintos en vez de uno, y en la Unidad 6 sus tres sucursales no se van a poder conectar al mismo lugar.
 ```
 
 > **Nota para ti, no para publicar:** al juntar todos los `equipo.csv` puedes verificar de un
