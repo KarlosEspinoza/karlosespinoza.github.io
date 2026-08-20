@@ -480,25 +480,28 @@ El repositorio ya lo creaste en el bloque 1. Lo que queda es cerrarlo y dejarlo 
 
 1. **Forma tu equipo** de 2 o 3 integrantes.
 2. **Verifiquen que cada integrante tenga un dominio diferente**, porque cada dominio será una sucursal del sistema multi-sucursal que construirán juntos. Por ejemplo: uno farmacia, otro restaurante, otro librería.
-3. **Registren el equipo** subiendo a Classroom un archivo `equipo.csv` con una línea por integrante. Lo sube cada uno de los integrantes, el mismo archivo:
+3. **Nombren un representante del equipo.** Es quien crea el repositorio y quien hace la entrega en Classroom. Los demás no entregan nada en esa tarea.
 
-   ```
-   codigo,dominio
-   2162628,farmacia
-   2162631,restaurante
-   2162640,libreria
-   ```
+4. **El representante crea el repositorio del equipo.** Es **uno solo para todo el equipo**, no uno por persona, y es aparte del `so-proyecto` de cada quien. Ahí va a vivir el Servidor Central, que es un solo programa y es responsabilidad de todos.
 
-   El dominio va en una sola palabra, en minúsculas y sin acentos, porque ese archivo lo proceso con un script.
+   - Crea un repositorio **privado** llamado `integrador-so`.
+   - Agrega como colaboradores a los demás integrantes y al asesor, usuario `KarlosEspinoza` (Settings, Collaborators, Add people). Los compañeros aceptan la invitación que les llega por correo.
+   - Crea el `README.md` con el nombre completo de cada integrante y su dominio.
+   - Crea en la raíz un archivo `equipo.csv` con una línea por integrante, incluido él mismo:
 
-4. **Creen el repositorio del equipo.** Es **uno solo para todo el equipo**, no uno por persona, y es aparte del `so-proyecto` de cada quien. Ahí va a vivir el Servidor Central, que es un solo programa y es responsabilidad de los tres.
+     ```
+     codigo,dominio
+     2162628,farmacia
+     2162631,restaurante
+     2162640,libreria
+     ```
 
-   - Pónganse de acuerdo en quién de ustedes lo crea. Una sola persona.
-   - Esa persona crea un repositorio **privado** llamado `integrador-so`.
-   - Esa misma persona agrega como colaboradores a los otros integrantes y al asesor, usuario `KarlosEspinoza` (Settings, Collaborators, Add people). Los demás aceptan la invitación que les llega por correo.
-   - En el `README.md` ponen una línea por integrante con nombre, código y dominio.
-   - Esa persona manda la URL por comentario privado en Classroom, en la misma entrega del `equipo.csv`. Los demás no mandan URL de equipo.
+     El dominio va en una sola palabra, en minúsculas y sin acentos, porque ese archivo se procesa con un script.
 
-   Si cada quien crea el suyo no hay proyecto integrador: serían tres Servidores Centrales distintos en vez de uno, y en la Unidad 6 sus sucursales no se podrían conectar al mismo lugar.
+   - Entrega la URL del repositorio en Classroom.
+
+   Los demás integrantes aceptan la invitación y revisan que su código y su dominio hayan quedado bien escritos en el `equipo.csv`.
+
+   Si cada quien crea su propio repositorio no hay proyecto integrador: serían tres Servidores Centrales distintos en vez de uno, y en la Unidad 6 sus sucursales no se podrían conectar al mismo lugar.
 
 Todavía no hay código del integrador: por ahora basta con que el equipo quede formado y los dominios reservados, porque a partir de la Unidad 2 cada sucursal empezará a conectarse a un Servidor Central que desarrollarán en conjunto.

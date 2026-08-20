@@ -31,7 +31,7 @@ El resultado es un sistema distribuido de verdad: varios procesos independientes
 
 - Equipos de **2 o 3 integrantes**. No se permiten de 1 ni de 4 o más.
 - **Cada integrante tiene un dominio diferente**, porque cada uno aporta su sucursal.
-- Se registra en la primera semana subiendo a Classroom un `equipo.csv` con una línea por integrante. Lo sube cada uno de los integrantes, el mismo archivo.
+- Se registra en la primera semana. El equipo nombra un **representante**, que crea el repositorio del equipo, pone en la raíz un `equipo.csv` con una línea por integrante y entrega la URL en Classroom. Es la única entrega del equipo por Classroom y la hace una sola persona.
 
 Ejemplo de un equipo de 3:
 
@@ -81,11 +81,12 @@ Lo que se agrega cada semana viene en la sección **Proyecto integrador** de la 
 
 ## El repositorio del equipo {#repositorio}
 
-Un repositorio **privado** del equipo, con el asesor agregado como colaborador, aparte del repositorio individual de cada quien.
+**Uno solo para todo el equipo**, no uno por persona, y aparte del `so-proyecto` individual de cada quien. Lo crea el representante, y agrega como colaboradores a los demás integrantes y al asesor. Ahí vive el Servidor Central, que es un solo programa y responsabilidad de todos: si cada quien tuviera el suyo habría tantos Servidores Centrales como integrantes y no habría nada integrado.
 
 ```
 integrador-so/
   README.md            integrantes, dominios, como se corre, Y LOS ACUERDOS DEL EQUIPO
+  equipo.csv           padron del equipo: codigo,dominio, una linea por integrante
   BITACORA.md          bitacora del equipo
   src/
     ServidorCentral.java       conecta a todas las sucursales

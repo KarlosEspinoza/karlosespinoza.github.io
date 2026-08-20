@@ -94,7 +94,7 @@ Tu dominio necesita cumplir dos cosas: que haya algo que se pida y algo que se a
 
 COMO ENTREGAS
 
-Por Classroom entregas dos cosas, las dos en la primera semana y las dos una sola vez: la URL de tu repositorio de GitHub y el archivo equipo.csv con tu equipo del proyecto integrador. El equipo entrega una tercera, la URL del repositorio del equipo, pero esa la manda un solo integrante en nombre de los tres. De ahí en adelante, durante todo el semestre, tu entrega es hacer push.
+Por Classroom entregas una sola cosa en todo el semestre: la URL de tu repositorio de GitHub, en la primera semana. Aparte, cada equipo del proyecto integrador entrega la URL del repositorio del equipo, y esa la manda un solo integrante, el representante. De ahí en adelante, durante todo el semestre, tu entrega es hacer push.
 
 Tu repositorio es privado, y me agregas a mí como colaborador para que pueda revisarlo (Settings, Collaborators, Add people, usuario KarlosEspinoza). Si no me mandas esa invitación, no puedo ver tu trabajo y cuenta como no entregado. Al terminar el semestre puedes cambiarlo a público si quieres enseñarlo cuando busques trabajo.
 
@@ -238,17 +238,17 @@ https://karlosespinoza.github.io/curso/so/entorno
 
 ## 5. Tarea: registro de equipo del proyecto integrador
 
-Tipo: **Tarea** con archivo adjunto. Tema: **Proyecto integrador**. Sin calificación.
+Tipo: **Tarea** con entrega de enlace. Tema: **Proyecto integrador**. Sin calificación.
 Fecha: al término de la semana 1.
 
-**Entregan todos los integrantes el mismo archivo**, no uno solo por el equipo. Así Classroom te
-marca de inmediato a quien no entregó, que casi siempre es el que se quedó sin equipo, y de paso
-que los tres suban el mismo `equipo.csv` confirma que están de acuerdo en quién es quién.
+**Entrega un solo integrante, el representante del equipo**, y lo único que entrega es la URL del
+repositorio. El padrón del equipo ya no se sube a Classroom: vive dentro del repositorio como
+`equipo.csv`, versionado y junto al código.
 
 **Título:**
 
 ```
-Registro de equipo y dominios
+Registro de equipo del proyecto integrador
 ```
 
 **Instrucciones:**
@@ -256,40 +256,44 @@ Registro de equipo y dominios
 ```
 El proyecto integrador se hace en equipos de 2 o 3. Cada integrante trabaja un dominio distinto, porque cada dominio va a ser una sucursal del sistema multi-sucursal que van a integrar juntos.
 
-Pónganse de acuerdo y suban un archivo llamado equipo.csv con una línea por integrante:
+El equipo tiene UN repositorio, uno solo para todos, aparte del repositorio individual de cada quien. Ahí vive el Servidor Central, que es un solo programa y es responsabilidad de todo el equipo.
+
+Nombren un representante. El representante hace esto:
+
+1. Crea un repositorio privado llamado integrador-so.
+2. Agrega como colaboradores a los demás integrantes y a KarlosEspinoza (Settings, Collaborators, Add people). Los compañeros aceptan la invitación que les llega por correo.
+3. Crea en la raíz del repositorio un archivo llamado equipo.csv con una línea por integrante:
 
 codigo,dominio
 2162628,farmacia
 2162631,restaurante
 2162640,libreria
 
-Reglas del archivo, porque lo voy a procesar con un script y si viene mal no lo lee:
+4. Crea el README.md con el nombre completo de cada integrante y su dominio.
+5. Entrega aquí la URL del repositorio.
 
+Los demás integrantes no entregan nada en esta tarea. Su parte es aceptar la invitación de colaborador y revisar que su código y su dominio quedaron bien escritos en el equipo.csv.
+
+Reglas del equipo.csv, porque lo voy a procesar con un script y si viene mal no lo lee:
+
+- El archivo se llama exactamente equipo.csv y está en la raíz del repositorio.
 - La primera línea es exactamente: codigo,dominio
-- Una línea por integrante del equipo.
+- Una línea por integrante, incluido el representante.
 - El código va sin espacios y sin guiones.
 - El dominio en una sola palabra, en minúsculas y sin acentos: farmacia, restaurante, libreria, taller, estacionamiento, veterinaria, renta. Si el tuyo no está en esa lista, invéntale una palabra corta y consúltalo conmigo.
 - Nada de comas de más, ni líneas en blanco al final.
 
-Lo suben los integrantes, el mismo archivo cada quien. Si dos traen el mismo dominio, resuélvanlo antes de entregar: no puede repetirse ni dentro del equipo ni en todo el grupo.
+Ningún dominio se puede repetir, ni dentro del equipo ni en todo el grupo. Resuélvanlo antes de entregar.
 
-Además, el equipo necesita un repositorio propio. Es UNO SOLO para todo el equipo, no uno por persona. Ahí vive el Servidor Central, que es un solo programa y es responsabilidad de los tres, más la bitácora del equipo. Es aparte del repositorio individual de cada quien, que ese sí es de una sola persona.
-
-Háganlo así:
-
-1. Pónganse de acuerdo en quién de ustedes lo crea. Una sola persona.
-2. Esa persona crea un repositorio privado llamado integrador-so.
-3. Esa misma persona agrega como colaboradores a los otros integrantes del equipo y a KarlosEspinoza (Settings, Collaborators, Add people). Los compañeros tienen que aceptar la invitación que les llega por correo.
-4. En el README.md ponen una línea por integrante con nombre, código y dominio.
-5. Esa persona manda la URL por comentario privado en esta misma entrega. Los demás no mandan URL de equipo.
-
-Si cada quien crea el suyo no hay proyecto integrador: habría tres Servidores Centrales distintos en vez de uno, y en la Unidad 6 sus tres sucursales no se van a poder conectar al mismo lugar.
+Si cada quien crea su propio repositorio no hay proyecto integrador: serían tres Servidores Centrales distintos en vez de uno, y en la Unidad 6 sus sucursales no se podrían conectar al mismo lugar.
 ```
 
-> **Nota para ti, no para publicar:** al juntar todos los `equipo.csv` puedes verificar de un
-> jalón que ningún dominio se repita en el grupo entero, y cruzar la columna `codigo` contra la
-> lista de inscritos para ver quién se quedó sin equipo. Ese es el punto de pedirlo en CSV y no
-> en texto libre.
+> **Nota para ti, no para publicar:** Classroom va a marcar como "sin entregar" a los integrantes
+> que no son representantes, y eso es lo esperado. La verificación de verdad es clonar los
+> `integrador-so`, juntar los `equipo.csv` y cruzar la columna `codigo` contra la lista de
+> inscritos: ahí sale de un jalón quién se quedó sin equipo y si algún dominio se repite en el
+> grupo. Al estar en el repositorio, el padrón queda versionado: si el equipo cambia de
+> integrantes a media semana, queda el commit.
 
 ---
 
