@@ -21,6 +21,7 @@ Y de paso contestamos la pregunta que quedó abierta la semana pasada, cuando `k
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -629,3 +630,33 @@ Esta semana el avance del proyecto **es la preparación de la revisión**. La li
 2. **Cada integrante actualiza su archivo de autoevaluación entre pares** (`<codigo>.csv` en su repositorio privado) y hace push **antes de la revisión**. Vale el 10% de la calificación del integrador en esta revisión, y si no hay push, se pierde.
 
 3. **Ensayen la demostración completa.** Tres sucursales corriendo, pedidos concurrentes, el descuadre demostrado y resuelto, un interbloqueo diagnosticado con `jstack`, y el apagado ordenado. Cronométrenlo: si no cabe en el tiempo, recorten y elijan qué enseñar, pero decídanlo antes y no en el momento.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué es una señal y qué información lleva?
+2. Por qué `SIGKILL` no se puede atrapar?
+3. Qué es una tubería y por qué la barra vertical del shell es una?
+
+**De aplicación a tu proyecto**
+
+4. Enséñame tu apagado ordenado funcionando con `SIGTERM` y después con `SIGKILL`. Cuál es la diferencia?
+5. Qué se pierde en tu negocio si el servidor muere con `SIGKILL` a media jornada?
+6. Por qué tu bandera de apagado es `volatile`?
+7. Cómo se comunican tu generador y tu servidor si no comparten memoria?
+
+**Difíciles**
+
+8. `volatile` hace que `contador++` sea seguro entre hilos? Justifica.
+   *Respuesta: no. Garantiza visibilidad, no atomicidad. La carrera de la semana 5 sigue ahí.*
+9. Tu proceso de la semana 7 estaba trabado y `kill` no lo mataba. Ahora explica por qué.
+   *Respuesta: no podía ejecutar el manejador. Todos sus hilos estaban bloqueados.*
+10. Por qué una tubería anónima no sirve para un cajero en otra máquina, y qué sí sirve?
+    *Respuesta: se hereda del padre. FIFO tampoco cruza máquinas; sirve un socket. Semana 16.*
+11. Si tu shutdown hook tarda 3 minutos, qué pasa cuando `systemd` reinicia el servidor?
+    *Respuesta: lo mata con SIGKILL a los 90 s y se pierde la limpieza. El hook tiene que caber en el límite.*

@@ -21,6 +21,7 @@ De paso queda contestada la pregunta que dejamos abierta en la semana 2, cuando 
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -520,3 +521,30 @@ Este es el avance más importante del integrador hasta ahora, porque se acerca l
 2. **Identifiquen las secciones críticas del Servidor Central.** Si el central recibe pedidos de tres sucursales a la vez, todo lo que compartan esos hilos es sección crítica: el registro de pedidos, los contadores globales, cualquier caché.
 
 3. **Preparen la demostración para la revisión de la semana 9.** Tiene que ser: aquí está la evidencia del sistema roto, aquí la del sistema arreglado, y aquí la explicación de por qué el arreglo funciona. Las tres cosas, con archivos en el repositorio. Es lo que más peso tiene en las evidencias de esa revisión.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué es la exclusión mutua?
+2. Qué hace `synchronized` por debajo cuando un hilo no puede entrar?
+3. Diferencia entre un mutex y un semáforo con N permisos.
+
+**De aplicación a tu proyecto**
+
+4. Enséñame tu sección crítica y dime por qué empieza donde empieza.
+5. Enséñame las cinco corridas de antes y las cinco de después. Por qué ahora todas dan lo mismo?
+6. Qué pasó cuando pusiste el candado solo en el descuento? Por qué la existencia quedó negativa?
+7. Qué pasó cuando protegiste el método `atender` completo, y qué regla sacaste de ahí?
+
+**Difíciles**
+
+8. Un ciclo `while(ocupado){}` y un `synchronized` esperan lo mismo. Por qué uno gasta 100% de CPU y el otro 0%?
+9. Con el candado puesto, tu inventario atiende de uno en uno. Cómo hace un sistema real para atender 500 cajeros? Qué problema nuevo trae tu solución?
+   *Respuesta: candado por producto. Trae interbloqueos, semana 7.*
+10. Tu prueba de la semana 5 fallaba 4 de cada 5 veces y ahora pasa siempre. Eso demuestra que está bien? Qué más harías para estar seguro?
+    *Respuesta: no basta. Hay que razonar sobre el código, no solo probar. Y usar la configuración que fallaba el 100% de las veces, del bloque extra de la semana 5.*

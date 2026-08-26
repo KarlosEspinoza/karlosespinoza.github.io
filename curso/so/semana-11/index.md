@@ -21,6 +21,7 @@ Tu servidor dice que reservó tres gigabytes y en realidad ocupa cuarenta megas.
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -508,3 +509,33 @@ Y ahora la pregunta: **ese mensaje lo escribió Java o lo escribió el kernel?**
 2. **Decidan dónde vive el catálogo en el sistema integrado.** Cada sucursal tiene el suyo en memoria, o el Servidor Central tiene uno solo y las sucursales le preguntan? Es una decisión real de arquitectura: la primera es rápida y se desincroniza, la segunda es consistente y mete latencia. Escriban cuál eligieron y por qué.
 
 3. **Calculen el techo del sistema.** Con lo que mide cada producto en memoria, cuántos productos por sucursal aguanta una máquina de 8 GB con tres sucursales? Es el tipo de cálculo que se hace de verdad antes de comprar un servidor.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué es la memoria virtual y qué problema resuelve?
+2. Qué es una página y de qué tamaño es en Linux?
+3. Qué es un fallo de página? Diferencia entre menor y mayor.
+
+**De aplicación a tu proyecto**
+
+4. Por qué el `VmSize` de tu servidor es 50 veces mayor que su `VmRSS`? Con tus números.
+5. Cuánta RAM ocupa cada producto de tu catálogo en memoria, y por qué es más que en el archivo?
+6. Cuánto ganaste al meter el catálogo en memoria y cuánto te costó? Las dos mediciones.
+7. Dónde vive el `HashMap` de tu catálogo y dónde la variable local `cantidad`? Por qué?
+
+**Difíciles**
+
+8. Bajaste el `-Xmx` y antes de fallar el programa se puso lentísimo. Qué estaba pasando?
+   *Respuesta: el recolector corriendo sin parar. Es el síntoma real de falta de memoria.*
+9. Un programa reserva 500 MB y otro reserva 500 MB y los toca. Tienen el mismo `VmSize` y distinto `VmRSS`. Por qué?
+   *Respuesta: la memoria se entrega en el primer acceso, no en la reserva. Los fallos de página menores son el momento en que se entrega.*
+10. Si tu servidor tiene 10000 hilos, cuánta memoria consumen solo sus pilas? Con qué error del curso se conecta?
+    *Respuesta: ~10 GB reservados, ~1 MB por pila. Es el `unable to create native thread` de la semana 4.*
+11. Por qué "RAM libre" no es lo mismo que "RAM disponible" en `free -h`?
+    *Respuesta: el SO usa la libre como caché de disco y la suelta cuando se necesita. La columna que importa es `available`.*

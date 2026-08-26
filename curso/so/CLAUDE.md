@@ -329,6 +329,13 @@ La asistencia del lunes se registra con los commits de los bloques. **Eso no se 
 programa**; se comunica en el encuadre y en Classroom con redacción neutra ("la asistencia se
 registra con el commit de la actividad de la sesión").
 
+Cada semana se corre el reporte de asistencia (`recurso/asistencia/`, solo lectura, sin
+autorización) para saber quién no entregó nada, y luego, mismo mecanismo que las revisiones
+formales, una nota breve se agrega a `REVISION.md` vía `concentrado.md` +
+`aplicar-concentrado.py --confirmar` (esta parte sí requiere la autorización explícita de más
+abajo, por ser la que escribe en el repo del alumno). Detalle completo del flujo semanal en
+`recurso/revision/README.md`.
+
 ### El atorón documentado (convención de todo el semestre)
 
 La versión suave ("si te atoras, escríbelo y haz commit igual") **no se usa**: invita a un commit
@@ -422,6 +429,70 @@ Convención de mensajes de commit (`sNN` = número de semana):
 | Fin del bloque 2 | `sNN bloque 2: ...` |
 | Bloque extra | `sNN extra: ...` |
 | Avance del proyecto | `sNN proyecto: ...` |
+
+---
+
+## Revisión de avances: REVISION.md y el flujo de autorización
+
+La retroalimentación de cada revisión (semanas 9, 14, 17) se entrega en un
+archivo **`REVISION.md`** en la raíz del repositorio del alumno (`so-proyecto`)
+o del equipo (`integrador-so`), no por Classroom ni por correo: el alumno la
+ve con su propio `git pull`. Es de una sola vía (la escribe el asesor) y
+**crece con cada revisión** (se agrega `## Revisión N`, nunca se borra una
+anterior). Detalle completo y plantillas en `recurso/revision/`.
+
+El mismo mecanismo (`concentrado.md` + `aplicar-concentrado.py`) también
+sirve para avisos informales fuera de las revisiones formales (p. ej. "tu
+`equipo.csv` está mal escrito"), cualquier semana: el bloque lleva un
+encabezado con fecha (`### Nota rápida (2026-09-10)`) en vez de `## Revisión
+N`, sin tabla de instrumento/peso/nivel. Misma regla dura de autorización de
+abajo aplica igual.
+
+### Regla dura: nunca commit ni push a un repositorio de alumno o equipo sin autorización explícita de Karlos, para ese lote, ese mismo día
+
+No basta con que Karlos haya autorizado una revisión anterior: cada lote de
+`commit`/`push` a los repos de los alumnos necesita su propia autorización
+explícita. Regla sin excepciones, sin importar el modo de permisos activo.
+
+El flujo tiene dos pasos obligatorios, en este orden:
+
+1. **Borrador primero, en `concentrado.md`.** Al revisar (con Claude Code)
+   los repos ya clonados en local, lo que se escribe primero es un
+   `concentrado.md` en `~/curso/so/<ciclo>/revision/<numero>/concentrado.md`:
+   un bloque por alumno y por equipo con el texto exacto que se agregaría a
+   su `REVISION.md`, delimitado con marcadores `<!-- BLOQUE: ALUMNO
+   <codigo>-<usuario> --> ... <!-- FIN BLOQUE -->` (o `EQUIPO
+   <numero>-<usuario>`). **En este paso no se toca ningún repositorio de
+   alumno**, ni siquiera el clonado en local: no hay `git add`, no hay
+   `commit`, no hay `push`.
+2. **Aplicar solo lo que está en el `concentrado.md` cuando Karlos lo
+   autoriza.** Karlos lee el `concentrado.md` completo y pide los ajustes
+   que hagan falta editando ese mismo archivo (agregar, quitar o corregir
+   bloques). **No hay autorización parcial en tiempo de ejecución**: no se
+   le pide "aplica todos menos el del equipo 7", eso se resuelve quitando
+   ese bloque del `concentrado.md` antes de correr el script. Cuando Karlos
+   dice explícitamente que autoriza (p. ej. "autorizado", "corre el
+   script"), se corre `aplicar-concentrado.py` sobre el archivo tal como
+   quedó, y aplica todos los bloques que traiga, sin excepción.
+
+Si Karlos no ha dicho explícitamente que autoriza, no se corre el script con
+`--confirmar`, aunque ya se haya escrito o revisado el `concentrado.md`.
+
+### Dónde viven los scripts de este flujo
+
+- Los scripts genéricos y reutilizables sin datos de alumnos (clonar/pull de
+  `so-proyecto` e `integrador-so` a partir de `alumnos.csv`) sí viven en este
+  repositorio público, en `recurso/pull-repos/`.
+- El paso mecánico de aplicar el `concentrado.md` (append a cada `REVISION.md`
+  + `commit` + `push`) **no vive en este repositorio**: es
+  `~/curso/so/scripts/aplicar-concentrado.py`, junto con `alumnos.csv` y los
+  repos clonados, porque toca datos y borradores de calificación de alumnos
+  reales. Redacta la retroalimentación (armar el `concentrado.md`), no la
+  aplica: aplicar es puramente mecánico y no necesita tokens de Claude.
+  Por default hace dry-run (no escribe ni hace git); necesita `--confirmar`
+  para de verdad hacer `commit`/`push`, y antes de tocar nada valida los 32
+  repos (que existan clonados y que estén limpios) y aborta el lote completo
+  si algo no cuadra, en vez de aplicar la mitad.
 
 ---
 

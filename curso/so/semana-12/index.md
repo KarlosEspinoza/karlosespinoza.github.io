@@ -21,6 +21,7 @@ Y arreglas el defecto más serio que le queda a tu servidor. Ahora mismo, si los
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -529,3 +530,34 @@ Falta poco para la revisión de la semana 14. Este es el avance que la cierra po
 2. **Midan el sistema completo bajo saturación** y guarden la evidencia: memoria de los cuatro procesos, ocupación de las colas, pedidos rechazados por cada uno.
 
 3. **Comprueben que ninguna sucursal puede tumbar a las demás.** Es la propiedad que se le pide a un sistema distribuido y es la pregunta que se hace en la revisión: si la sucursal 1 se vuelve loca y manda 100000 pedidos, siguen operando la 2 y la 3? Si la respuesta es no, ahí tienen el trabajo de esta semana.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué es una fuga de memoria?
+2. Por qué puede haber fugas en Java si hay recolector de basura?
+3. Qué es el OOM killer y cuándo actúa?
+
+**De aplicación a tu proyecto**
+
+4. Qué estructura de tu servidor podía crecer sin límite y cómo la acotaste?
+5. Qué política de desbordamiento elegiste y por qué? Qué le pasa al cliente rechazado?
+6. Qué capacidad le pusiste a tu buffer y con qué medición lo decidiste?
+7. Tu servidor desapareció sin dejar nada en el log. Qué revisas y en qué orden?
+
+**Difíciles**
+
+8. `OutOfMemoryError` y `Killed` se ven parecidos. Cómo los distingues con comandos?
+   *Respuesta: código de salida 1 contra 137, stack trace o no, y `dmesg`.*
+9. Con `SIGKILL` del OOM killer no corre tu shutdown hook. Qué se pierde en tu negocio?
+10. Subiste la capacidad del buffer de 200 a 5000 y los rechazos bajaron poco. Por qué?
+    *Respuesta: el cuello de botella son los trabajadores, no el buffer. La cola absorbe picos, no capacidad insuficiente.*
+11. La estrategia BLOQUEAR no pierde ningún pedido. Entonces por qué no es siempre la mejor?
+    *Respuesta: le pasa el problema al productor, que se queda colgado sin saber por qué.*
+12. En una gráfica de `VmRSS`, cómo distingues una memoria sana de una con fuga?
+    *Respuesta: por el piso de los dientes de sierra, no por el techo.*

@@ -3,7 +3,7 @@ layout: default
 title: Matemáticas para Ingeniería de Materiales
 ---
 
-[Inicio](index)
+[Inicio](../index)
 
 # LaTex
 
@@ -18,7 +18,7 @@ Solo te recomiendo que este el paso donde te pregunta el tamaño de hoja usaras 
 ## Uso en Visual Studio Code
 
 Recomiendo que uses Visual Studio Code para editar tus documentos. 
-Si nunca lo haz usado lo puedes descargar desde su [aquí]() y puedes entender como usarlo siguiendo esta [guía oficia](https://code.visualstudio.com/docs/introvideos/basics).
+Si nunca lo haz usado lo puedes descargar desde [aquí](https://code.visualstudio.com/download) y puedes entender como usarlo siguiendo esta [guía oficial](https://code.visualstudio.com/docs/introvideos/basics).
 Puedes usar la extensión **Latex-Worksop** de Visual Studio Code para facilitar el uso de LaTex, aqui te dejo la [guía oficial](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) de la extensión.
 Pero antes de instalarlo instala **Perl** desde su enlace [oficial](https://strawberryperl.com/).
 
@@ -168,7 +168,7 @@ Dato 1 & Dato 2 \\
 
 Explicación rápida:
 
-* `|c|c|` → dos columnas centradas
+* `|c|c|` -> dos columnas centradas
 * `&` separa columnas
 * `\\` cambia de fila
 * `\hline` crea líneas horizontales

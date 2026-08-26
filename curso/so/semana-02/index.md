@@ -21,6 +21,7 @@ Este es el salto de "el SO administra programas" a "el SO está administrando **
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -557,3 +558,31 @@ Cada integrante ya tiene su servidor corriendo. Junten las tres sucursales **en 
 3. Guárdenla en el repositorio del equipo y anoten en el README del equipo qué PID corresponde a qué sucursal.
 
 Es una demostración chiquita pero importante: tres programas iguales, tres procesos independientes, y el SO llevando la cuenta de cada uno. Es la base de todo lo que van a integrar el resto del semestre.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Diferencia entre programa y proceso.
+2. Qué es el PID y quién lo asigna?
+3. Qué significa que tu servidor esté en estado `S`?
+
+**De aplicación a tu proyecto**
+
+4. Enséñame el PID de tu servidor y dime quién es su padre y por qué.
+5. Tu servidor está al 0% de CPU. Está funcionando bien o mal? Justifica.
+6. Qué pasa con tu servidor si cierras la terminal desde la que lo lanzaste? Por qué?
+7. Por qué `Threads` dice más de 1 si tu programa solo tiene un `main`?
+
+**Difíciles**
+
+8. Un zombi no consume CPU ni memoria. Entonces por qué es un problema tener muchos?
+   *Respuesta: agota los PIDs disponibles.*
+9. `VmSize` de tu servidor es 70 veces mayor que `VmRSS`. Qué significa esa diferencia?
+   *Respuesta: reservado contra realmente usado. Es la semana 11.*
+10. Crear un proceso cuesta ~100 ms. Tu servidor va a atender 50 pedidos por minuto. Qué problema ves si creas un proceso por pedido, y qué alternativa se te ocurre?
+    *Respuesta: es la justificación de los hilos. Semana 4.*

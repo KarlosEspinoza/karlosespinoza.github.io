@@ -21,6 +21,7 @@ Todo el curso gira alrededor de un solo sistema que vas a construir tú mismo: u
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -505,3 +506,28 @@ El repositorio ya lo creaste en el bloque 1. Lo que queda es cerrarlo y dejarlo 
    Si cada quien crea su propio repositorio no hay proyecto integrador: serían tres Servidores Centrales distintos en vez de uno, y en la Unidad 6 sus sucursales no se podrían conectar al mismo lugar.
 
 Todavía no hay código del integrador: por ahora basta con que el equipo quede formado y los dominios reservados, porque a partir de la Unidad 2 cada sucursal empezará a conectarse a un Servidor Central que desarrollarán en conjunto.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué hace el sistema operativo que tu servidor no podría hacer solo?
+2. Qué es una llamada al sistema y por qué existe?
+3. En qué se diferencian el modo usuario y el modo kernel?
+
+**De aplicación a tu proyecto**
+
+4. Cuando tu servidor escribe un recibo, quién toca físicamente el disco? Explica el camino.
+5. Si tu servidor tuviera un error grave y tronara, por qué no se cae Windows entero?
+6. Por qué el destino natural de tu servidor es Linux y no Windows?
+
+**Difíciles**
+
+7. Un cambio de modo usuario a kernel cuesta tiempo. Dónde crees que eso le va a doler más a tu servidor: al leer el catálogo una vez al arrancar, o al escribir un recibo por cada pedido?
+   *Respuesta: en los recibos, porque es por operación. Enlaza con el buffering de la semana 13.*
+8. Si el SO aísla la memoria de cada proceso, cómo le van a hacer dos procesos tuyos para pasarse un pedido?
+   *Respuesta: no pueden compartir el objeto; necesitan un mecanismo del SO. Es la semana 8.*

@@ -9,12 +9,26 @@ title: Matemáticas para Ingeniería de Materiales
 
 - [Programa del curso](programa)
 
+## Cómo funciona el curso
+
+Este curso no se cursa: se trabaja. Cada quien modela un fenómeno de su propia tesis y lo avanza a
+lo largo del semestre, y las sesiones son clínicas en las que un proyecto se expone y los demás lo
+revisan.
+
+- [Dinámica del curso: la clínica de modelado](tutoria/)
+- [Ruta del proyecto: los cinco hitos](ruta/)
+- [Sesión de arranque](encuadre/)
+- [Plantillas de entrega](plantillas/)
+
 ## Requisitos
 
 - [Instalación y uso de Matlab](matlab)
 - [Instalación y uso de LaTex](latex/)
 
-## Actividades de clase
+## Biblioteca de fichas
+
+Fichas de referencia sobre conceptos, modelos y técnicas. Se consultan cuando un encargo las pide;
+no se ven todas ni en orden. Los temas sin enlace todavía no tienen ficha escrita.
 
 1. Modelos teóricos
    1. [Modelo matemático](modelo_teorico/modelo_matematico)
@@ -35,6 +49,3 @@ title: Matemáticas para Ingeniería de Materiales
    1. Optimización aplicada al diseño de materiales
    1. Análisis multiobjetivo y compromisos de diseño
    1. Integración de modelos y optimización en casos reales
-
-## Proyecto final
-

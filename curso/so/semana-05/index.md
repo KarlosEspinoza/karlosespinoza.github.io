@@ -21,6 +21,7 @@ Esto no es una curiosidad académica. Es el error más caro que existe en el sof
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -436,3 +437,32 @@ Las dejamos anotadas tal cual. La semana que viene vamos a ver cuál de las tres
 2. **Identifiquen la sección crítica del Servidor Central**, que es más difícil que la de una sucursal. Si las tres sucursales le mandan pedidos al mismo tiempo, qué estructura compartida tiene el central? Déjenlo escrito en el README del equipo, aunque todavía no lo hayan programado.
 
 3. **Discutan y anoten:** si cada sucursal tiene su propio inventario en su propio proceso, hay condición de carrera **entre sucursales**? Con lo de la semana 3 sobre espacios de direcciones separados ya tienen con qué contestarla, y la respuesta no es la que parece a primera vista.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué es una condición de carrera?
+2. Qué es una sección crítica?
+3. Por qué `existencia = existencia - 1` no es una sola operación?
+
+**De aplicación a tu proyecto**
+
+4. Enséñame tu sección crítica y dime dónde empieza y dónde termina, y por qué ahí.
+5. Enséñame la corrida donde tu inventario quedó mal y explícame qué intercalado lo produjo.
+6. Corriste cinco veces y una dio el resultado correcto. Qué demuestra esa corrida?
+7. Cuánto le habrías cobrado de más o de menos a tus clientes en tu peor corrida?
+
+**Difíciles**
+
+8. Por qué es peor vender lo que no tienes que no vender lo que tienes? Contesta con tu dominio.
+9. Con 2 hilos en tu máquina nunca falla. Es seguro ese código? Justifica.
+   *Respuesta: no. Probabilidad baja no es cero, y en producción hay millones de operaciones.*
+10. Quitaste el `Thread.sleep(1)` y dejó de fallar. Se arregló el problema?
+    *Respuesta: no. Solo se estrechó la ventana. El error sigue completo.*
+11. Si tu sistema tiene N hilos descontando a la vez del mismo valor, cuántos descuentos se pueden perder en el peor caso?
+    *Respuesta: N-1. Sale del intercalado del pizarrón.*

@@ -1,0 +1,4 @@
+# No versionar datos de alumnos ni los repos clonados.
+alumnos.csv
+repos-individual/
+repos-equipo/

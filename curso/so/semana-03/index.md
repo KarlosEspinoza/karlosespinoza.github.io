@@ -21,6 +21,7 @@ Y con eso ya tienes lo necesario para entender los **contenedores**, que es la p
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -528,3 +529,29 @@ Las tres sucursales van a tener que entenderse entre ellas a partir de la Unidad
 2. **Cada quien conserva su propio catálogo**, con sus productos y sus precios. Lo que se comparte es el formato del archivo, no el contenido.
 
 3. **Discutan una pregunta y anoten su respuesta:** cuando tengan el Servidor Central, cada sucursal va a ser un proceso independiente. Qué ventaja tiene eso frente a hacer un solo programa gigante que atienda las tres? Con lo del bloque 1 ya tienen con qué contestarla, y es justo lo que voy a preguntar en la revisión de la semana 9.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué guarda el sistema operativo en el descriptor de un proceso?
+2. Qué es un cambio de contexto?
+3. Qué es un namespace y qué es un cgroup?
+
+**De aplicación a tu proyecto**
+
+4. Tu servidor lanzó un hijo. Enséñame los dos PIDs y explica la relación.
+5. Por qué el hijo no puede modificar una variable de tu servidor?
+6. Si metieras tu servidor en un contenedor, qué PID se creería a sí mismo? Por qué?
+7. Qué pasa en tu servidor si quitas el `waitFor()`?
+
+**Difíciles**
+
+8. Un contenedor no es una máquina virtual. Explica la diferencia en términos de kernel.
+9. Los hilos de un proceso comparten el montón pero no la pila. Con lo que sabes del espacio de direcciones, por qué esa división tiene sentido? (Enlaza con la semana 4.)
+10. Tu equipo va a correr tres sucursales. Qué ganan corriéndolas como tres procesos en vez de un solo programa?
+    *Respuesta: aislamiento. Si una truena, las otras siguen. Es la pregunta del integrador de esta semana.*

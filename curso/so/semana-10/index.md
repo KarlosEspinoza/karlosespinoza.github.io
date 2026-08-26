@@ -21,6 +21,7 @@ Esa decisión la toma el sistema operativo miles de veces por segundo con los pr
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -494,3 +495,33 @@ Limpien con `pkill -f EstadoR`.
 2. **Implementen y midan las dos opciones**, con las tres sucursales mandando carga desigual a propósito: una manda 100 pedidos, otra 20 y otra 5. Guarden la comparación.
 
 3. **Anoten la pregunta y su respuesta:** si una sucursal se satura y llena la cola del central, qué pasa con las otras dos? Esa pregunta se contesta de verdad en la semana 12, cuando el buffer tenga un límite.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué es el quantum y qué pasaría sin él?
+2. Qué es un cambio de contexto y cuánto cuesta, en orden de magnitud?
+3. Diferencia entre planificación expropiativa y cooperativa.
+
+**De aplicación a tu proyecto**
+
+4. Qué política implementaste y por qué esa? Justifica con tu negocio, no con la teoría.
+5. Enséñame tus dos mediciones, FIFO y SJF. Qué ganó y qué perdió cada una?
+6. Qué es la inanición? Enséñame el pedido que la sufrió en tu sistema y cuánto esperó.
+7. Por qué tu planificador usa `wait()` y no un ciclo que revise la cola?
+
+**Difíciles**
+
+8. SJF es óptimo en espera promedio. Por qué entonces casi ningún sistema real lo usa puro?
+   *Respuesta: inanición, y además requiere conocer la duración por adelantado.*
+9. Por qué `wait()` tiene que soltar el candado? Qué pasaría si no lo soltara?
+   *Respuesta: interbloqueo. Nadie podría encolar el pedido que el otro espera.*
+10. Por qué `wait()` va dentro de un `while` y no de un `if`?
+    *Respuesta: otro hilo puede llevarse el dato, y existen despertares espurios.*
+11. Subiste la constante de envejecimiento hasta que SJF se comportó como FIFO. Qué dice eso sobre las políticas de planificación?
+    *Respuesta: no son categorías cerradas, son un continuo con parámetros.*

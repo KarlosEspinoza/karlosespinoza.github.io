@@ -21,6 +21,7 @@ Y la parte práctica es la que tu servidor necesita de verdad. Tu `pedidos.log` 
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -591,3 +592,35 @@ La solución de verdad: mandarle una señal al servidor para que cierre y reabra
 2. **Implementen la consulta cruzada:** un cajero de la sucursal 1 pregunta por un pedido de la sucursal 3, y el central lo encuentra con el índice. Es la primera vez que el sistema integrado hace algo que ninguna sucursal puede hacer sola.
 
 3. **Preparen el terreno para la semana 16.** Hasta hoy las sucursales y el central se comunican por tuberías, lo que los obliga a estar en la misma máquina. La semana que viene eso cambia. Revisen su código y marquen **qué partes suponen que el otro proceso está local**: son las que van a tener que cambiar.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué es un inodo y qué guarda?
+2. Dónde está el nombre de un archivo, si no está en el inodo?
+3. Diferencia entre un enlace duro y uno simbólico.
+
+**De aplicación a tu proyecto**
+
+4. Por qué elegiste append-only para tu log y qué te permite hacer?
+5. Enséñame tu tabla de tiempos, directo contra secuencial. Por qué el directo es plano?
+6. Cuánto ocupa tu índice en memoria y por qué vale la pena ese gasto?
+7. Por qué tu log no puede usar buffer si llevas el índice de posiciones?
+
+**Difíciles**
+
+8. Borraste el log de un servidor que lo tenía abierto y el espacio no se liberó. Por qué, y cómo lo diagnosticas?
+   *Respuesta: el descriptor cuenta como referencia; el inodo no se libera hasta que llegue a 0. `lsof +L1`.*
+9. Tu servidor emite 500 recibos al día. En un año, cuánto espacio y cuántos inodos consume, y por qué el espacio es mucho mayor que la suma de los tamaños?
+   *Respuesta: cada archivo ocupa un bloque completo de 4 KB.*
+10. Metiste un acento en un nombre de producto y el índice se desalineó. Por qué?
+    *Respuesta: UTF-8. `length()` cuenta caracteres, el archivo se mide en bytes.*
+11. Rotaste el log con `mv` y el servidor siguió escribiendo en el archivo viejo. Por qué, y cómo se resuelve en un servidor real?
+    *Respuesta: el descriptor apunta al inodo, no al nombre. Se resuelve con `SIGHUP`.*
+12. Tu índice tiene 100000 entradas en RAM. Qué hace una base de datos con mil millones?
+    *Respuesta: no lo tiene en RAM. Árbol B en disco.*

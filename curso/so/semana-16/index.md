@@ -21,6 +21,7 @@ De redes ya sabes bastante por Redes I a III. Lo que aporta este curso es la otr
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -601,3 +602,32 @@ Este es el último avance antes de la entrega final. El sistema tiene que quedar
    - Se satura una sucursal: afecta a las demás? (Es la contrapresión de la semana 12, ahora sobre la red.)
 
 4. **Preparen la demo final** de la [semana 17](/curso/so/semana-17) y ensáyenla completa, con el montaje en varias máquinas. El montaje es lo que falla el día de la entrega, no el código.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué es un socket para el sistema operativo?
+2. Cuál es la secuencia de llamadas del lado del servidor?
+3. Por qué tu servidor no puede escuchar en el puerto 80?
+
+**De aplicación a tu proyecto**
+
+4. Enséñame tu `ss` con dos cajeros y explícame cada columna.
+5. Por qué `accept()` devuelve un descriptor distinto del que escucha?
+6. Los dos cajeros hablan con el mismo puerto 5000. Cómo los distingue el sistema?
+7. Qué pasa en tu servidor si un cajero cierra la ventana de golpe?
+
+**Difíciles**
+
+8. Tu cliente se quedaba colgado aunque el servidor decía en su log que había respondido. Qué pasaba, y cómo lo diagnosticas?
+   *Respuesta: buffering del `PrintWriter`. Se diagnostica con `ss` mirando `Send-Q`.*
+9. Cuántos cajeros aguantó tu servidor y qué recurso del SO se acabó primero? Con qué otro límite del curso se conecta?
+   *Respuesta: descriptores, memoria de pilas o cola de listen. Los tres salieron antes.*
+10. Por qué un socket y un archivo se leen con las mismas llamadas al sistema?
+    *Respuesta: la abstracción de descriptor. "Todo es un archivo".*
+11. Tu servidor escucha en `0.0.0.0` y no en `127.0.0.1`. Qué diferencia hay y por qué importa?

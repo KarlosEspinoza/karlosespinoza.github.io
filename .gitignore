@@ -64,3 +64,7 @@ _site
 
 # Material de profesor: vive en el repo privado so-profesor, nunca aqui
 **/profesor.md
+
+# Datos personales de alumnos: viven solo en el repositorio privado del curso.
+# Este repositorio es publico. La plantilla vacia se llama alumnos_ejemplo.csv.
+**/alumnos.csv

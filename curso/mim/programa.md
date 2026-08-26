@@ -154,11 +154,26 @@ title: Matemáticas para Ingeniería de Materiales
 
 ## Planeación {#planeacion}
 
-Unidad 1 – Modelos teóricos en ciencia de materiales (Sesiones 1 a 3)
+El curso se desarrolla bajo la modalidad de **clínica de modelado**. Cada estudiante formula y
+desarrolla un proyecto integrador sobre un fenómeno propio de su tema de tesis, y las sesiones se
+dedican a la exposición y revisión colegiada de los avances individuales: en cada turno un
+estudiante presenta su avance y sus compañeros actúan como panel revisor.
 
-Unidad 2 – Modelado y simulación numérica (Sesiones 4 a 7)
+Los contenidos de las tres unidades se abordan de manera progresiva, conforme el proyecto de cada
+estudiante los requiere, mediante asignaciones individuales de estudio dirigido con fuente
+bibliográfica específica. La cobertura de los temas del programa se registra a lo largo del ciclo.
 
-Unidad 3 – Optimización y análisis multiobjetivo (Sesiones 8 a 10)
+| Etapa del proyecto integrador | Unidad del programa |
+|---|---|
+| Planteamiento del modelo: variables, parámetros, supuestos y alcance | Unidad 1 |
+| Estimación de parámetros y selección del modelo constitutivo o fenomenológico | Unidad 1 |
+| Formulación a partir de balances físicos, escalamiento y simplificación | Unidad 2 |
+| Solución numérica, discretización y verificación de resultados | Unidad 2 |
+| Formulación de la optimización con restricciones y análisis multiobjetivo | Unidad 3 |
+| Integración del modelo y la optimización, manuscrito final y defensa | Unidad 3 |
+
+Cada estudiante presenta cinco avances a lo largo del ciclo, participa como revisor en los avances
+de sus compañeros y entrega un manuscrito final que defiende ante el grupo.
 
 ---
 

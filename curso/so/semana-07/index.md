@@ -21,6 +21,7 @@ Ese último punto es el que vale para tu carrera. Un interbloqueo no imprime un 
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -493,3 +494,33 @@ La revisión de la semana 9 está a dos semanas. Este es el momento de cerrar la
 2. **Provoquen un interbloqueo entre dos componentes del equipo** (una sucursal y el central, por ejemplo) y guarden el `jstack` como evidencia. Después arréglenlo y guarden el segundo `jstack` limpio. El antes y el después es lo que se evalúa.
 
 3. **Preparen el guion de la demostración de la semana 9.** Tienen tres cosas que enseñar en pocos minutos: el sistema con la condición de carrera, el sistema arreglado, y el interbloqueo diagnosticado. Ensáyenlo: en la revisión el tiempo es corto y una demo que no arranca cuesta caro.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué es un interbloqueo?
+2. Cuáles son las cuatro condiciones de Coffman?
+3. Cuál de las cuatro es la que se rompe en la práctica, y cómo?
+
+**De aplicación a tu proyecto**
+
+4. Enséñame tu `jstack` y dime qué hilo tiene qué candado y a quién espera.
+5. Por qué `ps` no sirve para detectar un interbloqueo? Enséñame las dos salidas.
+6. Cuál es tu orden global de candados y dónde está escrito?
+7. Cuál de las cuatro condiciones rompiste y por qué esa y no otra?
+
+**Difíciles**
+
+8. Pusiste un candado por producto para ganar paralelismo y apareció un interbloqueo que nadie programó. De dónde salió el orden cruzado?
+   *Respuesta: de los datos. Es el caso de las transferencias bancarias.*
+9. Cómo impones un orden global cuando los recursos son datos y no variables?
+   *Respuesta: ordenar por una propiedad total de los datos, como `compareTo` del nombre.*
+10. `tryLock` con reintento evita el interbloqueo. Qué problema nuevo puede crear y cómo se evita?
+    *Respuesta: livelock. Se evita con espera aleatoria antes de reintentar.*
+11. Tu servidor lleva 3 horas sin responder, `ps` lo muestra normal y el log no dice nada. Qué haces, en orden?
+    *Respuesta: `jstack`, buscar deadlock, cruzar `locked`/`waiting to lock`.*

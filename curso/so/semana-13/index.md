@@ -21,6 +21,7 @@ Y de paso se resuelve un misterio que quedó colgado desde la semana 2: aquel lo
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -568,3 +569,33 @@ La revisión de la semana 14 es la siguiente. Este es el último avance antes de
 3. **Cada integrante actualiza su archivo de autoevaluación entre pares** y hace push antes de la revisión.
 
 4. **Repasen la lista de la [semana 14](/curso/so/semana-14)** y marquen qué falta. Es el momento de preguntar, no el día de la revisión.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué es una llamada al sistema y por qué existe?
+2. Qué son los descriptores 0, 1 y 2?
+3. Qué significa `2>&1`?
+
+**De aplicación a tu proyecto**
+
+4. Enséñame en tu `strace` las tres llamadas de un recibo y explícame cada número.
+5. Cuántas llamadas al sistema cuesta emitir un recibo tuyo?
+6. Por qué en la semana 2 tu log salía vacío? En cuál de los dos buffers se quedaron las líneas?
+7. Decidiste hacer `flush` en cada línea del log o no. Qué estás arriesgando con esa decisión?
+
+**Difíciles**
+
+8. Encontraste una llamada `futex` en tu `strace`. De dónde salió?
+   *Respuesta: de `synchronized`. Es un hilo bloqueado esperando un candado, semana 6.*
+9. Con buffer haces 300 veces menos llamadas y escribes los mismos bytes. Por qué la llamada al sistema es cara en cantidad y no en tamaño?
+   *Respuesta: el costo es el cruce de modo usuario a kernel, que es fijo por llamada.*
+10. Tu servidor descuenta del inventario en memoria y escribe el recibo a disco. Si muere de golpe, qué queda inconsistente?
+    *Respuesta: el inventario completo se pierde. Es lo que resuelve el log de la semana 15.*
+11. Tu servidor abre un archivo por recibo y no lo cierra. Cuántos pedidos aguanta y con qué otros límites del curso se parece?
+    *Respuesta: ~1024, el `ulimit -n`. Se parece a los PIDs de los zombis y a las pilas de hilos.*

@@ -1,0 +1,137 @@
+% ---------------------------------------------------------------
+% Plantilla de avance -- Matematicas Aplicadas al Modelado de Materiales
+%
+% Se entrega el .tex y el .pdf compilado, en:
+%   alumnos/<codigo>/avances/tNN/
+% junto con las carpetas codigo/, datos/ y figuras/
+%
+% Compilar con:  pdflatex avance.tex
+% ---------------------------------------------------------------
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% La primera vez, MikTeX descarga solo el paquete de espanol. Si le pregunta,
+% acepte la instalacion.
+\usepackage[spanish,mexico]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\graphicspath{{figuras/}}
+
+\title{Avance tNN: \textit{titulo corto de lo que hizo}}
+\author{Nombre del estudiante \\ Codigo: 000000000}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% ===============================================================
+\section{Encargo recibido}
+% Copiado literal del cierre del turno anterior, sin reescribirlo.
+% Las cuatro partes: concepto, fuente, pregunta que debe responder,
+% evidencia esperada.
+% ===============================================================
+
+\begin{description}
+  \item[Concepto o tecnica:]
+  \item[Fuente:]
+  \item[Pregunta que debo poder responder:]
+  \item[Evidencia esperada:]
+\end{description}
+
+% ===============================================================
+\section{Que estudie}
+% El concepto con SUS palabras. Toda ecuacion lleva debajo la lista
+% de sus variables con unidades. No copie el libro: explique.
+% ===============================================================
+
+\begin{equation}
+  y = f(x)
+\end{equation}
+
+donde:
+
+\begin{itemize}
+  \item $y$: descripcion (unidades)
+  \item $x$: descripcion (unidades)
+\end{itemize}
+
+% ===============================================================
+\section{Como lo aplique a mi caso}
+% La tecnica sobre SU fenomeno, con sus numeros. Si esta seccion
+% se puede leer sin saber cual es su tesis, esta mal escrita.
+% ===============================================================
+
+% ===============================================================
+\section{Evidencia}
+% Figuras numeradas y referenciadas desde el texto, tabla de
+% resultados y el error cuantificado con sus unidades.
+% ===============================================================
+
+\begin{figure}[htbp]
+  \centering
+  % \includegraphics[width=0.75\textwidth]{nombre_figura.png}
+  \caption{Que se ve aqui y que hay que concluir de ello.}
+  \label{fig:resultado}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Metricas de error del modelo ajustado.}
+  \label{tab:metricas}
+  \begin{tabular}{lrl}
+    \toprule
+    Metrica & Valor & Unidades \\
+    \midrule
+    MAE  & & \\
+    RMSE & & \\
+    $R^2$ & & (adimensional) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ===============================================================
+\section{Como reproducirlo}
+% El panel va a seguir esto al pie de la letra. Que script se corre,
+% en que orden, y que archivo produce cada uno.
+% ===============================================================
+
+\begin{enumerate}
+  \item \texttt{codigo/gen\_datos.m} produce \texttt{datos/datos.csv}
+  \item \texttt{codigo/ajuste.m} lee \texttt{datos/datos.csv} y produce
+        \texttt{figuras/ajuste.png} y \texttt{datos/metricas.csv}
+\end{enumerate}
+
+Version de Matlab utilizada:
+
+Toolboxes necesarias (o la alternativa sin toolbox):
+
+% ===============================================================
+\section{Que no me salio}
+% Lo que fallo y lo que quedo abierto. Un avance sin esta seccion
+% esta incompleto. Reportar el problema no baja la calificacion.
+% ===============================================================
+
+\begin{itemize}
+  \item
+\end{itemize}
+
+\subsection*{Lo que voy a preguntar en la sesion}
+
+% ===============================================================
+\section{Referencias}
+% ===============================================================
+
+\begin{thebibliography}{9}
+
+\bibitem{fuente}
+  Autor, \textit{Titulo}, editorial, ano, capitulo y seccion.
+
+\end{thebibliography}
+
+\end{document}

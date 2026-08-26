@@ -21,6 +21,7 @@ La respuesta son los **hilos**. Un hilo es una linea de ejecución dentro de tu 
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -522,3 +523,31 @@ Las tres sucursales ya atienden en paralelo. Ahora hay que ponerse de acuerdo en
 2. **Decidan el modelo de concurrencia del equipo** y déjenlo escrito: un hilo por pedido, o pool con un tamaño fijo. Si eligen pool, cuál es el tamaño y con qué argumento lo eligieron. En la semana 16, cuando los cajeros lleguen por socket, esta decisión va a definir cuántos cajeros simultáneos aguanta el sistema.
 
 3. **Anoten la pregunta que van a tener que contestar en la revisión de la semana 9:** su Servidor Central va a recibir pedidos de las tres sucursales al mismo tiempo. Qué van a compartir esos hilos y qué no? Todavía no la contesten. Con lo de las semanas 5 y 6 van a tener con qué.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances (semana 9, 14 o 17, según te toque). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. El instrumento completo está en [Prácticas](/curso/so/evaluacion/practicas).
+
+**Fáciles**
+
+1. Qué es un hilo y en qué se diferencia de un proceso?
+2. Qué comparten dos hilos del mismo proceso y qué no?
+3. Por qué `ps -ef` muestra una sola línea aunque tu servidor tenga 20 hilos?
+
+**De aplicación a tu proyecto**
+
+4. Enséñame en tu log que dos pedidos se atendieron al mismo tiempo. Cómo lo sabes?
+5. Por qué tu servidor usa hilos y no procesos para atender pedidos? Dos razones, y mediste las dos.
+6. Tu servidor atendió 10 pedidos de 2 segundos en poco más de 2 segundos. De dónde salió ese tiempo?
+7. Cuántos hilos tenía tu servidor en reposo y cuántos bajo carga? De dónde salen los que no creaste tú?
+
+**Difíciles**
+
+8. Si `atender` en vez de dormir hiciera cálculo puro durante 2 segundos, seguirías midiendo el mismo factor de mejora? Por qué?
+   *Respuesta: no. Con espera, la mejora es el número de hilos; con cálculo, es el número de núcleos.*
+9. Tu servidor con un hilo por pedido se muere con 10000 pedidos. Qué recurso se acabó, y con qué otro límite del curso se parece?
+   *Respuesta: memoria para las pilas. Se parece a los PIDs de los zombis y a los descriptores de la semana 13.*
+10. Corriste el contador cinco veces y una dio el número correcto. Qué demuestra esa corrida?
+    *Respuesta: nada. Es la pregunta trampa. Una prueba que pasa no demuestra ausencia de condición de carrera.*
