@@ -379,10 +379,13 @@ Lanza tu servidor en segundo plano y anota los dos números que salen:
 ```bash
 cd ~/so-proyecto/src
 java ServidorPedidos > ../datos/servidor.log 2>&1 &
+disown
 ps -o pid,ppid,stat,cmd -p $!
 ```
 
-`$!` es el PID del último proceso que lanzaste en segundo plano, así no tienes que buscarlo.
+`$!` es el PID del último proceso que lanzaste en segundo plano, así no tienes que buscarlo. `disown` lo suelta de la tabla de trabajos de tu shell.
+
+**Si estás en WSL2:** cerrar la ventana manda `SIGHUP` a toda la sesión, no solo al proceso en primer plano como en un Linux nativo. Sin `disown`, tu servidor muere ahí y no llega a ver la reparentación. En un Linux real (incluido el Arch de kmac) no hace falta: el `&` solo ya basta.
 
 Ahora **cierra esa terminal completa** (la X de la ventana, no `Ctrl + C`). Abre una terminal nueva y búscalo otra vez:
 
