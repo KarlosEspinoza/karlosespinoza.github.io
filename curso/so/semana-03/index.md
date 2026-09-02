@@ -337,6 +337,14 @@ git push
 
 Llegas con tu servidor lanzando un hijo y con tu tabla de namespaces escrita. Hoy comprobamos lo que predijiste y le damos forma al dato central del proyecto. Trae tu laptop y tu tabla del bloque 1 a la mano, porque la vas a corregir en vivo.
 
+Antes de arrancar con la primera actividad, deja esto corriendo en tu terminal: graba todo lo que teclees y lo que te conteste, sin que tengas que copiar nada a mano después.
+
+```bash
+script -a evidencias/sesion-aula.txt
+```
+
+Trabaja normal el resto de la sesión sobre esa misma terminal. Si algo se queda corriendo sin parar (un `watch`, o el `Tragon` imprimiendo sin fin), dale `Ctrl+C` antes de seguir, para no dejar la grabación creciendo de más.
+
 #### 1. La demostración de los namespaces
 
 **No necesitas tener Docker instalado**: la corremos en pantalla, y quien sí lo tenga la sigue en su máquina.
@@ -347,7 +355,7 @@ Primero, desde fuera, la foto de referencia:
 ps -ef | wc -l
 ```
 
-Ese número es cuántos procesos ve tu Ubuntu. Anótalo.
+Vas a ver un solo número, por ejemplo `142`: cuántos procesos ve tu Ubuntu ahora mismo. Anótalo.
 
 Ahora arrancamos un contenedor y le pedimos lo mismo desde dentro:
 
@@ -363,6 +371,18 @@ whoami
 hostname
 ```
 
+Salida esperada (los números y el hostname cambian, la forma no):
+
+```
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 12:04 pts/0    00:00:00 bash
+root           7       1  0 12:04 pts/0    00:00:00 ps -ef
+root
+3f9a8b2c1d4e
+```
+
+Tres cosas saltan de ahí: **tu `bash` es el PID 1**, aunque tu Ubuntu tenga cientos de procesos corriendo. **Solo ves dos líneas**, las tuyas, nada del resto de la máquina. Y eres **`root`**, aunque tu usuario normal en Ubuntu no lo sea. El `hostname` tampoco es el de tu máquina: es un identificador que Docker le inventó a este contenedor.
+
 Saca tu tabla del bloque 1 y **cotéjala renglón por renglón**. Vamos a preguntar quién acertó en las tres, y sobre todo **por qué** quien falló esperaba otra cosa.
 
 La segunda mitad es la que de verdad enseña el concepto. Dentro del contenedor deja algo corriendo y mira su PID desde dentro:
@@ -372,11 +392,30 @@ sleep 300 &
 ps -ef
 ```
 
+Salida esperada:
+
+```
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 12:05 pts/0    00:00:00 bash
+root           9       1  0 12:05 pts/0    00:00:00 sleep 300
+root          10       1  0 12:05 pts/0    00:00:00 ps -ef
+```
+
+El `sleep` tiene un PID de un solo dígito porque el namespace le dio una numeración nueva, propia del contenedor.
+
 Sin cerrar el contenedor, abre **otra terminal de Ubuntu** y busca ese mismo proceso en la máquina anfitriona:
 
 ```bash
 ps -ef | grep "sleep 300"
 ```
+
+Salida esperada:
+
+```
+karlos   48213  48190  0 12:05 pts/1    00:00:00 sleep 300
+```
+
+Es el mismo proceso, pero visto desde fuera tiene **otro PID, mucho más grande**, y su PPID ya no es el `bash` de adentro: es el proceso de Docker que lanzó el contenedor. El kernel solo conoce un PID real; el que viste adentro era la vista recortada que le da el namespace.
 
 Llena esto:
 
@@ -419,14 +458,39 @@ javac Tragon.java
 java -Xmx128m Tragon
 ```
 
-Anota hasta qué número llegó y con qué mensaje murió. Ese mensaje viene de la JVM.
+Salida esperada (el número exacto varía un poco):
 
-Ahora el mismo programa dentro de un contenedor con un cgroup de memoria:
+```
+Reservados 1 MB
+Reservados 2 MB
+...
+Reservados 122 MB
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+    at java.base/java.util.ArrayList.add(ArrayList.java:487)
+    at Tragon.main(Tragon.java:11)
+```
+
+Anota hasta qué número llegó. La excepción la lanza **la JVM**, no el sistema operativo: `-Xmx128m` es un límite que Java se pone a sí misma, y cuando el `heap` se llena, revienta con su propio mensaje y su propio *stack trace*.
+
+Ahora el mismo programa dentro de un contenedor con un cgroup de memoria. Esta vez le pasamos un `-Xmx` explícito, **más grande que el límite del cgroup**:
 
 ```bash
-docker run --rm -it --memory=64m -v ~/so-proyecto/src:/app -w /app eclipse-temurin:21-jdk \
-  java Tragon
+docker run --rm -it --memory=64m -v "$(pwd):/app" -w /app eclipse-temurin:21-jdk \
+  java -Xmx256m Tragon
 ```
+
+Por qué el `-Xmx256m` y no lo dejamos sin límite como arriba: desde hace varias versiones, la JVM **detecta que está dentro de un contenedor** y, si no le pones `-Xmx`, se autolimita el heap a una fracción de lo que ve en el cgroup. Si la dejas así, revienta con su propia `OutOfMemoryError` otra vez, exactamente igual que en el paso anterior, y el cgroup nunca llega a intervenir. Al ponerle `-Xmx256m` le decimos "tienes 256 MB de heap", una cifra que la JVM se cree aunque el cgroup solo le va a dejar usar 64 MB de verdad. Así el que se entera del límite real, y actúa, es el kernel.
+
+Salida esperada (el número exacto varía según cuánta memoria use la JVM además del heap):
+
+```
+Reservados 1 MB
+Reservados 2 MB
+...
+Reservados 48 MB
+```
+
+Y ahí se corta. **No hay excepción, no hay `stack trace`, no hay ningún mensaje de Java.** El proceso simplemente desaparece y la terminal regresa al prompt. Esta vez no fue la JVM la que decidió parar: fue el kernel, desde afuera, el que mató al proceso al pasarse del límite del cgroup.
 
 Compara:
 
@@ -441,7 +505,14 @@ Las dos muertes se ven parecidas y **no son lo mismo**: una la decide la JVM y l
 dmesg | tail -20
 ```
 
-Ahí aparece el **OOM killer**, que es tema completo de la semana 12. Por hoy basta con que lo hayas visto una vez y sepas que existe.
+Salida esperada (dos líneas, entre mucho más texto):
+
+```
+[12345.678123] Tragon invoked oom-killer: gfp_mask=0x1100dca, order=0, oom_score_adj=0
+[12345.679456] Out of memory: Killed process 48321 (java) total-vm:2134528kB, anon-rss:64200kB
+```
+
+Eso es el **OOM killer**: el kernel vigila cuánta memoria consume cada proceso, y cuando uno se pasa del límite de su cgroup, lo mata para proteger al resto del sistema. Es justo lo que le pasó a tu `Tragon`: no hubo excepción de Java porque el proceso nunca llegó a intentar nada, el kernel lo cortó desde afuera.
 
 #### 3. Modelamos el pedido, entre todos
 
@@ -460,7 +531,7 @@ Cada quien escribe en una hoja **qué datos tiene un pedido en su dominio**. Des
 Las preguntas que vamos a discutir sobre esa tabla, y que cada quien resuelve para lo suyo:
 
 1. **Qué campo le falta a tu dominio** que no está en la lista. (Mesa, en un restaurante. Placa, en un estacionamiento. Receta, en una farmacia.)
-2. **De dónde sale el `id`?** Si dos cajeros mandan un pedido al mismo tiempo, quién decide el número y cómo evitas que se repita? Anota tu respuesta: la vamos a destruir en la semana 5.
+2. **De dónde sale el `id`?** Si dos cajeros mandan un pedido al mismo tiempo, quién decide el número y cómo evitas que se repita? Anota tu respuesta, la vamos a poner a prueba pronto.
 3. **Por qué `estado` y no un `boolean atendido`?** Piensa en el pedido que llegó pero no había existencia.
 
 #### 4. La pregunta que abre la Unidad 2
@@ -479,13 +550,37 @@ Córrelo y, desde otra terminal, mira el estado del padre mientras el hijo traba
 ps -o pid,ppid,stat,cmd -C java
 ```
 
-El padre está en `S`, esperando. Ahora imagina cinco cajeros mandando pedidos al mismo tiempo:
+Salida esperada:
+
+```
+    PID   PPID STAT CMD
+   5231      1 S    java ServidorPedidos
+   5240   5231 R    java GeneradorPedidos
+```
+
+El `S` de tu servidor confirma que está bloqueado dentro del `waitFor()`, sin usar procesador. El `R` del hijo es el que sí está trabajando. Ahora imagina cinco cajeros mandando pedidos al mismo tiempo:
 
 - Si tu servidor atiende a uno y se bloquea, **qué pasa con los otros cuatro?**
 - Se te ocurre lanzar un proceso por cada cajero. Con lo que midieron la semana pasada en "el costo de arrancar", cuánto le cuesta eso a tu servidor con 50 pedidos por minuto?
 - Y aunque pudieras: los cinco procesos tendrían que descontar del **mismo inventario**. Con lo del bloque 1 sobre espacios de direcciones separados, ves ya el problema?
 
 Esas tres preguntas son la Unidad 2 completa. La respuesta empieza la semana que viene con los hilos.
+
+#### Antes de irte
+
+Sal de la grabación que dejaste corriendo al principio:
+
+```bash
+exit
+```
+
+Y sube el archivo:
+
+```bash
+git add evidencias/sesion-aula.txt
+git commit -m "s03 proyecto: evidencia de la sesion de aula"
+git push
+```
 
 ---
 
@@ -552,6 +647,6 @@ Banco de preguntas de este tema para que llegues preparado a la revisión de ava
 **Difíciles**
 
 8. Un contenedor no es una máquina virtual. Explica la diferencia en términos de kernel.
-9. Los hilos de un proceso comparten el montón pero no la pila. Con lo que sabes del espacio de direcciones, por qué esa división tiene sentido? (Enlaza con la semana 4.)
+9. Los hilos de un proceso comparten el montón pero no la pila. Con lo que sabes del espacio de direcciones, por qué esa división tiene sentido?
 10. Tu equipo va a correr tres sucursales. Qué ganan corriéndolas como tres procesos en vez de un solo programa?
     *Respuesta: aislamiento. Si una truena, las otras siguen. Es la pregunta del integrador de esta semana.*
