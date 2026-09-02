@@ -78,7 +78,7 @@ Fíjate en algo que confunde a todos: **`ps` usa la misma letra `R` para "listo"
 Y las dos transiciones que importan:
 
 - **De Ejecutando a Bloqueado.** Tu servidor llama a `Thread.sleep`, o lee un archivo, o espera un pedido. El SO se lo lleva del procesador **de inmediato**, sin esperar a que se acabe su turno, porque no tiene sentido darle procesador a alguien que no puede avanzar. Ese es el motivo real de que tu servidor estuviera en `S` con 0% de CPU.
-- **De Ejecutando a Listo.** No pidió nada, simplemente **se le acabó el turno**. El SO lo interrumpe a media instrucción y le da el procesador a otro. Eso es el cambio de contexto de la semana 3, y ese turno tiene nombre: se llama **quantum**, y lo vamos a medir en la semana 10.
+- **De Ejecutando a Listo.** No pidió nada, simplemente **se le acabó el turno**. El SO lo interrumpe a media instrucción y le da el procesador a otro. Eso es el cambio de contexto de la semana 3, y ese turno tiene nombre: se llama **quantum**.
 
 La conclusión práctica, y es la que abre el tema de hoy: **un proceso bloqueado no estorba a los demás, pero tampoco avanza**. Si tu servidor se bloquea atendiendo un pedido, no es que esté gastando recursos: es que **no está atendiendo a nadie más**.
 
@@ -241,7 +241,6 @@ public class ServidorPedidos {
         //       pista: linea.split(";")
 
         // Simulamos que atender cuesta trabajo: consultar, cobrar, imprimir.
-        // En la semana 13 esto se va a volver escritura real a disco.
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -310,7 +309,16 @@ ps -o pid,nlwp,stat,cmd -C java
 top -H -p TU_PID
 ```
 
-Ahí vas a ver tus hilos con el nombre que les pusiste (`pedido-1`, `pedido-2`), mezclados con los internos de la JVM.
+Salida esperada (renglones abreviados):
+
+```
+  PID USER      %CPU %MEM COMMAND
+ 5245 karlos     0.3  0.5 pedido-3
+ 5244 karlos     0.3  0.5 pedido-2
+ 5231 karlos     0.0  0.5 java
+```
+
+Ahí están tus hilos con el nombre que les pusiste (`pedido-1`, `pedido-2`), mezclados con los internos de la JVM.
 
 **Lo que entregas de este bloque**
 
@@ -369,7 +377,7 @@ Anota en tu bitácora:
 | Cuánto tarda el último en terminar | | |
 | Qué pasa si llegan 10000 pedidos | | |
 
-Y la pregunta buena, que no tiene respuesta única: **cuántos hilos debería tener tu pool?** Piensa en cuántos núcleos tiene tu máquina (`nproc`) y en si tus pedidos gastan procesador o se pasan el tiempo esperando al disco. Es una decisión de diseño real y en la semana 10 vas a tener las herramientas para justificarla.
+Y la pregunta buena, que no tiene respuesta única: **cuántos hilos debería tener tu pool?** Piensa en cuántos núcleos tiene tu máquina (`nproc`) y en si tus pedidos gastan procesador o se pasan el tiempo esperando al disco. Es una decisión de diseño real.
 
 ```bash
 git add .
@@ -396,7 +404,24 @@ cd ~/so-proyecto/src
 java GeneradorPedidos 20 | java ServidorPedidos
 ```
 
-Esa barra vertical le entrega la salida del generador directamente a la entrada del servidor. Es la misma idea de la ventanilla que va a tener nombre propio en la semana 8, cuando se llame *pipe*.
+Salida esperada (tus productos y tus horas van a ser distintos, la forma es esta):
+
+```
+[14:02:01.010] Servidor de Farmacia SaludYa listo. PID 5231
+[14:02:01.010] Escribe pedidos con el formato ID;PRODUCTO;CANTIDAD
+[14:02:01.012] Recibido el pedido 1. Hilos vivos: 3
+[14:02:01.013] Recibido el pedido 2. Hilos vivos: 4
+[14:02:01.013] pedido-1 empieza a atender: 4;paracetamol;2
+[14:02:01.014] pedido-2 empieza a atender: 7;amoxicilina;1
+[14:02:01.014] Recibido el pedido 3. Hilos vivos: 5
+[14:02:01.015] pedido-3 empieza a atender: 2;ibuprofeno;3
+...
+[14:02:03.014] pedido-1 termino
+[14:02:03.016] pedido-2 termino
+[14:02:03.017] pedido-3 termino
+```
+
+Fíjate en los milisegundos: los tres "empieza a atender" llegan casi juntos, y los tres "termino" llegan juntos otra vez, dos segundos después. Esa barra vertical (`|`) le entrega la salida del generador directamente a la entrada del servidor, línea por línea, como si la hubieras tecleado tú.
 
 Guarda la corrida completa para poder leerla con calma:
 
@@ -425,6 +450,22 @@ time (java GeneradorPedidos 10 | java ServidorSecuencial > /dev/null)
 time (java GeneradorPedidos 10 | java ServidorPedidos   > /dev/null)
 ```
 
+Salida esperada de cada `time` (tus segundos van a variar un poco):
+
+```
+real    0m20.143s
+user    0m0.812s
+sys     0m0.095s
+```
+
+```
+real    0m2.187s
+user    0m0.734s
+sys     0m0.081s
+```
+
+`real` es el tiempo de reloj que en verdad tardó todo. El secuencial se acerca a los 20 segundos porque atiende un pedido, espera, y hasta entonces atiende el siguiente. El de hilos se queda cerca de los 2 segundos porque los diez `Thread.sleep` corrieron traslapados, no uno tras otro.
+
 Llena la tabla con tus números:
 
 | | Tiempo `real` | Cuánto tarda cada pedido | 10 pedidos deberían tardar... |
@@ -448,7 +489,16 @@ Mientras corre, desde otra terminal, mira el número de hilos subir:
 watch -n 1 'ps -o pid,nlwp,stat,%cpu,%mem -C java'
 ```
 
-`watch` repite el comando cada segundo. Sales con `Ctrl + C`.
+Un instante cualquiera se ve así:
+
+```
+Every 1.0s: ps -o pid,nlwp,stat,%cpu,%mem -C java
+
+    PID NLWP STAT %CPU %MEM CMD
+   6210  187 Sl    2.3  1.8 java ServidorPedidos
+```
+
+`watch` repite el comando cada segundo, así que ves subir `nlwp` en vivo: al principio crece rápido porque se crean casi 200 hilos casi de golpe, y `%mem` sube con él porque cada hilo reserva su propia pila. Sales con `Ctrl + C`.
 
 Anota el **valor máximo** de `nlwp` que alcanzaste y el `%mem`. Después súbele a 2000 y vuelve a mirar. Quien haya hecho el bloque extra, corre lo mismo con su versión de pool y compara las dos columnas: ahí se ve para qué sirve un pool.
 
@@ -485,6 +535,15 @@ Ahora bájale el `Thread.sleep(2000)` a `Thread.sleep(1)` para que 1000 pedidos 
 ```bash
 java GeneradorPedidos 1000 | java ServidorPedidos | tail -5
 ```
+
+Salida esperada, en las últimas dos líneas:
+
+```
+[14:10:22.501] Pedidos recibidos: 1000
+[14:10:22.501] Piezas vendidas segun el contador: 962
+```
+
+El segundo número casi seguro **no** es 1000, aunque atendiste 1000 pedidos. Y si lo vuelves a correr, va a salir un número distinto otra vez.
 
 Córrelo **cinco veces** y anota los cinco resultados.
 
