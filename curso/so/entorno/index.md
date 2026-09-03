@@ -313,7 +313,7 @@ Antes de entregar, revisa que tu repositorio en GitHub muestre:
 
 ---
 
-## Instalar Docker (bloque extra, semana 3) {#docker}
+## Instalar Docker {#docker}
 
 Abre **PowerShell como administrador** y ejecuta:
 
