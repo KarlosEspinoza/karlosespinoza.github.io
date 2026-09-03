@@ -24,6 +24,7 @@ title: Configuracion del entorno - Sistemas Operativos
     - [Paso 12 - Primer commit y push](#paso-12)
     - [Paso 13 - Entregar en Google Classroom](#paso-13)
 - [Verificacion final](#verificacion-final)
+- [Instalar Docker (bloque extra, semana 3)](#docker)
 - [Preguntas frecuentes](#preguntas-frecuentes)
 
 ---
@@ -312,6 +313,54 @@ Antes de entregar, revisa que tu repositorio en GitHub muestre:
 
 ---
 
+## Instalar Docker (bloque extra, semana 3) {#docker}
+
+Abre **PowerShell como administrador** y ejecuta:
+
+```powershell
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+Reinicia la computadora. 
+
+### Instalar el motor de Docker dentro de Ubuntu (WSL2)
+
+Dentro de tu terminal de Ubuntu:
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -aG docker $USER
+```
+
+Ahora cierra Ubuntu/WSL completamente y vuelve a entrar. Desde PowerShell puedes hacer:
+
+```bash
+wsl --shutdown
+```
+Abre una terminal nueva de Ubuntu para seguir.
+Comprueba que quedo instalado:
+
+```bash
+docker --version
+docker run hello-world
+```
+
+Si `docker run hello-world` te contesta con un mensaje de bienvenida, ya quedo listo.
+
+---
+
 ## Preguntas frecuentes {#preguntas-frecuentes}
 
 **No tengo internet estable en casa, que hago?**  
@@ -331,3 +380,6 @@ Todos los comandos del curso van dentro de la terminal de Ubuntu. Repite el Paso
 
 **`code .` no abre VS Code.**  
 Instala VS Code en Windows (no en WSL2) y agrega la extension **WSL** desde el marketplace de VS Code.
+
+**Me sale el error `HCS_E_HYPERV_NOT_INSTALLED` al abrir WSL2 o Docker.**  
+Sigue los pasos de [Instalar Docker](#docker); la primera parte arregla justo ese error.
