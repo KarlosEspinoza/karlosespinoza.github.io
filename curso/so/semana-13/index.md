@@ -190,6 +190,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s13 bloque 1: llamadas al sistema, descriptores y buffering"
+git pull
 git push
 ```
 
@@ -329,6 +330,7 @@ Con `-o` la salida va a un archivo y no se mezcla con la de tu programa, que si 
 ```bash
 git add .
 git commit -m "s13 bloque 2: recibos y llamadas al sistema con strace"
+git pull
 git push
 ```
 
@@ -394,6 +396,7 @@ Anota tu decisión: **tus recibos llevan `fsync` o no?** En una farmacia con rec
 ```bash
 git add .
 git commit -m "s13 extra: conteo de llamadas y costo del fsync"
+git pull
 git push
 ```
 
@@ -555,6 +558,7 @@ En tu servidor: **si abres un archivo por recibo y no lo cierras, cuántos pedid
    ```bash
    git add .
    git commit -m "s13 proyecto: recibos, log y control de descriptores"
+   git pull
    git push
    ```
 

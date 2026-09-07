@@ -211,6 +211,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s15 bloque 1: inodos, enlaces y espacio en disco"
+git pull
 git push
 ```
 
@@ -408,6 +409,7 @@ Lo que tiene que verse: el tiempo del **directo es igual para el id 1 que para e
 ```bash
 git add .
 git commit -m "s15 bloque 2: log append-only con indice de posiciones"
+git pull
 git push
 ```
 
@@ -460,6 +462,7 @@ Reconstruir el índice es una lectura secuencial completa. Con un log de un año
 ```bash
 git add .
 git commit -m "s15 extra: secuencial contra directo en 100000 lineas"
+git pull
 git push
 ```
 
@@ -582,6 +585,7 @@ La solución de verdad: mandarle una señal al servidor para que cierre y reabra
    ```bash
    git add .
    git commit -m "s15 proyecto: log indexado y consulta por id"
+   git pull
    git push
    ```
 

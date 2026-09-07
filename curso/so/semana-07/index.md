@@ -122,6 +122,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s07 bloque 1: condiciones de Coffman y orden de recursos"
+git pull
 git push
 ```
 
@@ -304,6 +305,7 @@ Corre otra vez. Ahora los dos terminan. Uno espera al otro un momento, pero **ni
 ```bash
 git add .
 git commit -m "s07 bloque 2: interbloqueo provocado y diagnosticado"
+git pull
 git push
 ```
 
@@ -374,6 +376,7 @@ Compara las dos estrategias en tu bitácora:
 ```bash
 git add .
 git commit -m "s07 extra: tryLock con timeout y livelock"
+git pull
 git push
 ```
 
@@ -482,6 +485,7 @@ Deja la observación anotada y sin resolver: **por qué uno funciona y el otro n
    ```bash
    git add .
    git commit -m "s07 proyecto: prevencion de interbloqueos"
+   git pull
    git push
    ```
 

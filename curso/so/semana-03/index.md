@@ -148,6 +148,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s03 bloque 1: descriptor de proceso, namespaces y cgroups"
+git pull
 git push
 ```
 
@@ -271,6 +272,7 @@ Ahí tienes las dos líneas: `ServidorPedidos` y `GeneradorPedidos`, con el PPID
 ```bash
 git add .
 git commit -m "s03 bloque 2: proceso hijo con ProcessBuilder"
+git pull
 git push
 ```
 
@@ -328,6 +330,7 @@ docker run --rm -it --memory=256m mi-servidor
 ```bash
 git add .
 git commit -m "s03 extra: servidor en contenedor"
+git pull
 git push
 ```
 
@@ -579,6 +582,7 @@ Y sube el archivo:
 ```bash
 git add evidencias/sesion-aula.txt
 git commit -m "s03 proyecto: evidencia de la sesion de aula"
+git pull
 git push
 ```
 
@@ -612,6 +616,7 @@ git push
    ```bash
    git add .
    git commit -m "s03 proyecto: modelo de pedido y catalogo"
+   git pull
    git push
    ```
 

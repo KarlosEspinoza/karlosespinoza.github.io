@@ -283,6 +283,7 @@ que dominio elegiste y por que.
 ```bash
 git add .
 git commit -m "inicio: configuracion del entorno y primer push"
+git pull
 git push
 ```
 

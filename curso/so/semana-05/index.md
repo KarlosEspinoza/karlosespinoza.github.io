@@ -121,6 +121,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s05 bloque 1: seccion critica e intercalado"
+git pull
 git push
 ```
 
@@ -302,6 +303,7 @@ El primero es el que le duele al negocio. El segundo es el que te vuelve loco de
 ```bash
 git add .
 git commit -m "s05 bloque 2: condicion de carrera reproducida"
+git pull
 git push
 ```
 
@@ -354,6 +356,7 @@ Dos preguntas para escribir, y son de las buenas del curso:
 ```bash
 git add .
 git commit -m "s05 extra: barrido de configuraciones y tasa de fallo"
+git pull
 git push
 ```
 
@@ -427,6 +430,7 @@ Las dejamos anotadas tal cual. La semana que viene vamos a ver cuál de las tres
    ```bash
    git add .
    git commit -m "s05 proyecto: inventario compartido y descuadre demostrado"
+   git pull
    git push
    ```
 

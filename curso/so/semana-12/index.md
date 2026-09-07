@@ -148,6 +148,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s12 bloque 1: fugas, OOM killer y contrapresion"
+git pull
 git push
 ```
 
@@ -309,6 +310,7 @@ Y para comparar, la versión **sin límite**: pon la capacidad en `Integer.MAX_V
 ```bash
 git add .
 git commit -m "s12 bloque 2: buffer acotado con politica de desbordamiento"
+git pull
 git push
 ```
 
@@ -393,6 +395,7 @@ Cada línea es una recolección. Con fuga, la memoria que queda después de cada
 ```bash
 git add .
 git commit -m "s12 extra: fuga provocada y curva de VmRSS"
+git pull
 git push
 ```
 
@@ -518,6 +521,7 @@ Limpien con `pkill -f Tragon`.
    ```bash
    git add .
    git commit -m "s12 proyecto: buffer acotado y control de memoria"
+   git pull
    git push
    ```
 

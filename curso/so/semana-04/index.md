@@ -164,6 +164,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s04 bloque 1: estados e hilos"
+git pull
 git push
 ```
 
@@ -339,6 +340,7 @@ Ahí están tus hilos con el nombre que les pusiste (`pedido-1`, `pedido-2`), me
 ```bash
 git add .
 git commit -m "s04 bloque 2: un hilo por pedido"
+git pull
 git push
 ```
 
@@ -382,6 +384,7 @@ Y la pregunta buena, que no tiene respuesta única: **cuántos hilos debería te
 ```bash
 git add .
 git commit -m "s04 extra: pool de hilos"
+git pull
 git push
 ```
 
@@ -570,6 +573,7 @@ No vamos a explicar hoy lo que viste. Lo que sí vamos a hacer es comparar los n
    ```bash
    git add .
    git commit -m "s04 proyecto: servidor concurrente con un hilo por pedido"
+   git pull
    git push
    ```
 

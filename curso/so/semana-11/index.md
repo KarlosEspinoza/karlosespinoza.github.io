@@ -175,6 +175,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s11 bloque 1: memoria virtual, paginas y VmRSS"
+git pull
 git push
 ```
 
@@ -311,6 +312,7 @@ Llena la tabla con los dos catálogos:
 ```bash
 git add .
 git commit -m "s11 bloque 2: catalogo en memoria"
+git pull
 git push
 ```
 
@@ -388,6 +390,7 @@ Y la pregunta de diseño, que es la que de verdad se hace en el trabajo: **tu ca
 ```bash
 git add .
 git commit -m "s11 extra: archivo contra cache, 10000 consultas"
+git pull
 git push
 ```
 
@@ -499,6 +502,7 @@ Y ahora la pregunta: **ese mensaje lo escribió Java o lo escribió el kernel?**
    ```bash
    git add .
    git commit -m "s11 proyecto: catalogo en memoria y servidor instrumentado"
+   git pull
    git push
    ```
 

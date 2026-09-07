@@ -159,6 +159,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s10 bloque 1: politicas de planificacion comparadas"
+git pull
 git push
 ```
 
@@ -333,6 +334,7 @@ Al terminar, que imprima el resumen: política usada, pedidos atendidos, espera 
 ```bash
 git add .
 git commit -m "s10 bloque 2: planificador con dos politicas"
+git pull
 git push
 ```
 
@@ -380,6 +382,7 @@ Y las dos preguntas que valen:
 ```bash
 git add .
 git commit -m "s10 extra: prioridades con nice y renice"
+git pull
 git push
 ```
 
@@ -485,6 +488,7 @@ Limpien con `pkill -f EstadoR`.
    ```bash
    git add .
    git commit -m "s10 proyecto: planificacion de pedidos con politica elegible"
+   git pull
    git push
    ```
 

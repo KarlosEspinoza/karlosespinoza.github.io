@@ -194,6 +194,7 @@ Esos archivos no existen en el disco: los inventa el kernel en el momento en que
 ```bash
 git add .
 git commit -m "s02 bloque 1: arbol de procesos observado"
+git pull
 git push
 ```
 
@@ -329,6 +330,7 @@ kill TU_PID
 ```bash
 git add .
 git commit -m "s02 bloque 2: servidor corriendo como proceso"
+git pull
 git push
 ```
 
@@ -361,6 +363,7 @@ Dos cosas para pensar y escribir, que son adelantos de unidades que vienen:
 ```bash
 git add .
 git commit -m "s02 extra: ficha de proceso en /proc"
+git pull
 git push
 ```
 
@@ -549,6 +552,7 @@ La conversación que abre esto: los dos programas imprimen una palabra. Entonces
    ```bash
    git add .
    git commit -m "s02 proyecto: servidor observable como proceso"
+   git pull
    git push
    ```
 

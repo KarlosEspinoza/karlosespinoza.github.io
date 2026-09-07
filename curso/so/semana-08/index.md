@@ -152,6 +152,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s08 bloque 1: senales y comunicacion entre procesos"
+git pull
 git push
 ```
 
@@ -305,6 +306,7 @@ Compara los dos modos:
 ```bash
 git add .
 git commit -m "s08 bloque 2: apagado ordenado y tuberia con el generador"
+git pull
 git push
 ```
 
@@ -392,6 +394,7 @@ Esa fila de "entre máquinas distintas" es la razón de que la Unidad 6 exista.
 ```bash
 git add .
 git commit -m "s08 extra: tuberia con nombre"
+git pull
 git push
 ```
 
@@ -509,6 +512,7 @@ Guarda el archivo `.service` en tu repositorio, en `datos/` o en una carpeta `de
 ```bash
 git add .
 git commit -m "s08 extra: servidor como servicio de systemd"
+git pull
 git push
 ```
 
@@ -620,6 +624,7 @@ Esta semana el avance del proyecto **es la preparación de la revisión**. La li
    ```bash
    git add .
    git commit -m "s08 proyecto: apagado ordenado y comunicacion entre procesos"
+   git pull
    git push
    ```
 

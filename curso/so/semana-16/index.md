@@ -185,6 +185,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s16 bloque 1: sockets como descriptores y protocolo"
+git pull
 git push
 ```
 
@@ -371,6 +372,7 @@ Ahí están las cuatro llamadas del bloque 1, en orden, con sus descriptores.
 ```bash
 git add .
 git commit -m "s16 bloque 2: servidor de red y cliente cajero"
+git pull
 git push
 ```
 
@@ -445,6 +447,7 @@ Anota en tu bitácora:
 ```bash
 git add .
 git commit -m "s16 extra: cajero remoto desde otra maquina"
+git pull
 git push
 ```
 
@@ -585,6 +588,7 @@ Ese es el cierre del curso: **los tres límites que encuentras el último día s
    ```bash
    git add .
    git commit -m "s16 proyecto: servidor de red con cajeros remotos"
+   git pull
    git push
    ```
 

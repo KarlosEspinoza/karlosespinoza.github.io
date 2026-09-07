@@ -169,6 +169,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s06 bloque 1: exclusion mutua, espera activa y semaforos"
+git pull
 git push
 ```
 
@@ -303,6 +304,7 @@ diff evidencias/carrera.txt evidencias/carrera_resuelta.txt | head -40
 ```bash
 git add .
 git commit -m "s06 bloque 2: inventario protegido con exclusion mutua"
+git pull
 git push
 ```
 
@@ -379,6 +381,7 @@ Y la pregunta de diseño, que es real y no tiene respuesta única: si el candado
 ```bash
 git add .
 git commit -m "s06 extra: costo del candado medido"
+git pull
 git push
 ```
 
@@ -509,6 +512,7 @@ Eso es un interbloqueo, y es la semana 7.
    ```bash
    git add .
    git commit -m "s06 proyecto: inventario con exclusion mutua"
+   git pull
    git push
    ```
 

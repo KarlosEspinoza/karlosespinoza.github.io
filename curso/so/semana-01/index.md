@@ -261,6 +261,7 @@ El dominio lo terminas de decidir en el bloque 2, así que por ahora déjalo en 
 ```bash
 git add .
 git commit -m "s01 bloque 1: entorno y repositorio listos"
+git pull
 git push
 ```
 
@@ -382,6 +383,7 @@ Actualiza también el dominio en tu `README.md`.
 ```bash
 git add .
 git commit -m "s01 bloque 2: eleccion de dominio"
+git pull
 git push
 ```
 
@@ -409,6 +411,7 @@ Guárdala en tu `BITACORA.md`. En la semana 17 vas a volver a leerla, y la graci
 ```bash
 git add .
 git commit -m "s01 extra: mapa del servidor"
+git pull
 git push
 ```
 
@@ -474,6 +477,7 @@ El repositorio ya lo creaste en el bloque 1. Lo que queda es cerrarlo y dejarlo 
    ```bash
    git add .
    git commit -m "s01 proyecto: repositorio entregado y dominio registrado"
+   git pull
    git push
    ```
 
