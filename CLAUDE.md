@@ -64,6 +64,21 @@ curso/
 
 > Las instrucciones específicas de cada curso viven en su propio `CLAUDE.md` dentro del subdirectorio.
 
+## Scripts de revisión de avances (material interno)
+
+`curso/recursos/` tiene los scripts **genéricos, compartidos por todos los cursos**, para traer a
+la máquina local los repositorios de los alumnos, sacar el reporte semanal de asistencia a partir
+de los commits y agregar la autoevaluación entre pares. No traen nada específico de un curso: lo
+que los configura es un `curso.conf` dentro de cada curso (`curso/<curso>/recurso/curso.conf`).
+
+Los datos de alumnos nunca viven en este repositorio (es público): viven en
+`~/curso/<curso>/<ciclo>/`. El único paso que escribe en los repositorios de los alumnos es
+`~/curso/scripts/aplicar-concentrado.py`, también fuera de aquí, y requiere autorización explícita
+de Karlos para cada lote.
+
+Detalle en `curso/recursos/README.md` y el flujo completo en `curso/recursos/revision/README.md`.
+Jekyll excluye `**/recurso/**` y `**/recursos/**`, así que nada de esto se publica en el sitio.
+
 ## Reglas de escritura para materiales del curso
 
 - En los archivos de contenido que ven los alumnos (`index.md`, `practica.md`, `*_gam.md`, `*_extra.md`) **no usar caracteres especiales** que no se puedan escribir con un teclado normal. Caracteres prohibidos: `—` (em dash), `←`, `→`, `⬛`, y similares. Sustituir por: coma, parentesis, dos guiones `--`, `->`, o reformular la frase. Si se necesita una flecha, usar `->` o `<-`. Los archivos internos como `CLAUDE.md` no tienen esta restriccion.

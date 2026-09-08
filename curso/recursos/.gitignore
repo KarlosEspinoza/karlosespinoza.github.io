@@ -1,0 +1,11 @@
+# Aqui no van datos de alumnos ni repos clonados: eso vive en
+# ~/curso/<curso>/<ciclo>/. Esto es por si alguna corrida se ejecuta desde
+# esta carpeta por error.
+alumnos.csv
+curso.conf
+repos-individual/
+repos-equipo/
+repos-autoeval/
+asistencia-s*.md
+concentrado*.md
+resultado.csv

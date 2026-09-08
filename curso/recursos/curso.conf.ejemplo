@@ -1,0 +1,42 @@
+# Configuracion de un curso para los scripts genericos de curso/recursos/.
+#
+# Copia este archivo a curso/<curso>/recurso/curso.conf y ajusta los valores.
+# Es lo unico que cambia entre cursos: los scripts no traen nada especifico.
+#
+# Se carga con `.` desde bash, asi que es sintaxis de bash: sin espacios
+# alrededor del `=` y con comillas si el valor trae espacios.
+#
+# Dentro de este archivo ya esta definida la variable RECURSO_CURSO con la
+# carpeta donde vive este mismo conf, para armar rutas relativas al curso.
+
+# Identificador corto del curso. Aparece en los mensajes de los scripts.
+CURSO=xx
+
+# Nombre fijo del repositorio individual de cada alumno, el mismo para todo
+# el grupo. La URL se arma sola: https://github.com/<usuario>/<REPO_INDIVIDUAL>
+REPO_INDIVIDUAL=xx-proyecto
+
+# Nombre fijo del repositorio del proyecto integrador, el que crea el
+# representante de cada equipo. Dejalo vacio si el curso todavia no usa repo
+# de equipo: pull-equipos.sh avisa y no hace nada.
+REPO_EQUIPO=integrador-xx
+
+# Nombre fijo del repositorio privado de autoevaluacion entre pares de cada
+# alumno. Vacio si el curso no la usa.
+REPO_AUTOEVAL=autoeval-xx
+
+# Usuario de GitHub del asesor, el que los alumnos agregan como colaborador.
+# Solo se usa en los mensajes de error, para recordar cual es el requisito.
+COLABORADOR=KarlosEspinoza
+
+# Carpeta de datos del ciclo en curso: ahi viven alumnos.csv, los repos
+# clonados, los reportes de asistencia y los concentrados. Fuera del sitio
+# publico, porque son datos de alumnos reales.
+# Se actualiza una vez por ciclo. Cualquier script acepta otra carpeta como
+# ultimo argumento, para correr sobre un ciclo pasado sin tocar esto.
+DIR_CICLO="$HOME/curso/xx/202620"
+
+# Plantillas del REVISION.md, las usa aplicar-concentrado.py como encabezado
+# cuando crea el archivo por primera vez en el repo de un alumno o equipo.
+PLANTILLA_INDIVIDUAL="$RECURSO_CURSO/revision/plantilla-individual.md"
+PLANTILLA_EQUIPO="$RECURSO_CURSO/revision/plantilla-equipo.md"

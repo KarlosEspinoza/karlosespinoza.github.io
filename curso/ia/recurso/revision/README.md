@@ -1,9 +1,9 @@
-# Revision de avances de SO: prompts listos para pegar (uso del asesor)
+# Revision de avances de IA: prompts listos para pegar (uso del asesor)
 
-Material INTERNO. Estos son los prompts del curso de Sistemas Operativos **ya
-con las rutas y los criterios puestos**. No hay que buscar y reemplazar nada
-dentro del texto: **la primera linea del prompt declara la semana**, se
-cambia ahi el valor y el resto se pega tal cual.
+Material INTERNO. Estos son los prompts del curso de IA **ya con las rutas y
+los criterios puestos**. No hay que buscar y reemplazar nada dentro del texto:
+**la primera linea del prompt declara la semana**, se cambia ahi el valor y el
+resto se pega tal cual.
 
 ```
 <NN>=03
@@ -12,31 +12,30 @@ cambia ahi el valor y el resto se pega tal cual.
 En la revision formal se declara ademas `<numero>` (1, 2 o 3).
 
 El mecanismo generico, comun a todos los cursos, esta explicado en
-`curso/recursos/revision/README.md`; aqui solo esta la version aplicada a SO.
+`curso/recursos/revision/README.md`; aqui solo esta la version aplicada a IA.
 
 Los dos flujos terminan igual:
 
 > **prompt -> revisar manualmente el `concentrado.md` -> autorizar y aplicar**
 
 Nunca se hace `commit`/`push` a un repositorio de alumno sin ese tercer paso
-explicito. La regla dura completa esta en `curso/so/CLAUDE.md`, seccion
+explicito. La regla dura completa esta en `curso/ia/CLAUDE.md`, seccion
 "Revision de avances: REVISION.md y el flujo de autorizacion".
 
 | | |
 |---|---|
-| Ciclo | `~/curso/so/202620` |
-| Conf | `~/gh/karlosespinoza.github.io/curso/so/recurso/curso.conf` |
-| Repo individual | `so-proyecto` |
-| Repo de equipo | `integrador-so` (desde la semana 4) |
+| Ciclo | `~/curso/ia/202620` |
+| Conf | `~/gh/karlosespinoza.github.io/curso/ia/recurso/curso.conf` |
+| Repo individual | `clasificador-piezas-ia` |
+| Repo de equipo | `integrador-ia` (desde la semana 4) |
 | Revisiones formales | semanas 9, 14 y 17 |
 
 ---
 
 ## Flujo semanal informal (cualquier semana con bloques)
 
-Se corre **al cerrar la sesion de guia del lunes**, no durante: si se corre a
-media sesion, aparecen como "no entregaron nada" los que todavia estan
-trabajando.
+Se corre **al cerrar la sesion**, no durante: si se corre a media sesion,
+aparecen como "no entregaron nada" los que todavia estan trabajando.
 
 ### 1. Prompt
 
@@ -46,9 +45,9 @@ nada antes de pegarlo.
 ```
 <NN>=03
 
-Vamos a hacer la revisión semanal informal de la semana <NN> del curso de SO.
-Ciclo: ~/curso/so/202620.
-Conf: ~/gh/karlosespinoza.github.io/curso/so/recurso/curso.conf
+Vamos a hacer la revisión semanal informal de la semana <NN> del curso de IA.
+Ciclo: ~/curso/ia/202620.
+Conf: ~/gh/karlosespinoza.github.io/curso/ia/recurso/curso.conf
 Sustituye <NN> en todo lo que sigue.
 
 1. Corre pull-individuales.sh (y pull-equipos.sh si ya estamos en la semana 4 o
@@ -57,28 +56,21 @@ Sustituye <NN> en todo lo que sigue.
    (genera asistencia-s<NN>.md).
 3. De los que sí entregaron algo, revisa los commits de esta semana, el diff, y
    la sección de la semana <NN> de su BITACORA.md. Compara contra lo que la guía
-   de esa semana pedía en curso/so/semana-<NN>/index.md: los dos bloques
+   de esa semana pedía en curso/ia/semana-<NN>/index.md: los dos bloques
    obligatorios y el archivo que le tocaba agregar al proyecto (la tabla de
-   progresión está en curso/so/CLAUDE.md, "Archivos del proyecto del alumno").
+   progresión está en curso/ia/CLAUDE.md, "Archivos del proyecto del alumno").
 4. No es evaluación formal: solo anota algo si de verdad destaca. En este curso
    lo que más vale la pena cazar temprano es:
-   - Campos entre corchetes sin llenar en la BITACORA.md (`[Tu PID]`, etc.)
-     cuando la evidencia sí trae los números reales: falta pasarlos de la
-     evidencia a la bitácora, no volver a medir.
-   - El `.gitignore` de Java de GitHub trae `*.log` por default y se come
-     `datos/servidor.log` (o el log que corresponda esa semana) sin que el
-     alumno lo note.
-   - Nombres de archivo del proyecto renombrados o con typo
-     (`ServidorPedidos.java`, `GestorInventario.java`, `catalogo.txt`, etc.):
-     están congelados desde la semana que los introduce (ver la tabla de
-     progresión de curso/so/CLAUDE.md).
-   - Carpeta `evidencias/` mal nombrada (singular, con otro nombre) o vacía
-     cuando el bloque pedía una salida de terminal concreta.
-   - Un atorón sin las cuatro partes (comando, error completo, qué intentó,
-     dónde se quedó): cuenta como no entregado, a diferencia de uno completo.
+   - Datos que no sirven: menos repeticiones de las pedidas, clases
+     desbalanceadas, una etiqueta capturada en condiciones distintas a las otras.
+   - Fuga de información por el protocolo de captura (mover un tipo de pieza más
+     rápido que otro, capturar todas las de un tipo seguidas).
+   - Código que no corre con las rutas del repo (`datos/...` con diagonal
+     invertida, rutas absolutas de su máquina).
+   - Un dominio o unas etiquetas que ya no son los que registró al inicio.
    Si no hay nada que valga la pena decirle, no le hagas bloque.
 5. Redacta el concentrado.md en
-   ~/curso/so/202620/asistencia/concentrado-s<NN>.md, un bloque por alumno:
+   ~/curso/ia/202620/asistencia/concentrado-s<NN>.md, un bloque por alumno:
 
    <!-- BLOQUE: ALUMNO <codigo>-<usuario> -->
    ### Nota rápida (<fecha de hoy>)
@@ -97,8 +89,8 @@ Sustituye <NN> en todo lo que sigue.
    Agrupa los problemas que se repitieron entre varios alumnos (mismo error,
    mismo malentendido, mismo bloqueo de entorno): de qué se trata, a quiénes les
    pasó (código o usuario) y cuántos. Es para usarla como agenda del rescate de
-   atorones de la sesión de aula del miércoles y para anotar si algo apunta a
-   que el material de esa semana necesita ajuste para el siguiente ciclo.
+   atorones de la siguiente sesión y para anotar si algo apunta a que el
+   material de esa semana necesita ajuste para el siguiente ciclo.
 7. No toques ningún repo de alumno: nada de add/commit/push. Solo escribe el
    concentrado.md. Yo lo reviso y te autorizo aplicar.
 ```
@@ -108,8 +100,8 @@ Sustituye <NN> en todo lo que sigue.
 Se lee completo. Para excluir a alguien del lote, se borra su bloque: no hay
 autorizacion parcial por comando, lo que quede en el archivo es lo que se
 aplica. La seccion de incidencias del final no se aplica a nada, pero es lo
-primero que conviene leer: es la radiografia de la semana antes de la sesion
-de aula del miercoles.
+primero que conviene leer: es la radiografia de la semana antes de la
+siguiente sesion.
 
 ### 3. Autorizar y aplicar
 
@@ -119,13 +111,13 @@ mano:
 ```bash
 # dry-run
 python3 ~/curso/scripts/aplicar-concentrado.py \
-  ~/gh/karlosespinoza.github.io/curso/so/recurso/curso.conf \
-  ~/curso/so/202620/asistencia/concentrado-s<NN>.md
+  ~/gh/karlosespinoza.github.io/curso/ia/recurso/curso.conf \
+  ~/curso/ia/202620/asistencia/concentrado-s<NN>.md
 
 # ya revisado y autorizado
 python3 ~/curso/scripts/aplicar-concentrado.py \
-  ~/gh/karlosespinoza.github.io/curso/so/recurso/curso.conf \
-  ~/curso/so/202620/asistencia/concentrado-s<NN>.md --confirmar
+  ~/gh/karlosespinoza.github.io/curso/ia/recurso/curso.conf \
+  ~/curso/ia/202620/asistencia/concentrado-s<NN>.md --confirmar
 ```
 
 El commit queda como el encabezado de la nota (`Nota rapida (<fecha>)`), asi
@@ -144,31 +136,32 @@ El pull de los repos y el de la autoevaluacion entre pares van dentro.
 <NN>=09
 <numero>=1
 
-Vamos a hacer la revisión formal <numero> (semana <NN>) del curso de SO.
-Ciclo: ~/curso/so/202620.
-Conf: ~/gh/karlosespinoza.github.io/curso/so/recurso/curso.conf
+Vamos a hacer la revisión formal <numero> (semana <NN>) del curso de IA.
+Ciclo: ~/curso/ia/202620.
+Conf: ~/gh/karlosespinoza.github.io/curso/ia/recurso/curso.conf
 Sustituye <NN> y <numero> en todo lo que sigue.
 
 1. Corre pull-individuales.sh y pull-equipos.sh para traer todos los repos al
    día, y pull-autoevals.sh con aggregate.py para la autoevaluación entre
-   pares. Dime quién no tiene su repo autoeval-so accesible: ese es el 10% que
+   pares. Dime quién no tiene su repo autoeval-ia accesible: ese es el 10% que
    pierde en esta revisión.
-2. Revisa cada repo individual (so-proyecto): src/, datos/, evidencias/ y
-   BITACORA.md. Contrasta contra la lista "Tu servidor debe" de
-   curso/so/semana-<NN>/index.md, que es el instrumento de esta revisión, y
-   contra la tabla de progresión de archivos de curso/so/CLAUDE.md.
-3. Revisa cada repo de equipo (integrador-so): el sistema integrado, el
+2. Revisa cada repo individual (clasificador-piezas-ia): codigo/, datos/,
+   figuras/ y BITACORA.md. Contrasta contra la lista "Tu sistema debe" de
+   curso/ia/semana-<NN>/index.md, que es el instrumento de esta revisión, y
+   contra la tabla de progresión de archivos de curso/ia/CLAUDE.md.
+3. Revisa cada repo de equipo (integrador-ia): pipeline/ (controlador central,
+   fusión, anomalías, cliente del PLC), los módulos de cada dominio, el
    README.md con los acuerdos y la BITACORA.md del equipo.
 4. Verifica que el código corra de verdad con los datos que están en el repo:
-   rutas relativas, el catálogo existe, el servidor arranca. Un repo que no
-   corre no puede ser Excelente en evidencias por bonito que esté escrito.
+   rutas relativas, el CSV existe, el modelo se carga. Un repo que no corre no
+   puede ser Excelente en evidencias por bonito que esté escrito.
 5. Si ya tengo las respuestas a las 2 preguntas de esa revisión, inclúyelas; si
    no, dejamos esa parte para el día de la revisión.
 6. Para cada alumno y equipo, asigna nivel (Excelente/Bueno/Suficiente/
-   Insuficiente) por instrumento según la rúbrica de evaluacion/practicas
+   Insuficiente) por instrumento según la rúbrica de evaluacion/individual
    (individual) o evaluacion/proyecto_integrador (equipo), con sus pesos.
 7. Redacta el concentrado.md en
-   ~/curso/so/202620/revision/<numero>/concentrado.md, un bloque por alumno y
+   ~/curso/ia/202620/revision/<numero>/concentrado.md, un bloque por alumno y
    por equipo:
 
    <!-- BLOQUE: ALUMNO <codigo>-<usuario> -->
@@ -214,13 +207,13 @@ mano:
 ```bash
 # dry-run
 python3 ~/curso/scripts/aplicar-concentrado.py \
-  ~/gh/karlosespinoza.github.io/curso/so/recurso/curso.conf \
-  ~/curso/so/202620/revision/<numero>/concentrado.md
+  ~/gh/karlosespinoza.github.io/curso/ia/recurso/curso.conf \
+  ~/curso/ia/202620/revision/<numero>/concentrado.md
 
 # ya revisado y autorizado
 python3 ~/curso/scripts/aplicar-concentrado.py \
-  ~/gh/karlosespinoza.github.io/curso/so/recurso/curso.conf \
-  ~/curso/so/202620/revision/<numero>/concentrado.md --confirmar
+  ~/gh/karlosespinoza.github.io/curso/ia/recurso/curso.conf \
+  ~/curso/ia/202620/revision/<numero>/concentrado.md --confirmar
 ```
 
 Valida todos los repos antes de tocar cualquiera (clonados y limpios) y
@@ -235,13 +228,13 @@ correr uno solo, sin sesion.
 
 ```bash
 R=~/gh/karlosespinoza.github.io/curso/recursos
-C=~/gh/karlosespinoza.github.io/curso/so/recurso/curso.conf
+C=~/gh/karlosespinoza.github.io/curso/ia/recurso/curso.conf
 
 $R/pull-repos/pull-individuales.sh $C            # repos individuales al dia
 $R/pull-repos/pull-equipos.sh      $C            # repos de equipo (desde la semana 4)
 $R/asistencia/asistencia.sh        $C <NN>       # quien no entrego nada
 $R/autoeval/pull-autoevals.sh      $C            # autoevaluacion entre pares
-python3 $R/autoeval/aggregate.py ~/curso/so/202620/repos-autoeval
+python3 $R/autoeval/aggregate.py ~/curso/ia/202620/repos-autoeval
 ```
 
 ---
@@ -251,28 +244,27 @@ python3 $R/autoeval/aggregate.py ~/curso/so/202620/repos-autoeval
 Para no tener que abrir la guia cada vez. Los nombres de archivo estan
 congelados: si el alumno los cambio, eso mismo es lo que hay que decirle.
 
-| Semana | Archivos que agrega o modifica |
+| Semana | Lo que debe aparecer en el repo |
 |---|---|
-| 01 | `README.md`, `BITACORA.md`, estructura del repositorio |
-| 02 | `src/ServidorPedidos.java`, `evidencias/procesos.txt` |
-| 03 | `src/Pedido.java`, `datos/catalogo.txt` |
-| 04 | `src/ServidorPedidos.java` (un hilo por pedido) |
-| 05 | `src/GestorInventario.java`, `src/PruebaCarrera.java` |
-| 06 | `src/GestorInventario.java` (semáforo) |
-| 07 | `src/PruebaBloqueo.java` |
-| 08 | `src/ServidorPedidos.java` (shutdown hook, pipe) |
-| 09 | **Revisión 1** (cierre U1 y U2) |
-| 10 | `src/PlanificadorPedidos.java` |
-| 11 | `src/GestorInventario.java` (caché del catálogo) |
-| 12 | `src/BufferPedidos.java` |
-| 13 | `src/GestorArchivos.java`, `datos/recibos/` |
-| 14 | **Revisión 2** (cierre U3 y U4) |
-| 15 | `src/GestorArchivos.java` (log + índice), `datos/pedidos.log` |
-| 16 | `src/ClienteCajero.java` |
-| 17 | **Revisión final** |
+| 01 | Repo creado, `README.md` con su dominio, `BITACORA.md`, carpetas `codigo/ datos/ figuras/` |
+| 02 | `codigo/sensor.ino`, `codigo/leer_sensor.py`, primera figura de la senal |
+| 03 | `codigo/adquirir.py` -> `datos/datos.csv` etiquetado, y el protocolo de captura en la bitacora |
+| 04 | `codigo/limpiar.py` -> `datos/datos_limpios.csv` |
+| 05 | `codigo/features.py` -> `datos/features.csv` |
+| 06 | `codigo/features.py` con FFT |
+| 07 | `codigo/entrenar.py` -> `modelo.pkl` y su matriz de confusion |
+| 08 | `codigo/control.py`, `codigo/control.ino`: bucle de control cerrado |
+| 09 | **Revision 1** (cierre U1 y U2) |
+| 10 | `codigo/pca.py`, `datos/anomalias.csv` |
+| 11 | `codigo/clustering.py` |
+| 12 | `codigo/autoencoder.py` -> `detector.pkl` |
+| 13 | `codigo/control.py` con las anomalias integradas |
+| 14 | **Revision 2** (cierre U3) |
+| 15 | `codigo/evaluar.py`, `datos/datos_banda.csv` (datos de la maqueta) |
+| 16 | `codigo/prueba_plc.py` -> `modelo_produccion.pkl` |
+| 17 | **Revision final**: demo del bucle completo sobre la maqueta con PLC |
 
 La `BITACORA.md` de cada semana lleva siempre las dos subsecciones fijas:
-`### Antes de la clase` (entregables de los bloques del lunes) y `### Avance
-del proyecto` (lo del miércoles en adelante). Que falte una de las dos es de
-las cosas más útiles que se pueden señalar temprano, porque el 30% de cada
-revisión sale de ahí.
+`### Antes de la clase` (los bloques de la guia) y `### Avance del proyecto`.
+Que falte una de las dos es de las cosas mas utiles que se pueden senalar
+temprano, porque el 30% de cada revision sale de ahi.

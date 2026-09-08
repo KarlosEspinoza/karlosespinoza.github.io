@@ -97,3 +97,4 @@ exclude:
   # privado so-profesor, no aqui.
   - "**/classroom.md"
   - "**/recurso/**"
+  - "**/recursos/**"

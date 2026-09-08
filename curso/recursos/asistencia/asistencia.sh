@@ -1,57 +1,57 @@
 #!/usr/bin/env bash
 # Reporte semanal de asistencia (solo lectura): quien NO entrego nada de los
-# bloques de la sesion de guia del lunes en su so-proyecto.
+# bloques de la sesion de guia en su repositorio individual.
 #
-# Primer paso del flujo semanal informal (ver recurso/revision/README.md,
-# seccion "Flujo semanal informal"): se corre despues del pull fresco y
-# antes de redactar el concentrado.md. No escribe en ningun repo de alumno,
-# asi que no necesita autorizacion (a diferencia de aplicar-concentrado.py,
-# que si escribe en REVISION.md y si la necesita).
+# Generico: el nombre del repo y la carpeta del ciclo salen del curso.conf.
 #
-# La convencion del curso (CLAUDE.md) es que el bloque 1 y el bloque 2
-# cierran cada uno con un commit "sNN bloque 1: ..." / "sNN bloque 2: ...".
-# Un atoron documentado usa el mismo formato de mensaje y cuenta igual que
-# el bloque entregado, asi que basta con que el mensaje exista.
+# Primer paso del flujo semanal informal (ver recursos/revision/README.md).
+# Se corre despues del pull fresco y antes de redactar el concentrado. No
+# escribe en ningun repo de alumno, asi que no necesita autorizacion (a
+# diferencia de aplicar-concentrado.py, que si escribe en REVISION.md).
+#
+# La convencion de commits es la misma en todos los cursos: el bloque 1 y el
+# bloque 2 cierran cada uno con "sNN bloque 1: ..." / "sNN bloque 2: ...".
+# Un atoron documentado usa el mismo formato de mensaje y cuenta igual que el
+# bloque entregado, asi que basta con que el mensaje exista.
 #
 # Uso:
-#   ./asistencia.sh alumnos.csv semana dir-ciclo [repos]
+#   ./asistencia.sh <curso.conf> <semana> [dir-ciclo] [alumnos.csv]
 #
-# semana:    numero de semana (1-2 digitos, se normaliza a sNN).
-# dir-ciclo: carpeta del ciclo, p.ej. ~/curso/so/202620. Ahi se escribe
-#            asistencia/asistencia-sNN.md (crea la carpeta si hace falta).
-# repos:     carpeta con los repos ya clonados (default: dir-ciclo/repos-individual).
+# semana: numero de semana (1 o 2 digitos, se normaliza a sNN).
+# Escribe <dir-ciclo>/asistencia/asistencia-sNN.md
 
 set -euo pipefail
+. "$(dirname "$(readlink -f "$0")")/../lib.sh"
 
-CSV="${1:?Uso: ./asistencia.sh alumnos.csv semana dir-ciclo [repos]}"
-SEMANA_RAW="${2:?Uso: ./asistencia.sh alumnos.csv semana dir-ciclo [repos]}"
-DIR_CICLO="${3:?Uso: ./asistencia.sh alumnos.csv semana dir-ciclo [repos]}"
-REPOS="${4:-$DIR_CICLO/repos-individual}"
+cargar_conf "${1:-}"
+SEMANA_RAW="${2:?Uso: ./asistencia.sh <curso.conf> <semana> [dir-ciclo] [alumnos.csv]}"
+resolver_dir_ciclo "${3:-}"
+resolver_csv "${4:-}"
 
-if [ ! -f "$CSV" ]; then
-  echo "No existe el CSV '$CSV'." >&2
-  exit 1
-fi
 if ! [[ "$SEMANA_RAW" =~ ^[0-9]+$ ]]; then
   echo "La semana debe ser un numero (recibido: '$SEMANA_RAW')." >&2
   exit 1
 fi
 SEMANA="$(printf '%02d' "$SEMANA_RAW")"
-PAT1="^s${SEMANA} bloque 1"
-PAT2="^s${SEMANA} bloque 2"
+
+# Patron de los commits que cuentan como trabajo de la sesion. Se puede
+# cambiar por curso con PATRON_ASISTENCIA en el conf, usando {NN} como
+# marcador del numero de semana.
+MARCA='{NN}'
+PATRON_DEFECTO='^s{NN} bloque [12]'
+PATRON="${PATRON_ASISTENCIA:-$PATRON_DEFECTO}"
+PATRON="${PATRON//$MARCA/$SEMANA}"
+
+REPOS="$DIR_CICLO/repos-individual"
 SALIDA="$DIR_CICLO/asistencia/asistencia-s${SEMANA}.md"
 
-sin_usuario=()
-sin_repo=()
-entregaron=()
-nada=()
+sin_usuario=(); sin_repo=(); entregaron=(); nada=()
 
-primero=1
-while IFS=, read -r codigo nombre email usuario equipo || [ -n "${codigo:-}" ]; do
-  if [ "$primero" = 1 ]; then primero=0; continue; fi
-  codigo="$(echo "${codigo:-}" | tr -d '\r' | xargs)"
-  nombre="$(echo "${nombre:-}" | tr -d '\r' | xargs)"
-  usuario="$(echo "${usuario:-}" | tr -d '\r' | xargs)"
+while IFS= read -r linea || [ -n "$linea" ]; do
+  fila_util "$linea" || continue
+  codigo="$(campo "$COL_CODIGO")"
+  nombre="$(campo "$COL_NOMBRE")"
+  usuario="$(campo "$COL_USUARIO")"
   [ -z "$codigo" ] && continue
 
   if [ -z "$usuario" ]; then
@@ -68,7 +68,7 @@ while IFS=, read -r codigo nombre email usuario equipo || [ -n "${codigo:-}" ]; 
 
   tiene=0
   while IFS= read -r asunto; do
-    if [[ "$asunto" =~ $PAT1 ]] || [[ "$asunto" =~ $PAT2 ]]; then
+    if [[ "$asunto" =~ $PATRON ]]; then
       tiene=1
       break
     fi
@@ -79,10 +79,10 @@ while IFS=, read -r codigo nombre email usuario equipo || [ -n "${codigo:-}" ]; 
   else
     nada+=("$id ($nombre)")
   fi
-done < "$CSV"
+done < "$CSV_ALUMNOS"
 
 echo
-echo "===== Asistencia s${SEMANA} ====="
+echo "===== Asistencia $CURSO s${SEMANA} ====="
 echo "Entregaron algo: ${#entregaron[@]}"
 echo "No entregaron nada: ${#nada[@]}"
 [ "${#nada[@]}" -gt 0 ] && printf '  - %s\n' "${nada[@]}"
@@ -93,7 +93,7 @@ echo "Repo no clonado en local: ${#sin_repo[@]}"
 
 mkdir -p "$(dirname "$SALIDA")"
 {
-  echo "# Asistencia s${SEMANA}"
+  echo "# Asistencia $CURSO s${SEMANA}"
   echo
   echo "Generado: $(date '+%Y-%m-%d %H:%M')"
   echo

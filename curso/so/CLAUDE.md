@@ -329,12 +329,12 @@ La asistencia del lunes se registra con los commits de los bloques. **Eso no se 
 programa**; se comunica en el encuadre y en Classroom con redacción neutra ("la asistencia se
 registra con el commit de la actividad de la sesión").
 
-Cada semana se corre el reporte de asistencia (`recurso/asistencia/`, solo lectura, sin
+Cada semana se corre el reporte de asistencia (`curso/recursos/asistencia/`, solo lectura, sin
 autorización) para saber quién no entregó nada, y luego, mismo mecanismo que las revisiones
 formales, una nota breve se agrega a `REVISION.md` vía `concentrado.md` +
 `aplicar-concentrado.py --confirmar` (esta parte sí requiere la autorización explícita de más
-abajo, por ser la que escribe en el repo del alumno). Detalle completo del flujo semanal en
-`recurso/revision/README.md`.
+abajo, por ser la que escribe en el repo del alumno). Los prompts ya armados para este curso están
+en `recurso/revision/README.md`.
 
 ### El atorón documentado (convención de todo el semestre)
 
@@ -445,8 +445,7 @@ El mismo mecanismo (`concentrado.md` + `aplicar-concentrado.py`) también
 sirve para avisos informales fuera de las revisiones formales (p. ej. "tu
 `equipo.csv` está mal escrito"), cualquier semana: el bloque lleva un
 encabezado con fecha (`### Nota rápida (2026-09-10)`) en vez de `## Revisión
-N`, sin tabla de instrumento/peso/nivel. Misma regla dura de autorización de
-abajo aplica igual.
+N`, sin tabla de instrumento/peso/nivel. La regla dura de abajo aplica igual.
 
 ### Regla dura: nunca commit ni push a un repositorio de alumno o equipo sin autorización explícita de Karlos, para ese lote, ese mismo día
 
@@ -458,8 +457,9 @@ El flujo tiene dos pasos obligatorios, en este orden:
 
 1. **Borrador primero, en `concentrado.md`.** Al revisar (con Claude Code)
    los repos ya clonados en local, lo que se escribe primero es un
-   `concentrado.md` en `~/curso/so/<ciclo>/revision/<numero>/concentrado.md`:
-   un bloque por alumno y por equipo con el texto exacto que se agregaría a
+   `concentrado.md` en `~/curso/so/<ciclo>/revision/<numero>/concentrado.md`
+   (o en `asistencia/concentrado-sNN.md` si es una nota semanal): un bloque
+   por alumno y por equipo con el texto exacto que se agregaría a
    su `REVISION.md`, delimitado con marcadores `<!-- BLOQUE: ALUMNO
    <codigo>-<usuario> --> ... <!-- FIN BLOQUE -->` (o `EQUIPO
    <numero>-<usuario>`). **En este paso no se toca ningún repositorio de
@@ -480,19 +480,30 @@ Si Karlos no ha dicho explícitamente que autoriza, no se corre el script con
 
 ### Dónde viven los scripts de este flujo
 
-- Los scripts genéricos y reutilizables sin datos de alumnos (clonar/pull de
-  `so-proyecto` e `integrador-so` a partir de `alumnos.csv`) sí viven en este
-  repositorio público, en `recurso/pull-repos/`.
+- Los scripts **genéricos, compartidos por todos los cursos**, viven en `curso/recursos/` de este
+  mismo repositorio público: clonar/actualizar los repos (`pull-repos/`), el reporte semanal de
+  asistencia a partir de los commits (`asistencia/`) y la autoevaluación entre pares
+  (`autoeval/`). No traen nada específico de un curso ni datos de alumnos.
+- Lo que hace que hablen de SO es `curso/so/recurso/curso.conf`: nombres de los repos
+  (`so-proyecto`, `integrador-so`, `autoeval-so`), carpeta del ciclo y plantillas del
+  `REVISION.md` (`curso/so/recurso/revision/`).
+- Los datos del ciclo (padrón, repos clonados, reportes, concentrados) viven fuera del sitio, en
+  `~/curso/so/202620/`.
 - El paso mecánico de aplicar el `concentrado.md` (append a cada `REVISION.md`
   + `commit` + `push`) **no vive en este repositorio**: es
-  `~/curso/so/scripts/aplicar-concentrado.py`, junto con `alumnos.csv` y los
-  repos clonados, porque toca datos y borradores de calificación de alumnos
-  reales. Redacta la retroalimentación (armar el `concentrado.md`), no la
-  aplica: aplicar es puramente mecánico y no necesita tokens de Claude.
-  Por default hace dry-run (no escribe ni hace git); necesita `--confirmar`
-  para de verdad hacer `commit`/`push`, y antes de tocar nada valida los 32
-  repos (que existan clonados y que estén limpios) y aborta el lote completo
-  si algo no cuadra, en vez de aplicar la mitad.
+  `~/curso/scripts/aplicar-concentrado.py`, porque es el único paso que
+  escribe en repos de alumnos reales. Redacta la retroalimentación (armar el
+  `concentrado.md`), no la aplica: aplicar es puramente mecánico y no
+  necesita tokens de Claude. Por default hace dry-run (no escribe ni hace
+  git); necesita `--confirmar` para de verdad hacer `commit`/`push`, y antes
+  de tocar nada valida todos los repos (que existan clonados y que estén
+  limpios) y aborta el lote completo si algo no cuadra, en vez de aplicar la
+  mitad.
+
+Los prompts para pegar en Claude Code, ya con las rutas y los criterios de SO
+puestos (semanal informal y revisión formal), están en
+`curso/so/recurso/revision/README.md`. La explicación del mecanismo genérico,
+común a todos los cursos, está en `curso/recursos/revision/README.md`.
 
 ---
 
@@ -573,7 +584,8 @@ acumulable. **Una vez publicada la semana que introduce un nombre, ese nombre qu
   Cada alumno entrega un repo privado propio con un archivo CSV nombrado con su propio codigo de
   alumno (p. ej. `2162628.csv`, columnas `codigo,calificacion`; el nombre del archivo identifica
   al evaluador) y agrega al asesor como colaborador. Así los compañeros no se ven entre sí; solo
-  el asesor lee todo. Automatización en `recurso/autoeval/`: `pull-autoevals.sh` y `aggregate.py`.
+  el asesor lee todo. Automatización en `curso/recursos/autoeval/`: `pull-autoevals.sh` y
+  `aggregate.py`, configurados por `recurso/curso.conf` (`REPO_AUTOEVAL=autoeval-so`).
   Vale **10% de cada revisión**. El alumno actualiza su archivo `<codigo>.csv` con push **antes de
   cada una de las 3 revisiones**. Si no hace push, pierde ese 10% en esa revisión; no afecta a los
   compañeros (el promedio se calcula solo con las autoevaluaciones entregadas).
@@ -639,14 +651,18 @@ curso/so/
     proyecto_integrador/index.md  <- Instrucciones y rubrica del integrador
   semana-01/index.md ... semana-17/index.md
   semana-NN/profesor.md           <- enlace simbolico al repo privado, en .gitignore
-  recurso/                        <- Material de trabajo INTERNO (no se sirve en el sitio)
+  recurso/                        <- Material interno del asesor (no se publica)
+    curso.conf                    <- Configuracion para los scripts de curso/recursos/
+    revision/plantilla-*.md       <- Encabezado del REVISION.md de alumno y de equipo
     reporte-laboral.md
     resumen-ejecutivo-laboral.md
     calendario-clases.md
     lineamiento-syllabus.md
     mejoras.md
-    autoeval/
 ```
+
+Los scripts genéricos de revisión de avances (`pull-repos/`, `asistencia/`, `autoeval/`), comunes a
+todos los cursos, viven en `curso/recursos/` (fuera de `curso/so/`), no aquí.
 
 ---
 

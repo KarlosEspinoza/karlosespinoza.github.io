@@ -253,6 +253,48 @@ Lo suben los tres integrantes, el mismo archivo cada quien. Si dos traen la mism
 
 ---
 
+## 5b. Tarea: registro del repositorio del equipo
+
+Tipo: **Tarea** con entrega de enlace. Tema: **Proyecto integrador**. Sin calificación.
+Fecha: al término de la **semana 4**, que es donde la guía pide crearlo.
+
+Esta se agrega en la semana 4 y no en la 1 a propósito: hasta esa semana el equipo no tiene nada
+que guardar en común, y un repositorio vacío creado en la primera semana se abandona. **Entrega
+un solo integrante, el representante**, y lo único que entrega es la URL. Los demás quedan
+marcados como "sin entregar" en Classroom, y eso es lo esperado.
+
+Esa URL es lo que te deja identificar al representante de cada equipo, que es el dato que va en
+la columna `equipo` de tu `alumnos.csv` (solo el representante lleva número; los demás
+integrantes van vacíos). De ahí sale el `pull-equipos.sh`.
+
+**Título:**
+
+```
+Registro del repositorio del equipo
+```
+
+**Instrucciones:**
+
+```
+A partir de la semana 4 el equipo tiene un repositorio propio, uno solo para todos, aparte del repositorio individual de cada quien. Ahí vive el controlador central, que es un solo programa y es responsabilidad de todo el equipo.
+
+Nombren un representante. El representante hace esto:
+
+1. Crea un repositorio privado llamado integrador-ia.
+2. Agrega como colaboradores a los demás integrantes y a KarlosEspinoza (Settings, Collaborators, Add people). Los compañeros aceptan la invitación que les llega por correo.
+3. Copia en la raíz del repositorio el mismo equipo.csv que subieron en la semana 1.
+4. Crea el README.md con el nombre completo de cada integrante y su dominio.
+5. Entrega aquí la URL del repositorio.
+
+Los demás integrantes no entregan nada en esta tarea. Su parte es aceptar la invitación de colaborador y revisar que su código y su dominio quedaron bien escritos en el equipo.csv.
+
+Si cada quien crea su propio repositorio no hay proyecto integrador: serían tres controladores centrales distintos en vez de uno.
+
+Detalle: https://karlosespinoza.github.io/curso/ia/semana-04
+```
+
+---
+
 ## 6. Tarea semanal
 
 Una sola publicación por semana, tipo **Tarea**, sin archivo adjunto, que el alumno marca como
@@ -458,7 +500,8 @@ Dímelo por comentario privado en esta tarea durante la misma semana en que ocur
 2. Publicar "Como funciona el curso" (Material, tema *Empieza aqui*).
 3. Publicar el anuncio de bienvenida y fijarlo.
 4. Crear la pregunta de la URL del repositorio.
-5. Crear la tarea de registro de equipo.
+5. Crear la tarea de registro de equipo, y la de registro del repositorio del equipo (esta
+   segunda con fecha de la semana 4).
 6. Crear la tarea "Faltas" y dejarla publicada todo el semestre.
 7. Crear **las 14 tareas semanales y las 3 revisiones de avances**, todas de un jalón, con sus
    fechas tomadas del calendario oficial. Es lo más tardado del armado y solo se hace una vez:

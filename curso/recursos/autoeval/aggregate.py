@@ -9,9 +9,12 @@ calificaciones que recibio.
 Cada CSV tiene encabezado:  codigo,calificacion
 El nombre del archivo (sin .csv) es el codigo del alumno que evalua (evaluador).
 
+Generico: no depende de ningun curso, solo de la carpeta donde quedaron los
+repos clonados por pull-autoevals.sh.
+
 Uso:
-    python3 aggregate.py repos
-    python3 aggregate.py repos --csv resultado.csv
+    python3 aggregate.py ~/curso/ia/202620/repos-autoeval
+    python3 aggregate.py ~/curso/ia/202620/repos-autoeval --csv resultado.csv
 """
 import csv
 import sys
@@ -19,7 +22,7 @@ import glob
 import os
 from collections import defaultdict
 
-raiz = sys.argv[1] if len(sys.argv) > 1 else "repos"
+raiz = sys.argv[1] if len(sys.argv) > 1 else "repos-autoeval"
 salida_csv = None
 if "--csv" in sys.argv:
     salida_csv = sys.argv[sys.argv.index("--csv") + 1]

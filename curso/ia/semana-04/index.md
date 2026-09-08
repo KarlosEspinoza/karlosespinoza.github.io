@@ -266,7 +266,18 @@ Llegas con `limpiar.py` funcionando y tu `datos_limpios.csv` generado. La sesió
 
 ### Proyecto integrador {#proyecto-integrador}
 
-Comparen sus figuras de galería. Dos cosas:
+**A partir de esta semana el equipo tiene su propio repositorio.** Hasta ahora los acuerdos del equipo vivían en el aire; de aquí en adelante viven en un solo lugar, porque en la semana 8 el controlador central va a ser un programa que escriben entre todos.
 
-1. **Quién tiene la señal más limpia y por qué.** Casi siempre hay un módulo del equipo cuya señal sale mucho mejor que las otras, y la razón suele ser el montaje: mejor sujeción, mejor distancia, menos vibración. Eso se copia entre ustedes.
-2. **El mismo orden de limpieza para los tres módulos.** Si uno normaliza y otro no, cuando integren los módulos en la semana 8 los valores no van a ser comparables. Escriban el orden acordado (atípicos, filtro, línea base, normalización) en el README del equipo.
+1. **Nombren un representante.** El representante hace lo siguiente, una sola vez:
+
+   - Crea un repositorio **privado** llamado `integrador-ia`. Uno solo para todo el equipo, aparte del repositorio individual de cada quien.
+   - Agrega como colaboradores a los demás integrantes y a `KarlosEspinoza` (`Settings -> Collaborators -> Add people`). Los compañeros aceptan la invitación que les llega por correo.
+   - Copia dentro, en la raíz, el mismo `equipo.csv` que subieron en la semana 1.
+   - Crea el `README.md` con el nombre completo de cada integrante y su dominio.
+   - Entrega la URL en la tarea "Registro del repositorio del equipo" de Classroom. Los demás integrantes no entregan nada ahí: su parte es aceptar la invitación.
+
+2. **Comparen sus figuras de galería.** Casi siempre hay un módulo del equipo cuya señal sale mucho mejor que las otras, y la razón suele ser el montaje: mejor sujeción, mejor distancia, menos vibración. Eso se copia entre ustedes.
+
+3. **Acuerden el mismo orden de limpieza para los tres módulos.** Si uno normaliza y otro no, cuando integren los módulos en la semana 8 los valores no van a ser comparables. Escriban el orden acordado (atípicos, filtro, línea base, normalización) en el `README.md` del repositorio del equipo.
+
+Si cada quien crea su propio repositorio no hay proyecto integrador: serían tres controladores centrales distintos en vez de uno.

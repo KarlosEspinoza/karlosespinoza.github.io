@@ -95,8 +95,10 @@ El **Pipeline Central** recorre la secuencia de decisión en cada ciclo:
 
 ## Estructura del repositorio {#estructura-del-repositorio}
 
+El equipo tiene **un solo repositorio**, privado, llamado `integrador-ia`. Lo crea el representante del equipo en la semana 4 y agrega como colaboradores a los demás integrantes y al asesor. Es aparte del repositorio individual de cada quien.
+
 ```
-proyecto-integrador/
+integrador-ia/
   README.md                   <- Integrantes, dominios y descripción del sistema
   BITACORA.md                 <- Conceptos de ML aplicados por el equipo
   pipeline/

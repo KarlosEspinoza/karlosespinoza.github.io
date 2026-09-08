@@ -322,6 +322,9 @@ curso/ia/
 
   classroom.md                    <- Textos para copiar y pegar en Google Classroom
   prompt_circ.md                  <- Prompt para circuitos en KiCad (vigente)
+  recurso/                        <- Material interno del asesor (no se publica)
+    curso.conf                    <- Configuracion para los scripts de curso/recursos/
+    revision/plantilla-*.md       <- Encabezado del REVISION.md de alumno y de equipo
 ```
 
 ### Estado de las semanas
@@ -456,6 +459,70 @@ forma acumulable:
 | 13 | `codigo/control.py` (integra anomalías) |
 | 15 | `codigo/evaluar.py`, `datos/datos_banda.csv` |
 | 16 | `codigo/prueba_plc.py` -> `modelo_produccion.pkl` |
+
+---
+
+## Revisión de avances: REVISION.md y el flujo de autorización
+
+La retroalimentación de cada revisión (semanas 9, 14 y 17) se entrega en un archivo
+**`REVISION.md`** en la raíz del repositorio del alumno (`clasificador-piezas-ia`) o del equipo
+(`integrador-ia`), no por Classroom ni por correo: el alumno la ve con su propio `git pull`. Es de
+una sola vía (la escribe el asesor) y **crece con cada revisión** (se agrega `## Revisión N`, nunca
+se borra una anterior). El archivo se crea solo, con el encabezado de la plantilla del curso, la
+primera vez que se le aplica algo; por eso no hace falta anunciarlo en el material.
+
+El mismo mecanismo (`concentrado.md` + `aplicar-concentrado.py`) sirve para avisos informales
+fuera de las revisiones formales (p. ej. "tu `features.csv` quedó con las columnas invertidas"),
+cualquier semana: el bloque lleva un encabezado con fecha (`### Nota rápida (2026-09-10)`) en vez
+de `## Revisión N`, sin tabla de instrumento/peso/nivel. La regla dura de abajo aplica igual.
+
+### Regla dura: nunca commit ni push a un repositorio de alumno o equipo sin autorización explícita de Karlos, para ese lote, ese mismo día
+
+No basta con que Karlos haya autorizado una revisión anterior: cada lote de `commit`/`push` a los
+repos de los alumnos necesita su propia autorización explícita. Regla sin excepciones, sin importar
+el modo de permisos activo.
+
+El flujo tiene dos pasos obligatorios, en este orden:
+
+1. **Borrador primero, en `concentrado.md`.** Al revisar (con Claude Code) los repos ya clonados en
+   local, lo que se escribe primero es un `concentrado.md` en
+   `~/curso/ia/<ciclo>/revision/<numero>/concentrado.md` (o en `asistencia/concentrado-sNN.md` si
+   es una nota semanal): un bloque por alumno y por equipo con el texto exacto que se agregaría a
+   su `REVISION.md`, delimitado con marcadores `<!-- BLOQUE: ALUMNO <codigo>-<usuario> --> ...
+   <!-- FIN BLOQUE -->` (o `EQUIPO <numero>-<usuario>`). **En este paso no se toca ningún
+   repositorio de alumno**, ni siquiera el clonado en local: no hay `git add`, no hay `commit`, no
+   hay `push`.
+2. **Aplicar solo lo que está en el `concentrado.md` cuando Karlos lo autoriza.** Karlos lee el
+   archivo completo y pide los ajustes que hagan falta editando ese mismo archivo. **No hay
+   autorización parcial en tiempo de ejecución**: no se le pide "aplica todos menos el del equipo
+   7", eso se resuelve quitando ese bloque del `concentrado.md` antes de correr el script. Cuando
+   Karlos dice explícitamente que autoriza, se corre `aplicar-concentrado.py` sobre el archivo tal
+   como quedó, y aplica todos los bloques que traiga.
+
+Si Karlos no ha dicho explícitamente que autoriza, no se corre el script con `--confirmar`, aunque
+ya se haya escrito y revisado el `concentrado.md`.
+
+### Dónde viven los scripts de este flujo
+
+- Los scripts **genéricos, compartidos por todos los cursos**, viven en `curso/recursos/` de este
+  mismo repositorio público: clonar/actualizar los repos (`pull-repos/`), el reporte semanal de
+  asistencia a partir de los commits (`asistencia/`) y la autoevaluación entre pares
+  (`autoeval/`). No traen nada específico de un curso ni datos de alumnos.
+- Lo que hace que hablen de IA es `curso/ia/recurso/curso.conf`: nombres de los repos
+  (`clasificador-piezas-ia`, `integrador-ia`, `autoeval-ia`), carpeta del ciclo y plantillas del
+  `REVISION.md` (`curso/ia/recurso/revision/`).
+- Los datos del ciclo (padrón, repos clonados, reportes, concentrados) viven fuera del sitio, en
+  `~/curso/ia/202620/`.
+- El paso mecánico de aplicar el `concentrado.md` (append a cada `REVISION.md` + `commit` +
+  `push`) **no vive en este repositorio**: es `~/curso/scripts/aplicar-concentrado.py`, porque es
+  el único paso que escribe en repos de alumnos reales. Por default hace dry-run; necesita
+  `--confirmar`, y antes de tocar nada valida todos los repos (clonados y limpios) y aborta el
+  lote completo si algo no cuadra, en vez de aplicar la mitad.
+
+Los prompts para pegar en Claude Code, ya con las rutas y los criterios de IA
+puestos (semanal informal y revisión formal), están en
+`curso/ia/recurso/revision/README.md`. La explicación del mecanismo genérico,
+común a todos los cursos, está en `curso/recursos/revision/README.md`.
 
 ---
 
