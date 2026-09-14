@@ -198,6 +198,7 @@ El dominio lo terminas de decidir en el bloque 2, así que por ahora déjalo en 
 ```bash
 git add .
 git commit -m "s01 bloque 1: entorno y repositorio listos"
+git pull
 git push
 ```
 
@@ -318,6 +319,7 @@ Actualiza también el dominio en tu `README.md`.
 ```bash
 git add .
 git commit -m "s01 bloque 2: eleccion de dominio"
+git pull
 git push
 ```
 
@@ -341,6 +343,7 @@ El **tiempo de respuesta** es el que más nos va a importar: en la semana 2 vamo
 ```bash
 git add .
 git commit -m "s01 extra: hoja de datos del sensor"
+git pull
 git push
 ```
 
@@ -412,6 +415,7 @@ El repositorio ya lo creaste el lunes. Lo que queda es cerrarlo y dejarlo entreg
    ```bash
    git add .
    git commit -m "s01 proyecto: repositorio entregado y dominio registrado"
+   git pull
    git push
    ```
 

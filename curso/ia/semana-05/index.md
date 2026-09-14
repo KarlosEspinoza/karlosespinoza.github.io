@@ -116,6 +116,7 @@ Y una predicción escrita: **cuál crees que va a ser la mejor y cuál la más i
 ```bash
 git add .
 git commit -m "s05 bloque 1: seleccion de caracteristicas"
+git pull
 git push
 ```
 
@@ -207,6 +208,7 @@ Prueba al menos tres pares distintos de características antes de sacar conclusi
 ```bash
 git add .
 git commit -m "s05 bloque 2: features.py y tabla de caracteristicas"
+git pull
 git push
 ```
 
@@ -230,6 +232,7 @@ Elige una, impleméntala, agrégala a `features.py` y grafícala contra la que y
 ```bash
 git add .
 git commit -m "s05 extra: caracteristica propia del dominio"
+git pull
 git push
 ```
 
@@ -266,6 +269,7 @@ Llegas con tu `features.csv` generado y tus diagramas de dispersión hechos. La 
    ```bash
    git add .
    git commit -m "s05 proyecto: caracteristicas de tiempo extraidas"
+   git pull
    git push
    ```
 

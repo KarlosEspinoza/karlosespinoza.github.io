@@ -124,6 +124,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s03 bloque 1: diseño del dataset"
+git pull
 git push
 ```
 
@@ -244,6 +245,7 @@ Dos detalles del código que conviene que entiendas, porque los vas a necesitar:
 ```bash
 git add .
 git commit -m "s03 bloque 2: protocolo de recoleccion y adquirir.py"
+git pull
 git push
 ```
 
@@ -278,6 +280,7 @@ Dos cosas que se ponen interesantes cuando lo intentas:
 ```bash
 git add .
 git commit -m "s03 extra: deteccion automatica del evento"
+git pull
 git push
 ```
 
@@ -330,6 +333,7 @@ Llegas con `adquirir.py` escrito y tu protocolo decidido. Traes tu Arduino, tu s
    ```bash
    git add .
    git commit -m "s03 proyecto: dataset etiquetado de los tres tipos de pieza"
+   git pull
    git push
    ```
 

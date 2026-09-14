@@ -104,6 +104,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s10 bloque 1: aprendizaje no supervisado"
+git pull
 git push
 ```
 
@@ -177,6 +178,7 @@ Ese 85% es la respuesta a "cuánto perdí al pasar de ocho dimensiones a dos". P
 ```bash
 git add .
 git commit -m "s10 bloque 2: PCA del dataset"
+git pull
 git push
 ```
 
@@ -210,6 +212,7 @@ Y hay un experimento que vale la pena, porque conecta las dos unidades: **reentr
 ```bash
 git add .
 git commit -m "s10 extra: componentes necesarias y clasificacion sobre PCA"
+git pull
 git push
 ```
 
@@ -248,6 +251,7 @@ Llegas con tu `pca.png` hecho. La sesión es de lectura de gráficas, que es una
    ```bash
    git add .
    git commit -m "s10 proyecto: PCA y captura de piezas anomalas"
+   git pull
    git push
    ```
 

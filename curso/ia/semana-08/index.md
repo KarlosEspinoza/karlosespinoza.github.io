@@ -141,6 +141,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s08 bloque 1: red neuronal y comparacion"
+git pull
 git push
 ```
 
@@ -285,6 +286,7 @@ Este es el error número uno de los sistemas de aprendizaje de máquina en produ
 ```bash
 git add .
 git commit -m "s08 bloque 2: bucle de control completo"
+git pull
 git push
 ```
 
@@ -320,6 +322,7 @@ Casi seguro va a ser la captura, porque tienes que esperar físicamente a que pa
 ```bash
 git add .
 git commit -m "s08 extra: latencia del bucle de control"
+git pull
 git push
 ```
 
@@ -360,6 +363,7 @@ Llegas con `control.py` y `control.ino` escritos y tu modelo elegido. Traes tu A
    ```bash
    git add .
    git commit -m "s08 proyecto: bucle de control funcionando"
+   git pull
    git push
    ```
 

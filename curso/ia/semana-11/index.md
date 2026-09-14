@@ -144,6 +144,7 @@ Un detalle: **los números de los grupos no significan nada**. El grupo 0 no es 
 ```bash
 git add .
 git commit -m "s11 bloque 1: K-Means y comparacion con las etiquetas"
+git pull
 git push
 ```
 
@@ -237,6 +238,7 @@ Si las marcó, acabas de construir tu primer detector de anomalías, sin haberle
 ```bash
 git add .
 git commit -m "s11 bloque 2: DBSCAN y deteccion de ruido"
+git pull
 git push
 ```
 
@@ -275,6 +277,7 @@ Y la pregunta que hay que responder en la bitácora: **si el mejor $k$ no es 3, 
 ```bash
 git add .
 git commit -m "s11 extra: numero natural de grupos"
+git pull
 git push
 ```
 
@@ -312,6 +315,7 @@ Llegas con tu tabla cruzada y tu DBSCAN corrido. La sesión es de interpretació
    ```bash
    git add .
    git commit -m "s11 proyecto: agrupamiento y linea base de deteccion"
+   git pull
    git push
    ```
 

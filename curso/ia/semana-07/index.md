@@ -155,6 +155,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s07 bloque 1: eleccion de algoritmo y particion"
+git pull
 git push
 ```
 
@@ -246,6 +247,7 @@ Con 18 ejemplos de prueba, un error o dos cambian mucho la exactitud. **No te to
 ```bash
 git add .
 git commit -m "s07 bloque 2: clasificador entrenado y guardado"
+git pull
 git push
 ```
 
@@ -292,6 +294,7 @@ Te imprime las reglas que aprendió. Pega esas reglas en tu bitácora y explica 
 ```bash
 git add .
 git commit -m "s07 extra: comparacion de algoritmos"
+git pull
 git push
 ```
 
@@ -329,6 +332,7 @@ Llegas con tu modelo entrenado y tu matriz de confusión. La sesión es para int
    ```bash
    git add .
    git commit -m "s07 proyecto: clasificador entrenado"
+   git pull
    git push
    ```
 

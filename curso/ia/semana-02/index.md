@@ -158,6 +158,7 @@ Guárdalo en `codigo/sensor.ino`. El valor del `delay()` lo decides en el bloque
 ```bash
 git add .
 git commit -m "s02 bloque 1: sensor.ino y formato de linea"
+git pull
 git push
 ```
 
@@ -299,6 +300,7 @@ Guárdalo en `codigo/leer_sensor.py`.
 ```bash
 git add .
 git commit -m "s02 bloque 2: leer_sensor.py y frecuencia de muestreo"
+git pull
 git push
 ```
 
@@ -329,6 +331,7 @@ Ojo con una cosa: si el Arduino manda dos valores y Python espera uno, no truena
 ```bash
 git add .
 git commit -m "s02 extra: dos valores por linea"
+git pull
 git push
 ```
 
@@ -371,6 +374,7 @@ Tus datos buenos, los definitivos, los vas a capturar más adelante sobre la ban
    ```bash
    git add .
    git commit -m "s02 proyecto: señales capturadas de los tres tipos de pieza"
+   git pull
    git push
    ```
 

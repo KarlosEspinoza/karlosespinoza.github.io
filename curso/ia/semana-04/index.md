@@ -128,6 +128,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s04 bloque 1: filtrado y valores atipicos"
+git pull
 git push
 ```
 
@@ -200,6 +201,7 @@ Y una advertencia para la que todavía no tienes contexto pero que vas a agradec
 ```bash
 git add .
 git commit -m "s04 bloque 2: linea base y normalizacion"
+git pull
 git push
 ```
 
@@ -225,6 +227,7 @@ Si quieres ir más lejos, mide en vez de mirar: calcula la profundidad del valle
 ```bash
 git add .
 git commit -m "s04 extra: comparacion de tamaños de filtro"
+git pull
 git push
 ```
 
@@ -261,6 +264,7 @@ Llegas con `limpiar.py` funcionando y tu `datos_limpios.csv` generado. La sesió
    ```bash
    git add .
    git commit -m "s04 proyecto: dataset limpio y normalizado"
+   git pull
    git push
    ```
 

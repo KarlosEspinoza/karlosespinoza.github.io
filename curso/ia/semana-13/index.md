@@ -130,6 +130,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s13 bloque 1: logica de decision con rechazo"
+git pull
 git push
 ```
 
@@ -237,6 +238,7 @@ Si te pasa, ese es el diagnóstico: compara el vector de características que pr
 ```bash
 git add .
 git commit -m "s13 bloque 2: anomalias integradas al bucle de control"
+git pull
 git push
 ```
 
@@ -273,6 +275,7 @@ Esa última gráfica es interesantísima si la corres un rato largo: **si el err
 ```bash
 git add .
 git commit -m "s13 extra: registro de anomalias"
+git pull
 git push
 ```
 
@@ -322,6 +325,7 @@ Llegas con `control.py` integrado. Traes tu hardware, tus piezas normales y tus 
    ```bash
    git add .
    git commit -m "s13 proyecto: sistema completo con rechazo de anomalias"
+   git pull
    git push
    ```
 

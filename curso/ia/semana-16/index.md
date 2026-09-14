@@ -125,6 +125,7 @@ Y una lección general que vale más allá del curso: **el modelo se entrena con
 ```bash
 git add .
 git commit -m "s16 bloque 1: diagnostico del desajuste"
+git pull
 git push
 ```
 
@@ -262,6 +263,7 @@ Y en Windows hay un paso extra: la mayoría de las laptops ya no traen puerto Et
 ```bash
 git add .
 git commit -m "s16 bloque 2: modelo de produccion y conexion al PLC"
+git pull
 git push
 ```
 
@@ -295,6 +297,7 @@ Documenta los dos números y tu conclusión. En la revisión final voy a pregunt
 ```bash
 git add .
 git commit -m "s16 extra: tiempo de ciclo y latencia"
+git pull
 git push
 ```
 
@@ -336,6 +339,7 @@ git push
    ```bash
    git add .
    git commit -m "s16 proyecto: modelo reentrenado para la banda y conexion al PLC"
+   git pull
    git push
    ```
 

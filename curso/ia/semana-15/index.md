@@ -117,6 +117,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s15 bloque 1: metricas de evaluacion"
+git pull
 git push
 ```
 
@@ -226,6 +227,7 @@ Una fila por clase, con sus tres métricas y cuántos ejemplos había (`support`
 ```bash
 git add .
 git commit -m "s15 bloque 2: validacion cruzada y reporte"
+git pull
 git push
 ```
 
@@ -265,6 +267,7 @@ Escribe en tu bitácora cuál de los tres casos es el tuyo. Es una conclusión d
 ```bash
 git add .
 git commit -m "s15 extra: curva de aprendizaje"
+git pull
 git push
 ```
 
@@ -308,6 +311,7 @@ Llegas con tu evaluación honesta hecha. Y hoy salimos del salón.
    ```bash
    git add .
    git commit -m "s15 proyecto: evaluacion honesta y datos de la banda"
+   git pull
    git push
    ```
 

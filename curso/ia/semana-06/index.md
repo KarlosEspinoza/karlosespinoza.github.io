@@ -105,6 +105,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s06 bloque 1: nyquist y resolucion en frecuencia"
+git pull
 git push
 ```
 
@@ -213,6 +214,7 @@ Eso es un resultado bien hecho, no un fracaso. Lo que sí sería un error es dej
 ```bash
 git add .
 git commit -m "s06 bloque 2: caracteristicas espectrales"
+git pull
 git push
 ```
 
@@ -239,6 +241,7 @@ La pregunta que responde esa figura es la buena: **¿hay alguna banda de frecuen
 ```bash
 git add .
 git commit -m "s06 extra: espectros promedio por clase"
+git pull
 git push
 ```
 
@@ -275,6 +278,7 @@ Llegas con tus espectros calculados y tu decisión tomada sobre si te sirven. Ce
    ```bash
    git add .
    git commit -m "s06 proyecto: caracteristicas de frecuencia y dataset congelado"
+   git pull
    git push
    ```
 

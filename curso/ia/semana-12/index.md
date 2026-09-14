@@ -118,6 +118,7 @@ En `BITACORA.md`, bajo `### Antes de la clase`:
 ```bash
 git add .
 git commit -m "s12 bloque 1: idea del autoencoder"
+git pull
 git push
 ```
 
@@ -232,6 +233,7 @@ Lo que se lee de golpe: **qué tanto se separan las dos poblaciones**. Si están
 ```bash
 git add .
 git commit -m "s12 bloque 2: autoencoder entrenado y umbral elegido"
+git pull
 git push
 ```
 
@@ -263,6 +265,7 @@ Es la misma lección que la del filtro en la semana 4 y la de `max_depth` en la 
 ```bash
 git add .
 git commit -m "s12 extra: tamaño del cuello de botella"
+git pull
 git push
 ```
 
@@ -306,6 +309,7 @@ Llegas con tu detector entrenado y tu figura de histogramas. La sesión es de an
    ```bash
    git add .
    git commit -m "s12 proyecto: detector de anomalias funcionando"
+   git pull
    git push
    ```
 
