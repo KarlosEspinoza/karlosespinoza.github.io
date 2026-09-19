@@ -10,3 +10,4 @@ title: Cursos
 - [Inteligencia Artificial](/curso/ia/)
 - [Matematicas para Ingeniería de Materiales](/curso/mim/)
 - [Aplicación Web](/curso/webapp/)
+- [De la señal a la decisión (taller)](/curso/senal/)

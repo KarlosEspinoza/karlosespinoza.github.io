@@ -45,6 +45,8 @@ navigation:
         link: /curso/so/
       - name: Aplicación Web
         link: /curso/webapp/
+      - name: De la señal a la decisión (taller)
+        link: /curso/senal/
 #        subsublist:
 #          - name: Programa
 #            link: /curso/ia/programa
@@ -90,6 +92,9 @@ exclude:
   - "**/PROMPT-*.md"
   - "**/todo.md"
   - "**/template.md"
+  - "**/README.md"
+  - "**/roadmap.md"
+  - "**/estrategia.md"
   # Material interno de trabajo: no se sirve en el sitio.
   # Ojo: excluir aqui solo evita que Jekyll lo publique. El repositorio del
   # sitio es publico, asi que estos archivos se siguen leyendo en GitHub.

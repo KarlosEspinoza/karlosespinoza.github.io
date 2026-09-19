@@ -11,5 +11,6 @@ title: Indice
     - [Matemáticas para Ingeniería de Materiales](/curso/mim/)
     - [Sistemas Operativos](/curso/so/)
     - [WebApp](/curso/webapp/)
+    - [De la señal a la decisión (taller)](/curso/senal/)
 
 
