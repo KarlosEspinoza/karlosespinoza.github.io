@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="#1a1a1a" viewBox="0 0 880 600" width="880" height="600" role="img" aria-label="Como abrir el CMD desde la barra de direcciones del explorador de archivos de Windows">
+  <style>
+    .t   { font-family: "Segoe UI", Selawik, system-ui, sans-serif; }
+    .win { font-size: 14px; }
+    .bc  { font-size: 15px; }
+    .mono{ font-family: Consolas, "Courier New", monospace; font-size: 15px; }
+    .num { font-family: "Segoe UI", Selawik, system-ui, sans-serif; font-size: 17px; font-weight: 700; fill: #ffffff; }
+  </style>
+
+  <!-- paso 1 -->
+  <circle cx="20" cy="60" r="16" fill="#d33a3a"/>
+  <text class="num" x="20" y="66" text-anchor="middle">1</text>
+  <g transform="translate(52,14)">
+    <rect x="0.5" y="0.5" width="811" height="128" rx="8" fill="#ffffff" stroke="#b8b8b8"/>
+    <rect x="1" y="1" width="810" height="38" rx="8" fill="#f3f3f3"/>
+    <rect x="1" y="28" width="810" height="11" fill="#f3f3f3"/>
+    <rect x="16" y="12" width="15" height="14" rx="2" fill="#f7c873" stroke="#d9a441"/>
+    <text class="t win" x="42" y="25">taller</text>
+    <text class="t win" x="735" y="25" fill="#666">&#8211;  &#9633;  &#10005;</text>
+    <line x1="1" y1="39" x2="811" y2="39" stroke="#e0e0e0"/>
+    <text class="t win" x="16" y="62" fill="#333">Nuevo</text>
+    <text class="t win" x="80" y="62" fill="#333">Copiar</text>
+    <text class="t win" x="148" y="62" fill="#333">Pegar</text>
+    <text class="t win" x="212" y="62" fill="#333">Cambiar nombre</text>
+    <line x1="1" y1="76" x2="811" y2="76" stroke="#e0e0e0"/>
+    <rect x="14" y="88" width="700" height="30" rx="4" fill="#fbfbfb" stroke="#d33a3a" stroke-width="2"/>
+    <text class="t bc" x="26" y="109" fill="#333">Escritorio  &#8250;  taller</text>
+  </g>
+
+  <!-- paso 2 -->
+  <circle cx="20" cy="245" r="16" fill="#d33a3a"/>
+  <text class="num" x="20" y="251" text-anchor="middle">2</text>
+  <g transform="translate(52,199)">
+    <rect x="0.5" y="0.5" width="811" height="128" rx="8" fill="#ffffff" stroke="#b8b8b8"/>
+    <rect x="1" y="1" width="810" height="38" rx="8" fill="#f3f3f3"/>
+    <rect x="1" y="28" width="810" height="11" fill="#f3f3f3"/>
+    <rect x="16" y="12" width="15" height="14" rx="2" fill="#f7c873" stroke="#d9a441"/>
+    <text class="t win" x="42" y="25">taller</text>
+    <text class="t win" x="735" y="25" fill="#666">&#8211;  &#9633;  &#10005;</text>
+    <line x1="1" y1="39" x2="811" y2="39" stroke="#e0e0e0"/>
+    <text class="t win" x="16" y="62" fill="#333">Nuevo</text>
+    <text class="t win" x="80" y="62" fill="#333">Copiar</text>
+    <text class="t win" x="148" y="62" fill="#333">Pegar</text>
+    <text class="t win" x="212" y="62" fill="#333">Cambiar nombre</text>
+    <line x1="1" y1="76" x2="811" y2="76" stroke="#e0e0e0"/>
+    <rect x="14" y="88" width="700" height="30" rx="4" fill="#ffffff" stroke="#0067c0" stroke-width="2"/>
+    <text class="mono" x="26" y="109">cmd</text>
+    <rect x="61" y="93" width="2" height="20" fill="#1a1a1a"/>
+  </g>
+
+  <!-- paso 3 -->
+  <circle cx="20" cy="430" r="16" fill="#d33a3a"/>
+  <text class="num" x="20" y="436" text-anchor="middle">3</text>
+  <g transform="translate(52,384)">
+    <rect x="0.5" y="0.5" width="811" height="196" rx="8" fill="#0c0c0c" stroke="#3a3a3a"/>
+    <rect x="1" y="1" width="810" height="34" rx="8" fill="#1f1f1f"/>
+    <rect x="1" y="24" width="810" height="11" fill="#1f1f1f"/>
+    <text class="t win" x="16" y="23" fill="#dddddd">C:\WINDOWS\system32\cmd.exe</text>
+    <text class="t win" x="735" y="23" fill="#dddddd">&#8211;  &#9633;  &#10005;</text>
+    <text class="mono" x="18" y="66" fill="#cccccc">Microsoft Windows [Version 10.0.22631.4317]</text>
+    <text class="mono" x="18" y="90" fill="#cccccc">(c) Microsoft Corporation. Todos los derechos reservados.</text>
+    <text class="mono" x="18" y="132" fill="#f2f2f2">C:\Users\karlos\Desktop\taller&gt;</text>
+    <rect x="288" y="118" width="9" height="18" fill="#f2f2f2"/>
+  </g>
+</svg>

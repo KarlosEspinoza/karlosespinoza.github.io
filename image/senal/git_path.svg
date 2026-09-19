@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="#1a1a1a" viewBox="0 0 880 520" width="880" height="520" role="img" aria-label="Pantalla del instalador de Git: Adjusting your PATH environment, con la opcion de en medio seleccionada">
+  <style>
+    .t  { font-family: "Segoe UI", Selawik, system-ui, sans-serif; }
+    .h  { font-weight: 700; font-size: 17px; }
+    .s  { font-size: 14px; fill: #444; }
+    .o  { font-size: 15px; }
+    .d  { font-size: 13px; fill: #555; }
+    .b  { font-size: 14px; }
+    .rec{ font-size: 13px; fill: #0b6b2f; font-weight: 700; }
+  </style>
+  <rect x="0.5" y="0.5" width="879" height="519" fill="#ffffff" stroke="#b8b8b8"/>
+
+  <rect x="1" y="1" width="878" height="36" fill="#f0f0f0"/>
+  <rect x="14" y="11" width="16" height="16" rx="3" fill="#f05033"/>
+  <text class="t b" x="40" y="24">Git 2.47.1 Setup</text>
+  <text class="t b" x="800" y="24" fill="#666">&#8211;  &#9633;  &#10005;</text>
+  <line x1="1" y1="37" x2="879" y2="37" stroke="#dcdcdc"/>
+
+  <text class="t h" x="28" y="70">Adjusting your PATH environment</text>
+  <text class="t s" x="28" y="94">How would you like to use Git from the command line?</text>
+  <line x1="1" y1="112" x2="879" y2="112" stroke="#e6e6e6"/>
+
+  <circle cx="44" cy="146" r="7.5" fill="#fff" stroke="#767676"/>
+  <text class="t o" x="64" y="151">Use Git from Git Bash only</text>
+  <text class="t d" x="64" y="173">This is the most cautious choice. Your PATH will not be modified at all, so Git</text>
+  <text class="t d" x="64" y="191">will only work inside Git Bash.</text>
+
+  <rect x="20" y="212" width="840" height="112" rx="6" fill="#fff5f5" stroke="#d33a3a" stroke-width="2"/>
+  <circle cx="44" cy="240" r="7.5" fill="#fff" stroke="#0067c0" stroke-width="1.5"/>
+  <circle cx="44" cy="240" r="3.5" fill="#0067c0"/>
+  <text class="t o" x="64" y="245">Git from the command line and also from 3rd-party software</text>
+  <text class="t rec" x="64" y="268">(Recommended)</text>
+  <text class="t d" x="64" y="290">Adds the Git wrappers to your PATH. You will be able to use Git from Git Bash,</text>
+  <text class="t d" x="64" y="308">the Command Prompt and Windows PowerShell.</text>
+
+  <circle cx="44" cy="354" r="7.5" fill="#fff" stroke="#767676"/>
+  <text class="t o" x="64" y="359">Use Git and optional Unix tools from the Command Prompt</text>
+  <text class="t d" x="64" y="381">Both Git and the optional Unix tools will be added to your PATH. Warning: this</text>
+  <text class="t d" x="64" y="399">will override Windows tools like "find" and "sort".</text>
+
+  <line x1="1" y1="452" x2="879" y2="452" stroke="#e6e6e6"/>
+  <rect x="540" y="470" width="100" height="32" rx="3" fill="#fdfdfd" stroke="#adadad"/>
+  <text class="t b" x="570" y="491">&lt; Back</text>
+  <rect x="652" y="470" width="100" height="32" rx="3" fill="#fdfdfd" stroke="#0067c0" stroke-width="2"/>
+  <text class="t b" x="682" y="491">Next &gt;</text>
+  <rect x="764" y="470" width="100" height="32" rx="3" fill="#fdfdfd" stroke="#adadad"/>
+  <text class="t b" x="790" y="491">Cancel</text>
+</svg>
