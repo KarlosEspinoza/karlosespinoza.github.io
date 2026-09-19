@@ -282,33 +282,51 @@ document.addEventListener('DOMContentLoaded', () => {
     mqWide.addListener(onWide);
   }
 
-  // Resaltar la seccion que se esta leyendo
-  if (!('IntersectionObserver' in window)) return;
+  // Resaltar la seccion que se esta leyendo.
+  //
+  // Se calcula con la posicion de los titulos en cada scroll, y no con un
+  // IntersectionObserver contra una banda fija. Con la banda, el ultimo
+  // titulo de la pagina no se pintaba nunca: para cruzarla necesita que
+  // debajo de el quede al menos una pantalla de contenido, y casi nunca
+  // queda. En dia-01, al llegar al fondo, el ultimo titulo se para a 638px
+  // del borde superior y la banda terminaba en 315px.
+  var LINEA = 80;   // px desde arriba: a esta altura un titulo ya se leyo
 
-  var visible = {};
+  function calcularActivo() {
+    // Al final de la pagina gana siempre el ultimo titulo, porque ya no
+    // queda scroll para que suba mas.
+    var alFinal = window.innerHeight + window.pageYOffset >=
+                  document.documentElement.scrollHeight - 2;
+    if (alFinal) return headings[headings.length - 1].id;
 
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      visible[entry.target.id] = entry.isIntersecting;
-    });
-
+    // Si no, el ultimo que haya pasado la linea de lectura.
     var activo = null;
     for (var i = 0; i < headings.length; i++) {
-      if (visible[headings[i].id]) { activo = headings[i].id; break; }
+      if (headings[i].getBoundingClientRect().top > LINEA) break;
+      activo = headings[i].id;
     }
-    // Si no hay ninguno visible, se queda el ultimo que quedo arriba
-    if (!activo) {
-      for (var j = headings.length - 1; j >= 0; j--) {
-        if (headings[j].getBoundingClientRect().top < 0) { activo = headings[j].id; break; }
-      }
-    }
+    return activo;
+  }
 
+  var pendiente = false;
+
+  function pintar() {
+    pendiente = false;
+    var activo = calcularActivo();
     links.forEach(function (a) {
       a.classList.toggle('is-active', a.getAttribute('href') === '#' + activo);
     });
-  }, { rootMargin: '-70px 0px -65% 0px' });
+  }
 
-  headings.forEach(function (h) { observer.observe(h); });
+  function alDesplazar() {
+    if (pendiente) return;
+    pendiente = true;
+    window.requestAnimationFrame(pintar);
+  }
+
+  window.addEventListener('scroll', alDesplazar, { passive: true });
+  window.addEventListener('resize', alDesplazar);
+  pintar();
 })();
 </script>
 
