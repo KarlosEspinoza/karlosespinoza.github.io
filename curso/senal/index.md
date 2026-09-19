@@ -6,6 +6,7 @@ title: De la señal a la decisión
 
 **Taller práctico de adquisición de señales y aprendizaje automático en sistemas embebidos**
 
+- [Programa](programa/)
 - [Antes del taller: qué comprar y qué instalar](requisitos/)
 
 **Empieza por ahí.** Tienes que traer tu kit y llegar con el software instalado y probado: la evidencia se manda a más tardar el **viernes 25 de septiembre**.

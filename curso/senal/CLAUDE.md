@@ -38,13 +38,22 @@ cerrar desde aqui: se le recuerdan a Karlos, no se marcan solas.
 
 ---
 
-## Estado
+## Estado (2026-09-19)
 
-Hoy solo existen `README.md`, `estrategia.md` y `roadmap.md`. **Todo lo publicable esta
-por escribirse** (`index.md`, `requisitos/`, `programa/`, `dia-01/`, `dia-02/`,
-`recurso/`), y el directorio completo todavia no esta en git. El taller tampoco aparece
-aun en `curso/index.md` ni en el menu `navigation:` de `_config.yml`; son tareas de la
-fase 4 del roadmap.
+Publicado y en git: `index.md`, `requisitos/`, `programa/`, `dia-01/` y `dia-02/`, mas las
+figuras en `image/senal/`. El taller ya esta enlazado desde `curso/index.md`, el `index.md`
+de la raiz y el menu `navigation:` de `_config.yml`.
+
+**El codigo de los 7 programas vive dentro de `dia-01/index.md` y `dia-02/index.md`**, que
+son su unica fuente de verdad. No hay `recurso/codigo/` en el repositorio, a proposito:
+duplicarlo se desincroniza. Se extrae con `~/curso/senal/usb/regenerar-codigo.sh`.
+
+El USB se arma en **`~/curso/senal/usb/`**, fuera de este repositorio (~900 MB):
+instaladores completos de Windows, el nucleo AVR (que el Arduino IDE no incluye), las
+ruedas de Python para 3.14 y 3.13, los 7 programas y el `LEEME.txt`.
+
+Pendiente: el driver CH340, los checkpoints (salen del ensayo con hardware real) y todo
+lo que depende de probar el material contra el Arduino.
 
 ---
 
@@ -94,8 +103,9 @@ LDR + TCRT5000, arbol de decision de scikit-learn y un LED RGB que muestra la de
 El arbol se eligio por `export_text`: imprime las reglas que aprendio, y esa es la unica
 idea conceptual que el taller se compromete a dejar instalada.
 
-Los siete archivos viven en `recurso/codigo/` y usan **los mismos nombres que en IE043**,
-a proposito, para que en febrero reconozcan el proyecto. No renombrarlos:
+Los siete archivos usan **los mismos nombres que en IE043**, a proposito, para que en
+febrero reconozcan el proyecto. No renombrarlos. Viven dentro de `dia-01/index.md` y
+`dia-02/index.md`, no en `recurso/codigo/` (ver Estado):
 
 `sensor.ino`, `leer_sensor.py`, `adquirir.py`, `features.py`, `entrenar.py`,
 `control.py`, `control.ino`

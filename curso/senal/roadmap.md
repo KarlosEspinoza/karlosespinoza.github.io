@@ -80,19 +80,18 @@ rescatar. Es lo unico que no se puede recorrer ni un dia.
 Aunque solo pidio el titulo. Es el instrumento que consigue que el kit sea requisito y
 que la guia se distribuya a tiempo.
 
-- [ ] **C** `programa/index.md`, siguiendo el formato de `curso/ia/programa/index.md`
-  - [ ] Informacion del taller (denominacion, dirigido a, duracion, cupo, fechas, aula)
-  - [ ] Justificacion, con el material que aporta el participante escrito sin ambiguedad
-  - [ ] Alineacion con el PE: AE2A y AE7A
-  - [ ] Objetivo general y objetivos especificos
-  - [ ] Requisitos previos del participante
-  - [ ] Contenido tematico por sesion, con horas
-  - [ ] Metodologia
-  - [ ] Material y equipo: participante / instructor / **requerimientos del aula**
-  - [ ] Acreditacion: asistencia mas repositorio con el bucle funcionando
-  - [ ] Instructor
-- [ ] **C** Enlazar `programa/` desde `index.md` (el indice sigue el molde de `curso/ia/`
-      y `curso/so/`: los enlaces de arriba se agregan conforme existen las paginas)
+- [x] **C** `programa/index.md`, siguiendo el formato de `curso/ia/programa/index.md`
+  - [x] Informacion del taller (denominacion, dirigido a, duracion, cupo, fechas, aula)
+  - [x] Justificacion, con el material que aporta el participante escrito sin ambiguedad
+  - [x] Alineacion con el PE: AE2A y AE7A
+  - [x] Objetivo general y objetivos especificos
+  - [x] Requisitos previos del participante
+  - [x] Contenido tematico por sesion, con horas
+  - [x] Metodologia
+  - [x] Material y equipo: participante / instructor / **requerimientos del aula**
+  - [x] Acreditacion: asistencia mas repositorio con el bucle funcionando
+  - [x] Instructor
+- [x] **C** Enlazar `programa/` desde `index.md` (lo puso Karlos el 2026-09-19)
 - [ ] **K** Entregar el programa y el titulo al coordinador
 - [ ] **K** Confirmar aula con corriente para 15 laptops mas 15 Arduinos, y proyector
 
@@ -130,12 +129,25 @@ Los nombres coinciden a proposito con los de IE043.
 
 Contra el internet malo. Se copia a varias memorias, no a una.
 
-- [ ] **K** Instaladores: Python, VS Code, Arduino IDE, Git, driver CH340
-- [ ] **K** `pip download` de las 6 bibliotecas para instalar sin red
-  (`pip install --no-index --find-links`)
-- [ ] **C** Los 7 archivos de codigo
-- [ ] **C** Checkpoints de respaldo: `datos.csv`, `features.csv`, `modelo.pkl`
-- [ ] **C** `LEEME.txt` con las instrucciones de instalacion sin red
+El USB se arma en `~/curso/senal/usb/` (fuera de este repositorio, son ~900 MB).
+
+- [x] **C** Instaladores completos de Windows: Python 3.14.7, VS Code 1.138.0,
+      Git 2.55.0.5 y Arduino IDE 2.3.10 (mas el .zip portable del IDE)
+- [x] **C** El nucleo de placas AVR y su toolchain, que el instalador del IDE **no**
+      incluye. Sin esto, una maquina recien instalada no puede subir nada al Nano sin
+      internet. Va en `instaladores/arduino-nucleo-avr/` con su `package_index.json`
+- [ ] **K** Driver CH340. A proposito no se bajo de un espejo: es un driver y se baja
+      del fabricante, <https://www.wch-ic.com/downloads/CH341SER_EXE.html>
+- [x] **C** `pip download` de las 6 bibliotecas para Windows, en dos juegos:
+      `bibliotecas/py314/` y `bibliotecas/py313/`. Probado con
+      `pip install --no-index --find-links`: resuelve los 19 paquetes sin red
+- [x] **C** Los 7 archivos de codigo, en `codigo/`. Se regeneran de las paginas
+      publicadas con `usb/regenerar-codigo.sh` (las paginas son la fuente de verdad)
+- [ ] **K** Checkpoints de respaldo: `datos.csv`, `features.csv`, `modelo.pkl`.
+      **Salen del ensayo con hardware real (fase 7), no se inventan**: si no se parecen
+      a lo que ve el grupo, el respaldo estorba
+- [x] **C** `LEEME.txt` con las instrucciones de instalacion sin red
+- [ ] **K** Probar una vez el rescate del nucleo AVR sin red, en Windows limpio
 - [ ] **K** Copiar a 3 o 4 memorias
 
 ---
@@ -203,5 +215,14 @@ se pasa a `estrategia.md`.
   scikit-learn, asi que ya venia con el. Se agrego explicito a la linea de `pip install` y
   a la comprobacion 2 para que nadie se pregunte de donde salio. El archivo se sigue
   llamando `modelo.pkl`.
+
+* **2026-09-19.** Se confirmo que **si se puede instalar todo sin internet**, con una
+  excepcion que casi se nos va: el instalador del Arduino IDE 2.3.10 no trae el nucleo de
+  placas AVR (se reviso el paquete completo: 7650 archivos, sin `avrdude` ni `boards.txt`),
+  asi que lo baja la primera vez que se abre. Se agrego al USB el nucleo, su toolchain y
+  el `package_index.json`, con el procedimiento de la carpeta `staging`. Los demas
+  instaladores si son completos, y las ruedas de Python instalan con `--no-index`
+  (probado). La leyenda "no se requiere conexion a internet en el aula" del programa se
+  queda. Las ruedas dependen de la version exacta de Python, por eso hay dos juegos.
 
 <!-- 2026-09-XX: ... -->
