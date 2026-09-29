@@ -168,23 +168,30 @@ ejes.legend()
 print("Pasa las piezas frente al sensor. Cierra la ventana para terminar.")
 
 n = 0
+ultimo_dato = time.time()
+avisado = False
 while plt.fignum_exists(figura.number):
-    linea = ser.readline().decode('utf-8').strip()
+    linea = ser.readline().decode('utf-8', errors='ignore').strip()
     partes = linea.split(',')
-    if len(partes) != 2:
-        continue          # linea incompleta, la saltamos
-    try:
-        tcrt.append(int(partes[0]))
-        ldr.append(int(partes[1]))
-    except ValueError:
-        continue
+    if len(partes) == 2:
+        try:
+            tcrt.append(int(partes[0]))
+            ldr.append(int(partes[1]))
+            n += 1
+            ultimo_dato = time.time()
+            avisado = False
+        except ValueError:
+            pass          # linea cortada, la saltamos
 
-    n += 1
+    if time.time() - ultimo_dato > 3 and not avisado:
+        print("No llegan datos de", PUERTO)
+        print("Revisa: el puerto COM, que sensor.ino este subido y el Monitor Serie cerrado")
+        avisado = True
+
     if n % 10 == 0:       # redibujar cada 10 muestras, no cada una
         linea_tcrt.set_ydata(tcrt)
         linea_ldr.set_ydata(ldr)
-        figura.canvas.draw_idle()
-        plt.pause(0.001)
+        plt.pause(0.001)  # dibuja y deja responder a la ventana
 
 ser.close()
 print("Listo")

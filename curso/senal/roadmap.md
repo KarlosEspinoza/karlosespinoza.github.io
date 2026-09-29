@@ -225,4 +225,13 @@ se pasa a `estrategia.md`.
   (probado). La leyenda "no se requiere conexion a internet en el aula" del programa se
   queda. Las ruedas dependen de la version exacta de Python, por eso hay dos juegos.
 
+* **2026-09-28.** En la sesion del dia 1, `leer_sensor.py` abrio la ventana pero no
+  mostro datos. Causa mas probable: si `readline()` no recibia nada (puerto COM equivocado,
+  `sensor.ino` sin subir, arranque lento del clon CH340), el `continue` saltaba el
+  `plt.pause()` y el programa fallaba en silencio. Se reescribio el ciclo en
+  `dia-01/index.md`: `plt.pause()` ya no depende de que lleguen datos, el `decode` ignora
+  bytes corruptos, y a los 3 s sin datos imprime un aviso con el puerto y que revisar.
+  Se quito `draw_idle()`, que sobraba. Causa exacta no confirmada; probar con hardware
+  real en el ensayo. Regenerar el USB con `~/curso/senal/usb/regenerar-codigo.sh`.
+
 <!-- 2026-09-XX: ... -->
