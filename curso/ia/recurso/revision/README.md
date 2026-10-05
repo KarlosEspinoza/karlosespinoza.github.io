@@ -54,12 +54,15 @@ Sustituye <NN> en todo lo que sigue.
    después) para traer los repos al día.
 2. Corre asistencia.sh con la semana <NN> para saber quién no entregó nada
    (genera asistencia-s<NN>.md).
-3. De los que sí entregaron algo, revisa los commits de esta semana, el diff, y
+3. Si existe ~/curso/ia/202620/excepciones.md, léelo antes de anotar nada:
+   son casos particulares ya autorizados por Karlos. No hagas observación
+   sobre un punto que esté cubierto ahí para ese alumno o equipo.
+4. De los que sí entregaron algo, revisa los commits de esta semana, el diff, y
    la sección de la semana <NN> de su BITACORA.md. Compara contra lo que la guía
    de esa semana pedía en curso/ia/semana-<NN>/index.md: los dos bloques
    obligatorios y el archivo que le tocaba agregar al proyecto (la tabla de
    progresión está en curso/ia/CLAUDE.md, "Archivos del proyecto del alumno").
-4. No es evaluación formal: solo anota algo si de verdad destaca. En este curso
+5. No es evaluación formal: solo anota algo si de verdad destaca. En este curso
    lo que más vale la pena cazar temprano es:
    - Datos que no sirven: menos repeticiones de las pedidas, clases
      desbalanceadas, una etiqueta capturada en condiciones distintas a las otras.
@@ -69,7 +72,7 @@ Sustituye <NN> en todo lo que sigue.
      invertida, rutas absolutas de su máquina).
    - Un dominio o unas etiquetas que ya no son los que registró al inicio.
    Si no hay nada que valga la pena decirle, no le hagas bloque.
-5. Redacta el concentrado.md en
+6. Redacta el concentrado.md en
    ~/curso/ia/202620/asistencia/concentrado-s<NN>.md, un bloque por alumno:
 
    <!-- BLOQUE: ALUMNO <codigo>-<usuario> -->
@@ -80,7 +83,7 @@ Sustituye <NN> en todo lo que sigue.
    Para los que no entregaron nada, un aviso corto y neutral (sin regañar),
    p. ej. "No veo commits de la semana <NN> (`s<NN> bloque 1`/`s<NN> bloque 2`).
    Si tuviste un problema, cuéntamelo para que quede en la bitácora."
-6. Al final del archivo, FUERA de cualquier bloque (aplicar-concentrado.py solo
+7. Al final del archivo, FUERA de cualquier bloque (aplicar-concentrado.py solo
    lee lo que está dentro de <!-- BLOQUE --> ... <!-- FIN BLOQUE -->, así que
    esto nunca se aplica a ningún repo), agrega:
 
@@ -91,7 +94,7 @@ Sustituye <NN> en todo lo que sigue.
    pasó (código o usuario) y cuántos. Es para usarla como agenda del rescate de
    atorones de la siguiente sesión y para anotar si algo apunta a que el
    material de esa semana necesita ajuste para el siguiente ciclo.
-7. No toques ningún repo de alumno: nada de add/commit/push. Solo escribe el
+8. No toques ningún repo de alumno: nada de add/commit/push. Solo escribe el
    concentrado.md. Yo lo reviso y te autorizo aplicar.
 ```
 
@@ -145,22 +148,25 @@ Sustituye <NN> y <numero> en todo lo que sigue.
    día, y pull-autoevals.sh con aggregate.py para la autoevaluación entre
    pares. Dime quién no tiene su repo autoeval-ia accesible: ese es el 10% que
    pierde en esta revisión.
-2. Revisa cada repo individual (clasificador-piezas-ia): codigo/, datos/,
+2. Si existe ~/curso/ia/202620/excepciones.md, léelo antes de evaluar nada:
+   son casos particulares ya autorizados por Karlos. No bajes nivel ni hagas
+   observación por un punto que esté cubierto ahí para ese alumno o equipo.
+3. Revisa cada repo individual (clasificador-piezas-ia): codigo/, datos/,
    figuras/ y BITACORA.md. Contrasta contra la lista "Tu sistema debe" de
    curso/ia/semana-<NN>/index.md, que es el instrumento de esta revisión, y
    contra la tabla de progresión de archivos de curso/ia/CLAUDE.md.
-3. Revisa cada repo de equipo (integrador-ia): pipeline/ (controlador central,
+4. Revisa cada repo de equipo (integrador-ia): pipeline/ (controlador central,
    fusión, anomalías, cliente del PLC), los módulos de cada dominio, el
    README.md con los acuerdos y la BITACORA.md del equipo.
-4. Verifica que el código corra de verdad con los datos que están en el repo:
+5. Verifica que el código corra de verdad con los datos que están en el repo:
    rutas relativas, el CSV existe, el modelo se carga. Un repo que no corre no
    puede ser Excelente en evidencias por bonito que esté escrito.
-5. Si ya tengo las respuestas a las 2 preguntas de esa revisión, inclúyelas; si
+6. Si ya tengo las respuestas a las 2 preguntas de esa revisión, inclúyelas; si
    no, dejamos esa parte para el día de la revisión.
-6. Para cada alumno y equipo, asigna nivel (Excelente/Bueno/Suficiente/
+7. Para cada alumno y equipo, asigna nivel (Excelente/Bueno/Suficiente/
    Insuficiente) por instrumento según la rúbrica de evaluacion/individual
    (individual) o evaluacion/proyecto_integrador (equipo), con sus pesos.
-7. Redacta el concentrado.md en
+8. Redacta el concentrado.md en
    ~/curso/ia/202620/revision/<numero>/concentrado.md, un bloque por alumno y
    por equipo:
 
@@ -186,7 +192,7 @@ Sustituye <NN> y <numero> en todo lo que sigue.
    Para equipo usa <!-- BLOQUE: EQUIPO <numero>-<usuario> --> con los pesos
    45/25/20/10 y la fila de Autoevaluación entre pares, según
    plantilla-equipo.md.
-8. No toques ningún repo de alumno: nada de add/commit/push. Solo escribe el
+9. No toques ningún repo de alumno: nada de add/commit/push. Solo escribe el
    concentrado.md. Yo lo reviso y te autorizo aplicar.
 ```
 
@@ -253,7 +259,7 @@ congelados: si el alumno los cambio, eso mismo es lo que hay que decirle.
 | 05 | `codigo/features.py` -> `datos/features.csv` |
 | 06 | `codigo/features.py` con FFT |
 | 07 | `codigo/entrenar.py` -> `modelo.pkl` y su matriz de confusion |
-| 08 | `codigo/control.py`, `codigo/control.ino`: bucle de control cerrado |
+| 08 | `codigo/control.py`, `codigo/control/control.ino`: bucle de control cerrado |
 | 09 | **Revision 1** (cierre U1 y U2) |
 | 10 | `codigo/pca.py`, `datos/anomalias.csv` |
 | 11 | `codigo/clustering.py` |
