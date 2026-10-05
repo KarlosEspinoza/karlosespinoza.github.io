@@ -86,10 +86,10 @@ Si en la semana 2 hiciste el bloque extra y mandas dos sensores, tu tabla lleva 
 
 #### Dónde vive cada cosa
 
-De aquí en adelante los scripts se corren **desde la raíz de tu repositorio**, no desde dentro de `codigo/`:
+De aquí en adelante los scripts se corren **desde la raíz de tu repositorio**, no desde dentro de `codigo/`. Abre el CMD como en la semana 1: en el Explorador, entra a la carpeta `clasificador-piezas-ia`, clic en la barra de direcciones, escribe `cmd` y Enter.
 
-```bash
-python codigo/adquirir.py
+```cmd
+> python codigo/adquirir.py
 ```
 
 Así las rutas dentro del código son simples y siempre iguales: `datos/datos.csv`, `figuras/senal.png`.
@@ -98,7 +98,7 @@ Dos cosas sobre las rutas, porque van a ser fuente de errores:
 
 **Escríbelas siempre con diagonal normal `/`**, aunque estés en Windows. Funciona igual y te ahorra un problema feo: si copias la ruta del Explorador de Windows te va a dar diagonales invertidas, y en Python `'datos\notas.csv'` se lee como `datos`, un salto de línea y `otas.csv`, porque `\n` significa otra cosa. El archivo existe y Python jura que no.
 
-**Abre en Visual Studio Code la carpeta del repositorio, no la de `codigo/`.** La ruta `datos/datos.csv` es relativa a donde estés parado, así que si ejecutas desde otro lado te sale esto:
+**Abre el CMD en la carpeta del repositorio, no en la de `codigo/`.** La ruta `datos/datos.csv` es relativa a donde estés parado, así que si ejecutas desde otro lado te sale esto:
 
 ```
 FileNotFoundError: [Errno 2] No such file or directory: 'datos/datos.csv'
@@ -177,6 +177,14 @@ Y algo que vale más que todo lo anterior: **anótalo en tu bitácora**. Escribi
 
 Te dejo lista la parte nueva, que es la captura de varias ventanas y el guardado en CSV. Lo que ya sabes hacer, lo completas tú.
 
+Abre el CMD en la carpeta del repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/adquirir.py
+```
+
+Guarda y cierra VS Code cuando termines.
+
 ```python
 # adquirir.py - captura ventanas etiquetadas y las guarda en datos/datos.csv
 import serial
@@ -232,6 +240,12 @@ Dos detalles del código que conviene que entiendas, porque los vas a necesitar:
 **`ser.reset_input_buffer()`** tira lo que llegó mientras estabas esperando a que presionaras Enter. Sin eso, tu ventana empezaría con muestras viejas de hace diez segundos y el evento saldría corrido.
 
 **El modo `'a'`** (append) hace que cada ejecución agregue al final en vez de borrar. Así puedes capturar una clase, cerrar el programa, y volver a correrlo para la siguiente sin perder lo anterior. Por eso también necesitas saber en qué número de ventana te quedaste: ese es el `TODO`.
+
+Ejecútalo desde el mismo CMD, parado en la raíz del repositorio:
+
+```cmd
+> python codigo/adquirir.py
+```
 
 **Lo que entregas de este bloque**
 
@@ -306,7 +320,7 @@ Llegas con `adquirir.py` escrito y tu protocolo decidido. Traes tu Arduino, tu s
 
 1. **Captura tu dataset** siguiendo tu protocolo y guárdalo en `datos/datos.csv`. Mínimo 30 ventanas por clase, balanceado.
 
-2. **Verifica el dataset** antes de darlo por bueno. Escribe unas líneas sueltas de Python (o hazlo en la terminal) que respondan:
+2. **Verifica el dataset** antes de darlo por bueno. Escribe unas líneas sueltas de Python (en un archivo que corres desde el CMD) que respondan:
 
    ```python
    import pandas as pd

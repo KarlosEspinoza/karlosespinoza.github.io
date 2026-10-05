@@ -171,7 +171,15 @@ banda_baja = np.sum(espectro[(frecuencias >= 0) & (frecuencias < 10)]**2)
 
 #### Agregar todo a `features.py`
 
-No hagas un archivo aparte. La cadena del proyecto es una sola y las features de frecuencia son features como las demás:
+No hagas un archivo aparte. La cadena del proyecto es una sola y las features de frecuencia son features como las demás.
+
+Abre el CMD en la carpeta del repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/features.py
+```
+
+Guarda y cierra VS Code cuando termines. El código a agregar es este:
 
 ```python
 # dentro del bucle sobre ventanas, despues de las features de tiempo
@@ -188,6 +196,12 @@ fila['centroide']   = np.sum(frecuencias * espectro) / np.sum(espectro)
 ```
 
 Cuidado con una cosa: si tus ventanas no miden todas lo mismo, los vectores `frecuencias` salen distintos entre ventanas. La frecuencia dominante y el centroide se comparan bien igual, porque están en Hz. Las energías de banda también, porque las defines en Hz. Lo que **no** puedes hacer es meter las barras del espectro como características sueltas, porque no corresponderían a las mismas frecuencias entre ventanas.
+
+Ejecútalo desde el mismo CMD, parado en la raíz del repositorio:
+
+```cmd
+> python codigo/features.py
+```
 
 #### Verifica si sirvió
 

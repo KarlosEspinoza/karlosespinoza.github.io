@@ -128,6 +128,14 @@ git push
 
 Todo el script es una idea de pandas: agrupar por ventana y calcular un resumen de cada grupo.
 
+Abre el CMD en la carpeta del repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/features.py
+```
+
+Guarda y cierra VS Code cuando termines.
+
 ```python
 # features.py - convierte cada ventana en una fila de caracteristicas
 import pandas as pd
@@ -194,6 +202,12 @@ Cada punto es una pasada de una pieza. Y lo que vas a ver es una de tres cosas:
 **Nubes encimadas por completo.** Malas noticias, pero es mucho mejor enterarte hoy. Con **estas dos** características no se pueden separar. Prueba otro par antes de asustarte, porque a lo mejor con otras dos sí se separan. Si ningún par funciona, el problema no son las features: es la señal, y hay que agregar un segundo sensor.
 
 Prueba al menos tres pares distintos de características antes de sacar conclusiones.
+
+Ejecútalo desde el mismo CMD, parado en la raíz del repositorio:
+
+```cmd
+> python codigo/features.py
+```
 
 **Lo que entregas de este bloque**
 

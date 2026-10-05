@@ -118,6 +118,14 @@ PCA busca direcciones de máxima varianza, y la varianza depende de la escala. S
 
 Con PCA, estandarizar antes es obligatorio. Sin excepción.
 
+Abre el CMD en la carpeta del repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/pca.py
+```
+
+Guarda y cierra VS Code cuando termines.
+
 ```python
 # pca.py - reduce las caracteristicas a dos componentes y las grafica
 import pandas as pd
@@ -165,6 +173,12 @@ Lo que vas a ver es una nube de puntos en dos ejes nuevos, coloreada por clase. 
 ```
 
 Ese 85% es la respuesta a "cuánto perdí al pasar de ocho dimensiones a dos". Perdiste el 15%. Si el número te sale bajo, digamos 45%, quiere decir que tus datos son genuinamente multidimensionales y que la gráfica en dos ejes está escondiendo bastante.
+
+Ejecútalo desde el mismo CMD, parado en la raíz del repositorio:
+
+```cmd
+> python codigo/pca.py
+```
 
 **Lo que entregas de este bloque**
 

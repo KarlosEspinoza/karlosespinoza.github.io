@@ -452,7 +452,7 @@ forma acumulable:
 | 05 | `codigo/features.py` -> `datos/features.csv` |
 | 06 | `codigo/features.py` (agrega FFT) |
 | 07 | `codigo/entrenar.py` -> `modelo.pkl` |
-| 08 | `codigo/control.py`, `codigo/control.ino` |
+| 08 | `codigo/control.py`, `codigo/control/control.ino` |
 | 10 | `codigo/pca.py`, `datos/anomalias.csv` |
 | 11 | `codigo/clustering.py` |
 | 12 | `codigo/autoencoder.py` -> `detector.pkl` |

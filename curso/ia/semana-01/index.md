@@ -62,9 +62,11 @@ Un detalle que importa en aprendizaje de máquina y que no aplicaba en otros cur
 
 #### Instala lo que vas a necesitar
 
-Todo el curso se trabaja en **Windows** y en **una sola terminal**: la de Visual Studio Code, que abres con `Ctrl + ñ` (o el menú Terminal, Nueva terminal). Ahí van todos los comandos de las guías, los de Python y los de Git por igual.
+Todo el curso se trabaja en **Windows** y en **una sola terminal**: el **CMD**. Ahí van todos los comandos de las guías, los de Python y los de Git por igual. Para abrirlo, entra en el **Explorador de archivos** a la carpeta donde estás trabajando, haz clic en la **barra de direcciones**, escribe `cmd` y presiona Enter. Se abre el CMD ya parado en esa carpeta.
 
-El instalador de Git agrega un programa aparte que se llama **Git Bash**. **No lo usamos en este curso.** Si se te abrió, ciérralo y regresa a la terminal de Visual Studio Code.
+Visual Studio Code es solo el editor. Para editar un archivo, desde el CMD escribe `code nombre_del_archivo.py`, cambia lo que necesites, guarda y cierra VS Code. Para ejecutarlo, regresa al CMD y escribe `python nombre_del_archivo.py`.
+
+El instalador de Git agrega un programa aparte que se llama **Git Bash**. **No lo usamos en este curso.** Si se te abrió, ciérralo y abre el CMD como te indiqué arriba.
 
 1. **Python y Visual Studio Code.** Si ya los traes de cursos anteriores, solo verifica que respondan:
 
@@ -75,7 +77,7 @@ El instalador de Git agrega un programa aparte que se llama **Git Bash**. **No l
 
    Si `python` te abre la Microsoft Store en vez de responder una versión, es que Windows tiene puesto un acceso directo falso. Se quita en Configuración, Aplicaciones, Configuración avanzada de la aplicación, Alias de ejecución de la aplicación: desactiva los dos que dicen `python.exe` y `python3.exe`. Si aun así no responde, instala Python desde python.org y **marca la casilla "Add Python to PATH"** durante la instalación. Esa casilla es la causa del 90% de los problemas de esta semana.
 
-2. **Las bibliotecas del curso.** Desde la terminal de Visual Studio Code:
+2. **Las bibliotecas del curso.** Desde el CMD:
 
    ```bash
    pip install numpy pandas matplotlib scikit-learn pyserial joblib

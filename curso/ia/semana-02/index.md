@@ -251,6 +251,14 @@ En la semana 6, cuando veamos frecuencia, vamos a volver sobre esto con más rig
 
 #### Escribe `leer_sensor.py`
 
+Abre el CMD en la carpeta de tu repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/leer_sensor.py
+```
+
+Guarda y cierra VS Code cuando termines.
+
 Te dejo lista la parte nueva del tema, que es la lectura serial. La parte de graficar ya la sabes hacer de cursos anteriores, esa la completas tú:
 
 ```python
@@ -286,7 +294,11 @@ print(f"Listas {len(valores)} muestras")
 #        y guarda la figura en '../figuras/senal.png'
 ```
 
-Guárdalo en `codigo/leer_sensor.py`.
+Guárdalo en `codigo/leer_sensor.py`. Ejecútalo desde el mismo CMD:
+
+```cmd
+> python codigo/leer_sensor.py
+```
 
 **Lo que entregas de este bloque**
 

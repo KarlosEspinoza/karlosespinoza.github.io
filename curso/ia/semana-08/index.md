@@ -33,7 +33,7 @@ De paso, agregamos el algoritmo que le da nombre popular a la inteligencia artif
 | Bloque | Qué haces | Qué entregas |
 |---|---|---|
 | 1 | Entiendes cómo decide una red neuronal y entrenas una | La red entrenada y su comparación con tu modelo |
-| 2 | Escribes `control.py` y `control.ino` | Los dos archivos y tu tabla de acciones |
+| 2 | Escribes `control.py` y `control.ino` | `codigo/control.py`, `codigo/control/control.ino` y tu tabla de acciones |
 | Extra | Mides cuánto tarda una vuelta completa del bucle | El tiempo medido y tu conclusión |
 
 El bloque 2 se escribe **sin el Arduino conectado**. El miércoles lo conectas y lo haces funcionar.
@@ -168,6 +168,14 @@ Tu tabla concreta depende de tus actuadores. Con un servomotor puedes desviar la
 
 #### `control.ino`
 
+El sketch va en su propia carpeta, `codigo/control/`, con el mismo nombre que el archivo. El Arduino IDE lo exige: si el archivo no está en una carpeta con su mismo nombre, te pide moverlo. Tú lo editas y lo cargas desde el Arduino IDE, así que aquí el CMD solo sirve para comprobar que quedó en el lugar correcto. Abre el CMD en la carpeta del repositorio, como en la semana 1, y ejecuta:
+
+```cmd
+> dir codigo\control\control.ino
+```
+
+Tiene que aparecer el nombre `control.ino` en la respuesta. Si contesta `El sistema no puede encontrar el archivo especificado`, el sketch no está en esa carpeta: revisa que la carpeta se llame `control` y que esté dentro de `codigo`.
+
 ```cpp
 // control.ino - lee el sensor y obedece las ordenes que llegan de Python
 #include <Servo.h>
@@ -207,7 +215,15 @@ Y nota que el Arduino **sigue mandando lecturas mientras escucha**. El bucle no 
 
 #### `control.py`
 
-Este script junta todo lo que has construido en siete semanas. Léelo con calma, porque es tu sistema completo en 40 líneas:
+Este script junta todo lo que has construido en siete semanas. Léelo con calma, porque es tu sistema completo en 40 líneas.
+
+Abre el CMD en la carpeta del repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/control.py
+```
+
+Guarda y cierra VS Code cuando termines. Así se ve el script completo:
 
 ```python
 # control.py - el bucle de control completo
@@ -277,9 +293,15 @@ Lee dos veces la palabra **exactamente**. Es la lección más importante de esta
 
 Este es el error número uno de los sistemas de aprendizaje de máquina en producción, y tiene nombre: *training-serving skew*. Aparece en empresas grandes, con equipos serios. Y la manera de evitarlo es no duplicar el código: sacar `limpiar()` y `calcular_features()` a un módulo que importen tanto los scripts de entrenamiento como el de control. Si te animas a hacerlo así, mucho mejor.
 
+Con el Arduino conectado y `control.ino` cargado, ejecuta el bucle desde el mismo CMD, parado en la raíz del repositorio:
+
+```cmd
+> python codigo/control.py
+```
+
 **Lo que entregas de este bloque**
 
-- `codigo/control.ino` adaptado a tu actuador.
+- `codigo/control/control.ino` adaptado a tu actuador.
 - `codigo/control.py` con las tres funciones escritas.
 - En `BITACORA.md`, tu tabla de acciones: qué carácter, qué clase, qué hace el actuador y por qué esa acción tiene sentido en tu dominio.
 

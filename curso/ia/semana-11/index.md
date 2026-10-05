@@ -83,6 +83,14 @@ Conviene tenerlas claras porque explican los resultados raros:
 
 Aquí está lo interesante del ejercicio. Corres K-Means con $k=3$ **sin darle las etiquetas**, y después comparas los grupos que encontró con las clases que tú sabías.
 
+Abre el CMD en la carpeta del repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/clustering.py
+```
+
+Guarda y cierra VS Code cuando termines.
+
 ```python
 # clustering.py - agrupa el dataset sin usar las etiquetas
 import pandas as pd
@@ -225,6 +233,12 @@ Aquí es donde esta semana se vuelve útil para tu proyecto. Junta tu `features.
 ```
 
 Si las marcó, acabas de construir tu primer detector de anomalías, sin haberle enseñado ni una sola anomalía. Si no las marcó, no pasa nada: significa que tus piezas raras se parecen demasiado a las normales en el espacio de tus características, y eso es justo el problema que ataca el autoencoder de la semana 12.
+
+Ejecútalo desde el mismo CMD, parado en la raíz del repositorio:
+
+```cmd
+> python codigo/clustering.py
+```
 
 **Lo que entregas de este bloque**
 

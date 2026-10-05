@@ -209,6 +209,14 @@ Y fíjate en algo importante: **el modelo es el mismo**. Lo que cambia es a qui�
 
 Esta semana solo se prueba la conexión. El control completo es la semana 17.
 
+Abre el CMD en la carpeta del repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/prueba_plc.py
+```
+
+Guarda y cierra VS Code cuando termines.
+
 ```python
 # prueba_plc.py - verifica la comunicacion con el PLC de la maqueta
 import snap7
@@ -241,7 +249,7 @@ plc.disconnect()
 
 Tres cosas que hay que tener claras antes del miércoles:
 
-**La red.** La PC de control es la `192.168.0.10` y va conectada por Ethernet directo al PLC. Si tu laptop no está en esa red, no vas a conectar. Verifica con `ping 192.168.0.1` desde la terminal.
+**La red.** La PC de control es la `192.168.0.10` y va conectada por Ethernet directo al PLC. Si tu laptop no está en esa red, no vas a conectar. Verifica con `ping 192.168.0.1` desde el CMD.
 
 Y en Windows hay un paso extra: la mayoría de las laptops ya no traen puerto Ethernet, así que se usa un adaptador USB. Además, hay que **poner la IP fija a mano**, porque el PLC no reparte direcciones: Configuración, Red e Internet, Ethernet, Editar la asignación de IP, cambiar de Automático (DHCP) a Manual, y poner IP `192.168.0.20` (o la que te diga yo), máscara `255.255.255.0`. Si la dejas en automático, Windows se asigna una dirección `169.254.x.x` y el ping falla siempre.
 
@@ -250,6 +258,12 @@ Y en Windows hay un paso extra: la mayoría de las laptops ya no traen puerto Et
 **PUT/GET tiene que estar habilitado** en la configuración del PLC, y los bloques de datos sin protección de acceso optimizado. Eso ya está configurado en el equipo del laboratorio.
 
 **No escribas direcciones al azar.** Leer es inofensivo; escribir mueve motores y pistones de verdad. **Antes de escribir cualquier dirección, confírmala conmigo.** Un bit equivocado puede arrancar la banda con alguien con la mano dentro.
+
+Cuando yo te confirme la dirección que vas a escribir, ejecútalo desde el mismo CMD, parado en la raíz del repositorio. No lo corras antes:
+
+```cmd
+> python codigo/prueba_plc.py
+```
 
 **Lo que entregas de este bloque**
 

@@ -130,6 +130,14 @@ git push
 
 No necesitas instalar nada nuevo. Un autoencoder se arma con el `MLPRegressor` de scikit-learn: es la misma red de la semana 8, pero de regresión en vez de clasificación, y entrenada con `X` tanto de entrada como de salida.
 
+Abre el CMD en la carpeta del repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/autoencoder.py
+```
+
+Guarda y cierra VS Code cuando termines.
+
 ```python
 # autoencoder.py - detector de anomalias por error de reconstruccion
 import numpy as np
@@ -219,6 +227,12 @@ Es la evidencia principal de la semana. Dos histogramas encimados, el de errores
 ```
 
 Lo que se lee de golpe: **qué tanto se separan las dos poblaciones**. Si están bien separadas, tu detector funciona y casi cualquier umbral entre ellas sirve. Si se traslapan, ningún umbral te va a dar un resultado limpio, y ahí tienes que decidir qué error prefieres cometer.
+
+Ejecútalo desde el mismo CMD, parado en la raíz del repositorio:
+
+```cmd
+> python codigo/autoencoder.py
+```
 
 **Lo que entregas de este bloque**
 

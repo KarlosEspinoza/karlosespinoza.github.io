@@ -31,7 +31,7 @@ Esta semana cierras la Unidad 3 haciendo con el detector lo que hiciste con el c
 | Bloque | Qué haces | Qué entregas |
 |---|---|---|
 | 1 | Entiendes la confianza del modelo y diseñas tu lógica de decisión | Tu diagrama de decisión |
-| 2 | Integras el detector en `control.py` y `control.ino` | Los dos archivos actualizados |
+| 2 | Integras el detector en `control.py` y `control.ino` | `codigo/control.py` y `codigo/control/control.ino` actualizados |
 | Extra | Registras las anomalías en un archivo para revisarlas | `datos/registro.csv` y su script |
 
 El bloque 2 se escribe sin hardware. El miércoles lo conectas.
@@ -140,7 +140,15 @@ git push
 
 #### El bucle completo
 
-Tomas tu `control.py` de la semana 8 y le insertas el detector antes de la clasificación:
+Tomas tu `control.py` de la semana 8 y le insertas el detector antes de la clasificación.
+
+Abre el CMD en la carpeta del repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/control.py
+```
+
+Guarda y cierra VS Code cuando termines. Así queda el bucle con el detector:
 
 ```python
 # control.py - bucle de control con deteccion de anomalias
@@ -200,6 +208,12 @@ Y nota que los dos modelos tienen su propio escalador y su propia lista de colum
 
 #### `control.ino`
 
+Es el mismo sketch de la semana 8, en `codigo/control/control.ino`. Lo editas y lo cargas desde el Arduino IDE. Para comprobar que sigue en su carpeta, abre el CMD en la carpeta del repositorio y ejecuta:
+
+```cmd
+> dir codigo\control\control.ino
+```
+
 Solo hay que agregar el caso nuevo:
 
 ```cpp
@@ -229,10 +243,16 @@ La causa casi siempre es la misma y ya la conoces: el `limpiar()` o el `calcular
 
 Si te pasa, ese es el diagnóstico: compara el vector de características que produce `control.py` con la fila de `features.csv` de la misma ventana, número por número.
 
+Con el Arduino conectado y `control.ino` cargado, ejecuta el bucle desde el mismo CMD, parado en la raíz del repositorio:
+
+```cmd
+> python codigo/control.py
+```
+
 **Lo que entregas de este bloque**
 
 - `codigo/control.py` con el detector integrado.
-- `codigo/control.ino` con el caso de rechazo.
+- `codigo/control/control.ino` con el caso de rechazo.
 - En `BITACORA.md`, tu tabla de acciones completa: las tres clases más el rechazo, con el carácter, el actuador y el efecto físico.
 
 ```bash

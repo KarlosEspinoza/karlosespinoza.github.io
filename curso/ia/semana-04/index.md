@@ -99,6 +99,14 @@ Si tu sensor da distancia en centímetros y de repente aparece un 900, tampoco e
 
 **Lo que entregas de este bloque**
 
+Abre el CMD en la carpeta del repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/limpiar.py
+```
+
+Guarda y cierra VS Code cuando termines.
+
 Empieza `codigo/limpiar.py`. Esta parte la escribes tú, con lo que ya sabes de pandas de cursos anteriores:
 
 ```python
@@ -188,6 +196,12 @@ donde $\mu$ es la media de la columna y $\sigma$ su desviación estándar.
 Cuál usar: **min-max** cuando conoces bien los límites físicos de tu sensor y no hay atípicos (que la aplastarían toda). **Z-score** cuando hay atípicos o no sabes los límites. Para este curso, con un solo sensor y la línea base ya corregida, cualquiera sirve; lo importante es que sepas justificar la que elegiste.
 
 Y una advertencia para la que todavía no tienes contexto pero que vas a agradecer: **los valores de $x_{min}$, $x_{max}$, $\mu$ y $\sigma$ que uses se guardan**, porque en producción vas a tener que aplicar exactamente los mismos. Volvemos a esto en la semana 16, que es donde se rompe si no lo hiciste bien.
+
+Ejecútalo desde el mismo CMD, parado en la raíz del repositorio:
+
+```cmd
+> python codigo/limpiar.py
+```
 
 **Lo que entregas de este bloque**
 

@@ -141,7 +141,7 @@ Los nombres de archivo son fijos, para que el proyecto crezca de forma acumulabl
 | 05 | Características en el tiempo | `codigo/features.py` -> `datos/features.csv` |
 | 06 | Características en frecuencia | `codigo/features.py` (agrega FFT) |
 | 07 | Entrenamiento del clasificador | `codigo/entrenar.py` -> `modelo.pkl` |
-| 08 | Primer bucle de control | `codigo/control.py`, `codigo/control.ino` |
+| 08 | Primer bucle de control | `codigo/control.py`, `codigo/control/control.ino` |
 | 10 | PCA y piezas anómalas | `codigo/pca.py`, `datos/anomalias.csv` |
 | 11 | Agrupamiento | `codigo/clustering.py` |
 | 12 | Autoencoder | `codigo/autoencoder.py` -> `detector.pkl` |

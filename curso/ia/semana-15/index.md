@@ -156,6 +156,14 @@ Los dos modelos tienen 0.87 de promedio. El segundo no sirve: dependiendo de con
 
 Igual que en la semana 7, los pliegues tienen que ser **estratificados** para que cada uno conserve la proporción de clases.
 
+Abre el CMD en la carpeta del repositorio, como en la semana 1, y abre el archivo para editarlo:
+
+```cmd
+> code codigo/evaluar.py
+```
+
+Guarda y cierra VS Code cuando termines.
+
 ```python
 # evaluar.py - evaluacion honesta del clasificador
 import pandas as pd
@@ -214,6 +222,12 @@ Si estandarizas **antes** de partir en pliegues, el escalador calcula la media y
 ```
 
 Una fila por clase, con sus tres métricas y cuántos ejemplos había (`support`). Aquí se ve lo que la exactitud global esconde: la madera se clasifica muy bien y el metal con el plástico se confunden entre sí. Esa es la información accionable.
+
+Ejecútalo desde el mismo CMD, parado en la raíz del repositorio:
+
+```cmd
+> python codigo/evaluar.py
+```
 
 **Lo que entregas de este bloque**
 

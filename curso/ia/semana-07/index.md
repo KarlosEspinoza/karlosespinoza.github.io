@@ -163,6 +163,16 @@ git push
 
 ### Bloque 2: entrenar.py y el modelo guardado {#bloque-2}
 
+En el **Explorador de archivos**, entra a la carpeta de tu repositorio (`clasificador-piezas-ia`), haz clic en la **barra de direcciones**, escribe `cmd` y presiona Enter. Se abre el CMD ya parado en esa carpeta. Desde ahí abre el archivo que vas a crear:
+
+```cmd
+> code codigo/entrenar.py
+```
+
+VS Code se abre solo para editarlo. Cuando termines de escribir, guarda y cierra VS Code.
+
+Pega el siguiente código en `codigo/entrenar.py`:
+
 ```python
 # entrenar.py - entrena el clasificador y lo guarda en modelo.pkl
 import pandas as pd
@@ -206,6 +216,12 @@ print("\nGuardado en modelo.pkl")
 
 # TODO: grafica la matriz de confusion y guardala en figuras/confusion.png
 #       pista: ConfusionMatrixDisplay de sklearn.metrics
+```
+
+Cuando ya tengas el archivo guardado, ejecútalo desde la misma ventana de `cmd`:
+
+```cmd
+> python codigo/entrenar.py
 ```
 
 Tres cosas de este código que hay que entender bien, porque son las que se rompen:
