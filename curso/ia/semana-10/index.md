@@ -21,6 +21,7 @@ Esta semana empieza la Unidad 3, que se trata justamente de eso: **encontrar est
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -279,3 +280,38 @@ Hay dos arquitecturas posibles y las dos son defendibles:
 2. **Un módulo detector para todo el sistema.** Uno solo, que mire las señales de los tres. Es menos preciso, pero es un módulo y no tres.
 
 Discútanlo, elijan, y **anoten la razón en el README del equipo**. En la revisión de la semana 14 les voy a preguntar por qué eligieron esa y no la otra.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 2 (semana 14). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Cuál es la diferencia entre aprendizaje supervisado y no supervisado?
+2. ¿Qué busca PCA?
+3. ¿Qué te dice la varianza explicada de una componente?
+
+**De aplicación a tu proyecto**
+
+4. ¿Cuántas características tiene tu `features.csv` y qué porcentaje de varianza explican tus dos primeras componentes?
+5. Enséñame tu gráfica de PCA. ¿Tus clases se separan solas? ¿Qué significa que sí o que no?
+6. ¿Qué piezas raras capturaste y qué respondió tu clasificador ante ellas?
+7. ¿Dónde caen tus piezas raras en el plano de PCA, fuera de tus tres grupos o camufladas dentro de alguno?
+8. ¿Viste algún punto atípico? ¿Cuál ventana era y qué encontraste al graficar su señal?
+
+**Difíciles**
+
+9. ¿Por qué estandarizar es obligatorio antes de PCA?
+    *Respuesta: PCA busca varianza y la varianza depende de la escala. Una característica con números de millones se llevaría la primera componente solo por tener números grandes, no por tener más información.*
+10. ¿Se usan las etiquetas para calcular PCA? Entonces, ¿para qué las usas en la gráfica?
+    *Respuesta: no se usan. PCA es no supervisado. Las etiquetas solo sirven para pintar los puntos después y juzgar el resultado.*
+11. En el plano de PCA tus clases se mezclan. ¿Significa que tu clasificador va a ser malo?
+    *Respuesta: no necesariamente. PCA busca la dirección de mayor varianza, no la de mayor separación entre clases. Lo que más varía puede ser algo que no distingue piezas, como el ruido de fondo.*
+12. ¿Qué es la maldición de la dimensionalidad?
+    *Respuesta: al crecer las dimensiones, tus ejemplos quedan lejos de todos y la idea de "vecino cercano" pierde sentido. Con más dimensiones que ejemplos, cualquier modelo separa perfecto el entrenamiento y falla con lo demás.*
+13. ¿Por qué PCA gana en visualización y pierde en interpretación?
+    *Respuesta: cada componente es una mezcla de todas las características, no una característica en sí. Es un intercambio consciente.*
+14. ¿Qué responde tu clasificador de la semana 7 ante un objeto que no es de ninguna de tus clases, y por qué eso es un problema?
+    *Respuesta: responde con seguridad una de las tres, porque es lo único que sabe decir. Una pieza defectuosa podría pasar como buena.*

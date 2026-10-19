@@ -23,6 +23,7 @@ Es la última semana de contenido del curso.
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -366,3 +367,43 @@ Semana de integración final sobre la maqueta.
 3. **Prueben la secuencia completa** sobre la banda: pieza que entra, sensores que la leen, modelo que decide, pistón que actúa. Con piezas normales y con anomalías.
 4. **Cronometren el ciclo del sistema completo** y comparen con el de la banda.
 5. **Ensayen la demo de la semana 17.** Tienen una sesión y hay varios equipos; una demo que no se ha ensayado no cabe en el tiempo.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión final (semana 17). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué es el sobreajuste y cómo se diagnostica con dos números?
+2. ¿Qué contiene el paquete `modelo_produccion.pkl`?
+3. ¿Con qué PLC y con qué biblioteca se comunica tu Python en la maqueta?
+
+**De aplicación a tu proyecto**
+
+4. Dame tus tres exactitudes juntas: entrenamiento, validación cruzada y banda.
+5. Enséñame `figuras/desajuste.png`. ¿Qué características cambiaron más entre tu escritorio y la banda?
+6. ¿Cuál es tu diagnóstico: sobreajuste, desajuste de distribución, o los dos? ¿Hay evidencia de que tu modelo aprendía la velocidad de tu mano?
+7. ¿Quitaste alguna característica al reentrenar con datos de la banda? ¿Cuál y por qué?
+8. ¿Alcanza tu sistema el tiempo de ciclo de la banda? Respóndeme con números.
+9. ¿Cómo conectaste tu PC al PLC? ¿Qué IP tiene tu PC y cuál el PLC?
+
+**Difíciles**
+
+10. Tu modelo tiene 0.91 en entrenamiento y 0.87 en validación cruzada, y 0.50 en la banda. ¿Es sobreajuste?
+    *Respuesta: no, el modelo está sano. Es desajuste de distribución: los datos de la banda vienen de otro proceso (el motor en vez de tu mano, velocidad constante, vibración, otra distancia, otra luz).*
+11. ¿Por qué la duración dejó de servir en la banda?
+    *Respuesta: en la banda la velocidad es constante, así que todas las piezas duran lo mismo. La característica dejó de discriminar y al modelo le quitaron el suelo.*
+12. Dame las tres salidas ante un desajuste de distribución.
+    *Respuesta: reentrenar con datos de la banda (la correcta); quitar las características frágiles; recapturar más datos si 10 ventanas por clase no alcanzan.*
+13. ¿Por qué el paquete de producción guarda el orden exacto de las columnas?
+    *Respuesta: pandas puede armar el vector en otro orden y el modelo leería la energía donde esperaba la duración, sin marcar ningún error. Solo respondería mal.*
+14. ¿Por qué "el modelo se entrena con datos del mismo mundo donde va a operar"? ¿Cómo se conecta eso con lo que hiciste en la semana 3?
+    *Respuesta: un modelo solo conoce el proceso que generó sus datos. Si moviste cada tipo de pieza a distinta velocidad con la mano, aprendió tu mano, y en la banda tu mano no existe.*
+15. ¿Por qué no se escribe una dirección del PLC sin confirmarla antes?
+    *Respuesta: leer es inofensivo, escribir mueve motores y pistones de verdad. Un bit equivocado puede arrancar la banda con alguien con la mano dentro.*
+16. Haces `ping 192.168.0.1` y falla siempre, y tu PC tiene una IP `169.254.x.x`. ¿Qué pasó?
+    *Respuesta: la IP quedó en automático y el PLC no reparte direcciones. Hay que ponerla fija a mano, por ejemplo `192.168.0.20` con máscara `255.255.255.0`.*
+17. La latencia de tu bucle es 3.4 s y la banda trae una pieza cada 2.5 s. ¿Qué haces?
+    *Respuesta: acortar la ventana (casi siempre es el cuello de botella), procesar mientras capturas, y solo al final simplificar el modelo, que es lo que menos ayuda. Se mide antes de optimizar.*

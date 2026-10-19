@@ -21,6 +21,7 @@ Esta semana cierras la Unidad 3 haciendo con el detector lo que hiciste con el c
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -360,3 +361,40 @@ Y definan la política de arbitraje completa del sistema, que es la parte de ing
 3. **Prueben el sistema completo** con piezas normales de los tres dominios y con anomalías, y documenten los casos en que el sistema integrado se equivoca aunque los módulos individuales acierten.
 
 Todo al README del equipo, con la figura del diagrama de decisión del sistema completo. En la revisión de la semana 14 les pregunto por la política de arbitraje.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 2 (semana 14). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué es el umbral de rechazo con `predict_proba`?
+2. ¿Cuáles son los dos mecanismos para que tu sistema reconozca que no sabe, y qué detecta cada uno?
+3. ¿Qué hace tu sistema cuando detecta una anomalía?
+
+**De aplicación a tu proyecto**
+
+4. Dibújame el diagrama de decisión de tu sistema completo, con tus clases y tus acciones.
+5. ¿Por qué esa acción de rechazo y no otra, en tu dominio? ¿Cómo se distingue de las tres acciones normales?
+6. Enséñame tu tabla de medición en vivo: clasificación, detección de anomalías y falsas alarmas.
+7. ¿Qué anomalía se le escapó a tu sistema y por qué crees que fue?
+8. ¿Tuviste falsas alarmas seguidas en vivo? ¿Qué las causaba?
+
+**Difíciles**
+
+9. ¿Por qué primero se pregunta si la pieza es anómala y solo después se clasifica?
+    *Respuesta: clasificar algo que no pertenece a ninguna de tus clases es trabajo desperdiciado y da un resultado basura que podrías usar por error. Es lo que hace un operador competente: primero mira si el objeto le resulta familiar.*
+10. ¿Por qué la confianza del clasificador no basta para detectar piezas desconocidas?
+    *Respuesta: un modelo puede estar muy seguro y muy equivocado. La confianza mide qué tan lejos está el punto de la frontera entre clases, no qué tan lejos está de todo lo que ha visto.*
+11. Dame un ejemplo, de tu dominio, de una pieza que pasaría el detector de anomalías pero debería rechazarse por baja confianza.
+    *Respuesta: una pieza normal pero que cae justo entre dos de tus clases, cerca de la frontera. Se parece a lo conocido, pero el clasificador no sabe de cuál es.*
+12. ¿Por qué el detector es más sensible que el clasificador a un procesamiento distinto entre entrenamiento y control?
+    *Respuesta: su trabajo es notar lo que se sale de lo aprendido. Una diferencia pequeña en el procesamiento se le presenta como algo desconocido y dispara falsas alarmas.*
+13. ¿Por qué el clasificador y el detector tienen cada uno su propio escalador y su propia lista de columnas?
+    *Respuesta: son dos paquetes independientes. Usar el escalador del clasificador en el detector daría resultados sin sentido.*
+14. ¿Qué es la deriva del modelo y por qué se reentrenan los modelos en la industria?
+    *Respuesta: es que el error de reconstrucción de las piezas normales sube con el tiempo, no porque la pieza cambie, sino porque el sistema se desajusta (sensor sucio, luz, desgaste). Por eso se reentrenan periódicamente.*
+15. ¿En qué se parece y en qué se diferencia lo que hace tu detector de lo que hace tu clasificador?
+    *Respuesta: los dos son modelos que deciden sobre la misma ventana. El clasificador aprende a separar las clases que conoce y siempre responde algo; el detector aprende cómo es lo normal y puede decir que no reconoce nada.*

@@ -23,6 +23,7 @@ Empieza la Unidad 4, y con ella el camino hacia la maqueta.
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -336,3 +337,41 @@ Evalúen **el sistema completo**, no los módulos por separado. Es una medición
 1. **Exactitud del sistema integrado** contra la de cada módulo por su cuenta. Si el sistema completo acierta menos que sus partes, algo pasa en la lógica de arbitraje.
 2. **Aprovechen el turno de laboratorio en equipo** para capturar datos de los tres módulos sobre la misma banda, en la misma corrida. Ese conjunto conjunto es la base de la demo de la semana 17.
 3. **Repártanse los turnos** de manera que alcancen: son dos celdas y varios equipos.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión final (semana 17). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué son la exactitud, la precisión, la exhaustividad (recall) y el F1?
+2. ¿Qué es un verdadero positivo, un falso positivo, un falso negativo y un verdadero negativo?
+3. ¿Qué es la validación cruzada de k pliegues?
+
+**De aplicación a tu proyecto**
+
+4. Para tu sistema, dame un ejemplo de falso positivo y uno de falso negativo. ¿Cuál te duele más y por qué?
+5. Con esa respuesta, ¿subirías o bajarías el umbral de tu detector de anomalías?
+6. ¿Cuál es tu exactitud con su desviación estándar? ¿Subió o bajó respecto a la que reportabas en la semana 7?
+7. Enséñame tu `classification_report`. ¿Cuál es la clase más débil de tu sistema?
+8. Calcula a mano la precisión y la exhaustividad de una de tus clases con tu matriz de confusión.
+9. ¿Qué exactitud dio tu modelo sobre `datos_banda.csv` comparada con tus datos de escritorio?
+
+**Difíciles**
+
+10. ¿Por qué la exactitud engaña con clases desbalanceadas?
+    *Respuesta: si el 95% de las piezas son buenas, un modelo que responde "buena" siempre tiene 95% de exactitud y no detecta ni un solo defecto, que era lo único que se le pedía.*
+11. ¿Por qué el F1 usa promedio armónico y no aritmético?
+    *Respuesta: porque castiga los desequilibrios. Con precisión 1.0 y exhaustividad 0.0, el promedio normal daría 0.5 y el F1 da 0, que es lo correcto porque ese modelo no sirve.*
+12. Dos modelos tienen 0.87 de exactitud promedio, uno con desviación 0.04 y otro con 0.19. ¿Cuál prefieres?
+    *Respuesta: el primero. El segundo es un volado, va del 68% al 100% según los datos que le toquen. Nunca se reporta una exactitud sin su desviación.*
+13. ¿Por qué tu 0.89 de la semana 7 no es "la exactitud de tu modelo"?
+    *Respuesta: salió de una sola partición con `random_state=42`. Con 18 ejemplos de prueba, un ejemplo más o menos cambia la exactitud 5 puntos. Con otra partición habría salido otro número.*
+14. ¿Por qué el pipeline es obligatorio en la validación cruzada?
+    *Respuesta: si estandarizas antes de partir en pliegues, el escalador usa todos los datos, incluidos los de prueba de cada ronda, y esa información se filtra al entrenamiento. Con el pipeline se ajusta solo con los datos de entrenamiento de cada ronda.*
+15. Precisión y exhaustividad se mueven en direcciones opuestas. ¿Cómo lo ves en el umbral de tu detector?
+    *Respuesta: bajar el umbral detecta más anomalías (sube la exhaustividad) pero dispara más falsas alarmas (baja la precisión). Subirlo hace lo contrario. No hay ajuste que mejore las dos; se elige según el proceso.*
+16. En la curva de aprendizaje, la curva de validación sigue subiendo al llegar al final. ¿Qué te dice?
+    *Respuesta: te faltan datos. Capturar más ventanas es la inversión más rentable.*

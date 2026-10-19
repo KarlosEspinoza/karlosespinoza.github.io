@@ -21,6 +21,7 @@ Esta semana construyes un detector de verdad: uno que **aprende cómo se ve una 
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -334,3 +335,39 @@ Implementen la arquitectura de detección que decidieron en la semana 10, la de 
 Y hagan una prueba que da mucha información: **pasen por el sistema una pieza que es normal para un módulo y anómala para otro**. Por ejemplo, una pieza de metal pequeña en un equipo donde uno clasifica por material y otro por tamaño.
 
 Lo que hay que definir es la política del sistema completo: **¿basta con que un módulo grite anomalía para que el sistema reaccione, o tienen que coincidir varios?** Las dos son defendibles y dependen de qué te cueste más. Anoten la decisión, la razón y el resultado de la prueba en el README del equipo.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 2 (semana 14). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué es un autoencoder?
+2. ¿Qué es el error de reconstrucción?
+3. ¿Qué es el cuello de botella de un autoencoder?
+
+**De aplicación a tu proyecto**
+
+4. ¿Qué umbral elegiste y por qué ese percentil, en función de tu proceso?
+5. Enséñame tus dos histogramas. ¿Qué tan separadas quedaron las piezas normales y las anómalas?
+6. ¿Cuántas piezas raras detectó tu autoencoder comparado con DBSCAN? ¿Y cuántas falsas alarmas dio?
+7. ¿Qué tipo de anomalía detecta bien tu sistema y cuál se le escapa?
+
+**Difíciles**
+
+8. ¿Por qué obligar a la red a pasar por un cuello de botella es lo que hace que el truco funcione?
+    *Respuesta: sin cuello de botella la red solo copiaría. Obligada a comprimir, tiene que descubrir las direcciones que resumen tus datos. Lo que no se parece a lo aprendido se reconstruye mal.*
+9. ¿Por qué el autoencoder se entrena solo con piezas normales? ¿Qué pasaría si le metieras también las anómalas?
+    *Respuesta: tiene que aprender cómo es lo normal. Si ve anómalas, aprende a reconstruirlas también y dejan de dar un error alto.*
+10. ¿Por qué no entrenas un clasificador con una cuarta clase llamada "anomalía"?
+    *Respuesta: no sabes cómo van a ser las anomalías. Va a aparecer algo que no imaginaste y el clasificador lo metería en la clase que más se le parezca. El autoencoder aprende lo normal y marca todo lo que se sale de eso.*
+11. ¿Por qué el umbral se calcula con datos de validación y no con los de entrenamiento?
+    *Respuesta: en entrenamiento la red reconstruye demasiado bien, el umbral saldría muy bajo y todo dispararía alarma.*
+12. Subes el umbral. ¿Qué cambia?
+    *Respuesta: hay menos falsas alarmas, pero se escapan más anomalías. Bajarlo hace lo contrario. Cuál conviene depende de qué le cuesta más a tu proceso.*
+13. ¿Qué pasa con un cuello de botella muy chico y con uno muy grande?
+    *Respuesta: muy chico, la red reconstruye mal hasta lo normal y las dos poblaciones se juntan. Muy grande, aprende a copiar y reconstruye bien cualquier cosa, incluidas las anomalías. El criterio para elegir es la mayor separación entre poblaciones, no el menor error.*
+14. ¿Por qué DBSCAN no sirve como detector en producción?
+    *Respuesta: necesita ver todo el conjunto de datos junto para decidir, y en la banda las piezas llegan de una en una. El autoencoder juzga una pieza sola, en un milisegundo.*

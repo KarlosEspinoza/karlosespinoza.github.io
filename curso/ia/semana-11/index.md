@@ -21,6 +21,7 @@ Los dos algoritmos que vamos a usar son muy distintos entre sí, y esa diferenci
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -340,3 +341,39 @@ Corran el agrupamiento **sobre los datos de los tres módulos juntos**, en un so
 Es un experimento revelador: si al agrupar todo aparecen tres grandes grupos que corresponden a los tres dominios, quiere decir que los módulos están midiendo cosas muy distintas y que integrarlos es sumar información. Si en cambio los datos de dos módulos se revuelven, esos dos están midiendo casi lo mismo y el sistema integrado no gana tanto como creían.
 
 Sea cual sea el resultado, es material directo para la revisión de la semana 14. Anótenlo en el README del equipo con la figura.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 2 (semana 14). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué es agrupar (clustering)?
+2. ¿Cuáles son los pasos de K-Means?
+3. ¿Qué dos parámetros tiene DBSCAN y qué controla cada uno?
+
+**De aplicación a tu proyecto**
+
+4. Enséñame tu tabla cruzada. ¿K-Means encontró tus clases por su cuenta?
+5. ¿Qué `eps` elegiste y cómo lo elegiste? ¿Cuántos grupos y cuántos puntos de ruido salieron?
+6. De tus piezas raras, ¿cuántas marcó DBSCAN como ruido?
+7. ¿Qué te enseñó el agrupamiento sobre tu problema que tus etiquetas no te habían dicho?
+
+**Difíciles**
+
+8. Dame tres limitaciones de K-Means.
+    *Respuesta: hay que decirle cuántos grupos buscar; todo punto acaba en algún grupo, no existe "ninguno"; prefiere grupos redondos y del mismo tamaño.*
+9. ¿Por qué DBSCAN puede detectar anomalías y K-Means no?
+    *Respuesta: en DBSCAN un grupo es una zona densa, así que un punto en una zona vacía no pertenece a ninguno y queda como ruido (`-1`). K-Means obliga a asignar cada punto a un grupo.*
+10. ¿Qué tipos de punto distingue DBSCAN?
+    *Respuesta: núcleo (tiene al menos `min_samples` vecinos dentro de `eps`), frontera (pocos vecinos pero dentro del radio de un núcleo) y ruido (ninguna de las dos).*
+11. ¿Qué pasa si `eps` es muy chico? ¿Y si es muy grande?
+    *Respuesta: muy chico, casi todo es ruido. Muy grande, todo es un solo grupo gigante y no hay ruido.*
+12. K-Means te dice que un punto es del grupo 0. ¿Eso quiere decir que es madera?
+    *Respuesta: no. Los números de los grupos no significan nada. Se compara la estructura de la tabla cruzada, no los números.*
+13. En tu tabla cruzada, el plástico cae completo en un grupo y la madera y el metal se reparten parejo entre otros dos. ¿Qué te dice?
+    *Respuesta: el plástico es genuinamente distinto, pero la madera y el metal no se distinguen con tus características. La división que encontró K-Means puede ser otra cosa, por ejemplo el inicio contra el final de la sesión.*
+14. DBSCAN no marcó tus piezas raras como ruido. ¿Qué significa?
+    *Respuesta: se parecen demasiado a las normales en el espacio de tus características. Es justo el problema que ataca el autoencoder.*
