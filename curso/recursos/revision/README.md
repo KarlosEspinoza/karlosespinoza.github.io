@@ -68,12 +68,16 @@ entregaron nada" los que todavia estan trabajando.
    1. Corre pull-individuales.sh para traer los repos al día.
    2. Corre asistencia.sh con la semana <NN> para saber quién no entregó nada
       (genera asistencia-s<NN>.md).
-   3. De los que sí entregaron algo, revisa brevemente los commits/diff de esta
+   3. Si existe ~/curso/<curso>/<ciclo>/excepciones.md, léelo antes de anotar
+      nada: son casos particulares ya autorizados por Karlos. No hagas
+      observación sobre un punto que esté cubierto ahí para ese alumno o
+      equipo.
+   4. De los que sí entregaron algo, revisa brevemente los commits/diff de esta
       semana y BITACORA.md. No es evaluación formal: solo anota algo si de
       verdad destaca (un error importante, algo muy bien resuelto, algo que
       conviene corregir antes de la revisión formal). Si no hay nada que valga
       la pena decir, no le hagas bloque.
-   4. Redacta el concentrado.md en
+   5. Redacta el concentrado.md en
       ~/curso/<curso>/<ciclo>/asistencia/concentrado-s<NN>.md, un bloque por
       alumno:
 
@@ -85,7 +89,7 @@ entregaron nada" los que todavia estan trabajando.
       Para los que no entregaron nada, un aviso corto y neutral (sin regañar),
       p. ej. "No veo commits de la semana <NN> (`s<NN> bloque 1`/`s<NN> bloque
       2`). Si tuviste un problema, cuéntamelo para que quede en la bitácora."
-   5. Al final del archivo, FUERA de cualquier bloque (aplicar-concentrado.py
+   6. Al final del archivo, FUERA de cualquier bloque (aplicar-concentrado.py
       solo lee lo que está dentro de <!-- BLOQUE --> ... <!-- FIN BLOQUE -->,
       así que esto nunca se aplica a ningún repo), agrega:
 
@@ -97,7 +101,7 @@ entregaron nada" los que todavia estan trabajando.
       agenda del rescate de atorones de la siguiente sesión y para anotar si
       algo apunta a que el material de esa semana necesita ajuste para el
       siguiente ciclo.
-   6. No toques ningún repo de alumno: nada de add/commit/push. Solo escribe el
+   7. No toques ningún repo de alumno: nada de add/commit/push. Solo escribe el
       concentrado.md. Yo lo reviso y te autorizo aplicar.
    ```
 
@@ -153,14 +157,18 @@ entregaron nada" los que todavia estan trabajando.
       al día. Si el curso.conf define REPO_AUTOEVAL, corre también
       pull-autoevals.sh y aggregate.py, y dime quién no tiene su repo de
       autoevaluación accesible: eso es el 10% que pierden en esta revisión.
-   2. Revisa cada repo individual y de equipo: el código, los datos, las
+   2. Si existe ~/curso/<curso>/<ciclo>/excepciones.md, léelo antes de evaluar
+      nada: son casos particulares ya autorizados por Karlos. No hagas
+      observación sobre un punto que esté cubierto ahí para ese alumno o
+      equipo.
+   3. Revisa cada repo individual y de equipo: el código, los datos, las
       figuras o evidencias, y BITACORA.md. Si ya tengo las respuestas a las 2
       preguntas de esa revisión, inclúyelas; si no, dejamos esa parte para el
       día de la revisión.
-   3. Para cada alumno y equipo, asigna nivel (Excelente/Bueno/Suficiente/
+   4. Para cada alumno y equipo, asigna nivel (Excelente/Bueno/Suficiente/
       Insuficiente) por instrumento según la rúbrica de evaluación del curso,
       con sus pesos.
-   4. Redacta el concentrado.md en
+   5. Redacta el concentrado.md en
       ~/curso/<curso>/<ciclo>/revision/<numero>/concentrado.md, un bloque por
       alumno y por equipo:
 
@@ -186,7 +194,7 @@ entregaron nada" los que todavia estan trabajando.
       (para equipo usa <!-- BLOQUE: EQUIPO <numero>-<usuario> --> y los pesos
       45/25/20/10 con la fila de Autoevaluacion entre pares, según
       plantilla-equipo.md del curso).
-   5. No toques ningún repo de alumno: nada de add/commit/push. Solo escribe el
+   6. No toques ningún repo de alumno: nada de add/commit/push. Solo escribe el
       concentrado.md. Yo lo reviso y te autorizo aplicar.
    ```
 
