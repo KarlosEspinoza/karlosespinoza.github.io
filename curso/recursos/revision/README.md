@@ -10,10 +10,16 @@ Nunca se hace `commit`/`push` a un repositorio de alumno sin ese tercer paso
 explicito. La regla dura completa esta en el `CLAUDE.md` de cada curso,
 seccion "Revision de avances: REVISION.md y el flujo de autorizacion".
 
-Los prompts de aqui son la **version generica**. No hay que buscar y
-reemplazar cada `<curso>` o `<ciclo>` del texto: **las primeras lineas del
-prompt declaran las variables**, se cambian ahi los valores del dia y el resto
-se pega tal cual.
+Los prompts viven en archivos aparte, para copiarlos completos de un jalon:
+
+| Flujo | Archivo |
+|---|---|
+| Revision semanal informal | `prompt-revision-semanal.md` |
+| Revision formal (semanas 9, 14 y 17) | `prompt-revision-formal.md` |
+
+Son la **version generica**. No hay que buscar y reemplazar cada `<curso>` o
+`<ciclo>` del texto: **las primeras lineas del prompt declaran las
+variables**, se cambian ahi los valores del dia y el resto se pega tal cual.
 
 ```
 <curso>=ia
@@ -52,58 +58,10 @@ Cualquier semana con bloques, es decir las que no son de revision formal. Se
 corre **al cerrar la sesion**, no durante: a media sesion aparecen como "no
 entregaron nada" los que todavia estan trabajando.
 
-1. **Prompt** (copiar y pegar al abrir sesion con Claude Code). Trae dentro el
-   pull y el reporte de asistencia, no hay que correr nada antes:
-
-   ```
-   <curso>=so
-   <ciclo>=202620
-   <NN>=05
-
-   Vamos a hacer la revisión semanal informal de la semana <NN> del curso
-   <curso>. Ciclo: ~/curso/<curso>/<ciclo>. Conf:
-   curso/<curso>/recurso/curso.conf. Sustituye esas variables en todo lo que
-   sigue.
-
-   1. Corre pull-individuales.sh para traer los repos al día.
-   2. Corre asistencia.sh con la semana <NN> para saber quién no entregó nada
-      (genera asistencia-s<NN>.md).
-   3. Si existe ~/curso/<curso>/<ciclo>/excepciones.md, léelo antes de anotar
-      nada: son casos particulares ya autorizados por Karlos. No hagas
-      observación sobre un punto que esté cubierto ahí para ese alumno o
-      equipo.
-   4. De los que sí entregaron algo, revisa brevemente los commits/diff de esta
-      semana y BITACORA.md. No es evaluación formal: solo anota algo si de
-      verdad destaca (un error importante, algo muy bien resuelto, algo que
-      conviene corregir antes de la revisión formal). Si no hay nada que valga
-      la pena decir, no le hagas bloque.
-   5. Redacta el concentrado.md en
-      ~/curso/<curso>/<ciclo>/asistencia/concentrado-s<NN>.md, un bloque por
-      alumno:
-
-      <!-- BLOQUE: ALUMNO <codigo>-<usuario> -->
-      ### Nota rápida (<fecha de hoy>)
-      <texto corto>
-      <!-- FIN BLOQUE -->
-
-      Para los que no entregaron nada, un aviso corto y neutral (sin regañar),
-      p. ej. "No veo commits de la semana <NN> (`s<NN> bloque 1`/`s<NN> bloque
-      2`). Si tuviste un problema, cuéntamelo para que quede en la bitácora."
-   6. Al final del archivo, FUERA de cualquier bloque (aplicar-concentrado.py
-      solo lee lo que está dentro de <!-- BLOQUE --> ... <!-- FIN BLOQUE -->,
-      así que esto nunca se aplica a ningún repo), agrega:
-
-      ## Incidencias comunes de la semana <NN>
-
-      Agrupa los problemas que se repitieron entre varios alumnos (mismo
-      error, mismo malentendido, mismo bloqueo de entorno): de qué se trata,
-      a quiénes les pasó (código o usuario) y cuántos. Es para usarla como
-      agenda del rescate de atorones de la siguiente sesión y para anotar si
-      algo apunta a que el material de esa semana necesita ajuste para el
-      siguiente ciclo.
-   7. No toques ningún repo de alumno: nada de add/commit/push. Solo escribe el
-      concentrado.md. Yo lo reviso y te autorizo aplicar.
-   ```
+1. **Prompt:** copiar completo `prompt-revision-semanal.md`, cambiar las
+   variables de las primeras lineas y pegarlo al abrir sesion con Claude
+   Code. Trae dentro el pull y el reporte de asistencia, no hay que correr
+   nada antes.
 
    La seccion de incidencias queda solo en tu copia local: es para ti, no
    para ellos. El reporte de asistencia queda en
@@ -140,63 +98,10 @@ entregaron nada" los que todavia estan trabajando.
 
 ## Revision formal (semanas 9, 14 y 17)
 
-1. **Prompt** (copiar y pegar al abrir sesion con Claude Code). Trae dentro el
-   pull de los repos y la autoevaluacion, no hay que correr nada antes:
-
-   ```
-   <curso>=so
-   <ciclo>=202620
-   <NN>=09
-   <numero>=1
-
-   Vamos a hacer la revisión formal <numero> (semana <NN>) del curso <curso>.
-   Ciclo: ~/curso/<curso>/<ciclo>. Conf: curso/<curso>/recurso/curso.conf.
-   Sustituye esas variables en todo lo que sigue.
-
-   1. Corre pull-individuales.sh y pull-equipos.sh para traer todos los repos
-      al día. Si el curso.conf define REPO_AUTOEVAL, corre también
-      pull-autoevals.sh y aggregate.py, y dime quién no tiene su repo de
-      autoevaluación accesible: eso es el 10% que pierden en esta revisión.
-   2. Si existe ~/curso/<curso>/<ciclo>/excepciones.md, léelo antes de evaluar
-      nada: son casos particulares ya autorizados por Karlos. No hagas
-      observación sobre un punto que esté cubierto ahí para ese alumno o
-      equipo.
-   3. Revisa cada repo individual y de equipo: el código, los datos, las
-      figuras o evidencias, y BITACORA.md. Si ya tengo las respuestas a las 2
-      preguntas de esa revisión, inclúyelas; si no, dejamos esa parte para el
-      día de la revisión.
-   4. Para cada alumno y equipo, asigna nivel (Excelente/Bueno/Suficiente/
-      Insuficiente) por instrumento según la rúbrica de evaluación del curso,
-      con sus pesos.
-   5. Redacta el concentrado.md en
-      ~/curso/<curso>/<ciclo>/revision/<numero>/concentrado.md, un bloque por
-      alumno y por equipo:
-
-      <!-- BLOQUE: ALUMNO <codigo>-<usuario> -->
-      ## Revision <numero> (semana <NN>)
-
-      | Instrumento | Peso | Nivel |
-      |---|---|---|
-      | Evidencias | 50% | |
-      | BITACORA.md | 30% | |
-      | Preguntas | 20% | |
-
-      ### Evidencias
-      ...
-      ### BITACORA.md
-      ...
-      ### Preguntas
-      ...
-      ### Para la siguiente revision
-      ...
-      <!-- FIN BLOQUE -->
-
-      (para equipo usa <!-- BLOQUE: EQUIPO <numero>-<usuario> --> y los pesos
-      45/25/20/10 con la fila de Autoevaluacion entre pares, según
-      plantilla-equipo.md del curso).
-   6. No toques ningún repo de alumno: nada de add/commit/push. Solo escribe el
-      concentrado.md. Yo lo reviso y te autorizo aplicar.
-   ```
+1. **Prompt:** copiar completo `prompt-revision-formal.md`, cambiar las
+   variables de las primeras lineas y pegarlo al abrir sesion con Claude
+   Code. Trae dentro el pull de los repos y la autoevaluacion, no hay que
+   correr nada antes.
 
    El ID de cada bloque es el mismo que usan `pull-individuales.sh` y
    `pull-equipos.sh` para nombrar la carpeta. En este paso no se toca ningun
