@@ -21,6 +21,7 @@ Aquí empieza la Unidad 2, y es la semana más importante del semestre. No exage
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -358,3 +359,38 @@ Cada integrante captura el dataset de su propio dominio, pero **con el mismo for
 1. **Los nombres de las columnas de control**, que deben ser idénticos en los tres: `ventana`, `t`, `etiqueta`. Si uno le pone `id` y otro `ventana`, el controlador central de la semana 8 va a necesitar código distinto para cada módulo.
 2. **El mismo `N_MUESTRAS`**, si sus sensores lo permiten. Ventanas del mismo largo simplifican mucho la integración.
 3. **Que las etiquetas de los tres no se repitan entre sí.** Si dos módulos tienen una clase llamada `grande`, el sistema integrado no va a poder decir de cuál módulo vino. Pónganle prefijo si hace falta: `tam_grande`, `mat_metal`.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 1 (semana 9). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué es una muestra, qué es una ventana y qué es una etiqueta?
+2. ¿Qué columnas tiene tu `datos.csv` y qué guarda cada una?
+3. Si tu dataset tiene 90 ventanas de 200 muestras cada una, ¿cuántos ejemplos ve el modelo?
+    *Respuesta: 90. La unidad es la ventana, no la muestra.*
+
+**De aplicación a tu proyecto**
+
+4. ¿Cuántas ventanas capturaste por clase? ¿Está balanceado tu dataset?
+5. Cuéntame tu protocolo: en qué orden pasaste las piezas, a qué distancia del sensor y qué hiciste para mantener pareja la velocidad de tu mano.
+6. ¿Qué te sorprendió al ver tus datos juntos? ¿Algo salió mal en la captura y cómo lo resolviste?
+7. ¿Qué tan bien crees que te salió controlar la velocidad de tu mano? ¿Qué evidencia tienes?
+
+**Difíciles**
+
+8. ¿Por qué no se capturan las 30 ventanas de una clase seguidas y luego las de la siguiente?
+    *Respuesta: el mundo cambia durante la sesión (luz, temperatura del sensor, cansancio). Si una clase se captura toda junta, esos cambios quedan pegados a su etiqueta y el modelo puede aprender el momento y no la pieza. Alternando, el cambio se reparte parejo.*
+9. ¿Qué es fuga de información y cómo se puede colar por la velocidad de tu mano?
+    *Respuesta: es una pista en los datos que separa las clases pero no tiene que ver con lo que quieres medir. Si pasas un tipo de pieza más rápido que otro, la duración las separa por tu mano y no por la pieza.*
+10. Tu modelo llega al 98% de exactitud sin un solo error en el código. ¿Por qué puede estar mal?
+    *Respuesta: puede haber aprendido una pista falsa. Ese error no se ve en los resultados, solo se ve si lo piensas antes.*
+11. ¿Por qué se guarda en formato largo (una fila por muestra) y no una fila por ventana?
+    *Respuesta: porque las ventanas no tienen que medir todas lo mismo. Una de 180 muestras y otra de 220 caben sin problema.*
+12. ¿Para qué sirve `ser.reset_input_buffer()` antes de capturar cada ventana?
+    *Respuesta: tira lo que llegó mientras esperabas el Enter. Sin eso la ventana empieza con muestras viejas y el evento sale corrido.*
+13. ¿Por qué se abre el archivo en modo `'a'` y qué problema crea eso?
+    *Respuesta: para no borrar lo capturado antes. El problema es que hay que averiguar en qué número de ventana te quedaste para no repetir números.*

@@ -23,6 +23,7 @@ Aviso desde ahora, porque es importante y honesto: **puede que a tu señal la fr
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -303,3 +304,38 @@ Una decisión de equipo que conviene tomar esta semana, antes de entrenar: **si 
 No es obligatorio, y forzarlo puede ser mala idea si un sensor es más lento que otro. Pero si sus $f_s$ son distintas, en la semana 8 el controlador central va a tener que leer los tres módulos a ritmos diferentes, y eso complica el código. Evalúen si les conviene igualarlos ahora, cuando todavía es barato recapturar, o dejarlos distintos y asumir la complejidad después.
 
 Anoten la decisión y la razón en el README del equipo.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 1 (semana 9). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué es la FFT y qué te devuelve?
+2. Nombra las features espectrales que viste.
+3. Si muestreas a 200 Hz, ¿hasta qué frecuencia llega tu espectro?
+    *Respuesta: hasta 100 Hz, la mitad de la frecuencia de muestreo (Nyquist).*
+
+**De aplicación a tu proyecto**
+
+4. ¿Cuál es tu frecuencia de muestreo, cuál es tu frecuencia de Nyquist y qué significa eso para tu señal?
+5. Calcula tu resolución en frecuencia con el largo de ventana que usas.
+6. ¿Qué frecuencia dominante tiene tu señal y tiene sentido físico?
+7. Enséñame la gráfica: ¿tus features de frecuencia separan tus clases? ¿Te las quedaste o las quitaste, y por qué?
+
+**Difíciles**
+
+8. ¿Qué es el aliasing y cómo lo sospecharías en tu espectro?
+    *Respuesta: una frecuencia mayor a Nyquist no desaparece, aparece disfrazada de una frecuencia baja que no existe. Se sospecha de un pico sin explicación física.*
+9. ¿Por qué se tira la primera barra del espectro, la de 0 Hz?
+    *Respuesta: es el promedio de la señal, no una oscilación, y suele ser tan grande que aplasta todo lo demás.*
+10. ¿Cómo consigues más detalle en frecuencia?
+    *Respuesta: con ventanas más largas. La resolución es la frecuencia de muestreo entre el número de muestras.*
+11. Tu espectro no separa nada. ¿Es un fracaso? ¿Qué haces?
+    *Respuesta: no, es un resultado bien hecho. Enseñas la gráfica, escribes la razón física (tu evento es lento, tu sensor es lento) y quitas las features, porque características que no aportan sí estorban.*
+12. Si tus ventanas miden distinto, ¿por qué no puedes meter las barras del espectro como características sueltas?
+    *Respuesta: no corresponderían a las mismas frecuencias entre ventanas. La frecuencia dominante, el centroide y las bandas definidas en Hz sí son comparables.*
+13. ¿Qué te dice un centroide espectral alto y uno bajo?
+    *Respuesta: alto, mucho contenido rápido en la señal. Bajo, una señal lenta y suave.*

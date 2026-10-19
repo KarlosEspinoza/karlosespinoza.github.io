@@ -21,6 +21,7 @@ Tú no vas a escribir ningún `if`. Le vas a entregar tu `features.csv` con las 
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -359,3 +360,40 @@ Cada integrante entrena el modelo de su propio dominio. Para que la semana que v
 1. **El mismo formato de `modelo.pkl`**: un diccionario con las llaves `modelo`, `escalador` y `columnas`. Si los tres guardan igual, el controlador central los carga a todos con el mismo código.
 2. **Una función común de predicción**, con la misma firma en los tres módulos: recibe una ventana cruda, devuelve la etiqueta. Esa función es la interfaz entre el módulo de cada quien y el sistema del equipo.
 3. **Comparen sus exactitudes** y detecten cuál módulo es el eslabón débil. En un sistema en cascada, el módulo más flojo limita a todo el conjunto, y conviene reforzarlo entre todos antes de la revisión.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 1 (semana 9). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué son `X` y `y`?
+2. ¿Qué significa entrenar un modelo?
+3. ¿Qué te muestra una matriz de confusión que no te muestra la exactitud?
+
+**De aplicación a tu proyecto**
+
+4. ¿Con cuántos ejemplos entrenaste y con cuántos probaste?
+5. ¿Qué algoritmo usaste y por qué, en función de tu caso?
+6. Enséñame tu matriz de confusión. ¿Qué par de clases se confunde más y por qué crees que pasa?
+7. ¿El resultado coincidió con lo que predijiste al ver la separación de tus clases en la semana 6?
+8. Si usaste un árbol, léeme las reglas que aprendió. ¿Tienen sentido físico?
+
+**Difíciles**
+
+9. ¿Por qué un modelo que acierta 100% en los datos de entrenamiento puede ser inútil?
+    *Respuesta: puede haber memorizado. Lo que importa es que acierte en piezas que nunca vio, o sea, que generalice. Un k-NN con k=1 acierta 100% en sus propios datos siempre.*
+10. ¿Por qué la partición entrenamiento/prueba es estratificada?
+    *Respuesta: para que la proporción de clases sea la misma en las dos partes. Si no, el azar puede dejar todo el metal en prueba y el modelo nunca lo vio.*
+11. ¿Por qué `fit_transform` en entrenamiento pero solo `transform` en prueba?
+    *Respuesta: el escalador debe calcular su media y desviación solo con los datos de entrenamiento. Si lo ajustas con los de prueba, usas información que el modelo no debería tener y la medición sale inflada, sin dar error.*
+12. ¿Por qué la columna `ventana` sale de `X`?
+    *Respuesta: es un identificador, no una característica. El modelo podría aprender que "las ventanas del 0 al 29 son madera", cierto en tu archivo e inútil en la realidad.*
+13. ¿Por qué k-NN necesita estandarizar y un árbol no?
+    *Respuesta: k-NN usa distancias, y una característica con números enormes domina. El árbol hace preguntas sobre una característica a la vez y no le importa la escala.*
+14. ¿Por qué se guarda el escalador junto con el modelo en `modelo.pkl`?
+    *Respuesta: sin él, en producción escalarías con otros números y el modelo respondería cualquier cosa sin marcar error.*
+15. Con 18 ejemplos de prueba, ¿hay diferencia real entre 0.83 y 0.89 de exactitud?
+    *Respuesta: prácticamente no. Con tan pocos ejemplos, un acierto más o menos cambia mucho el número.*

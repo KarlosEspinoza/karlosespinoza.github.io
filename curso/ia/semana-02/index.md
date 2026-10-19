@@ -22,6 +22,7 @@ Suena modesto, pero es el cimiento de todo lo demás. Un modelo de aprendizaje d
     - [Cómo vas a pasar la pieza](#pasar-la-pieza)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -396,3 +397,35 @@ Con tu equipo, comparen las señales que capturó cada quien. Dos cosas que deci
 
 1. **Si sus sensores se estorban entre sí.** Dos sensores infrarrojos apuntando cerca uno del otro se interfieren, y un motor cerca de un sensor Hall mete ruido. Es mejor detectarlo ahora que cuando ya estén montados en la maqueta.
 2. **Un formato común de línea.** Si desde hoy los tres módulos mandan sus datos con el mismo formato (`valor1,valor2,valor3`), el controlador central de la Unidad 2 va a poder leerlos a todos con el mismo código. Anótenlo en el README del equipo.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 1 (semana 9). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué papel tiene el Arduino y qué papel tiene Python en tu sistema?
+2. Por el puerto serial, ¿viajan números o caracteres?
+3. ¿Qué es una ventana?
+
+**De aplicación a tu proyecto**
+
+4. Enséñame tu `sensor.ino` y dime qué formato tiene cada línea que manda.
+5. ¿Qué `delay()` elegiste, a cuántas muestras por segundo equivale y cuántas muestras tienes de tu pieza mientras pasa?
+6. Ese `delay()`, ¿lo tuviste que cambiar al probarlo con el hardware? ¿Por qué?
+7. Enséñame la figura con tus tres señales juntas. ¿Se distinguen tus tres tipos a simple vista?
+
+**Difíciles**
+
+8. ¿Por qué el Arduino no puede mandar `Serial.println("Leyendo...")`?
+    *Respuesta: ese texto viaja por el mismo canal que los datos. Python intenta convertirlo a número y truena.*
+9. Te sale `PermissionError: Acceso denegado` al abrir `COM3`. ¿Es un problema de permisos?
+    *Respuesta: casi nunca. Es que alguien más tiene el puerto abierto: el Monitor Serie, otra terminal, o tu script anterior que no llegó al `ser.close()`.*
+10. ¿Por qué hay un `time.sleep(2)` justo después de abrir el puerto?
+    *Respuesta: abrir el puerto reinicia el Arduino. Si lees antes, las primeras líneas llegan cortadas o vacías.*
+11. ¿Qué le pasa a tu dataset si muestreas demasiado lento? ¿Y si muestreas demasiado rápido?
+    *Respuesta: muy lento, la pieza pasa entre dos lecturas y no queda rastro del evento. Muy rápido, generas montañas de datos casi iguales que hacen todo más lento. Además cada sensor tiene un techo por su tiempo de respuesta.*
+12. ¿Por qué un valor suelto del sensor no identifica una pieza?
+    *Respuesta: lo que la identifica es la forma de la señal a lo largo del tiempo: cuánto baja, qué tan rápido, cuánto dura.*

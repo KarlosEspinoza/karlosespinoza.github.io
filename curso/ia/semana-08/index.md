@@ -23,6 +23,7 @@ De paso, agregamos el algoritmo que le da nombre popular a la inteligencia artif
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -398,3 +399,37 @@ Es la semana de la primera integración de verdad. Construyan un **controlador c
 3. **Prueben con las piezas de los tres dominios** y anoten los casos en que el sistema completo se equivoca aunque los módulos individuales acierten. Ese es el problema propio de los sistemas integrados y da para una buena discusión en la revisión.
 
 Suban el controlador central al repositorio del equipo. En la revisión de la semana 9 les pregunto por la lógica de arbitraje.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 1 (semana 9). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué hace una neurona artificial?
+2. ¿Para qué sirve una función de activación como ReLU?
+3. ¿Cómo le manda Python una orden al Arduino y por qué es un solo carácter?
+
+**De aplicación a tu proyecto**
+
+4. Enséñame tu tabla de acciones: carácter, clase, qué hace tu actuador y por qué esa acción tiene sentido en tu dominio.
+5. ¿Qué modelo se quedó en tu sistema, el de la semana 7 o la red? Dame tus números de entrenamiento y prueba.
+6. Enséñame en `control.py` dónde limpias y dónde calculas características. ¿Hacen exactamente lo mismo que tus scripts de entrenamiento?
+7. ¿Tu bucle funcionó al primer intento en vivo? Si no, ¿qué estaba mal y cómo lo encontraste?
+
+**Difíciles**
+
+8. Tu red salió peor que el modelo de la semana 7. ¿Fracasaste?
+    *Respuesta: no. Con 90 ejemplos un árbol o un k-NN suelen igualar o ganarle a una red, y además se pueden explicar. "Porque es inteligencia artificial" no es una razón para elegir un modelo.*
+9. ¿Por qué hacen falta capas ocultas, y por qué la activación no puede ser lineal?
+    *Respuesta: las capas permiten combinar y curvar las fronteras. Con activación lineal, la composición de capas sigue siendo lineal y toda la red colapsa a una sola neurona.*
+10. ¿Qué es el *training-serving skew* y cómo se evita?
+    *Respuesta: es aplicar en producción un procesamiento distinto al del entrenamiento (por ejemplo filtro de tamaño 9 en vez de 5). El modelo falla sin dar ningún error. Se evita no duplicando código: un módulo que importen tanto el entrenamiento como el control.*
+11. En el CSV tu modelo acierta 90% y en vivo se equivoca la mitad. ¿Cuál es el primer sospechoso y cómo lo cazas?
+    *Respuesta: `limpiar()` o `calcular_features()` de `control.py` no hacen exactamente lo mismo que los scripts originales. Se imprime el vector de características que produce `control.py` y se compara número por número con la fila de `features.csv` de la misma ventana.*
+12. ¿Por qué se prueba la flecha de regreso sola (mandar `A`, `B`, `C` desde el Monitor Serie) antes de meter el modelo?
+    *Respuesta: para depurar por partes. Si el servo no se mueve, el problema es de hardware o de protocolo, y hay que resolverlo antes de agregar nada más.*
+13. ¿Qué etapa de tu bucle tarda más y qué consecuencia tiene?
+    *Respuesta: casi siempre la captura, porque hay que esperar físicamente a que pasen las muestras. Predecir tarda menos de un milisegundo. El cuello de botella no es la inteligencia artificial, es la adquisición.*

@@ -21,6 +21,7 @@ Esta semana no agregas funcionalidad nueva a tu sistema. Le quitas basura. Y aun
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -299,3 +300,38 @@ Llegas con `limpiar.py` funcionando y tu `datos_limpios.csv` generado. La sesió
 3. **Acuerden el mismo orden de limpieza para los tres módulos.** Si uno normaliza y otro no, cuando integren los módulos en la semana 8 los valores no van a ser comparables. Escriban el orden acordado (atípicos, filtro, línea base, normalización) en el `README.md` del repositorio del equipo.
 
 Si cada quien crea su propio repositorio no hay proyecto integrador: serían tres controladores centrales distintos en vez de uno.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 1 (semana 9). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué es el ruido, qué es un valor atípico y qué es la deriva?
+2. ¿Qué hace el filtro de media móvil?
+3. ¿Para qué se corrige la línea base?
+
+**De aplicación a tu proyecto**
+
+4. ¿Qué tamaño de filtro elegiste y por qué, en relación con la duración de tu evento?
+5. ¿Qué rango físico tiene tu sensor y qué valores descartaste por imposibles?
+6. ¿Cuánto se movió tu línea base entre la primera y la última ventana de la sesión?
+7. ¿Qué normalización elegiste, min-max o z-score, y por qué?
+8. ¿Descartaste alguna ventana? ¿Cuál, cuántas y por qué lo dejaste anotado?
+
+**Difíciles**
+
+9. ¿Por qué el filtro se aplica ventana por ventana y no a toda la columna de un jalón?
+    *Respuesta: si no, el final de una ventana se promedia con el inicio de la siguiente, que es otra pasada y a lo mejor otra clase.*
+10. ¿Por qué los atípicos se quitan antes de filtrar?
+    *Respuesta: el promedio móvil no borra un valor absurdo, lo reparte entre sus vecinos. Un pico feo se vuelve cinco muestras contaminadas.*
+11. ¿Qué pasa si usas un filtro de tamaño 30 con un evento que dura 40 muestras?
+    *Respuesta: aplana y deforma el evento, y puedes borrar justo la característica que distinguía tus clases.*
+12. ¿Por qué se guardan el mínimo, el máximo, la media y la desviación que usaste para normalizar?
+    *Respuesta: en producción hay que aplicar exactamente los mismos valores. Si se recalculan con otros datos, el modelo recibe un mundo distinto al que aprendió.*
+13. Una ventana de madera de fin de sesión se parece más a una de metal del principio que a las de su propia clase. ¿Qué la causó y cómo se arregla?
+    *Respuesta: la deriva de la línea base. Se arregla restándole a cada ventana su propio valor de reposo.*
+14. ¿En qué orden se limpia la señal y por qué ese orden?
+    *Respuesta: atípicos, filtro, línea base, normalización. Los atípicos antes del filtro porque el filtro los reparte; la línea base antes de normalizar para que todas arranquen desde cero.*

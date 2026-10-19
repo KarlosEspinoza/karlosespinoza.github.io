@@ -21,6 +21,7 @@ Esta semana haces la traducción que hace posible todo lo demás: convertir cada
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -296,3 +297,37 @@ No las igualen a la fuerza: cada dominio necesita las suyas, y forzar a los tres
 1. **Que las columnas de control se llamen igual** (`ventana`, `etiqueta`) para que el código de carga sea el mismo.
 2. **Que cada módulo tenga su propio modelo**, no uno compartido. El controlador central de la semana 8 va a preguntarle a cada modelo por separado y juntar las respuestas.
 3. **Anoten en el README del equipo la lista de características de cada módulo.** En la revisión de la semana 9 les voy a preguntar por qué cada uno eligió las suyas.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 1 (semana 9). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué es una característica (feature)?
+2. Nombra al menos cuatro características del dominio del tiempo.
+3. ¿Cuántas filas tiene tu `features.csv` y qué representa cada una?
+
+**De aplicación a tu proyecto**
+
+4. ¿Qué características elegiste y por qué cada una debería distinguir tus clases, en tu dominio?
+5. Enséñame tu diagrama de dispersión. ¿Qué par de características separa mejor tus clases?
+6. ¿Cuál predijiste que sería la mejor y cuál la más inútil? ¿Acertaste?
+7. Si dos de tus clases se encimaron, ¿qué decidiste hacer?
+
+**Difíciles**
+
+8. Dame tres problemas de darle al modelo la ventana completa en vez de características.
+    *Respuesta: las ventanas no miden todas lo mismo y el clasificador pide filas del mismo largo; son demasiados números para tan pocos ejemplos (maldición de la dimensionalidad); la información está repetida entre muestras vecinas.*
+9. ¿Por qué no conviene calcular todas las características posibles "por si acaso"?
+    *Respuesta: cada característica es una dimensión más y las dimensiones cuestan. Hay que preguntarse si esa debería ser distinta entre mis clases.*
+10. Tu clasificador acierta casi todo apoyándose en la duración y tu dominio no es de tamaño. ¿De qué sospechas?
+    *Respuesta: de la velocidad de tu mano. Es la fuga de información de la semana 3.*
+11. En la matriz de dispersión, dos características forman una diagonal perfecta. ¿Qué significa?
+    *Respuesta: miden lo mismo. Una de las dos sobra.*
+12. ¿Por qué conservas la columna `ventana` en `features.csv` si el modelo no la va a usar?
+    *Respuesta: para poder rastrear un ejemplo raro de vuelta a la señal que lo produjo.*
+13. ¿Por qué el rango es de las características más útiles?
+    *Respuesta: es el máximo menos el mínimo, así que no le afecta la línea base.*

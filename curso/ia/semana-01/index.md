@@ -21,6 +21,7 @@ Todo el curso gira alrededor de un solo sistema que vas a construir tú mismo: u
 - [Avance de tu proyecto esta semana](#avance-del-proyecto)
     - [Prácticas](#practicas)
     - [Proyecto integrador](#proyecto-integrador)
+- [Preguntas de revisión](#preguntas-de-revision)
 
 ---
 
@@ -437,3 +438,33 @@ El repositorio ya lo creaste el lunes. Lo que queda es cerrarlo y dejarlo entreg
    El dominio va en una sola palabra, en minúsculas y sin acentos, porque ese archivo lo proceso con un script.
 
 Todavía no hay código del integrador: por ahora basta con que el equipo quede formado y los dominios reservados, porque a partir de la Unidad 2 cada módulo empezará a integrarse en un controlador central que desarrollarán en conjunto.
+
+---
+
+## Preguntas de revisión {#preguntas-de-revision}
+
+Banco de preguntas de este tema para que llegues preparado a la revisión de avances 1 (semana 9). No es una lista cerrada: en la revisión te puedo hacer cualquiera de estas, variarlas, o preguntar directo sobre tu propio código. Las respuestas que aparecen en las difíciles son para que compruebes tu estudio, no para memorizarlas: contestar con tus palabras y con tu dominio vale más. El instrumento completo está en [Prácticas](/curso/ia/evaluacion/individual).
+
+**Fáciles**
+
+1. ¿Qué es el aprendizaje de máquina y en qué se distingue de programar una regla a mano?
+2. ¿Qué es un commit y para qué sirve el historial de commits en este curso?
+3. ¿Cuáles son las tres piezas del bucle de control inteligente y qué hace cada una?
+
+**De aplicación a tu proyecto**
+
+4. Dime tu dominio y tus tres tipos de pieza, y qué mide tu sensor en tu sistema.
+5. Descríbeme el bucle de **tu** sistema: qué mide el sensor, qué tiene que decidir el modelo y qué hace el actuador con cada uno de tus tres tipos.
+6. ¿Por qué elegiste ese sensor? ¿Qué par de tus piezas crees que se te van a confundir más?
+7. Enséñame la estructura de tu repositorio y dime qué va en cada carpeta.
+
+**Difíciles**
+
+8. En la programación tradicional entran datos y reglas, y salen resultados. ¿Qué entra y qué sale en el aprendizaje de máquina?
+    *Respuesta: entran datos y resultados (las etiquetas), y salen las reglas, o sea el modelo.*
+9. ¿Por qué un solo `if` con un umbral no alcanza para distinguir madera de plástico, y qué hace distinto el modelo?
+    *Respuesta: la diferencia está en una combinación de varias señales, no en un solo valor. El modelo encuentra la frontera a partir de ejemplos etiquetados.*
+10. ¿Por qué el curso se trabaja primero con Arduino en protoboard y no directo en la maqueta, y qué es lo que se conserva al pasar a producción?
+    *Respuesta: el prototipo es barato para equivocarse y recolectar datos. El modelo es el mismo; lo que cambia es a quién le manda la orden (el PLC en vez del Arduino).*
+11. ¿Por qué tus datos (el CSV) van al repositorio igual que el código?
+    *Respuesta: sin los datos no se puede volver a entrenar el modelo. Los datos son parte del proyecto.*
