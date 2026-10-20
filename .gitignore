@@ -68,3 +68,4 @@ _site
 # Datos personales de alumnos: viven solo en el repositorio privado del curso.
 # Este repositorio es publico. La plantilla vacia se llama alumnos_ejemplo.csv.
 **/alumnos.csv
+__pycache__/
