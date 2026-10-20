@@ -151,8 +151,8 @@ Sustituye <NN> y <numero> en todo lo que sigue.
 
 1. Corre pull-individuales.sh y pull-equipos.sh para traer todos los repos al
    día, y pull-autoevals.sh con aggregate.py para la autoevaluación entre
-   pares. Dime quién no tiene su repo autoeval-so accesible: ese es el 10% que
-   pierde en esta revisión.
+   pares (el <codigo>.csv va en la raíz de so-proyecto). Dime quién no tiene
+   su <codigo>.csv: ese es el 10% que pierde en esta revisión.
 2. Revisa cada repo individual (so-proyecto): src/, datos/, evidencias/ y
    BITACORA.md. Contrasta contra la lista "Tu servidor debe" de
    curso/so/semana-<NN>/index.md, que es el instrumento de esta revisión, y
@@ -162,8 +162,16 @@ Sustituye <NN> y <numero> en todo lo que sigue.
 4. Verifica que el código corra de verdad con los datos que están en el repo:
    rutas relativas, el catálogo existe, el servidor arranca. Un repo que no
    corre no puede ser Excelente en evidencias por bonito que esté escrito.
-5. Si ya tengo las respuestas a las 2 preguntas de esa revisión, inclúyelas; si
-   no, dejamos esa parte para el día de la revisión.
+5. Las 2 preguntas se registran el día de la revisión con
+   curso/recursos/preguntas/preguntar.py, en
+   ~/curso/so/202620/revision/<numero>/preguntas.csv. Si ese archivo ya
+   existe, úsalo: el promedio de las dos calificaciones del alumno es su nota
+   de Preguntas, y vale igual para su práctica y para el integrador. En el
+   bloque del equipo pon el promedio de los integrantes, sin desglosar a nadie
+   (el REVISION.md del equipo lo leen todos). Por cada pregunta, en el bloque
+   del alumno, di cuál se le hizo y, si falló, la respuesta esperada (está en
+   ~/gh/so-profesor/banco/ por id). Si el archivo no existe, deja esa parte
+   para después de la revisión.
 6. Para cada alumno y equipo, asigna nivel (Excelente/Bueno/Suficiente/
    Insuficiente) por instrumento según la rúbrica de evaluacion/practicas
    (individual) o evaluacion/proyecto_integrador (equipo), con sus pesos.
@@ -242,6 +250,8 @@ $R/pull-repos/pull-equipos.sh      $C            # repos de equipo (desde la sem
 $R/asistencia/asistencia.sh        $C <NN>       # quien no entrego nada
 $R/autoeval/pull-autoevals.sh      $C            # autoevaluacion entre pares
 python3 $R/autoeval/aggregate.py ~/curso/so/202620/repos-autoeval
+python3 $R/preguntas/preguntar.py                # preguntas orales del dia
+python3 $R/preguntas/preguntar.py --resumen      # promedio de preguntas por alumno
 ```
 
 ---

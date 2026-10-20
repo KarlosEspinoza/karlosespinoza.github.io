@@ -485,8 +485,18 @@ Si Karlos no ha dicho explícitamente que autoriza, no se corre el script con
   asistencia a partir de los commits (`asistencia/`) y la autoevaluación entre pares
   (`autoeval/`). No traen nada específico de un curso ni datos de alumnos.
 - Lo que hace que hablen de SO es `curso/so/recurso/curso.conf`: nombres de los repos
-  (`so-proyecto`, `integrador-so`, `autoeval-so`), carpeta del ciclo y plantillas del
-  `REVISION.md` (`curso/so/recurso/revision/`).
+  (`so-proyecto`, `integrador-so`; la autoevaluación también va en `so-proyecto`), carpeta del
+  ciclo, plantillas del `REVISION.md` (`curso/so/recurso/revision/`) y el banco de preguntas.
+- **Preguntas orales de las revisiones:** `curso/recursos/preguntas/preguntar.py` (genérico).
+  El banco vive en el repo privado, `~/gh/so-profesor/banco/semana-NN.json`, porque trae las
+  respuestas. **Se deriva de la sección "Preguntas de revisión" de cada `semana-NN/index.md`**,
+  que es de lo que estudian los alumnos: mismo texto y mismo número (`S05-04` es la pregunta 4
+  de la semana 5). Si se edita una pregunta en la página, se edita también en el banco. Tipos
+  `facil`/`proyecto`/`dificil`; formato `opcion` (4 opciones, se revuelven) o `rubrica` (las
+  que se contestan sobre el código del alumno, "enséñame..."). Las dos preguntas de cada
+  revisión valen para la práctica y para el integrador. Registro en
+  `~/curso/so/<ciclo>/revision/<n>/preguntas.csv`. Al escribir distractores, que la correcta
+  no sea la opción más larga: se nota hasta de oído.
 - Los datos del ciclo (padrón, repos clonados, reportes, concentrados) viven fuera del sitio, en
   `~/curso/so/202620/`.
 - El paso mecánico de aplicar el `concentrado.md` (append a cada `REVISION.md`
@@ -581,11 +591,14 @@ acumulable. **Una vez publicada la semana que introduce un nombre, ese nombre qu
   SO (procesos, memoria, archivos, red).
 - Los detalles y rúbrica están en `evaluacion/proyecto_integrador/index.md`.
 - **Autoevaluación anónima entre pares:** NO va en el repo del equipo (ahí todos se verían).
-  Cada alumno entrega un repo privado propio con un archivo CSV nombrado con su propio codigo de
-  alumno (p. ej. `2162628.csv`, columnas `codigo,calificacion`; el nombre del archivo identifica
-  al evaluador) y agrega al asesor como colaborador. Así los compañeros no se ven entre sí; solo
-  el asesor lee todo. Automatización en `curso/recursos/autoeval/`: `pull-autoevals.sh` y
-  `aggregate.py`, configurados por `recurso/curso.conf` (`REPO_AUTOEVAL=autoeval-so`).
+  Cada alumno pone un archivo CSV nombrado con su propio codigo de alumno (p. ej.
+  `2162628.csv`, columnas `codigo,calificacion`; el nombre del archivo identifica al evaluador)
+  **en la raíz de su `so-proyecto`**, que ya es privado y solo ve el asesor. Así los compañeros
+  no se ven entre sí. (El diseño original era un repo aparte, `autoeval-so`; en la semana 9 de
+  2026B se les indicó en clase usar `so-proyecto`, y la página del integrador y la semana 9
+  llevan la nota de corrección.) Automatización en `curso/recursos/autoeval/`:
+  `pull-autoevals.sh` y `aggregate.py` (que solo lee archivos `<digitos>.csv`), configurados por
+  `recurso/curso.conf` (`REPO_AUTOEVAL=so-proyecto`).
   Vale **10% de cada revisión**. El alumno actualiza su archivo `<codigo>.csv` con push **antes de
   cada una de las 3 revisiones**. Si no hace push, pierde ese 10% en esa revisión; no afecta a los
   compañeros (el promedio se calcula solo con las autoevaluaciones entregadas).
