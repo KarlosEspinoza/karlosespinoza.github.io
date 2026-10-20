@@ -33,6 +33,10 @@ problemas = []
 
 for ruta in glob.glob(os.path.join(raiz, "**", "*.csv"), recursive=True):
     evaluador = os.path.splitext(os.path.basename(ruta))[0]
+    # Solo <codigo>.csv: si el archivo vive en el repo del proyecto, junto a
+    # el puede haber otros CSV (equipo.csv, datos) que no son autoevaluaciones.
+    if not evaluador.isdigit():
+        continue
     try:
         with open(ruta, newline="", encoding="utf-8-sig") as f:
             lector = csv.DictReader(f)

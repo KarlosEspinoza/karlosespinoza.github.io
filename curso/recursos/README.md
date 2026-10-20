@@ -29,6 +29,7 @@ los repos clonados y los reportes generados viven fuera, en
 | `pull-repos/` | Clona o actualiza los repos individuales y los de equipo | Solo lectura (`clone`/`pull`) |
 | `asistencia/` | Reporte semanal: quien no entrego nada esa semana | Solo lectura (`git log`) |
 | `autoeval/` | Junta y promedia la autoevaluacion entre pares | Solo lectura |
+| `preguntas/` | Preguntas orales de las revisiones: banco al azar y registro | No, escribe en `<dir-ciclo>/revision/<n>/` |
 | `revision/` | El flujo de retroalimentacion y los prompts | No, solo documenta |
 
 El unico paso que **escribe** en los repositorios de los alumnos es
