@@ -163,6 +163,8 @@ Cada integrante evalúa la contribución real de sus compañeros. Es **anónima 
 
 Para que sea anónima **no se entrega en el repositorio del equipo**, porque ahí todos se verían. Va por un canal privado y separado.
 
+> **Corrección de la semana 9:** el archivo `<codigo>.csv` se pone en la **raíz de tu repositorio `so-proyecto`**, que ya es privado y solo ve el asesor. No hace falta crear el repositorio aparte de los pasos 1 y 2 de abajo: el paso 3 y lo demás quedan igual. Si ya lo habías creado aparte, copia el archivo a `so-proyecto` y haz push.
+
 **Cómo se configura, una sola vez en el semestre:**
 
 1. Crea un **repositorio privado** solo para tu autoevaluación, con el nombre que quieras (por ejemplo `autoeval-so`). Distinto de `so-proyecto`.
