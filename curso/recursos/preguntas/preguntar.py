@@ -111,7 +111,8 @@ def elegir_curso():
     if not cursos:
         sys.exit("Ningun curso.conf define BANCO_PREGUNTAS.")
     nombres = [n for n, _ in cursos]
-    print("Cursos con banco de preguntas: " + ", ".join(nombres))
+    print(tenue("Entre [corchetes] va el valor por defecto: Enter lo acepta."))
+    print("Cursos disponibles: " + ", ".join(nombres))
     while True:
         r = leer("Curso", nombres[0] if len(nombres) == 1 else None)
         for n, conf in cursos:
@@ -127,7 +128,7 @@ def elegir_ciclo(conf):
                     if d.isdigit() and os.path.isdir(os.path.join(padre, d))) \
         if os.path.isdir(padre) else []
     if ciclos:
-        print("Ciclos: " + ", ".join(ciclos))
+        print("Ciclos disponibles: " + ", ".join(ciclos))
     while True:
         r = leer("Ciclo", os.path.basename(dir_ciclo))
         ruta = os.path.join(padre, r)
@@ -268,7 +269,7 @@ def capturar(pres):
             if r.isdigit() and 1 <= int(r) <= n:
                 nombre, puntos, _ = pres["niveles"][int(r) - 1]
                 return nombre, "", puntos, ""
-            print(rojo("  No entendi."))
+            print(rojo(f"  Teclea el numero del nivel (1 a {n}), no los puntos."))
 
 
 def evaluar_alumno(codigo, nombre, slots, banco, semanas, registro, ruta_csv):
