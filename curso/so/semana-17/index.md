@@ -88,7 +88,7 @@ Y el historial de commits: **repartido a lo largo de las 16 semanas**, con los m
 
 4. **Los tres modos de falla documentados con evidencia**: se cae una sucursal, se cae el central, se satura una sucursal.
 
-5. **Autoevaluación entre pares:** cada integrante actualiza su archivo `<codigo>.csv` y hace push **antes de la revisión**. Es la última de las tres.
+5. **Autoevaluación entre pares:** cada integrante actualiza su archivo `<codigo>.csv`, en la raíz de su `so-proyecto`, y hace push **antes de la revisión**. Es la última de las tres. Formato y pasos en [Proyecto integrador, autoevaluación entre pares](/curso/so/evaluacion/proyecto_integrador#autoevaluacion).
 
 ---
 

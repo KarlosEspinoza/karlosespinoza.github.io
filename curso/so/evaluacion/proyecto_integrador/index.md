@@ -181,6 +181,14 @@ codigo,calificacion
 
 La primera línea es exactamente `codigo,calificacion`.
 
+> **Corrección de la semana 9:** como se indicó en clase, el archivo **sí incluye una línea para ti mismo** (autoevaluación), y **no lleva cabecera**. Una línea por cada integrante del equipo, tú incluido, código y calificación de 0 a 100:
+>
+> ```
+> 2162628,95
+> 2152525,90
+> 2178899,100
+> ```
+
 **Cómo se entrega:** antes de **cada una de las tres revisiones** actualizas tu archivo y haces `push`. Son tres entregas, no una: la participación de un compañero puede cambiar entre unidades y esto lo tiene que reflejar.
 
 **Qué estás calificando:** si cumplió lo que le tocaba, si lo entregó a tiempo para que los demás pudieran seguir, y si se puede contar con él cuando algo se rompe. No es simpatía.

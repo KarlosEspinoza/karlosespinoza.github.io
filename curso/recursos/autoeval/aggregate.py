@@ -6,7 +6,9 @@ con el codigo del alumno evaluador, es la evaluacion que ese alumno hizo de sus
 companeros) y calcula, por cada alumno evaluado, el promedio de las
 calificaciones que recibio.
 
-Cada CSV tiene encabezado:  codigo,calificacion
+Cada CSV tiene dos columnas, codigo y calificacion, con o sin encabezado
+"codigo,calificacion" (distintos cursos piden una u otra convencion): la
+primera fila se descarta solo si no es un codigo,calificacion valido.
 El nombre del archivo (sin .csv) es el codigo del alumno que evalua (evaluador).
 
 Generico: no depende de ningun curso, solo de la carpeta donde quedaron los
@@ -39,24 +41,35 @@ for ruta in glob.glob(os.path.join(raiz, "**", "*.csv"), recursive=True):
         continue
     try:
         with open(ruta, newline="", encoding="utf-8-sig") as f:
-            lector = csv.DictReader(f)
-            if not lector.fieldnames or "codigo" not in lector.fieldnames or "calificacion" not in lector.fieldnames:
-                problemas.append(f"{ruta}: faltan columnas codigo,calificacion")
-                continue
-            for fila in lector:
-                evaluado = (fila.get("codigo") or "").strip()
-                cal = (fila.get("calificacion") or "").strip()
-                if not evaluado or not cal:
-                    continue
-                if evaluado == evaluador:
-                    problemas.append(f"{ruta}: {evaluador} se califico a si mismo (ignorado)")
-                    continue
-                try:
-                    recibidas[evaluado].append((evaluador, float(cal)))
-                except ValueError:
-                    problemas.append(f"{ruta}: calificacion no numerica '{cal}' para {evaluado}")
+            filas = [fila for fila in csv.reader(f) if fila]
     except OSError as e:
         problemas.append(f"{ruta}: no se pudo leer ({e})")
+        continue
+
+    if not filas:
+        problemas.append(f"{ruta}: vacio")
+        continue
+
+    # La primera fila es encabezado solo si no es un codigo,calificacion
+    # valido (p. ej. la literal "codigo,calificacion").
+    primera = filas[0]
+    if len(primera) < 2 or not primera[1].strip().replace(".", "", 1).isdigit():
+        filas = filas[1:]
+
+    for fila in filas:
+        if len(fila) < 2:
+            continue
+        evaluado = fila[0].strip()
+        cal = fila[1].strip()
+        if not evaluado or not cal:
+            continue
+        if evaluado == evaluador:
+            problemas.append(f"{ruta}: {evaluador} se califico a si mismo (ignorado)")
+            continue
+        try:
+            recibidas[evaluado].append((evaluador, float(cal)))
+        except ValueError:
+            problemas.append(f"{ruta}: calificacion no numerica '{cal}' para {evaluado}")
 
 print(f"{'alumno':<12}{'promedio':>9}{'n':>4}   detalle (evaluador:cal)")
 print("-" * 60)

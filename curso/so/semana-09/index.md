@@ -97,6 +97,16 @@ Y el historial de commits, que es una evidencia en sí mismo: **commits repartid
 4. **Autoevaluación entre pares:** cada integrante actualiza su archivo `<codigo>.csv` en su repositorio privado y hace push **antes de la revisión**. Si no hay push, ese 10% se pierde en esta revisión. No afecta a tus compañeros.
    **Corrección de la semana 9:** el `<codigo>.csv` va en la raíz de tu repositorio `so-proyecto`, como se indicó en clase. Ya no hace falta un repositorio aparte.
 
+   El archivo lleva una línea por cada integrante del equipo, **tú incluido**, con su código y una calificación de 0 a 100, **sin cabecera**:
+
+   ```
+   2162628,95
+   2152525,90
+   2178899,100
+   ```
+
+   Detalle completo en [Proyecto integrador, autoevaluación entre pares](/curso/so/evaluacion/proyecto_integrador#autoevaluacion).
+
 ---
 
 ## Durante la clase (revisión) {#durante-la-clase}

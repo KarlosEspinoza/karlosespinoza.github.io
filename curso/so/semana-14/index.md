@@ -88,7 +88,7 @@ Y el `README.md` con tus decisiones de diseño escritas y justificadas: polític
 
 4. **La medición del sistema completo bajo saturación**: memoria de los cuatro procesos, ocupación de colas, rechazos por componente.
 
-5. **Autoevaluación entre pares:** cada integrante actualiza su archivo `<codigo>.csv` y hace push **antes de la revisión**. Si no hay push, ese 10% se pierde en esta revisión.
+5. **Autoevaluación entre pares:** cada integrante actualiza su archivo `<codigo>.csv`, en la raíz de su `so-proyecto`, y hace push **antes de la revisión**. Si no hay push, ese 10% se pierde en esta revisión. Formato y pasos en [Proyecto integrador, autoevaluación entre pares](/curso/so/evaluacion/proyecto_integrador#autoevaluacion).
 
 ---
 
